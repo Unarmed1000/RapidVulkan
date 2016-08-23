@@ -24,9 +24,9 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes based on RAIIGen V0.2.4 (https://github.com/Unarmed1000)
 
-#include <cassert>
-#include <RapidVulkan/VulkanCheck.hpp>
+#include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
+#include <cassert>
 
 namespace RapidVulkan
 {
