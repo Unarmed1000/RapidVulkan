@@ -35,7 +35,7 @@ namespace RapidVulkan
     static inline void Check(const VkResult result)
     {
       if (status != VK_SUCCESS)
-        throw RapidVulkanErrorException(result);
+        throw VulkanErrorException(result);
     }
     
     static inline void Check(const VkResult result, const char*const pszMessage)
@@ -43,7 +43,7 @@ namespace RapidVulkan
       if (result != VK_SUCCESS)
       {
         assert(pszMessage != nullptr);
-        throw RapidVulkanErrorException(message, result);
+        throw VulkanErrorException(message, result);
       }
     }
     
@@ -51,7 +51,7 @@ namespace RapidVulkan
     {
       if (result != VK_SUCCESS)
       {
-        throw RapidVulkanErrorException(message, result);
+        throw VulkanErrorException(message, result);
       }
     }
 
@@ -61,7 +61,7 @@ namespace RapidVulkan
       {
         assert(pszMessage != nullptr);
         assert(pszFileName != nullptr);
-        throw RapidVulkanErrorException(pszMessage, result, pszFileName, lineNumber);
+        throw VulkanErrorException(pszMessage, result, pszFileName, lineNumber);
       }
     }
     
@@ -70,7 +70,7 @@ namespace RapidVulkan
       if (result != VK_SUCCESS)
       {
         assert(pszMessage != nullptr);
-        throw RapidVulkanErrorException(pszMessage, result, fileName, lineNumber);
+        throw VulkanErrorException(pszMessage, result, fileName, lineNumber);
       }
     }
 
@@ -80,7 +80,7 @@ namespace RapidVulkan
       if (result != VK_SUCCESS)
       {
         assert(pszFileName != nullptr);
-        throw RapidVulkanErrorException(message, result, pszFileName, lineNumber);
+        throw VulkanErrorException(message, result, pszFileName, lineNumber);
       }
     }
     
@@ -88,7 +88,7 @@ namespace RapidVulkan
     {
       if (result != VK_SUCCESS)
       {
-        throw RapidVulkanErrorException(message, result, fileName, lineNumber);
+        throw VulkanErrorException(message, result, fileName, lineNumber);
       }
     }
 
