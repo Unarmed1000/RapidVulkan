@@ -1,5 +1,5 @@
-#ifndef RAPIDVULKAN_VULKANEXCEPTION_HPP
-#define RAPIDVULKAN_VULKANEXCEPTION_HPP
+#ifndef RAPIDVULKAN_EXCEPTIONS_HPP
+#define RAPIDVULKAN_EXCEPTIONS_HPP
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -30,29 +30,28 @@ namespace RapidVulkan
 {
   class VulkanException : public std::runtime_error
   {
-    VkResult m_result;
     std::string m_fileName;
-    std::size_t m_lineNumber;
+    int m_lineNumber;
   public:
-    explicit VulkanException(const VkResult result)
+    explicit VulkanException()
       : std::runtime_error()
+      , m_fileName()
+      , m_lineNumber(0)    
     {
     }
   
-    explicit VulkanException(const std::string& what_arg, const VkResult result)
-      : std::runtime_error(what_arg)
+    explicit VulkanException(const std::string& whatArg)
+      : std::runtime_error(whatArg)
+      , m_fileName()
+      , m_lineNumber(0)    
     {
     }
 
-    explicit VulkanException(const std::string& what_arg, const VkResult result, const std::string& fileName, const std::size_t lineNumber)
-      : std::runtime_error(what_arg)
+    explicit VulkanException(const std::string& whatArg, const std::string& fileName, const int lineNumber)
+      : std::runtime_error(whatArg)
+      , m_fileName(fileName)
+      , m_lineNumber(lineNumber)    
     {
-    }
-
-    
-    Result GetResult() const 
-    { 
-      return m_result; 
     }
 
     
@@ -62,11 +61,41 @@ namespace RapidVulkan
     }
 
     
-    std::size_t GetLineNumber() const 
+    int GetLineNumber() const 
     { 
       return m_lineNumber; 
     }
   };
+  
+
+ 
+  class VulkanErrorException : public OpenVXException
+  {
+    VkResult m_result;
+  public:
+    explicit VulkanErrorException()
+      : VulkanException()
+      , m_result(VK_SUCCESS)
+    {
+    }
+  
+    explicit VulkanErrorException(const std::string& whatArg, const VkResult result)
+      : VulkanException(whatArg)
+      , m_result(result)
+    {
+    }
+
+    explicit VulkanErrorException(const std::string& whatArg, const VkResult result, const std::string& fileName, const int lineNumber)
+      : VulkanException(whatArg, fileName, lineNumber)
+      , m_result(result)
+    {
+    }
+    
+    VkResult GetResult() const
+    {
+      return m_result;
+    }
+  };  
 }
 
 #endif

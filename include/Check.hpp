@@ -1,5 +1,5 @@
-#ifndef RAPIDVULKAN_VULKANEXCEPTION_HPP
-#define RAPIDVULKAN_VULKANEXCEPTION_HPP
+#ifndef RAPIDVULKAN_CHECK_HPP
+#define RAPIDVULKAN_CHECK_HPP
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -22,14 +22,13 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-#include <RapidVulkan/VulkanException.hpp>
-#include <vulkan/vulkan.h>
+#include <RapidVulkan/Util.hpp>
 
-#define RAPIDVULKAN_CHECK(rRESULT) \
-  { \
-    const VkResult vALUE = (rESULT); \
-    if( vALUE != VK_SUCCESS ) \
-      throw VulkanException(#rRESULT, value, __FILE__, __LINE__); \
-  }
+// Define some ease of use macros for logging. 
+// Please beware that these are not pulled in by any of the RAII classes, so its 100% up to the user of the library to include it
+// if the functionality is desired.
+
+#define RAPIDVULKAN_CHECK(X)                  RapidVulkan::Util::Check((X))
+#define RAPIDVULKAN_CHECK2(X, mESSAGE)        RapidVulkan::Util::Check((X), (mESSAGE), __FILE__, __LINE__)
   
 #endif

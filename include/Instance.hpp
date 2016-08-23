@@ -22,7 +22,7 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes based on RAIIGen V0.2.0 (https://github.com/Unarmed1000)
+// Auto-generated Vulkan 1.0 C++11 RAII classes based on RAIIGen V0.2.4 (https://github.com/Unarmed1000)
 
 #include <cassert>
 #include <RapidVulkan/VulkanCheck.hpp>
@@ -131,7 +131,7 @@ namespace RapidVulkan
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
       VkInstance instance;
-      RAPIDVULKAN_CHECK(vkCreateInstance(&createInfo, nullptr, &instance));
+      Util::Check(vkCreateInstance(&createInfo, nullptr, &instance), "vkCreateInstance", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_instance = instance;
