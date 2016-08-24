@@ -22,7 +22,7 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes based on RAIIGen V0.2.5 (https://github.com/Unarmed1000)
+// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
