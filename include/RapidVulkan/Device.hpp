@@ -125,6 +125,8 @@ namespace RapidVulkan
     //! @note  Function: vkCreateDevice
     void Reset(const VkPhysicalDevice physicalDevice, const VkDeviceCreateInfo& createInfo)
     {
+#ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
+#endif
 
       // Free any currently allocated resource
       if (IsValid())

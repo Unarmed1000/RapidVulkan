@@ -135,8 +135,10 @@ namespace RapidVulkan
     //! @note  Function: vkCreateDisplayPlaneSurfaceKHR
     void Reset(const VkInstance instance, const VkDisplaySurfaceCreateInfoKHR& createInfo)
     {
+#ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (instance == VK_NULL_HANDLE)
         throw std::invalid_argument("instance can not be VK_NULL_HANDLE");
+#endif
 
       // Free any currently allocated resource
       if (IsValid())

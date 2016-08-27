@@ -125,6 +125,8 @@ namespace RapidVulkan
     //! @note  Function: vkCreateInstance
     void Reset(const VkInstanceCreateInfo& createInfo)
     {
+#ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
+#endif
 
       // Free any currently allocated resource
       if (IsValid())

@@ -135,8 +135,10 @@ namespace RapidVulkan
     //! @note  Function: vkAllocateCommandBuffers
     void Reset(const VkDevice device, const VkCommandBufferAllocateInfo& allocateInfo)
     {
+#ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+#endif
 
       // Free any currently allocated resource
       if (IsValid())
