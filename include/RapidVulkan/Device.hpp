@@ -86,6 +86,16 @@ namespace RapidVulkan
       Reset(physicalDevice, createInfo);
     }
 
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkCreateDevice
+    Device(const VkPhysicalDevice physicalDevice, const VkDeviceCreateFlags flags, const uint32_t queueCreateInfoCount, const VkDeviceQueueCreateInfo& queueCreateInfos, const uint32_t enabledLayerCount, const char *const * ppEnabledLayerNames, const uint32_t enabledExtensionCount, const char *const * ppEnabledExtensionNames, const VkPhysicalDeviceFeatures& enabledFeatures)
+      : Device()
+    {
+      Reset(physicalDevice, flags, queueCreateInfoCount, queueCreateInfos, enabledLayerCount, ppEnabledLayerNames, enabledExtensionCount, ppEnabledExtensionNames, enabledFeatures);
+    }
+#endif
+
     ~Device()
     {
       Reset();
@@ -126,6 +136,7 @@ namespace RapidVulkan
     void Reset(const VkPhysicalDevice physicalDevice, const VkDeviceCreateInfo& createInfo)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
+#else
 #endif
 
       // Free any currently allocated resource
@@ -139,6 +150,27 @@ namespace RapidVulkan
       // Everything is ready, so assign the members
       m_device = device;
     }
+
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkCreateDevice
+    void Reset(const VkPhysicalDevice physicalDevice, const VkDeviceCreateFlags flags, const uint32_t queueCreateInfoCount, const VkDeviceQueueCreateInfo& queueCreateInfos, const uint32_t enabledLayerCount, const char *const * ppEnabledLayerNames, const uint32_t enabledExtensionCount, const char *const * ppEnabledExtensionNames, const VkPhysicalDeviceFeatures& enabledFeatures)
+    {
+      VkDeviceCreateInfo createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+      createInfo.pNext = nullptr;
+      createInfo.flags = flags;
+      createInfo.queueCreateInfoCount = queueCreateInfoCount;
+      createInfo.queueCreateInfos = &pQueueCreateInfos;
+      createInfo.enabledLayerCount = enabledLayerCount;
+      createInfo.ppEnabledLayerNames = ppEnabledLayerNames;
+      createInfo.enabledExtensionCount = enabledExtensionCount;
+      createInfo.ppEnabledExtensionNames = ppEnabledExtensionNames;
+      createInfo.enabledFeatures = &pEnabledFeatures;
+
+      Reset(physicalDevice, createInfo);
+    }
+#endif
 
     //! @brief Get the associated resource handle
     VkDevice Get() const

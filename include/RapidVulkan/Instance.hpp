@@ -86,6 +86,16 @@ namespace RapidVulkan
       Reset(createInfo);
     }
 
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkCreateInstance
+    Instance(const VkInstanceCreateFlags flags, const VkApplicationInfo& applicationInfo, const uint32_t enabledLayerCount, const char *const * ppEnabledLayerNames, const uint32_t enabledExtensionCount, const char *const * ppEnabledExtensionNames)
+      : Instance()
+    {
+      Reset(flags, applicationInfo, enabledLayerCount, ppEnabledLayerNames, enabledExtensionCount, ppEnabledExtensionNames);
+    }
+#endif
+
     ~Instance()
     {
       Reset();
@@ -126,6 +136,7 @@ namespace RapidVulkan
     void Reset(const VkInstanceCreateInfo& createInfo)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
+#else
 #endif
 
       // Free any currently allocated resource
@@ -139,6 +150,25 @@ namespace RapidVulkan
       // Everything is ready, so assign the members
       m_instance = instance;
     }
+
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkCreateInstance
+    void Reset(const VkInstanceCreateFlags flags, const VkApplicationInfo& applicationInfo, const uint32_t enabledLayerCount, const char *const * ppEnabledLayerNames, const uint32_t enabledExtensionCount, const char *const * ppEnabledExtensionNames)
+    {
+      VkInstanceCreateInfo createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+      createInfo.pNext = nullptr;
+      createInfo.flags = flags;
+      createInfo.applicationInfo = &pApplicationInfo;
+      createInfo.enabledLayerCount = enabledLayerCount;
+      createInfo.ppEnabledLayerNames = ppEnabledLayerNames;
+      createInfo.enabledExtensionCount = enabledExtensionCount;
+      createInfo.ppEnabledExtensionNames = ppEnabledExtensionNames;
+
+      Reset(createInfo);
+    }
+#endif
 
     //! @brief Get the associated resource handle
     VkInstance Get() const

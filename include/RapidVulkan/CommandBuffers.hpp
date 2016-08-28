@@ -92,6 +92,16 @@ namespace RapidVulkan
       Reset(device, allocateInfo);
     }
 
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkAllocateCommandBuffers
+    CommandBuffers(const VkDevice device, const VkCommandPool commandPool, const VkCommandBufferLevel level, const uint32_t commandBufferCount)
+      : CommandBuffers()
+    {
+      Reset(device, commandPool, level, commandBufferCount);
+    }
+#endif
+
     ~CommandBuffers()
     {
       Reset();
@@ -138,6 +148,8 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+#else
+      assert(m_device != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -152,6 +164,22 @@ namespace RapidVulkan
       m_device = device;
       m_commandBuffers = commandBuffers;
     }
+
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkAllocateCommandBuffers
+    void Reset(const VkDevice device, const VkCommandPool commandPool, const VkCommandBufferLevel level, const uint32_t commandBufferCount)
+    {
+      VkCommandBufferAllocateInfo allocateInfo{};
+      allocateInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
+      allocateInfo.pNext = nullptr;
+      allocateInfo.commandPool = commandPool;
+      allocateInfo.level = level;
+      allocateInfo.commandBufferCount = commandBufferCount;
+
+      Reset(device, allocateInfo);
+    }
+#endif
 
     //! @brief Get the associated 'Device'
     VkDevice GetDevice() const

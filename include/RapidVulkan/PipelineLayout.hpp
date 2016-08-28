@@ -92,6 +92,16 @@ namespace RapidVulkan
       Reset(device, createInfo);
     }
 
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkCreatePipelineLayout
+    PipelineLayout(const VkDevice device, const VkPipelineLayoutCreateFlags flags, const uint32_t setLayoutCount, const VkDescriptorSetLayout * pSetLayouts, const uint32_t pushConstantRangeCount, const VkPushConstantRange& pushConstantRanges)
+      : PipelineLayout()
+    {
+      Reset(device, flags, setLayoutCount, pSetLayouts, pushConstantRangeCount, pushConstantRanges);
+    }
+#endif
+
     ~PipelineLayout()
     {
       Reset();
@@ -138,6 +148,8 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+#else
+      assert(m_device != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -152,6 +164,24 @@ namespace RapidVulkan
       m_device = device;
       m_pipelineLayout = pipelineLayout;
     }
+
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkCreatePipelineLayout
+    void Reset(const VkDevice device, const VkPipelineLayoutCreateFlags flags, const uint32_t setLayoutCount, const VkDescriptorSetLayout * pSetLayouts, const uint32_t pushConstantRangeCount, const VkPushConstantRange& pushConstantRanges)
+    {
+      VkPipelineLayoutCreateInfo createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
+      createInfo.pNext = nullptr;
+      createInfo.flags = flags;
+      createInfo.setLayoutCount = setLayoutCount;
+      createInfo.pSetLayouts = pSetLayouts;
+      createInfo.pushConstantRangeCount = pushConstantRangeCount;
+      createInfo.pushConstantRanges = &pPushConstantRanges;
+
+      Reset(device, createInfo);
+    }
+#endif
 
     //! @brief Get the associated 'Device'
     VkDevice GetDevice() const

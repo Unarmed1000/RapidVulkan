@@ -92,6 +92,16 @@ namespace RapidVulkan
       Reset(device, createInfo);
     }
 
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkCreateRenderPass
+    RenderPass(const VkDevice device, const VkRenderPassCreateFlags flags, const uint32_t attachmentCount, const VkAttachmentDescription& attachments, const uint32_t subpassCount, const VkSubpassDescription& subpasses, const uint32_t dependencyCount, const VkSubpassDependency& dependencies)
+      : RenderPass()
+    {
+      Reset(device, flags, attachmentCount, attachments, subpassCount, subpasses, dependencyCount, dependencies);
+    }
+#endif
+
     ~RenderPass()
     {
       Reset();
@@ -138,6 +148,8 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+#else
+      assert(m_device != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -152,6 +164,26 @@ namespace RapidVulkan
       m_device = device;
       m_renderPass = renderPass;
     }
+
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkCreateRenderPass
+    void Reset(const VkDevice device, const VkRenderPassCreateFlags flags, const uint32_t attachmentCount, const VkAttachmentDescription& attachments, const uint32_t subpassCount, const VkSubpassDescription& subpasses, const uint32_t dependencyCount, const VkSubpassDependency& dependencies)
+    {
+      VkRenderPassCreateInfo createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO;
+      createInfo.pNext = nullptr;
+      createInfo.flags = flags;
+      createInfo.attachmentCount = attachmentCount;
+      createInfo.attachments = &pAttachments;
+      createInfo.subpassCount = subpassCount;
+      createInfo.subpasses = &pSubpasses;
+      createInfo.dependencyCount = dependencyCount;
+      createInfo.dependencies = &pDependencies;
+
+      Reset(device, createInfo);
+    }
+#endif
 
     //! @brief Get the associated 'Device'
     VkDevice GetDevice() const

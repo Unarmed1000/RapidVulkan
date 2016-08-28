@@ -92,6 +92,16 @@ namespace RapidVulkan
       Reset(device, createInfo);
     }
 
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkCreateQueryPool
+    QueryPool(const VkDevice device, const VkQueryPoolCreateFlags flags, const VkQueryType queryType, const uint32_t queryCount, const VkQueryPipelineStatisticFlags pipelineStatistics)
+      : QueryPool()
+    {
+      Reset(device, flags, queryType, queryCount, pipelineStatistics);
+    }
+#endif
+
     ~QueryPool()
     {
       Reset();
@@ -138,6 +148,8 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+#else
+      assert(m_device != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -152,6 +164,23 @@ namespace RapidVulkan
       m_device = device;
       m_queryPool = queryPool;
     }
+
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkCreateQueryPool
+    void Reset(const VkDevice device, const VkQueryPoolCreateFlags flags, const VkQueryType queryType, const uint32_t queryCount, const VkQueryPipelineStatisticFlags pipelineStatistics)
+    {
+      VkQueryPoolCreateInfo createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO;
+      createInfo.pNext = nullptr;
+      createInfo.flags = flags;
+      createInfo.queryType = queryType;
+      createInfo.queryCount = queryCount;
+      createInfo.pipelineStatistics = pipelineStatistics;
+
+      Reset(device, createInfo);
+    }
+#endif
 
     //! @brief Get the associated 'Device'
     VkDevice GetDevice() const

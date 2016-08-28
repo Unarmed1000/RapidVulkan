@@ -92,6 +92,16 @@ namespace RapidVulkan
       Reset(device, createInfo);
     }
 
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkCreateImage
+    Image(const VkDevice device, const VkImageCreateFlags flags, const VkImageType imageType, const VkFormat format, const VkExtent3D extent, const uint32_t mipLevels, const uint32_t arrayLayers, const VkSampleCountFlagBits samples, const VkImageTiling tiling, const VkImageUsageFlags usage, const VkSharingMode sharingMode, const uint32_t queueFamilyIndexCount, const uint32_t * pQueueFamilyIndices, const VkImageLayout initialLayout)
+      : Image()
+    {
+      Reset(device, flags, imageType, format, extent, mipLevels, arrayLayers, samples, tiling, usage, sharingMode, queueFamilyIndexCount, pQueueFamilyIndices, initialLayout);
+    }
+#endif
+
     ~Image()
     {
       Reset();
@@ -138,6 +148,8 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+#else
+      assert(m_device != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -152,6 +164,32 @@ namespace RapidVulkan
       m_device = device;
       m_image = image;
     }
+
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkCreateImage
+    void Reset(const VkDevice device, const VkImageCreateFlags flags, const VkImageType imageType, const VkFormat format, const VkExtent3D extent, const uint32_t mipLevels, const uint32_t arrayLayers, const VkSampleCountFlagBits samples, const VkImageTiling tiling, const VkImageUsageFlags usage, const VkSharingMode sharingMode, const uint32_t queueFamilyIndexCount, const uint32_t * pQueueFamilyIndices, const VkImageLayout initialLayout)
+    {
+      VkImageCreateInfo createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;
+      createInfo.pNext = nullptr;
+      createInfo.flags = flags;
+      createInfo.imageType = imageType;
+      createInfo.format = format;
+      createInfo.extent = extent;
+      createInfo.mipLevels = mipLevels;
+      createInfo.arrayLayers = arrayLayers;
+      createInfo.samples = samples;
+      createInfo.tiling = tiling;
+      createInfo.usage = usage;
+      createInfo.sharingMode = sharingMode;
+      createInfo.queueFamilyIndexCount = queueFamilyIndexCount;
+      createInfo.pQueueFamilyIndices = pQueueFamilyIndices;
+      createInfo.initialLayout = initialLayout;
+
+      Reset(device, createInfo);
+    }
+#endif
 
     //! @brief Get the associated 'Device'
     VkDevice GetDevice() const

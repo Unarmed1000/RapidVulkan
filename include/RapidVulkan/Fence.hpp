@@ -92,6 +92,16 @@ namespace RapidVulkan
       Reset(device, createInfo);
     }
 
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkCreateFence
+    Fence(const VkDevice device, const VkFenceCreateFlags flags)
+      : Fence()
+    {
+      Reset(device, flags);
+    }
+#endif
+
     ~Fence()
     {
       Reset();
@@ -138,6 +148,8 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+#else
+      assert(m_device != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -152,6 +164,20 @@ namespace RapidVulkan
       m_device = device;
       m_fence = fence;
     }
+
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkCreateFence
+    void Reset(const VkDevice device, const VkFenceCreateFlags flags)
+    {
+      VkFenceCreateInfo createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
+      createInfo.pNext = nullptr;
+      createInfo.flags = flags;
+
+      Reset(device, createInfo);
+    }
+#endif
 
     //! @brief Get the associated 'Device'
     VkDevice GetDevice() const

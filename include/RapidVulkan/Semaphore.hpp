@@ -92,6 +92,16 @@ namespace RapidVulkan
       Reset(device, createInfo);
     }
 
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkCreateSemaphore
+    Semaphore(const VkDevice device, const VkSemaphoreCreateFlags flags)
+      : Semaphore()
+    {
+      Reset(device, flags);
+    }
+#endif
+
     ~Semaphore()
     {
       Reset();
@@ -138,6 +148,8 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+#else
+      assert(m_device != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -152,6 +164,20 @@ namespace RapidVulkan
       m_device = device;
       m_semaphore = semaphore;
     }
+
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkCreateSemaphore
+    void Reset(const VkDevice device, const VkSemaphoreCreateFlags flags)
+    {
+      VkSemaphoreCreateInfo createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
+      createInfo.pNext = nullptr;
+      createInfo.flags = flags;
+
+      Reset(device, createInfo);
+    }
+#endif
 
     //! @brief Get the associated 'Device'
     VkDevice GetDevice() const

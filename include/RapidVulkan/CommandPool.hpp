@@ -92,6 +92,16 @@ namespace RapidVulkan
       Reset(device, createInfo);
     }
 
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkCreateCommandPool
+    CommandPool(const VkDevice device, const VkCommandPoolCreateFlags flags, const uint32_t queueFamilyIndex)
+      : CommandPool()
+    {
+      Reset(device, flags, queueFamilyIndex);
+    }
+#endif
+
     ~CommandPool()
     {
       Reset();
@@ -138,6 +148,8 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+#else
+      assert(m_device != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -152,6 +164,21 @@ namespace RapidVulkan
       m_device = device;
       m_commandPool = commandPool;
     }
+
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkCreateCommandPool
+    void Reset(const VkDevice device, const VkCommandPoolCreateFlags flags, const uint32_t queueFamilyIndex)
+    {
+      VkCommandPoolCreateInfo createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
+      createInfo.pNext = nullptr;
+      createInfo.flags = flags;
+      createInfo.queueFamilyIndex = queueFamilyIndex;
+
+      Reset(device, createInfo);
+    }
+#endif
 
     //! @brief Get the associated 'Device'
     VkDevice GetDevice() const

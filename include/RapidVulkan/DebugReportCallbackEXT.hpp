@@ -92,6 +92,16 @@ namespace RapidVulkan
       Reset(instance, createInfo);
     }
 
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkCreateDebugReportCallbackEXT
+    DebugReportCallbackEXT(const VkInstance instance, const VkDebugReportFlagsEXT flags, const PFN_vkDebugReportCallbackEXT pfnCallback, void * pUserData)
+      : DebugReportCallbackEXT()
+    {
+      Reset(instance, flags, pfnCallback, pUserData);
+    }
+#endif
+
     ~DebugReportCallbackEXT()
     {
       Reset();
@@ -138,6 +148,8 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (instance == VK_NULL_HANDLE)
         throw std::invalid_argument("instance can not be VK_NULL_HANDLE");
+#else
+      assert(m_instance != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -152,6 +164,22 @@ namespace RapidVulkan
       m_instance = instance;
       m_callback = callback;
     }
+
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkCreateDebugReportCallbackEXT
+    void Reset(const VkInstance instance, const VkDebugReportFlagsEXT flags, const PFN_vkDebugReportCallbackEXT pfnCallback, void * pUserData)
+    {
+      VkDebugReportCallbackCreateInfoEXT createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_E_X_T;
+      createInfo.pNext = nullptr;
+      createInfo.flags = flags;
+      createInfo.pfnCallback = pfnCallback;
+      createInfo.pUserData = pUserData;
+
+      Reset(instance, createInfo);
+    }
+#endif
 
     //! @brief Get the associated 'Instance'
     VkInstance GetInstance() const

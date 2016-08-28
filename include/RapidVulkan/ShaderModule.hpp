@@ -92,6 +92,16 @@ namespace RapidVulkan
       Reset(device, createInfo);
     }
 
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkCreateShaderModule
+    ShaderModule(const VkDevice device, const VkShaderModuleCreateFlags flags, const size_t codeSize, const uint32_t * pCode)
+      : ShaderModule()
+    {
+      Reset(device, flags, codeSize, pCode);
+    }
+#endif
+
     ~ShaderModule()
     {
       Reset();
@@ -138,6 +148,8 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+#else
+      assert(m_device != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -152,6 +164,22 @@ namespace RapidVulkan
       m_device = device;
       m_shaderModule = shaderModule;
     }
+
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkCreateShaderModule
+    void Reset(const VkDevice device, const VkShaderModuleCreateFlags flags, const size_t codeSize, const uint32_t * pCode)
+    {
+      VkShaderModuleCreateInfo createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO;
+      createInfo.pNext = nullptr;
+      createInfo.flags = flags;
+      createInfo.codeSize = codeSize;
+      createInfo.pCode = pCode;
+
+      Reset(device, createInfo);
+    }
+#endif
 
     //! @brief Get the associated 'Device'
     VkDevice GetDevice() const

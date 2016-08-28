@@ -92,6 +92,16 @@ namespace RapidVulkan
       Reset(device, pipelineCache, createInfoCount, createInfos);
     }
 
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkCreateComputePipelines
+    ComputePipelines(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkPipelineCreateFlags flags, const VkPipelineShaderStageCreateInfo stage, const VkPipelineLayout layout, const VkPipeline basePipelineHandle, const int32_t basePipelineIndex)
+      : ComputePipelines()
+    {
+      Reset(device, pipelineCache, createInfoCount, flags, stage, layout, basePipelineHandle, basePipelineIndex);
+    }
+#endif
+
     ~ComputePipelines()
     {
       Reset();
@@ -138,6 +148,8 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+#else
+      assert(m_device != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -152,6 +164,24 @@ namespace RapidVulkan
       m_device = device;
       m_pipelines = pipelines;
     }
+
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkCreateComputePipelines
+    void Reset(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkPipelineCreateFlags flags, const VkPipelineShaderStageCreateInfo stage, const VkPipelineLayout layout, const VkPipeline basePipelineHandle, const int32_t basePipelineIndex)
+    {
+      VkComputePipelineCreateInfo createInfos{};
+      createInfos.sType = VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO;
+      createInfos.pNext = nullptr;
+      createInfos.flags = flags;
+      createInfos.stage = stage;
+      createInfos.layout = layout;
+      createInfos.basePipelineHandle = basePipelineHandle;
+      createInfos.basePipelineIndex = basePipelineIndex;
+
+      Reset(device, pipelineCache, createInfoCount, createInfos);
+    }
+#endif
 
     //! @brief Get the associated 'Device'
     VkDevice GetDevice() const

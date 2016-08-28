@@ -92,6 +92,16 @@ namespace RapidVulkan
       Reset(device, createInfo);
     }
 
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkCreateBufferView
+    BufferView(const VkDevice device, const VkBufferViewCreateFlags flags, const VkBuffer buffer, const VkFormat format, const VkDeviceSize offset, const VkDeviceSize range)
+      : BufferView()
+    {
+      Reset(device, flags, buffer, format, offset, range);
+    }
+#endif
+
     ~BufferView()
     {
       Reset();
@@ -138,6 +148,8 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+#else
+      assert(m_device != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -152,6 +164,24 @@ namespace RapidVulkan
       m_device = device;
       m_view = view;
     }
+
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkCreateBufferView
+    void Reset(const VkDevice device, const VkBufferViewCreateFlags flags, const VkBuffer buffer, const VkFormat format, const VkDeviceSize offset, const VkDeviceSize range)
+    {
+      VkBufferViewCreateInfo createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO;
+      createInfo.pNext = nullptr;
+      createInfo.flags = flags;
+      createInfo.buffer = buffer;
+      createInfo.format = format;
+      createInfo.offset = offset;
+      createInfo.range = range;
+
+      Reset(device, createInfo);
+    }
+#endif
 
     //! @brief Get the associated 'Device'
     VkDevice GetDevice() const

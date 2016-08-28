@@ -92,6 +92,16 @@ namespace RapidVulkan
       Reset(device, createInfo);
     }
 
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkCreateSampler
+    Sampler(const VkDevice device, const VkSamplerCreateFlags flags, const VkFilter magFilter, const VkFilter minFilter, const VkSamplerMipmapMode mipmapMode, const VkSamplerAddressMode addressModeU, const VkSamplerAddressMode addressModeV, const VkSamplerAddressMode addressModeW, const float mipLodBias, const VkBool32 anisotropyEnable, const float maxAnisotropy, const VkBool32 compareEnable, const VkCompareOp compareOp, const float minLod, const float maxLod, const VkBorderColor borderColor, const VkBool32 unnormalizedCoordinates)
+      : Sampler()
+    {
+      Reset(device, flags, magFilter, minFilter, mipmapMode, addressModeU, addressModeV, addressModeW, mipLodBias, anisotropyEnable, maxAnisotropy, compareEnable, compareOp, minLod, maxLod, borderColor, unnormalizedCoordinates);
+    }
+#endif
+
     ~Sampler()
     {
       Reset();
@@ -138,6 +148,8 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+#else
+      assert(m_device != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -152,6 +164,35 @@ namespace RapidVulkan
       m_device = device;
       m_sampler = sampler;
     }
+
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkCreateSampler
+    void Reset(const VkDevice device, const VkSamplerCreateFlags flags, const VkFilter magFilter, const VkFilter minFilter, const VkSamplerMipmapMode mipmapMode, const VkSamplerAddressMode addressModeU, const VkSamplerAddressMode addressModeV, const VkSamplerAddressMode addressModeW, const float mipLodBias, const VkBool32 anisotropyEnable, const float maxAnisotropy, const VkBool32 compareEnable, const VkCompareOp compareOp, const float minLod, const float maxLod, const VkBorderColor borderColor, const VkBool32 unnormalizedCoordinates)
+    {
+      VkSamplerCreateInfo createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO;
+      createInfo.pNext = nullptr;
+      createInfo.flags = flags;
+      createInfo.magFilter = magFilter;
+      createInfo.minFilter = minFilter;
+      createInfo.mipmapMode = mipmapMode;
+      createInfo.addressModeU = addressModeU;
+      createInfo.addressModeV = addressModeV;
+      createInfo.addressModeW = addressModeW;
+      createInfo.mipLodBias = mipLodBias;
+      createInfo.anisotropyEnable = anisotropyEnable;
+      createInfo.maxAnisotropy = maxAnisotropy;
+      createInfo.compareEnable = compareEnable;
+      createInfo.compareOp = compareOp;
+      createInfo.minLod = minLod;
+      createInfo.maxLod = maxLod;
+      createInfo.borderColor = borderColor;
+      createInfo.unnormalizedCoordinates = unnormalizedCoordinates;
+
+      Reset(device, createInfo);
+    }
+#endif
 
     //! @brief Get the associated 'Device'
     VkDevice GetDevice() const

@@ -92,6 +92,16 @@ namespace RapidVulkan
       Reset(device, allocateInfo);
     }
 
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkAllocateMemory
+    Memory(const VkDevice device, const VkDeviceSize allocationSize, const uint32_t memoryTypeIndex)
+      : Memory()
+    {
+      Reset(device, allocationSize, memoryTypeIndex);
+    }
+#endif
+
     ~Memory()
     {
       Reset();
@@ -138,6 +148,8 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+#else
+      assert(m_device != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -152,6 +164,21 @@ namespace RapidVulkan
       m_device = device;
       m_memory = memory;
     }
+
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkAllocateMemory
+    void Reset(const VkDevice device, const VkDeviceSize allocationSize, const uint32_t memoryTypeIndex)
+    {
+      VkMemoryAllocateInfo allocateInfo{};
+      allocateInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
+      allocateInfo.pNext = nullptr;
+      allocateInfo.allocationSize = allocationSize;
+      allocateInfo.memoryTypeIndex = memoryTypeIndex;
+
+      Reset(device, allocateInfo);
+    }
+#endif
 
     //! @brief Get the associated 'Device'
     VkDevice GetDevice() const

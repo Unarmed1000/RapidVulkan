@@ -92,6 +92,16 @@ namespace RapidVulkan
       Reset(instance, createInfo);
     }
 
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkCreateDisplayPlaneSurfaceKHR
+    DisplayPlaneSurfaceKHR(const VkInstance instance, const VkDisplaySurfaceCreateFlagsKHR flags, const VkDisplayModeKHR displayMode, const uint32_t planeIndex, const uint32_t planeStackIndex, const VkSurfaceTransformFlagBitsKHR transform, const float globalAlpha, const VkDisplayPlaneAlphaFlagBitsKHR alphaMode, const VkExtent2D imageExtent)
+      : DisplayPlaneSurfaceKHR()
+    {
+      Reset(instance, flags, displayMode, planeIndex, planeStackIndex, transform, globalAlpha, alphaMode, imageExtent);
+    }
+#endif
+
     ~DisplayPlaneSurfaceKHR()
     {
       Reset();
@@ -138,6 +148,8 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (instance == VK_NULL_HANDLE)
         throw std::invalid_argument("instance can not be VK_NULL_HANDLE");
+#else
+      assert(m_instance != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -152,6 +164,27 @@ namespace RapidVulkan
       m_instance = instance;
       m_surface = surface;
     }
+
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkCreateDisplayPlaneSurfaceKHR
+    void Reset(const VkInstance instance, const VkDisplaySurfaceCreateFlagsKHR flags, const VkDisplayModeKHR displayMode, const uint32_t planeIndex, const uint32_t planeStackIndex, const VkSurfaceTransformFlagBitsKHR transform, const float globalAlpha, const VkDisplayPlaneAlphaFlagBitsKHR alphaMode, const VkExtent2D imageExtent)
+    {
+      VkDisplaySurfaceCreateInfoKHR createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_K_H_R;
+      createInfo.pNext = nullptr;
+      createInfo.flags = flags;
+      createInfo.displayMode = displayMode;
+      createInfo.planeIndex = planeIndex;
+      createInfo.planeStackIndex = planeStackIndex;
+      createInfo.transform = transform;
+      createInfo.globalAlpha = globalAlpha;
+      createInfo.alphaMode = alphaMode;
+      createInfo.imageExtent = imageExtent;
+
+      Reset(instance, createInfo);
+    }
+#endif
 
     //! @brief Get the associated 'Instance'
     VkInstance GetInstance() const

@@ -92,6 +92,16 @@ namespace RapidVulkan
       Reset(device, allocateInfo);
     }
 
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkAllocateDescriptorSets
+    DescriptorSets(const VkDevice device, const VkDescriptorPool descriptorPool, const uint32_t descriptorSetCount, const VkDescriptorSetLayout * pSetLayouts)
+      : DescriptorSets()
+    {
+      Reset(device, descriptorPool, descriptorSetCount, pSetLayouts);
+    }
+#endif
+
     ~DescriptorSets()
     {
       Reset();
@@ -138,6 +148,8 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+#else
+      assert(m_device != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -152,6 +164,22 @@ namespace RapidVulkan
       m_device = device;
       m_descriptorSets = descriptorSets;
     }
+
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkAllocateDescriptorSets
+    void Reset(const VkDevice device, const VkDescriptorPool descriptorPool, const uint32_t descriptorSetCount, const VkDescriptorSetLayout * pSetLayouts)
+    {
+      VkDescriptorSetAllocateInfo allocateInfo{};
+      allocateInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;
+      allocateInfo.pNext = nullptr;
+      allocateInfo.descriptorPool = descriptorPool;
+      allocateInfo.descriptorSetCount = descriptorSetCount;
+      allocateInfo.pSetLayouts = pSetLayouts;
+
+      Reset(device, allocateInfo);
+    }
+#endif
 
     //! @brief Get the associated 'Device'
     VkDevice GetDevice() const

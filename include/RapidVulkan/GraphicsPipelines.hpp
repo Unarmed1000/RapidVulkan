@@ -92,6 +92,16 @@ namespace RapidVulkan
       Reset(device, pipelineCache, createInfoCount, createInfos);
     }
 
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkCreateGraphicsPipelines
+    GraphicsPipelines(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkPipelineCreateFlags flags, const uint32_t stageCount, const VkPipelineShaderStageCreateInfo& stages, const VkPipelineVertexInputStateCreateInfo& vertexInputState, const VkPipelineInputAssemblyStateCreateInfo& inputAssemblyState, const VkPipelineTessellationStateCreateInfo& tessellationState, const VkPipelineViewportStateCreateInfo& viewportState, const VkPipelineRasterizationStateCreateInfo& rasterizationState, const VkPipelineMultisampleStateCreateInfo& multisampleState, const VkPipelineDepthStencilStateCreateInfo& depthStencilState, const VkPipelineColorBlendStateCreateInfo& colorBlendState, const VkPipelineDynamicStateCreateInfo& dynamicState, const VkPipelineLayout layout, const VkRenderPass renderPass, const uint32_t subpass, const VkPipeline basePipelineHandle, const int32_t basePipelineIndex)
+      : GraphicsPipelines()
+    {
+      Reset(device, pipelineCache, createInfoCount, flags, stageCount, stages, vertexInputState, inputAssemblyState, tessellationState, viewportState, rasterizationState, multisampleState, depthStencilState, colorBlendState, dynamicState, layout, renderPass, subpass, basePipelineHandle, basePipelineIndex);
+    }
+#endif
+
     ~GraphicsPipelines()
     {
       Reset();
@@ -138,6 +148,8 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+#else
+      assert(m_device != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -152,6 +164,36 @@ namespace RapidVulkan
       m_device = device;
       m_pipelines = pipelines;
     }
+
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkCreateGraphicsPipelines
+    void Reset(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkPipelineCreateFlags flags, const uint32_t stageCount, const VkPipelineShaderStageCreateInfo& stages, const VkPipelineVertexInputStateCreateInfo& vertexInputState, const VkPipelineInputAssemblyStateCreateInfo& inputAssemblyState, const VkPipelineTessellationStateCreateInfo& tessellationState, const VkPipelineViewportStateCreateInfo& viewportState, const VkPipelineRasterizationStateCreateInfo& rasterizationState, const VkPipelineMultisampleStateCreateInfo& multisampleState, const VkPipelineDepthStencilStateCreateInfo& depthStencilState, const VkPipelineColorBlendStateCreateInfo& colorBlendState, const VkPipelineDynamicStateCreateInfo& dynamicState, const VkPipelineLayout layout, const VkRenderPass renderPass, const uint32_t subpass, const VkPipeline basePipelineHandle, const int32_t basePipelineIndex)
+    {
+      VkGraphicsPipelineCreateInfo createInfos{};
+      createInfos.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
+      createInfos.pNext = nullptr;
+      createInfos.flags = flags;
+      createInfos.stageCount = stageCount;
+      createInfos.stages = &pStages;
+      createInfos.vertexInputState = &pVertexInputState;
+      createInfos.inputAssemblyState = &pInputAssemblyState;
+      createInfos.tessellationState = &pTessellationState;
+      createInfos.viewportState = &pViewportState;
+      createInfos.rasterizationState = &pRasterizationState;
+      createInfos.multisampleState = &pMultisampleState;
+      createInfos.depthStencilState = &pDepthStencilState;
+      createInfos.colorBlendState = &pColorBlendState;
+      createInfos.dynamicState = &pDynamicState;
+      createInfos.layout = layout;
+      createInfos.renderPass = renderPass;
+      createInfos.subpass = subpass;
+      createInfos.basePipelineHandle = basePipelineHandle;
+      createInfos.basePipelineIndex = basePipelineIndex;
+
+      Reset(device, pipelineCache, createInfoCount, createInfos);
+    }
+#endif
 
     //! @brief Get the associated 'Device'
     VkDevice GetDevice() const

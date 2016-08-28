@@ -92,6 +92,16 @@ namespace RapidVulkan
       Reset(device, createInfo);
     }
 
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkCreateDescriptorSetLayout
+    DescriptorSetLayout(const VkDevice device, const VkDescriptorSetLayoutCreateFlags flags, const uint32_t bindingCount, const VkDescriptorSetLayoutBinding& bindings)
+      : DescriptorSetLayout()
+    {
+      Reset(device, flags, bindingCount, bindings);
+    }
+#endif
+
     ~DescriptorSetLayout()
     {
       Reset();
@@ -138,6 +148,8 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+#else
+      assert(m_device != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -152,6 +164,22 @@ namespace RapidVulkan
       m_device = device;
       m_setLayout = setLayout;
     }
+
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkCreateDescriptorSetLayout
+    void Reset(const VkDevice device, const VkDescriptorSetLayoutCreateFlags flags, const uint32_t bindingCount, const VkDescriptorSetLayoutBinding& bindings)
+    {
+      VkDescriptorSetLayoutCreateInfo createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
+      createInfo.pNext = nullptr;
+      createInfo.flags = flags;
+      createInfo.bindingCount = bindingCount;
+      createInfo.bindings = &pBindings;
+
+      Reset(device, createInfo);
+    }
+#endif
 
     //! @brief Get the associated 'Device'
     VkDevice GetDevice() const
