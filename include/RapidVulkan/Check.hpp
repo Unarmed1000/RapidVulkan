@@ -28,7 +28,7 @@
 // Please beware that these are not pulled in by any of the RAII classes, so its 100% up to the user of the library to include it
 // if the functionality is desired.
 
-#define RAPIDVULKAN_CHECK(X)                  RapidVulkan::Util::Check((X))
+#define RAPIDVULKAN_CHECK(X)                  RapidVulkan::Util::Check((X), #X, __FILE__, __LINE__)
 #define RAPIDVULKAN_CHECK2(X, mESSAGE)        RapidVulkan::Util::Check((X), (mESSAGE), __FILE__, __LINE__)
 
 #endif

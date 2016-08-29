@@ -27,6 +27,8 @@
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
+#include <util>
+#include <vector>
 
 namespace RapidVulkan
 {
@@ -34,7 +36,8 @@ namespace RapidVulkan
   class CommandBuffers
   {
     VkDevice m_device;
-    VkCommandBuffer m_commandBuffers;
+    VkCommandPool m_commandPool;
+    std::vector<VkCommandBuffer> m_commandBuffers;
   public:
     CommandBuffers(const CommandBuffers&) = delete;
     CommandBuffers& operator=(const CommandBuffers&) = delete;
@@ -49,16 +52,13 @@ namespace RapidVulkan
           Reset();
 
         // Claim ownership here
-        m_commandPool = other.m_commandPool;
-        m_commandBufferCount = other.m_commandBufferCount;
         m_device = other.m_device;
-        m_commandBuffers = other.m_commandBuffers;
+        m_commandPool = other.m_commandPool;
+        m_commandBuffers = std::move(other.m_commandBuffers);
 
         // Remove the data from other
-        other.m_commandPool = VK_NULL_HANDLE;
-        other.m_commandBufferCount = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
         other.m_device = VK_NULL_HANDLE;
-        other.m_commandBuffers = VK_NULL_HANDLE;
+        other.m_commandPool = VK_NULL_HANDLE;
       }
       return *this;
     }
@@ -66,33 +66,29 @@ namespace RapidVulkan
     //! @brief Move constructor
     //! Transfer ownership from other to this
     CommandBuffers(CommandBuffers&& other)
-      : m_commandPool(other.m_commandPool)
-      , m_commandBufferCount(other.m_commandBufferCount)
-      , m_device(other.m_device)
-      , m_commandBuffers(other.m_commandBuffers)
+      : m_device(other.m_device)
+      , m_commandPool(other.m_commandPool)
+      , m_commandBuffers(std::move(other.m_commandBuffers))
     {
       // Remove the data from other
-      other.m_commandPool = VK_NULL_HANDLE;
-      other.m_commandBufferCount = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       other.m_device = VK_NULL_HANDLE;
-      other.m_commandBuffers = VK_NULL_HANDLE;
+      other.m_commandPool = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     CommandBuffers()
-      : m_commandPool(VK_NULL_HANDLE)
-      , m_commandBufferCount(FIX_DEFAULT_FOR_TYPE_NOT_DEFINED)
-      , m_device(VK_NULL_HANDLE)
+      : m_device(VK_NULL_HANDLE)
+      , m_commandPool(VK_NULL_HANDLE)
       , m_commandBuffers(VK_NULL_HANDLE)
     {
     }
 
     //! @brief Assume control of the CommandBuffers (this object becomes responsible for releasing it)
-    explicit CommandBuffers(const VkCommandPool commandPool, const uint32_t commandBufferCount, const VkDevice device, const VkCommandBuffer commandBuffers)
-      : CommandBuffers()
-    {
-      Reset(commandPool, commandBufferCount, device, commandBuffers);
-    }
+    //explicit CommandBuffers(const VkDevice device, const VkCommandPool commandPool, const VkCommandBuffer commandBuffers)
+    //  : CommandBuffers()
+    //{
+    //  Reset(device, commandPool, commandBuffers);
+    //}
 
     //! @brief Create the requested resource
     //! @note  Function: vkAllocateCommandBuffers
@@ -118,12 +114,11 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkCommandBuffer Release()
+    std::vector<VkCommandBuffer> Release()
     {
-      const auto resource = m_commandBuffers; 
-      m_commandPool = VK_NULL_HANDLE;
-      m_commandBufferCount = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      auto resource = std::move(m_commandBuffers); 
       m_device = VK_NULL_HANDLE;
+      m_commandPool = VK_NULL_HANDLE;
       m_commandBuffers = VK_NULL_HANDLE;
       return resource;
     }
@@ -134,31 +129,30 @@ namespace RapidVulkan
       if (!IsValid())
         return;
 
-      assert(m_commandPool != VK_NULL_HANDLE);
-      assert(m_commandBufferCount != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED);
       assert(m_device != VK_NULL_HANDLE);
+      assert(m_commandPool != VK_NULL_HANDLE);
       assert(m_commandBuffers != VK_NULL_HANDLE);
 
-      vkFreeCommandBuffers(m_device, commandPool, commandBufferCount, &m_commandBuffers);
-      m_commandPool = VK_NULL_HANDLE;
-      m_commandBufferCount = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      vkFreeCommandBuffers(m_device, m_commandPool, m_commandBuffers.size(), m_commandBuffers.data());
       m_device = VK_NULL_HANDLE;
+      m_commandPool = VK_NULL_HANDLE;
       m_commandBuffers = VK_NULL_HANDLE;
     }
 
+/*    
     //! @brief Destroys any owned resources and assume control of the CommandBuffers (this object becomes responsible for releasing it)
-    void Reset(const VkCommandPool commandPool, const uint32_t commandBufferCount, const VkDevice device, const VkCommandBuffer commandBuffers)
+    void Reset(const VkDevice device, const VkCommandPool commandPool, const VkCommandBuffer commandBuffers)
     {
       if (IsValid())
         Reset();
 
 
-      m_commandPool = commandPool;
-      m_commandBufferCount = commandBufferCount;
       m_device = device;
-      m_commandBuffers = commandBuffers;
+      m_commandPool = commandPool;
+      m_commandBuffers = std::move(commandBuffers);
     }
-
+*/
+    
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkAllocateCommandBuffers
     void Reset(const VkDevice device, const VkCommandBufferAllocateInfo& allocateInfo)
@@ -166,8 +160,11 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+      if (allocateInfo.commandPool == VK_NULL_HANDLE)
+        throw std::invalid_argument("allocateInfo.commandPool can not be VK_NULL_HANDLE");
 #else
-      assert(m_device != VK_NULL_HANDLE);
+      assert(device != VK_NULL_HANDLE);
+      assert(allocateInfo.commandPool != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -175,14 +172,13 @@ namespace RapidVulkan
         Reset();
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkCommandBuffer commandBuffers;
-      Util::Check(vkAllocateCommandBuffers(device, &allocateInfo, &commandBuffers), "vkAllocateCommandBuffers", __FILE__, __LINE__);
+      std::vector<VkCommandBuffer> commandBuffers(allocateInfo.commandBufferCount);
+      Util::Check(vkAllocateCommandBuffers(device, &allocateInfo, commandBuffers.data()), "vkAllocateCommandBuffers", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
-      m_commandPool = allocateInfo.commandPool;
-      m_commandBufferCount = allocateInfo.commandBufferCount;
       m_device = device;
-      m_commandBuffers = commandBuffers;
+      m_commandPool = allocateInfo.commandPool;
+      m_commandBuffers = std::move(commandBuffers);
     }
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
@@ -207,16 +203,35 @@ namespace RapidVulkan
       return m_device;
     }
 
-    //! @brief Get the associated resource handle
-    VkCommandBuffer Get() const
+    //! @brief Get the associated 'CommandPool'
+    VkCommandPool GetCommandPool() const
+    {
+      return m_commandPool;
+    }
+
+    //! @brief Get size of the vector
+    std::size_t Size() const
+    {
+      return m_commandBuffers.size();
+    }
+
+    //! @brief Get the associated resource handles
+    const std::vector<VkCommandBuffer>& Get() const
     {
       return m_commandBuffers;
+    }
+
+    //! @brief Access the resource at a given index
+    VkCommandBuffer operator[] (const std::size_t arrayIndex) const
+    {
+      assert(arrayIndex < m_commandBuffers.size());
+      return m_commandBuffers[arrayIndex];
     }
 
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_commandBuffers != VK_NULL_HANDLE;
+      return m_commandBuffers.size() > 0;
     }
   };
 }

@@ -27,6 +27,8 @@
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
+#include <util>
+#include <vector>
 
 namespace RapidVulkan
 {
@@ -34,7 +36,8 @@ namespace RapidVulkan
   class DescriptorSets
   {
     VkDevice m_device;
-    VkDescriptorSet m_descriptorSets;
+    VkDescriptorPool m_descriptorPool;
+    std::vector<VkDescriptorSet> m_descriptorSets;
   public:
     DescriptorSets(const DescriptorSets&) = delete;
     DescriptorSets& operator=(const DescriptorSets&) = delete;
@@ -49,16 +52,13 @@ namespace RapidVulkan
           Reset();
 
         // Claim ownership here
-        m_descriptorPool = other.m_descriptorPool;
-        m_descriptorSetCount = other.m_descriptorSetCount;
         m_device = other.m_device;
-        m_descriptorSets = other.m_descriptorSets;
+        m_descriptorPool = other.m_descriptorPool;
+        m_descriptorSets = std::move(other.m_descriptorSets);
 
         // Remove the data from other
-        other.m_descriptorPool = VK_NULL_HANDLE;
-        other.m_descriptorSetCount = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
         other.m_device = VK_NULL_HANDLE;
-        other.m_descriptorSets = VK_NULL_HANDLE;
+        other.m_descriptorPool = VK_NULL_HANDLE;
       }
       return *this;
     }
@@ -66,33 +66,29 @@ namespace RapidVulkan
     //! @brief Move constructor
     //! Transfer ownership from other to this
     DescriptorSets(DescriptorSets&& other)
-      : m_descriptorPool(other.m_descriptorPool)
-      , m_descriptorSetCount(other.m_descriptorSetCount)
-      , m_device(other.m_device)
-      , m_descriptorSets(other.m_descriptorSets)
+      : m_device(other.m_device)
+      , m_descriptorPool(other.m_descriptorPool)
+      , m_descriptorSets(std::move(other.m_descriptorSets))
     {
       // Remove the data from other
-      other.m_descriptorPool = VK_NULL_HANDLE;
-      other.m_descriptorSetCount = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       other.m_device = VK_NULL_HANDLE;
-      other.m_descriptorSets = VK_NULL_HANDLE;
+      other.m_descriptorPool = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     DescriptorSets()
-      : m_descriptorPool(VK_NULL_HANDLE)
-      , m_descriptorSetCount(FIX_DEFAULT_FOR_TYPE_NOT_DEFINED)
-      , m_device(VK_NULL_HANDLE)
+      : m_device(VK_NULL_HANDLE)
+      , m_descriptorPool(VK_NULL_HANDLE)
       , m_descriptorSets(VK_NULL_HANDLE)
     {
     }
 
     //! @brief Assume control of the DescriptorSets (this object becomes responsible for releasing it)
-    explicit DescriptorSets(const VkDescriptorPool descriptorPool, const uint32_t descriptorSetCount, const VkDevice device, const VkDescriptorSet descriptorSets)
-      : DescriptorSets()
-    {
-      Reset(descriptorPool, descriptorSetCount, device, descriptorSets);
-    }
+    //explicit DescriptorSets(const VkDevice device, const VkDescriptorPool descriptorPool, const VkDescriptorSet descriptorSets)
+    //  : DescriptorSets()
+    //{
+    //  Reset(device, descriptorPool, descriptorSets);
+    //}
 
     //! @brief Create the requested resource
     //! @note  Function: vkAllocateDescriptorSets
@@ -118,12 +114,11 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkDescriptorSet Release()
+    std::vector<VkDescriptorSet> Release()
     {
-      const auto resource = m_descriptorSets; 
-      m_descriptorPool = VK_NULL_HANDLE;
-      m_descriptorSetCount = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      auto resource = std::move(m_descriptorSets); 
       m_device = VK_NULL_HANDLE;
+      m_descriptorPool = VK_NULL_HANDLE;
       m_descriptorSets = VK_NULL_HANDLE;
       return resource;
     }
@@ -134,31 +129,30 @@ namespace RapidVulkan
       if (!IsValid())
         return;
 
-      assert(m_descriptorPool != VK_NULL_HANDLE);
-      assert(m_descriptorSetCount != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED);
       assert(m_device != VK_NULL_HANDLE);
+      assert(m_descriptorPool != VK_NULL_HANDLE);
       assert(m_descriptorSets != VK_NULL_HANDLE);
 
-      vkFreeDescriptorSets(m_device, descriptorPool, descriptorSetCount, &m_descriptorSets);
-      m_descriptorPool = VK_NULL_HANDLE;
-      m_descriptorSetCount = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      vkFreeDescriptorSets(m_device, m_descriptorPool, m_descriptorSets.size(), m_descriptorSets.data());
       m_device = VK_NULL_HANDLE;
+      m_descriptorPool = VK_NULL_HANDLE;
       m_descriptorSets = VK_NULL_HANDLE;
     }
 
+/*    
     //! @brief Destroys any owned resources and assume control of the DescriptorSets (this object becomes responsible for releasing it)
-    void Reset(const VkDescriptorPool descriptorPool, const uint32_t descriptorSetCount, const VkDevice device, const VkDescriptorSet descriptorSets)
+    void Reset(const VkDevice device, const VkDescriptorPool descriptorPool, const VkDescriptorSet descriptorSets)
     {
       if (IsValid())
         Reset();
 
 
-      m_descriptorPool = descriptorPool;
-      m_descriptorSetCount = descriptorSetCount;
       m_device = device;
-      m_descriptorSets = descriptorSets;
+      m_descriptorPool = descriptorPool;
+      m_descriptorSets = std::move(descriptorSets);
     }
-
+*/
+    
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkAllocateDescriptorSets
     void Reset(const VkDevice device, const VkDescriptorSetAllocateInfo& allocateInfo)
@@ -166,8 +160,11 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+      if (allocateInfo.descriptorPool == VK_NULL_HANDLE)
+        throw std::invalid_argument("allocateInfo.descriptorPool can not be VK_NULL_HANDLE");
 #else
-      assert(m_device != VK_NULL_HANDLE);
+      assert(device != VK_NULL_HANDLE);
+      assert(allocateInfo.descriptorPool != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -175,14 +172,13 @@ namespace RapidVulkan
         Reset();
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkDescriptorSet descriptorSets;
-      Util::Check(vkAllocateDescriptorSets(device, &allocateInfo, &descriptorSets), "vkAllocateDescriptorSets", __FILE__, __LINE__);
+      std::vector<VkDescriptorSet> descriptorSets(allocateInfo.descriptorSetCount);
+      Util::Check(vkAllocateDescriptorSets(device, &allocateInfo, descriptorSets.data()), "vkAllocateDescriptorSets", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
-      m_descriptorPool = allocateInfo.descriptorPool;
-      m_descriptorSetCount = allocateInfo.descriptorSetCount;
       m_device = device;
-      m_descriptorSets = descriptorSets;
+      m_descriptorPool = allocateInfo.descriptorPool;
+      m_descriptorSets = std::move(descriptorSets);
     }
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
@@ -207,16 +203,35 @@ namespace RapidVulkan
       return m_device;
     }
 
-    //! @brief Get the associated resource handle
-    VkDescriptorSet Get() const
+    //! @brief Get the associated 'DescriptorPool'
+    VkDescriptorPool GetDescriptorPool() const
+    {
+      return m_descriptorPool;
+    }
+
+    //! @brief Get size of the vector
+    std::size_t Size() const
+    {
+      return m_descriptorSets.size();
+    }
+
+    //! @brief Get the associated resource handles
+    const std::vector<VkDescriptorSet>& Get() const
     {
       return m_descriptorSets;
+    }
+
+    //! @brief Access the resource at a given index
+    VkDescriptorSet operator[] (const std::size_t arrayIndex) const
+    {
+      assert(arrayIndex < m_descriptorSets.size());
+      return m_descriptorSets[arrayIndex];
     }
 
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_descriptorSets != VK_NULL_HANDLE;
+      return m_descriptorSets.size() > 0;
     }
   };
 }

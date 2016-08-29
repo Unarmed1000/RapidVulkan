@@ -149,7 +149,7 @@ namespace RapidVulkan
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
 #else
-      assert(m_device != VK_NULL_HANDLE);
+      assert(device != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource

@@ -149,7 +149,7 @@ namespace RapidVulkan
       if (instance == VK_NULL_HANDLE)
         throw std::invalid_argument("instance can not be VK_NULL_HANDLE");
 #else
-      assert(m_instance != VK_NULL_HANDLE);
+      assert(instance != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource

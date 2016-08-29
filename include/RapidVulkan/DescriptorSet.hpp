@@ -1,5 +1,5 @@
-#ifndef RAPIDVULKAN_IMAGE_HPP
-#define RAPIDVULKAN_IMAGE_HPP
+#ifndef RAPIDVULKAN_DESCRIPTORSET_HPP
+#define RAPIDVULKAN_DESCRIPTORSET_HPP
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -31,16 +31,17 @@
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
-  class Image
+  class DescriptorSet
   {
     VkDevice m_device;
-    VkImage m_image;
+    VkDescriptorPool m_descriptorPool;
+    VkDescriptorSet m_descriptorSets;
   public:
-    Image(const Image&) = delete;
-    Image& operator=(const Image&) = delete;
+    DescriptorSet(const DescriptorSet&) = delete;
+    DescriptorSet& operator=(const DescriptorSet&) = delete;
 
     //! @brief Move assignment operator
-    Image& operator=(Image&& other)
+    DescriptorSet& operator=(DescriptorSet&& other)
     {
       if (this != &other)
       {
@@ -50,69 +51,75 @@ namespace RapidVulkan
 
         // Claim ownership here
         m_device = other.m_device;
-        m_image = other.m_image;
+        m_descriptorPool = other.m_descriptorPool;
+        m_descriptorSets = other.m_descriptorSets;
 
         // Remove the data from other
         other.m_device = VK_NULL_HANDLE;
-        other.m_image = VK_NULL_HANDLE;
+        other.m_descriptorPool = VK_NULL_HANDLE;
+        other.m_descriptorSets = VK_NULL_HANDLE;
       }
       return *this;
     }
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    Image(Image&& other)
+    DescriptorSet(DescriptorSet&& other)
       : m_device(other.m_device)
-      , m_image(other.m_image)
+      , m_descriptorPool(other.m_descriptorPool)
+      , m_descriptorSets(other.m_descriptorSets)
     {
       // Remove the data from other
       other.m_device = VK_NULL_HANDLE;
-      other.m_image = VK_NULL_HANDLE;
+      other.m_descriptorPool = VK_NULL_HANDLE;
+      other.m_descriptorSets = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    Image()
+    DescriptorSet()
       : m_device(VK_NULL_HANDLE)
-      , m_image(VK_NULL_HANDLE)
+      , m_descriptorPool(VK_NULL_HANDLE)
+      , m_descriptorSets(VK_NULL_HANDLE)
     {
     }
 
-    //! @brief Assume control of the Image (this object becomes responsible for releasing it)
-    explicit Image(const VkDevice device, const VkImage image)
-      : Image()
+    //! @brief Assume control of the DescriptorSet (this object becomes responsible for releasing it)
+    explicit DescriptorSet(const VkDevice device, const VkDescriptorPool descriptorPool, const VkDescriptorSet descriptorSets)
+      : DescriptorSet()
     {
-      Reset(device, image);
+      Reset(device, descriptorPool, descriptorSets);
     }
 
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateImage
-    Image(const VkDevice device, const VkImageCreateInfo& createInfo)
-      : Image()
+    //! @note  Function: vkAllocateDescriptorSets
+    DescriptorSet(const VkDevice device, const VkDescriptorSetAllocateInfo& allocateInfo)
+      : DescriptorSet()
     {
-      Reset(device, createInfo);
+      Reset(device, allocateInfo);
     }
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateImage
-    Image(const VkDevice device, const VkImageCreateFlags flags, const VkImageType imageType, const VkFormat format, const VkExtent3D extent, const uint32_t mipLevels, const uint32_t arrayLayers, const VkSampleCountFlagBits samples, const VkImageTiling tiling, const VkImageUsageFlags usage, const VkSharingMode sharingMode, const uint32_t queueFamilyIndexCount, const uint32_t * pQueueFamilyIndices, const VkImageLayout initialLayout)
-      : Image()
+    //! @note  Function: vkAllocateDescriptorSets
+    DescriptorSet(const VkDevice device, const VkDescriptorPool descriptorPool, const VkDescriptorSetLayout * pSetLayouts)
+      : DescriptorSet()
     {
-      Reset(device, flags, imageType, format, extent, mipLevels, arrayLayers, samples, tiling, usage, sharingMode, queueFamilyIndexCount, pQueueFamilyIndices, initialLayout);
+      Reset(device, descriptorPool, pSetLayouts);
     }
 #endif
 
-    ~Image()
+    ~DescriptorSet()
     {
       Reset();
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkImage Release()
+    VkDescriptorSet Release()
     {
-      const auto resource = m_image; 
+      const auto resource = m_descriptorSets; 
       m_device = VK_NULL_HANDLE;
-      m_image = VK_NULL_HANDLE;
+      m_descriptorPool = VK_NULL_HANDLE;
+      m_descriptorSets = VK_NULL_HANDLE;
       return resource;
     }
 
@@ -123,33 +130,39 @@ namespace RapidVulkan
         return;
 
       assert(m_device != VK_NULL_HANDLE);
-      assert(m_image != VK_NULL_HANDLE);
+      assert(m_descriptorPool != VK_NULL_HANDLE);
+      assert(m_descriptorSets != VK_NULL_HANDLE);
 
-      vkDestroyImage(m_device, m_image, nullptr);
+      vkFreeDescriptorSets(m_device, m_descriptorPool, 1, &m_descriptorSets);
       m_device = VK_NULL_HANDLE;
-      m_image = VK_NULL_HANDLE;
+      m_descriptorPool = VK_NULL_HANDLE;
+      m_descriptorSets = VK_NULL_HANDLE;
     }
 
-    //! @brief Destroys any owned resources and assume control of the Image (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, const VkImage image)
+    //! @brief Destroys any owned resources and assume control of the DescriptorSet (this object becomes responsible for releasing it)
+    void Reset(const VkDevice device, const VkDescriptorPool descriptorPool, const VkDescriptorSet descriptorSets)
     {
       if (IsValid())
         Reset();
 
 
       m_device = device;
-      m_image = image;
+      m_descriptorPool = descriptorPool;
+      m_descriptorSets = descriptorSets;
     }
 
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateImage
-    void Reset(const VkDevice device, const VkImageCreateInfo& createInfo)
+    //! @note  Function: vkAllocateDescriptorSets
+    void Reset(const VkDevice device, const VkDescriptorSetAllocateInfo& allocateInfo)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+      if (allocateInfo.descriptorPool == VK_NULL_HANDLE)
+        throw std::invalid_argument("allocateInfo.descriptorPool can not be VK_NULL_HANDLE");
 #else
       assert(device != VK_NULL_HANDLE);
+      assert(allocateInfo.descriptorPool != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -157,37 +170,28 @@ namespace RapidVulkan
         Reset();
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkImage image;
-      Util::Check(vkCreateImage(device, &createInfo, nullptr, &image), "vkCreateImage", __FILE__, __LINE__);
+      VkDescriptorSet descriptorSets;
+      Util::Check(vkAllocateDescriptorSets(device, &allocateInfo, &descriptorSets), "vkAllocateDescriptorSets", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
-      m_image = image;
+      m_descriptorPool = allocateInfo.descriptorPool;
+      m_descriptorSets = descriptorSets;
     }
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateImage
-    void Reset(const VkDevice device, const VkImageCreateFlags flags, const VkImageType imageType, const VkFormat format, const VkExtent3D extent, const uint32_t mipLevels, const uint32_t arrayLayers, const VkSampleCountFlagBits samples, const VkImageTiling tiling, const VkImageUsageFlags usage, const VkSharingMode sharingMode, const uint32_t queueFamilyIndexCount, const uint32_t * pQueueFamilyIndices, const VkImageLayout initialLayout)
+    //! @note  Function: vkAllocateDescriptorSets
+    void Reset(const VkDevice device, const VkDescriptorPool descriptorPool, const VkDescriptorSetLayout * pSetLayouts)
     {
-      VkImageCreateInfo createInfo{};
-      createInfo.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;
-      createInfo.pNext = nullptr;
-      createInfo.flags = flags;
-      createInfo.imageType = imageType;
-      createInfo.format = format;
-      createInfo.extent = extent;
-      createInfo.mipLevels = mipLevels;
-      createInfo.arrayLayers = arrayLayers;
-      createInfo.samples = samples;
-      createInfo.tiling = tiling;
-      createInfo.usage = usage;
-      createInfo.sharingMode = sharingMode;
-      createInfo.queueFamilyIndexCount = queueFamilyIndexCount;
-      createInfo.pQueueFamilyIndices = pQueueFamilyIndices;
-      createInfo.initialLayout = initialLayout;
+      VkDescriptorSetAllocateInfo allocateInfo{};
+      allocateInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;
+      allocateInfo.pNext = nullptr;
+      allocateInfo.descriptorPool = descriptorPool;
+      allocateInfo.descriptorSetCount = 1;
+      allocateInfo.pSetLayouts = pSetLayouts;
 
-      Reset(device, createInfo);
+      Reset(device, allocateInfo);
     }
 #endif
 
@@ -197,16 +201,22 @@ namespace RapidVulkan
       return m_device;
     }
 
-    //! @brief Get the associated resource handle
-    VkImage Get() const
+    //! @brief Get the associated 'DescriptorPool'
+    VkDescriptorPool GetDescriptorPool() const
     {
-      return m_image;
+      return m_descriptorPool;
+    }
+
+    //! @brief Get the associated resource handle
+    VkDescriptorSet Get() const
+    {
+      return m_descriptorSets;
     }
 
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_image != VK_NULL_HANDLE;
+      return m_descriptorSets != VK_NULL_HANDLE;
     }
   };
 }

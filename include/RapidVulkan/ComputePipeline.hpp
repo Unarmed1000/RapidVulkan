@@ -1,5 +1,5 @@
-#ifndef RAPIDVULKAN_IMAGE_HPP
-#define RAPIDVULKAN_IMAGE_HPP
+#ifndef RAPIDVULKAN_COMPUTEPIPELINE_HPP
+#define RAPIDVULKAN_COMPUTEPIPELINE_HPP
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -31,16 +31,16 @@
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
-  class Image
+  class ComputePipeline
   {
     VkDevice m_device;
-    VkImage m_image;
+    VkPipeline m_pipelines;
   public:
-    Image(const Image&) = delete;
-    Image& operator=(const Image&) = delete;
+    ComputePipeline(const ComputePipeline&) = delete;
+    ComputePipeline& operator=(const ComputePipeline&) = delete;
 
     //! @brief Move assignment operator
-    Image& operator=(Image&& other)
+    ComputePipeline& operator=(ComputePipeline&& other)
     {
       if (this != &other)
       {
@@ -50,69 +50,69 @@ namespace RapidVulkan
 
         // Claim ownership here
         m_device = other.m_device;
-        m_image = other.m_image;
+        m_pipelines = other.m_pipelines;
 
         // Remove the data from other
         other.m_device = VK_NULL_HANDLE;
-        other.m_image = VK_NULL_HANDLE;
+        other.m_pipelines = VK_NULL_HANDLE;
       }
       return *this;
     }
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    Image(Image&& other)
+    ComputePipeline(ComputePipeline&& other)
       : m_device(other.m_device)
-      , m_image(other.m_image)
+      , m_pipelines(other.m_pipelines)
     {
       // Remove the data from other
       other.m_device = VK_NULL_HANDLE;
-      other.m_image = VK_NULL_HANDLE;
+      other.m_pipelines = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    Image()
+    ComputePipeline()
       : m_device(VK_NULL_HANDLE)
-      , m_image(VK_NULL_HANDLE)
+      , m_pipelines(VK_NULL_HANDLE)
     {
     }
 
-    //! @brief Assume control of the Image (this object becomes responsible for releasing it)
-    explicit Image(const VkDevice device, const VkImage image)
-      : Image()
+    //! @brief Assume control of the ComputePipeline (this object becomes responsible for releasing it)
+    explicit ComputePipeline(const VkDevice device, const VkPipeline pipelines)
+      : ComputePipeline()
     {
-      Reset(device, image);
+      Reset(device, pipelines);
     }
 
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateImage
-    Image(const VkDevice device, const VkImageCreateInfo& createInfo)
-      : Image()
+    //! @note  Function: vkCreateComputePipelines
+    ComputePipeline(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkComputePipelineCreateInfo& createInfos)
+      : ComputePipeline()
     {
-      Reset(device, createInfo);
+      Reset(device, pipelineCache, createInfoCount, createInfos);
     }
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateImage
-    Image(const VkDevice device, const VkImageCreateFlags flags, const VkImageType imageType, const VkFormat format, const VkExtent3D extent, const uint32_t mipLevels, const uint32_t arrayLayers, const VkSampleCountFlagBits samples, const VkImageTiling tiling, const VkImageUsageFlags usage, const VkSharingMode sharingMode, const uint32_t queueFamilyIndexCount, const uint32_t * pQueueFamilyIndices, const VkImageLayout initialLayout)
-      : Image()
+    //! @note  Function: vkCreateComputePipelines
+    ComputePipeline(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkPipelineCreateFlags flags, const VkPipelineShaderStageCreateInfo stage, const VkPipelineLayout layout, const VkPipeline basePipelineHandle, const int32_t basePipelineIndex)
+      : ComputePipeline()
     {
-      Reset(device, flags, imageType, format, extent, mipLevels, arrayLayers, samples, tiling, usage, sharingMode, queueFamilyIndexCount, pQueueFamilyIndices, initialLayout);
+      Reset(device, pipelineCache, createInfoCount, flags, stage, layout, basePipelineHandle, basePipelineIndex);
     }
 #endif
 
-    ~Image()
+    ~ComputePipeline()
     {
       Reset();
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkImage Release()
+    VkPipeline Release()
     {
-      const auto resource = m_image; 
+      const auto resource = m_pipelines; 
       m_device = VK_NULL_HANDLE;
-      m_image = VK_NULL_HANDLE;
+      m_pipelines = VK_NULL_HANDLE;
       return resource;
     }
 
@@ -123,27 +123,27 @@ namespace RapidVulkan
         return;
 
       assert(m_device != VK_NULL_HANDLE);
-      assert(m_image != VK_NULL_HANDLE);
+      assert(m_pipelines != VK_NULL_HANDLE);
 
-      vkDestroyImage(m_device, m_image, nullptr);
+      vkDestroyPipeline(m_device, m_pipelines, nullptr);
       m_device = VK_NULL_HANDLE;
-      m_image = VK_NULL_HANDLE;
+      m_pipelines = VK_NULL_HANDLE;
     }
 
-    //! @brief Destroys any owned resources and assume control of the Image (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, const VkImage image)
+    //! @brief Destroys any owned resources and assume control of the ComputePipeline (this object becomes responsible for releasing it)
+    void Reset(const VkDevice device, const VkPipeline pipelines)
     {
       if (IsValid())
         Reset();
 
 
       m_device = device;
-      m_image = image;
+      m_pipelines = pipelines;
     }
 
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateImage
-    void Reset(const VkDevice device, const VkImageCreateInfo& createInfo)
+    //! @note  Function: vkCreateComputePipelines
+    void Reset(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkComputePipelineCreateInfo& createInfos)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
@@ -157,37 +157,29 @@ namespace RapidVulkan
         Reset();
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkImage image;
-      Util::Check(vkCreateImage(device, &createInfo, nullptr, &image), "vkCreateImage", __FILE__, __LINE__);
+      VkPipeline pipelines;
+      Util::Check(vkCreateComputePipelines(device, pipelineCache, createInfoCount, &createInfos, nullptr, &pipelines), "vkCreateComputePipelines", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
-      m_image = image;
+      m_pipelines = pipelines;
     }
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateImage
-    void Reset(const VkDevice device, const VkImageCreateFlags flags, const VkImageType imageType, const VkFormat format, const VkExtent3D extent, const uint32_t mipLevels, const uint32_t arrayLayers, const VkSampleCountFlagBits samples, const VkImageTiling tiling, const VkImageUsageFlags usage, const VkSharingMode sharingMode, const uint32_t queueFamilyIndexCount, const uint32_t * pQueueFamilyIndices, const VkImageLayout initialLayout)
+    //! @note  Function: vkCreateComputePipelines
+    void Reset(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkPipelineCreateFlags flags, const VkPipelineShaderStageCreateInfo stage, const VkPipelineLayout layout, const VkPipeline basePipelineHandle, const int32_t basePipelineIndex)
     {
-      VkImageCreateInfo createInfo{};
-      createInfo.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;
-      createInfo.pNext = nullptr;
-      createInfo.flags = flags;
-      createInfo.imageType = imageType;
-      createInfo.format = format;
-      createInfo.extent = extent;
-      createInfo.mipLevels = mipLevels;
-      createInfo.arrayLayers = arrayLayers;
-      createInfo.samples = samples;
-      createInfo.tiling = tiling;
-      createInfo.usage = usage;
-      createInfo.sharingMode = sharingMode;
-      createInfo.queueFamilyIndexCount = queueFamilyIndexCount;
-      createInfo.pQueueFamilyIndices = pQueueFamilyIndices;
-      createInfo.initialLayout = initialLayout;
+      VkComputePipelineCreateInfo createInfos{};
+      createInfos.sType = VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO;
+      createInfos.pNext = nullptr;
+      createInfos.flags = flags;
+      createInfos.stage = stage;
+      createInfos.layout = layout;
+      createInfos.basePipelineHandle = basePipelineHandle;
+      createInfos.basePipelineIndex = basePipelineIndex;
 
-      Reset(device, createInfo);
+      Reset(device, pipelineCache, createInfoCount, createInfos);
     }
 #endif
 
@@ -198,15 +190,15 @@ namespace RapidVulkan
     }
 
     //! @brief Get the associated resource handle
-    VkImage Get() const
+    VkPipeline Get() const
     {
-      return m_image;
+      return m_pipelines;
     }
 
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_image != VK_NULL_HANDLE;
+      return m_pipelines != VK_NULL_HANDLE;
     }
   };
 }
