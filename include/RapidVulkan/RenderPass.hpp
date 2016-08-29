@@ -175,11 +175,11 @@ namespace RapidVulkan
       createInfo.pNext = nullptr;
       createInfo.flags = flags;
       createInfo.attachmentCount = attachmentCount;
-      createInfo.attachments = &pAttachments;
+      createInfo.pAttachments = pAttachments;
       createInfo.subpassCount = subpassCount;
-      createInfo.subpasses = &pSubpasses;
+      createInfo.pSubpasses = pSubpasses;
       createInfo.dependencyCount = dependencyCount;
-      createInfo.dependencies = &pDependencies;
+      createInfo.pDependencies = pDependencies;
 
       Reset(device, createInfo);
     }

@@ -34,8 +34,8 @@ namespace RapidVulkan
   public:
     static inline void Check(const VkResult result)
     {
-      if (status != VK_SUCCESS)
-        throw VulkanErrorException(result);
+      if (result != VK_SUCCESS)
+        throw VulkanErrorException("Unknown", result);
     }
 
     static inline void Check(const VkResult result, const char*const pszMessage)

@@ -161,12 +161,12 @@ namespace RapidVulkan
       createInfo.pNext = nullptr;
       createInfo.flags = flags;
       createInfo.queueCreateInfoCount = queueCreateInfoCount;
-      createInfo.queueCreateInfos = &pQueueCreateInfos;
+      createInfo.pQueueCreateInfos = pQueueCreateInfos;
       createInfo.enabledLayerCount = enabledLayerCount;
       createInfo.ppEnabledLayerNames = ppEnabledLayerNames;
       createInfo.enabledExtensionCount = enabledExtensionCount;
       createInfo.ppEnabledExtensionNames = ppEnabledExtensionNames;
-      createInfo.enabledFeatures = &pEnabledFeatures;
+      createInfo.pEnabledFeatures = pEnabledFeatures;
 
       Reset(physicalDevice, createInfo);
     }

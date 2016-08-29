@@ -177,7 +177,7 @@ namespace RapidVulkan
       createInfo.setLayoutCount = setLayoutCount;
       createInfo.pSetLayouts = pSetLayouts;
       createInfo.pushConstantRangeCount = pushConstantRangeCount;
-      createInfo.pushConstantRanges = &pPushConstantRanges;
+      createInfo.pPushConstantRanges = pPushConstantRanges;
 
       Reset(device, createInfo);
     }

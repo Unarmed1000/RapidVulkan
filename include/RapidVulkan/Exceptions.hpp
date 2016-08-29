@@ -33,13 +33,6 @@ namespace RapidVulkan
     std::string m_fileName;
     int m_lineNumber;
   public:
-    explicit VulkanException()
-      : std::runtime_error()
-      , m_fileName()
-      , m_lineNumber(0)
-    {
-    }
-
     explicit VulkanException(const std::string& whatArg)
       : std::runtime_error(whatArg)
       , m_fileName()
@@ -69,16 +62,10 @@ namespace RapidVulkan
 
 
 
-  class VulkanErrorException : public OpenVXException
+  class VulkanErrorException : public VulkanException
   {
     VkResult m_result;
   public:
-    explicit VulkanErrorException()
-      : VulkanException()
-      , m_result(VK_SUCCESS)
-    {
-    }
-
     explicit VulkanErrorException(const std::string& whatArg, const VkResult result)
       : VulkanException(whatArg)
       , m_result(result)

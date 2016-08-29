@@ -176,7 +176,7 @@ namespace RapidVulkan
       createInfo.flags = flags;
       createInfo.maxSets = maxSets;
       createInfo.poolSizeCount = poolSizeCount;
-      createInfo.poolSizes = &pPoolSizes;
+      createInfo.pPoolSizes = pPoolSizes;
 
       Reset(device, createInfo);
     }

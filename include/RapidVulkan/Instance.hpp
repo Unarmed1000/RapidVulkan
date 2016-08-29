@@ -160,7 +160,7 @@ namespace RapidVulkan
       createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
       createInfo.pNext = nullptr;
       createInfo.flags = flags;
-      createInfo.applicationInfo = &pApplicationInfo;
+      createInfo.pApplicationInfo = pApplicationInfo;
       createInfo.enabledLayerCount = enabledLayerCount;
       createInfo.ppEnabledLayerNames = ppEnabledLayerNames;
       createInfo.enabledExtensionCount = enabledExtensionCount;

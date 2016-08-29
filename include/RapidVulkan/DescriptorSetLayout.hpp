@@ -175,7 +175,7 @@ namespace RapidVulkan
       createInfo.pNext = nullptr;
       createInfo.flags = flags;
       createInfo.bindingCount = bindingCount;
-      createInfo.bindings = &pBindings;
+      createInfo.pBindings = pBindings;
 
       Reset(device, createInfo);
     }
