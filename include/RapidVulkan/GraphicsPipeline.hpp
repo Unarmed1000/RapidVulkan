@@ -1,5 +1,5 @@
-#ifndef RAPIDVULKAN_CREATEGRAPHICSPIPELINE_HPP
-#define RAPIDVULKAN_CREATEGRAPHICSPIPELINE_HPP
+#ifndef RAPIDVULKAN_GRAPHICSPIPELINE_HPP
+#define RAPIDVULKAN_GRAPHICSPIPELINE_HPP
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -31,16 +31,16 @@
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
-  class CreateGraphicsPipeline
+  class GraphicsPipeline
   {
     VkDevice m_device;
     VkPipeline m_pipelines;
   public:
-    CreateGraphicsPipeline(const CreateGraphicsPipeline&) = delete;
-    CreateGraphicsPipeline& operator=(const CreateGraphicsPipeline&) = delete;
+    GraphicsPipeline(const GraphicsPipeline&) = delete;
+    GraphicsPipeline& operator=(const GraphicsPipeline&) = delete;
 
     //! @brief Move assignment operator
-    CreateGraphicsPipeline& operator=(CreateGraphicsPipeline&& other)
+    GraphicsPipeline& operator=(GraphicsPipeline&& other)
     {
       if (this != &other)
       {
@@ -61,7 +61,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    CreateGraphicsPipeline(CreateGraphicsPipeline&& other)
+    GraphicsPipeline(GraphicsPipeline&& other)
       : m_device(other.m_device)
       , m_pipelines(other.m_pipelines)
     {
@@ -71,23 +71,23 @@ namespace RapidVulkan
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    CreateGraphicsPipeline()
+    GraphicsPipeline()
       : m_device(VK_NULL_HANDLE)
       , m_pipelines(VK_NULL_HANDLE)
     {
     }
 
-    //! @brief Assume control of the CreateGraphicsPipeline (this object becomes responsible for releasing it)
-    explicit CreateGraphicsPipeline(const VkDevice device, const VkPipeline pipelines)
-      : CreateGraphicsPipeline()
+    //! @brief Assume control of the GraphicsPipeline (this object becomes responsible for releasing it)
+    explicit GraphicsPipeline(const VkDevice device, const VkPipeline pipelines)
+      : GraphicsPipeline()
     {
       Reset(device, pipelines);
     }
 
     //! @brief Create the requested resource
     //! @note  Function: vkCreateGraphicsPipelines
-    CreateGraphicsPipeline(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkGraphicsPipelineCreateInfo& createInfos)
-      : CreateGraphicsPipeline()
+    GraphicsPipeline(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkGraphicsPipelineCreateInfo& createInfos)
+      : GraphicsPipeline()
     {
       Reset(device, pipelineCache, createInfoCount, createInfos);
     }
@@ -95,14 +95,14 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
     //! @note  Function: vkCreateGraphicsPipelines
-    CreateGraphicsPipeline(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkPipelineCreateFlags flags, const uint32_t stageCount, const VkPipelineShaderStageCreateInfo& stages, const VkPipelineVertexInputStateCreateInfo& vertexInputState, const VkPipelineInputAssemblyStateCreateInfo& inputAssemblyState, const VkPipelineTessellationStateCreateInfo& tessellationState, const VkPipelineViewportStateCreateInfo& viewportState, const VkPipelineRasterizationStateCreateInfo& rasterizationState, const VkPipelineMultisampleStateCreateInfo& multisampleState, const VkPipelineDepthStencilStateCreateInfo& depthStencilState, const VkPipelineColorBlendStateCreateInfo& colorBlendState, const VkPipelineDynamicStateCreateInfo& dynamicState, const VkPipelineLayout layout, const VkRenderPass renderPass, const uint32_t subpass, const VkPipeline basePipelineHandle, const int32_t basePipelineIndex)
-      : CreateGraphicsPipeline()
+    GraphicsPipeline(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkPipelineCreateFlags flags, const uint32_t stageCount, const VkPipelineShaderStageCreateInfo& stages, const VkPipelineVertexInputStateCreateInfo& vertexInputState, const VkPipelineInputAssemblyStateCreateInfo& inputAssemblyState, const VkPipelineTessellationStateCreateInfo& tessellationState, const VkPipelineViewportStateCreateInfo& viewportState, const VkPipelineRasterizationStateCreateInfo& rasterizationState, const VkPipelineMultisampleStateCreateInfo& multisampleState, const VkPipelineDepthStencilStateCreateInfo& depthStencilState, const VkPipelineColorBlendStateCreateInfo& colorBlendState, const VkPipelineDynamicStateCreateInfo& dynamicState, const VkPipelineLayout layout, const VkRenderPass renderPass, const uint32_t subpass, const VkPipeline basePipelineHandle, const int32_t basePipelineIndex)
+      : GraphicsPipeline()
     {
       Reset(device, pipelineCache, createInfoCount, flags, stageCount, stages, vertexInputState, inputAssemblyState, tessellationState, viewportState, rasterizationState, multisampleState, depthStencilState, colorBlendState, dynamicState, layout, renderPass, subpass, basePipelineHandle, basePipelineIndex);
     }
 #endif
 
-    ~CreateGraphicsPipeline()
+    ~GraphicsPipeline()
     {
       Reset();
     }
@@ -130,7 +130,7 @@ namespace RapidVulkan
       m_pipelines = VK_NULL_HANDLE;
     }
 
-    //! @brief Destroys any owned resources and assume control of the CreateGraphicsPipeline (this object becomes responsible for releasing it)
+    //! @brief Destroys any owned resources and assume control of the GraphicsPipeline (this object becomes responsible for releasing it)
     void Reset(const VkDevice device, const VkPipeline pipelines)
     {
       if (IsValid())

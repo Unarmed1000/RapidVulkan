@@ -27,6 +27,8 @@
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
+#include <util>
+#include <vector>
 
 namespace RapidVulkan
 {
@@ -34,7 +36,7 @@ namespace RapidVulkan
   class GraphicsPipelines
   {
     VkDevice m_device;
-    VkPipeline m_pipelines;
+    std::vector<VkPipeline> m_pipelines;
   public:
     GraphicsPipelines(const GraphicsPipelines&) = delete;
     GraphicsPipelines& operator=(const GraphicsPipelines&) = delete;
@@ -50,11 +52,10 @@ namespace RapidVulkan
 
         // Claim ownership here
         m_device = other.m_device;
-        m_pipelines = other.m_pipelines;
+        m_pipelines = std::move(other.m_pipelines);
 
         // Remove the data from other
         other.m_device = VK_NULL_HANDLE;
-        other.m_pipelines = VK_NULL_HANDLE;
       }
       return *this;
     }
@@ -63,26 +64,25 @@ namespace RapidVulkan
     //! Transfer ownership from other to this
     GraphicsPipelines(GraphicsPipelines&& other)
       : m_device(other.m_device)
-      , m_pipelines(other.m_pipelines)
+      , m_pipelines(std::move(other.m_pipelines))
     {
       // Remove the data from other
       other.m_device = VK_NULL_HANDLE;
-      other.m_pipelines = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     GraphicsPipelines()
       : m_device(VK_NULL_HANDLE)
-      , m_pipelines(VK_NULL_HANDLE)
+      , m_pipelines()
     {
     }
 
     //! @brief Assume control of the GraphicsPipelines (this object becomes responsible for releasing it)
-    explicit GraphicsPipelines(const VkDevice device, const VkPipeline pipelines)
-      : GraphicsPipelines()
-    {
-      Reset(device, pipelines);
-    }
+    //explicit GraphicsPipelines(const VkDevice device, const VkPipeline pipelines)
+    //  : GraphicsPipelines()
+    //{
+    //  Reset(device, pipelines);
+    //}
 
     //! @brief Create the requested resource
     //! @note  Function: vkCreateGraphicsPipelines
@@ -108,18 +108,18 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkPipeline Release()
+    std::vector<VkPipeline> Release()
     {
-      const auto resource = m_pipelines; 
+      auto resource = std::move(m_pipelines); 
       m_device = VK_NULL_HANDLE;
-      m_pipelines = VK_NULL_HANDLE;
+      m_pipelines.clear();
       return resource;
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
     void Reset()
     {
-      if (!IsValid())
+      if (! IsValid())
         return;
 
       assert(m_device != VK_NULL_HANDLE);
@@ -127,9 +127,10 @@ namespace RapidVulkan
 
       vkDestroyPipeline(m_device, m_pipelines, nullptr);
       m_device = VK_NULL_HANDLE;
-      m_pipelines = VK_NULL_HANDLE;
+      m_pipelines.clear();
     }
 
+/*    
     //! @brief Destroys any owned resources and assume control of the GraphicsPipelines (this object becomes responsible for releasing it)
     void Reset(const VkDevice device, const VkPipeline pipelines)
     {
@@ -138,9 +139,10 @@ namespace RapidVulkan
 
 
       m_device = device;
-      m_pipelines = pipelines;
+      m_pipelines = std::move(pipelines);
     }
-
+*/
+    
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkCreateGraphicsPipelines
     void Reset(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkGraphicsPipelineCreateInfo& createInfos)
@@ -149,7 +151,7 @@ namespace RapidVulkan
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
 #else
-      assert(m_device != VK_NULL_HANDLE);
+      assert(device != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -157,12 +159,12 @@ namespace RapidVulkan
         Reset();
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkPipeline pipelines;
-      Util::Check(vkCreateGraphicsPipelines(device, pipelineCache, createInfoCount, &createInfos, nullptr, &pipelines), "vkCreateGraphicsPipelines", __FILE__, __LINE__);
+      std::vector<VkPipeline> pipelines();
+      Util::Check(vkCreateGraphicsPipelines(device, pipelineCache, createInfoCount, &createInfos, nullptr, pipelines.data()), "vkCreateGraphicsPipelines", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
-      m_pipelines = pipelines;
+      m_pipelines = std::move(pipelines);
     }
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
@@ -201,16 +203,29 @@ namespace RapidVulkan
       return m_device;
     }
 
-    //! @brief Get the associated resource handle
-    VkPipeline Get() const
+    //! @brief Get size of the vector
+    std::size_t Size() const
+    {
+      return m_pipelines.size();
+    }
+
+    //! @brief Get the associated resource handles
+    const std::vector<VkPipeline>& Get() const
     {
       return m_pipelines;
+    }
+
+    //! @brief Access the resource at a given index
+    VkPipeline operator[] (const std::size_t arrayIndex) const
+    {
+      assert(arrayIndex < m_pipelines.size());
+      return m_pipelines[arrayIndex];
     }
 
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_pipelines != VK_NULL_HANDLE;
+      return m_pipelines.size() > 0;
     }
   };
 }
