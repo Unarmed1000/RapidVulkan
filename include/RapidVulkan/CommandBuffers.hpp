@@ -79,7 +79,7 @@ namespace RapidVulkan
     CommandBuffers()
       : m_device(VK_NULL_HANDLE)
       , m_commandPool(VK_NULL_HANDLE)
-      , m_commandBuffers(VK_NULL_HANDLE)
+      , m_commandBuffers()
     {
     }
 
@@ -119,7 +119,7 @@ namespace RapidVulkan
       auto resource = std::move(m_commandBuffers); 
       m_device = VK_NULL_HANDLE;
       m_commandPool = VK_NULL_HANDLE;
-      m_commandBuffers = VK_NULL_HANDLE;
+      m_commandBuffers.clear();
       return resource;
     }
 
@@ -136,7 +136,7 @@ namespace RapidVulkan
       vkFreeCommandBuffers(m_device, m_commandPool, m_commandBuffers.size(), m_commandBuffers.data());
       m_device = VK_NULL_HANDLE;
       m_commandPool = VK_NULL_HANDLE;
-      m_commandBuffers = VK_NULL_HANDLE;
+      m_commandBuffers.clear();
     }
 
 /*    

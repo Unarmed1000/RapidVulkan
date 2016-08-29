@@ -73,7 +73,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     ComputePipelines()
       : m_device(VK_NULL_HANDLE)
-      , m_pipelines(VK_NULL_HANDLE)
+      , m_pipelines()
     {
     }
 
@@ -112,7 +112,7 @@ namespace RapidVulkan
     {
       auto resource = std::move(m_pipelines); 
       m_device = VK_NULL_HANDLE;
-      m_pipelines = VK_NULL_HANDLE;
+      m_pipelines.clear();
       return resource;
     }
 
@@ -127,7 +127,7 @@ namespace RapidVulkan
 
       vkDestroyPipeline(m_device, m_pipelines, nullptr);
       m_device = VK_NULL_HANDLE;
-      m_pipelines = VK_NULL_HANDLE;
+      m_pipelines.clear();
     }
 
 /*    

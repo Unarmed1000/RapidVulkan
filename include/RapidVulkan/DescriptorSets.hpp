@@ -79,7 +79,7 @@ namespace RapidVulkan
     DescriptorSets()
       : m_device(VK_NULL_HANDLE)
       , m_descriptorPool(VK_NULL_HANDLE)
-      , m_descriptorSets(VK_NULL_HANDLE)
+      , m_descriptorSets()
     {
     }
 
@@ -119,7 +119,7 @@ namespace RapidVulkan
       auto resource = std::move(m_descriptorSets); 
       m_device = VK_NULL_HANDLE;
       m_descriptorPool = VK_NULL_HANDLE;
-      m_descriptorSets = VK_NULL_HANDLE;
+      m_descriptorSets.clear();
       return resource;
     }
 
@@ -136,7 +136,7 @@ namespace RapidVulkan
       vkFreeDescriptorSets(m_device, m_descriptorPool, m_descriptorSets.size(), m_descriptorSets.data());
       m_device = VK_NULL_HANDLE;
       m_descriptorPool = VK_NULL_HANDLE;
-      m_descriptorSets = VK_NULL_HANDLE;
+      m_descriptorSets.clear();
     }
 
 /*    
