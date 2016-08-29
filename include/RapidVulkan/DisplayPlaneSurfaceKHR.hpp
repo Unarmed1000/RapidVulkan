@@ -78,7 +78,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the DisplayPlaneSurfaceKHR (this object becomes responsible for releasing it)
-    explicit DisplayPlaneSurfaceKHR(const VkInstance instance, VkSurfaceKHR * surface)
+    explicit DisplayPlaneSurfaceKHR(const VkInstance instance, const VkSurfaceKHR surface)
       : DisplayPlaneSurfaceKHR()
     {
       Reset(instance, surface);
@@ -131,7 +131,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the DisplayPlaneSurfaceKHR (this object becomes responsible for releasing it)
-    void Reset(const VkInstance instance, VkSurfaceKHR * surface)
+    void Reset(const VkInstance instance, const VkSurfaceKHR surface)
     {
       if (IsValid())
         Reset();

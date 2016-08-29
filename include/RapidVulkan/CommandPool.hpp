@@ -78,7 +78,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the CommandPool (this object becomes responsible for releasing it)
-    explicit CommandPool(const VkDevice device, VkCommandPool * commandPool)
+    explicit CommandPool(const VkDevice device, const VkCommandPool commandPool)
       : CommandPool()
     {
       Reset(device, commandPool);
@@ -131,7 +131,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the CommandPool (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, VkCommandPool * commandPool)
+    void Reset(const VkDevice device, const VkCommandPool commandPool)
     {
       if (IsValid())
         Reset();

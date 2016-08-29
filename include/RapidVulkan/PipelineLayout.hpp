@@ -78,7 +78,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the PipelineLayout (this object becomes responsible for releasing it)
-    explicit PipelineLayout(const VkDevice device, VkPipelineLayout * pipelineLayout)
+    explicit PipelineLayout(const VkDevice device, const VkPipelineLayout pipelineLayout)
       : PipelineLayout()
     {
       Reset(device, pipelineLayout);
@@ -131,7 +131,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the PipelineLayout (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, VkPipelineLayout * pipelineLayout)
+    void Reset(const VkDevice device, const VkPipelineLayout pipelineLayout)
     {
       if (IsValid())
         Reset();

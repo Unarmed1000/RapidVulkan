@@ -78,7 +78,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the DebugReportCallbackEXT (this object becomes responsible for releasing it)
-    explicit DebugReportCallbackEXT(const VkInstance instance, VkDebugReportCallbackEXT * callback)
+    explicit DebugReportCallbackEXT(const VkInstance instance, const VkDebugReportCallbackEXT callback)
       : DebugReportCallbackEXT()
     {
       Reset(instance, callback);
@@ -131,7 +131,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the DebugReportCallbackEXT (this object becomes responsible for releasing it)
-    void Reset(const VkInstance instance, VkDebugReportCallbackEXT * callback)
+    void Reset(const VkInstance instance, const VkDebugReportCallbackEXT callback)
     {
       if (IsValid())
         Reset();

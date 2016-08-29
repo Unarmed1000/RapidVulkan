@@ -78,7 +78,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the BufferView (this object becomes responsible for releasing it)
-    explicit BufferView(const VkDevice device, VkBufferView * view)
+    explicit BufferView(const VkDevice device, const VkBufferView view)
       : BufferView()
     {
       Reset(device, view);
@@ -131,7 +131,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the BufferView (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, VkBufferView * view)
+    void Reset(const VkDevice device, const VkBufferView view)
     {
       if (IsValid())
         Reset();

@@ -78,7 +78,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the ImageView (this object becomes responsible for releasing it)
-    explicit ImageView(const VkDevice device, VkImageView * view)
+    explicit ImageView(const VkDevice device, const VkImageView view)
       : ImageView()
     {
       Reset(device, view);
@@ -131,7 +131,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the ImageView (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, VkImageView * view)
+    void Reset(const VkDevice device, const VkImageView view)
     {
       if (IsValid())
         Reset();

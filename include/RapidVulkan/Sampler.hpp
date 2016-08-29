@@ -78,7 +78,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the Sampler (this object becomes responsible for releasing it)
-    explicit Sampler(const VkDevice device, VkSampler * sampler)
+    explicit Sampler(const VkDevice device, const VkSampler sampler)
       : Sampler()
     {
       Reset(device, sampler);
@@ -131,7 +131,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the Sampler (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, VkSampler * sampler)
+    void Reset(const VkDevice device, const VkSampler sampler)
     {
       if (IsValid())
         Reset();

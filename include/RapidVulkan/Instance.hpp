@@ -72,7 +72,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the Instance (this object becomes responsible for releasing it)
-    explicit Instance(VkInstance * instance)
+    explicit Instance(const VkInstance instance)
       : Instance()
     {
       Reset(instance);
@@ -122,7 +122,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the Instance (this object becomes responsible for releasing it)
-    void Reset(VkInstance * instance)
+    void Reset(const VkInstance instance)
     {
       if (IsValid())
         Reset();

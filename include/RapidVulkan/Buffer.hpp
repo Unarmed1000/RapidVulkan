@@ -78,7 +78,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the Buffer (this object becomes responsible for releasing it)
-    explicit Buffer(const VkDevice device, VkBuffer * buffer)
+    explicit Buffer(const VkDevice device, const VkBuffer buffer)
       : Buffer()
     {
       Reset(device, buffer);
@@ -131,7 +131,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the Buffer (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, VkBuffer * buffer)
+    void Reset(const VkDevice device, const VkBuffer buffer)
     {
       if (IsValid())
         Reset();

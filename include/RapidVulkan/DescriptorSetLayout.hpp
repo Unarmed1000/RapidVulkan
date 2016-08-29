@@ -78,7 +78,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the DescriptorSetLayout (this object becomes responsible for releasing it)
-    explicit DescriptorSetLayout(const VkDevice device, VkDescriptorSetLayout * setLayout)
+    explicit DescriptorSetLayout(const VkDevice device, const VkDescriptorSetLayout setLayout)
       : DescriptorSetLayout()
     {
       Reset(device, setLayout);
@@ -131,7 +131,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the DescriptorSetLayout (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, VkDescriptorSetLayout * setLayout)
+    void Reset(const VkDevice device, const VkDescriptorSetLayout setLayout)
     {
       if (IsValid())
         Reset();

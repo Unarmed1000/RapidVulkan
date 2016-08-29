@@ -78,7 +78,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the Event (this object becomes responsible for releasing it)
-    explicit Event(const VkDevice device, VkEvent * event)
+    explicit Event(const VkDevice device, const VkEvent event)
       : Event()
     {
       Reset(device, event);
@@ -131,7 +131,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the Event (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, VkEvent * event)
+    void Reset(const VkDevice device, const VkEvent event)
     {
       if (IsValid())
         Reset();

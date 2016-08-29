@@ -78,7 +78,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the SwapchainKHR (this object becomes responsible for releasing it)
-    explicit SwapchainKHR(const VkDevice device, VkSwapchainKHR * swapchain)
+    explicit SwapchainKHR(const VkDevice device, const VkSwapchainKHR swapchain)
       : SwapchainKHR()
     {
       Reset(device, swapchain);
@@ -131,7 +131,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the SwapchainKHR (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, VkSwapchainKHR * swapchain)
+    void Reset(const VkDevice device, const VkSwapchainKHR swapchain)
     {
       if (IsValid())
         Reset();

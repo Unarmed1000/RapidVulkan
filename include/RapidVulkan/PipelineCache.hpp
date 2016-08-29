@@ -78,7 +78,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the PipelineCache (this object becomes responsible for releasing it)
-    explicit PipelineCache(const VkDevice device, VkPipelineCache * pipelineCache)
+    explicit PipelineCache(const VkDevice device, const VkPipelineCache pipelineCache)
       : PipelineCache()
     {
       Reset(device, pipelineCache);
@@ -131,7 +131,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the PipelineCache (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, VkPipelineCache * pipelineCache)
+    void Reset(const VkDevice device, const VkPipelineCache pipelineCache)
     {
       if (IsValid())
         Reset();

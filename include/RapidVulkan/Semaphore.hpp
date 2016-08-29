@@ -78,7 +78,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the Semaphore (this object becomes responsible for releasing it)
-    explicit Semaphore(const VkDevice device, VkSemaphore * semaphore)
+    explicit Semaphore(const VkDevice device, const VkSemaphore semaphore)
       : Semaphore()
     {
       Reset(device, semaphore);
@@ -131,7 +131,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the Semaphore (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, VkSemaphore * semaphore)
+    void Reset(const VkDevice device, const VkSemaphore semaphore)
     {
       if (IsValid())
         Reset();

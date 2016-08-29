@@ -78,7 +78,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the Framebuffer (this object becomes responsible for releasing it)
-    explicit Framebuffer(const VkDevice device, VkFramebuffer * framebuffer)
+    explicit Framebuffer(const VkDevice device, const VkFramebuffer framebuffer)
       : Framebuffer()
     {
       Reset(device, framebuffer);
@@ -131,7 +131,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the Framebuffer (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, VkFramebuffer * framebuffer)
+    void Reset(const VkDevice device, const VkFramebuffer framebuffer)
     {
       if (IsValid())
         Reset();

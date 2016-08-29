@@ -78,7 +78,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the RenderPass (this object becomes responsible for releasing it)
-    explicit RenderPass(const VkDevice device, VkRenderPass * renderPass)
+    explicit RenderPass(const VkDevice device, const VkRenderPass renderPass)
       : RenderPass()
     {
       Reset(device, renderPass);
@@ -131,7 +131,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the RenderPass (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, VkRenderPass * renderPass)
+    void Reset(const VkDevice device, const VkRenderPass renderPass)
     {
       if (IsValid())
         Reset();

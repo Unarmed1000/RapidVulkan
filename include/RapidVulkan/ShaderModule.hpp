@@ -78,7 +78,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the ShaderModule (this object becomes responsible for releasing it)
-    explicit ShaderModule(const VkDevice device, VkShaderModule * shaderModule)
+    explicit ShaderModule(const VkDevice device, const VkShaderModule shaderModule)
       : ShaderModule()
     {
       Reset(device, shaderModule);
@@ -131,7 +131,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the ShaderModule (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, VkShaderModule * shaderModule)
+    void Reset(const VkDevice device, const VkShaderModule shaderModule)
     {
       if (IsValid())
         Reset();

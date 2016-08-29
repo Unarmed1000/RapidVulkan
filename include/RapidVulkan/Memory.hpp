@@ -78,7 +78,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the Memory (this object becomes responsible for releasing it)
-    explicit Memory(const VkDevice device, VkDeviceMemory * memory)
+    explicit Memory(const VkDevice device, const VkDeviceMemory memory)
       : Memory()
     {
       Reset(device, memory);
@@ -131,7 +131,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the Memory (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, VkDeviceMemory * memory)
+    void Reset(const VkDevice device, const VkDeviceMemory memory)
     {
       if (IsValid())
         Reset();

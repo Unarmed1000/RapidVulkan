@@ -78,7 +78,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the Image (this object becomes responsible for releasing it)
-    explicit Image(const VkDevice device, VkImage * image)
+    explicit Image(const VkDevice device, const VkImage image)
       : Image()
     {
       Reset(device, image);
@@ -131,7 +131,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the Image (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, VkImage * image)
+    void Reset(const VkDevice device, const VkImage image)
     {
       if (IsValid())
         Reset();

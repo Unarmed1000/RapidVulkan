@@ -78,7 +78,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the QueryPool (this object becomes responsible for releasing it)
-    explicit QueryPool(const VkDevice device, VkQueryPool * queryPool)
+    explicit QueryPool(const VkDevice device, const VkQueryPool queryPool)
       : QueryPool()
     {
       Reset(device, queryPool);
@@ -131,7 +131,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the QueryPool (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, VkQueryPool * queryPool)
+    void Reset(const VkDevice device, const VkQueryPool queryPool)
     {
       if (IsValid())
         Reset();

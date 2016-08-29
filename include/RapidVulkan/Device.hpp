@@ -72,7 +72,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the Device (this object becomes responsible for releasing it)
-    explicit Device(VkDevice * device)
+    explicit Device(const VkDevice device)
       : Device()
     {
       Reset(device);
@@ -122,7 +122,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the Device (this object becomes responsible for releasing it)
-    void Reset(VkDevice * device)
+    void Reset(const VkDevice device)
     {
       if (IsValid())
         Reset();

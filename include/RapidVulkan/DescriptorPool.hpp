@@ -78,7 +78,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the DescriptorPool (this object becomes responsible for releasing it)
-    explicit DescriptorPool(const VkDevice device, VkDescriptorPool * descriptorPool)
+    explicit DescriptorPool(const VkDevice device, const VkDescriptorPool descriptorPool)
       : DescriptorPool()
     {
       Reset(device, descriptorPool);
@@ -131,7 +131,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the DescriptorPool (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, VkDescriptorPool * descriptorPool)
+    void Reset(const VkDevice device, const VkDescriptorPool descriptorPool)
     {
       if (IsValid())
         Reset();

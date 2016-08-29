@@ -78,7 +78,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the Fence (this object becomes responsible for releasing it)
-    explicit Fence(const VkDevice device, VkFence * fence)
+    explicit Fence(const VkDevice device, const VkFence fence)
       : Fence()
     {
       Reset(device, fence);
@@ -131,7 +131,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the Fence (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, VkFence * fence)
+    void Reset(const VkDevice device, const VkFence fence)
     {
       if (IsValid())
         Reset();

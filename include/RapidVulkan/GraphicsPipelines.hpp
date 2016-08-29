@@ -78,7 +78,7 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the GraphicsPipelines (this object becomes responsible for releasing it)
-    explicit GraphicsPipelines(const VkDevice device, VkPipeline * pipelines)
+    explicit GraphicsPipelines(const VkDevice device, const VkPipeline pipelines)
       : GraphicsPipelines()
     {
       Reset(device, pipelines);
@@ -131,7 +131,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the GraphicsPipelines (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, VkPipeline * pipelines)
+    void Reset(const VkDevice device, const VkPipeline pipelines)
     {
       if (IsValid())
         Reset();
