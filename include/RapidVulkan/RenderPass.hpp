@@ -95,10 +95,10 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
     //! @note  Function: vkCreateRenderPass
-    RenderPass(const VkDevice device, const VkRenderPassCreateFlags flags, const uint32_t attachmentCount, const VkAttachmentDescription& attachments, const uint32_t subpassCount, const VkSubpassDescription& subpasses, const uint32_t dependencyCount, const VkSubpassDependency& dependencies)
+    RenderPass(const VkDevice device, const VkRenderPassCreateFlags flags, const uint32_t attachmentCount, VkAttachmentDescription*const pAttachments, const uint32_t subpassCount, VkSubpassDescription*const pSubpasses, const uint32_t dependencyCount, VkSubpassDependency*const pDependencies)
       : RenderPass()
     {
-      Reset(device, flags, attachmentCount, attachments, subpassCount, subpasses, dependencyCount, dependencies);
+      Reset(device, flags, attachmentCount, pAttachments, subpassCount, pSubpasses, dependencyCount, pDependencies);
     }
 #endif
 
@@ -168,7 +168,7 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkCreateRenderPass
-    void Reset(const VkDevice device, const VkRenderPassCreateFlags flags, const uint32_t attachmentCount, const VkAttachmentDescription& attachments, const uint32_t subpassCount, const VkSubpassDescription& subpasses, const uint32_t dependencyCount, const VkSubpassDependency& dependencies)
+    void Reset(const VkDevice device, const VkRenderPassCreateFlags flags, const uint32_t attachmentCount, VkAttachmentDescription*const pAttachments, const uint32_t subpassCount, VkSubpassDescription*const pSubpasses, const uint32_t dependencyCount, VkSubpassDependency*const pDependencies)
     {
       VkRenderPassCreateInfo createInfo{};
       createInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO;

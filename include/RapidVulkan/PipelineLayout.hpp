@@ -95,10 +95,10 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
     //! @note  Function: vkCreatePipelineLayout
-    PipelineLayout(const VkDevice device, const VkPipelineLayoutCreateFlags flags, const uint32_t setLayoutCount, const VkDescriptorSetLayout * pSetLayouts, const uint32_t pushConstantRangeCount, const VkPushConstantRange& pushConstantRanges)
+    PipelineLayout(const VkDevice device, const VkPipelineLayoutCreateFlags flags, const uint32_t setLayoutCount, const VkDescriptorSetLayout * pSetLayouts, const uint32_t pushConstantRangeCount, VkPushConstantRange*const pPushConstantRanges)
       : PipelineLayout()
     {
-      Reset(device, flags, setLayoutCount, pSetLayouts, pushConstantRangeCount, pushConstantRanges);
+      Reset(device, flags, setLayoutCount, pSetLayouts, pushConstantRangeCount, pPushConstantRanges);
     }
 #endif
 
@@ -168,7 +168,7 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkCreatePipelineLayout
-    void Reset(const VkDevice device, const VkPipelineLayoutCreateFlags flags, const uint32_t setLayoutCount, const VkDescriptorSetLayout * pSetLayouts, const uint32_t pushConstantRangeCount, const VkPushConstantRange& pushConstantRanges)
+    void Reset(const VkDevice device, const VkPipelineLayoutCreateFlags flags, const uint32_t setLayoutCount, const VkDescriptorSetLayout * pSetLayouts, const uint32_t pushConstantRangeCount, VkPushConstantRange*const pPushConstantRanges)
     {
       VkPipelineLayoutCreateInfo createInfo{};
       createInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;

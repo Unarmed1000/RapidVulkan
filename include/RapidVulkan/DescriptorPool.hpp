@@ -95,10 +95,10 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
     //! @note  Function: vkCreateDescriptorPool
-    DescriptorPool(const VkDevice device, const VkDescriptorPoolCreateFlags flags, const uint32_t maxSets, const uint32_t poolSizeCount, const VkDescriptorPoolSize& poolSizes)
+    DescriptorPool(const VkDevice device, const VkDescriptorPoolCreateFlags flags, const uint32_t maxSets, const uint32_t poolSizeCount, VkDescriptorPoolSize*const pPoolSizes)
       : DescriptorPool()
     {
-      Reset(device, flags, maxSets, poolSizeCount, poolSizes);
+      Reset(device, flags, maxSets, poolSizeCount, pPoolSizes);
     }
 #endif
 
@@ -168,7 +168,7 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkCreateDescriptorPool
-    void Reset(const VkDevice device, const VkDescriptorPoolCreateFlags flags, const uint32_t maxSets, const uint32_t poolSizeCount, const VkDescriptorPoolSize& poolSizes)
+    void Reset(const VkDevice device, const VkDescriptorPoolCreateFlags flags, const uint32_t maxSets, const uint32_t poolSizeCount, VkDescriptorPoolSize*const pPoolSizes)
     {
       VkDescriptorPoolCreateInfo createInfo{};
       createInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;

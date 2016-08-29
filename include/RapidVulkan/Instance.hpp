@@ -89,10 +89,10 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
     //! @note  Function: vkCreateInstance
-    Instance(const VkInstanceCreateFlags flags, const VkApplicationInfo& applicationInfo, const uint32_t enabledLayerCount, const char *const * ppEnabledLayerNames, const uint32_t enabledExtensionCount, const char *const * ppEnabledExtensionNames)
+    Instance(const VkInstanceCreateFlags flags, VkApplicationInfo*const pApplicationInfo, const uint32_t enabledLayerCount, const char *const * ppEnabledLayerNames, const uint32_t enabledExtensionCount, const char *const * ppEnabledExtensionNames)
       : Instance()
     {
-      Reset(flags, applicationInfo, enabledLayerCount, ppEnabledLayerNames, enabledExtensionCount, ppEnabledExtensionNames);
+      Reset(flags, pApplicationInfo, enabledLayerCount, ppEnabledLayerNames, enabledExtensionCount, ppEnabledExtensionNames);
     }
 #endif
 
@@ -154,7 +154,7 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkCreateInstance
-    void Reset(const VkInstanceCreateFlags flags, const VkApplicationInfo& applicationInfo, const uint32_t enabledLayerCount, const char *const * ppEnabledLayerNames, const uint32_t enabledExtensionCount, const char *const * ppEnabledExtensionNames)
+    void Reset(const VkInstanceCreateFlags flags, VkApplicationInfo*const pApplicationInfo, const uint32_t enabledLayerCount, const char *const * ppEnabledLayerNames, const uint32_t enabledExtensionCount, const char *const * ppEnabledExtensionNames)
     {
       VkInstanceCreateInfo createInfo{};
       createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;

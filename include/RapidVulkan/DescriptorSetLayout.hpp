@@ -95,10 +95,10 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
     //! @note  Function: vkCreateDescriptorSetLayout
-    DescriptorSetLayout(const VkDevice device, const VkDescriptorSetLayoutCreateFlags flags, const uint32_t bindingCount, const VkDescriptorSetLayoutBinding& bindings)
+    DescriptorSetLayout(const VkDevice device, const VkDescriptorSetLayoutCreateFlags flags, const uint32_t bindingCount, VkDescriptorSetLayoutBinding*const pBindings)
       : DescriptorSetLayout()
     {
-      Reset(device, flags, bindingCount, bindings);
+      Reset(device, flags, bindingCount, pBindings);
     }
 #endif
 
@@ -168,7 +168,7 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkCreateDescriptorSetLayout
-    void Reset(const VkDevice device, const VkDescriptorSetLayoutCreateFlags flags, const uint32_t bindingCount, const VkDescriptorSetLayoutBinding& bindings)
+    void Reset(const VkDevice device, const VkDescriptorSetLayoutCreateFlags flags, const uint32_t bindingCount, VkDescriptorSetLayoutBinding*const pBindings)
     {
       VkDescriptorSetLayoutCreateInfo createInfo{};
       createInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
