@@ -110,7 +110,7 @@ namespace RapidVulkan
     //! @brief returns the managed handle and releases the ownership.
     VkSurfaceKHR Release()
     {
-      const auto resource = m_surface; 
+      const auto resource = m_surface;
       m_instance = VK_NULL_HANDLE;
       m_surface = VK_NULL_HANDLE;
       return resource;
@@ -119,7 +119,7 @@ namespace RapidVulkan
     //! @brief Destroys any owned resources and resets the object to its default state.
     void Reset()
     {
-      if (!IsValid())
+      if (! IsValid())
         return;
 
       assert(m_instance != VK_NULL_HANDLE);

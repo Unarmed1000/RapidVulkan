@@ -110,7 +110,7 @@ namespace RapidVulkan
     //! @brief returns the managed handle and releases the ownership.
     VkPipeline Release()
     {
-      const auto resource = m_pipelines; 
+      const auto resource = m_pipelines;
       m_device = VK_NULL_HANDLE;
       m_pipelines = VK_NULL_HANDLE;
       return resource;
@@ -119,7 +119,7 @@ namespace RapidVulkan
     //! @brief Destroys any owned resources and resets the object to its default state.
     void Reset()
     {
-      if (!IsValid())
+      if (! IsValid())
         return;
 
       assert(m_device != VK_NULL_HANDLE);
@@ -150,6 +150,7 @@ namespace RapidVulkan
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
 #else
       assert(device != VK_NULL_HANDLE);
+      assert( == 1);
 #endif
 
       // Free any currently allocated resource

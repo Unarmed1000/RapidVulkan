@@ -116,7 +116,7 @@ namespace RapidVulkan
     //! @brief returns the managed handle and releases the ownership.
     VkCommandBuffer Release()
     {
-      const auto resource = m_commandBuffers; 
+      const auto resource = m_commandBuffers;
       m_device = VK_NULL_HANDLE;
       m_commandPool = VK_NULL_HANDLE;
       m_commandBuffers = VK_NULL_HANDLE;
@@ -126,7 +126,7 @@ namespace RapidVulkan
     //! @brief Destroys any owned resources and resets the object to its default state.
     void Reset()
     {
-      if (!IsValid())
+      if (! IsValid())
         return;
 
       assert(m_device != VK_NULL_HANDLE);
@@ -163,6 +163,7 @@ namespace RapidVulkan
 #else
       assert(device != VK_NULL_HANDLE);
       assert(allocateInfo.commandPool != VK_NULL_HANDLE);
+      assert(allocateInfo.commandBufferCount == 1);
 #endif
 
       // Free any currently allocated resource

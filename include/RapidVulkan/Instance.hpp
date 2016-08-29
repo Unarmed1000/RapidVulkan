@@ -104,7 +104,7 @@ namespace RapidVulkan
     //! @brief returns the managed handle and releases the ownership.
     VkInstance Release()
     {
-      const auto resource = m_instance; 
+      const auto resource = m_instance;
       m_instance = VK_NULL_HANDLE;
       return resource;
     }
@@ -112,7 +112,7 @@ namespace RapidVulkan
     //! @brief Destroys any owned resources and resets the object to its default state.
     void Reset()
     {
-      if (!IsValid())
+      if (! IsValid())
         return;
 
       assert(m_instance != VK_NULL_HANDLE);

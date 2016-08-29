@@ -116,7 +116,7 @@ namespace RapidVulkan
     //! @brief returns the managed handle and releases the ownership.
     VkDescriptorSet Release()
     {
-      const auto resource = m_descriptorSets; 
+      const auto resource = m_descriptorSets;
       m_device = VK_NULL_HANDLE;
       m_descriptorPool = VK_NULL_HANDLE;
       m_descriptorSets = VK_NULL_HANDLE;
@@ -126,7 +126,7 @@ namespace RapidVulkan
     //! @brief Destroys any owned resources and resets the object to its default state.
     void Reset()
     {
-      if (!IsValid())
+      if (! IsValid())
         return;
 
       assert(m_device != VK_NULL_HANDLE);
@@ -163,6 +163,7 @@ namespace RapidVulkan
 #else
       assert(device != VK_NULL_HANDLE);
       assert(allocateInfo.descriptorPool != VK_NULL_HANDLE);
+      assert(allocateInfo.descriptorSetCount == 1);
 #endif
 
       // Free any currently allocated resource

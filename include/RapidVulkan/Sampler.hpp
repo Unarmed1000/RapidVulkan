@@ -110,7 +110,7 @@ namespace RapidVulkan
     //! @brief returns the managed handle and releases the ownership.
     VkSampler Release()
     {
-      const auto resource = m_sampler; 
+      const auto resource = m_sampler;
       m_device = VK_NULL_HANDLE;
       m_sampler = VK_NULL_HANDLE;
       return resource;
@@ -119,7 +119,7 @@ namespace RapidVulkan
     //! @brief Destroys any owned resources and resets the object to its default state.
     void Reset()
     {
-      if (!IsValid())
+      if (! IsValid())
         return;
 
       assert(m_device != VK_NULL_HANDLE);
