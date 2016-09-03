@@ -24,6 +24,7 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
+#include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -78,10 +79,10 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the Fence (this object becomes responsible for releasing it)
-    explicit Fence(const VkDevice device, const VkFence fence)
+    explicit Fence(const ClaimMode claimMode, const VkDevice device, const VkFence fence)
       : Fence()
     {
-      Reset(device, fence);
+      Reset(claimMode, device, fence);
     }
 
     //! @brief Create the requested resource
@@ -131,7 +132,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the Fence (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, const VkFence fence)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkFence fence)
     {
       if (IsValid())
         Reset();
@@ -189,6 +190,12 @@ namespace RapidVulkan
     VkFence Get() const
     {
       return m_fence;
+    }
+
+    //! @brief Get a pointer to the associated resource handle
+    const VkFence* GetPointer() const
+    {
+      return &m_fence;
     }
 
     //! @brief Check if this object contains a valid resource

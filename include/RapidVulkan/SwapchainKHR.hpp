@@ -24,6 +24,7 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
+#include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -78,10 +79,10 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the SwapchainKHR (this object becomes responsible for releasing it)
-    explicit SwapchainKHR(const VkDevice device, const VkSwapchainKHR swapchain)
+    explicit SwapchainKHR(const ClaimMode claimMode, const VkDevice device, const VkSwapchainKHR swapchain)
       : SwapchainKHR()
     {
-      Reset(device, swapchain);
+      Reset(claimMode, device, swapchain);
     }
 
     //! @brief Create the requested resource
@@ -131,7 +132,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the SwapchainKHR (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, const VkSwapchainKHR swapchain)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkSwapchainKHR swapchain)
     {
       if (IsValid())
         Reset();
@@ -171,7 +172,7 @@ namespace RapidVulkan
     void Reset(const VkDevice device, const VkSwapchainCreateFlagsKHR flags, const VkSurfaceKHR surface, const uint32_t minImageCount, const VkFormat imageFormat, const VkColorSpaceKHR imageColorSpace, const VkExtent2D imageExtent, const uint32_t imageArrayLayers, const VkImageUsageFlags imageUsage, const VkSharingMode imageSharingMode, const uint32_t queueFamilyIndexCount, const uint32_t * pQueueFamilyIndices, const VkSurfaceTransformFlagBitsKHR preTransform, const VkCompositeAlphaFlagBitsKHR compositeAlpha, const VkPresentModeKHR presentMode, const VkBool32 clipped, const VkSwapchainKHR oldSwapchain)
     {
       VkSwapchainCreateInfoKHR createInfo{};
-      createInfo.sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_K_H_R;
+      createInfo.sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR;
       createInfo.pNext = nullptr;
       createInfo.flags = flags;
       createInfo.surface = surface;
@@ -204,6 +205,12 @@ namespace RapidVulkan
     VkSwapchainKHR Get() const
     {
       return m_swapchain;
+    }
+
+    //! @brief Get a pointer to the associated resource handle
+    const VkSwapchainKHR* GetPointer() const
+    {
+      return &m_swapchain;
     }
 
     //! @brief Check if this object contains a valid resource

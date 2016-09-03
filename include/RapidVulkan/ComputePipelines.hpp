@@ -24,10 +24,11 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
+#include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
-#include <util>
+#include <utility>
 #include <vector>
 
 namespace RapidVulkan
@@ -78,10 +79,10 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the ComputePipelines (this object becomes responsible for releasing it)
-    //explicit ComputePipelines(const VkDevice device, const VkPipeline pipelines)
+    //explicit ComputePipelines(const ClaimMode claimMode, const VkDevice device, const VkPipeline pipelines)
     //  : ComputePipelines()
     //{
-    //  Reset(device, pipelines);
+    //  Reset(claimMode, device, pipelines);
     //}
 
     //! @brief Create the requested resource
@@ -123,16 +124,19 @@ namespace RapidVulkan
         return;
 
       assert(m_device != VK_NULL_HANDLE);
-      assert(m_pipelines != VK_NULL_HANDLE);
+      assert(m_pipelines.size() > 0);
 
-      vkDestroyPipeline(m_device, m_pipelines, nullptr);
+      for(std::size_t i=0; i<m_pipelines.size(); ++i)
+      {
+        vkDestroyPipeline(m_device, m_pipelines[i], nullptr);
+      }
       m_device = VK_NULL_HANDLE;
       m_pipelines.clear();
     }
 
 /*    
     //! @brief Destroys any owned resources and assume control of the ComputePipelines (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, const VkPipeline pipelines)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkPipeline pipelines)
     {
       if (IsValid())
         Reset();
@@ -208,6 +212,13 @@ namespace RapidVulkan
     {
       assert(arrayIndex < m_pipelines.size());
       return m_pipelines[arrayIndex];
+    }
+
+    //! @brief get a pointer to the resource at the given index
+    const VkPipeline* GetPointer(const std::size_t arrayIndex) const
+    {
+      assert(arrayIndex < m_pipelines.size());
+      return &m_pipelines[arrayIndex];
     }
 
     //! @brief Check if this object contains a valid resource

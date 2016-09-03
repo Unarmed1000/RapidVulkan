@@ -24,6 +24,7 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
+#include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -78,10 +79,10 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the Sampler (this object becomes responsible for releasing it)
-    explicit Sampler(const VkDevice device, const VkSampler sampler)
+    explicit Sampler(const ClaimMode claimMode, const VkDevice device, const VkSampler sampler)
       : Sampler()
     {
-      Reset(device, sampler);
+      Reset(claimMode, device, sampler);
     }
 
     //! @brief Create the requested resource
@@ -131,7 +132,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the Sampler (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, const VkSampler sampler)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkSampler sampler)
     {
       if (IsValid())
         Reset();
@@ -204,6 +205,12 @@ namespace RapidVulkan
     VkSampler Get() const
     {
       return m_sampler;
+    }
+
+    //! @brief Get a pointer to the associated resource handle
+    const VkSampler* GetPointer() const
+    {
+      return &m_sampler;
     }
 
     //! @brief Check if this object contains a valid resource

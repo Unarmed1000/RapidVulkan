@@ -24,6 +24,7 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
+#include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -78,10 +79,10 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the QueryPool (this object becomes responsible for releasing it)
-    explicit QueryPool(const VkDevice device, const VkQueryPool queryPool)
+    explicit QueryPool(const ClaimMode claimMode, const VkDevice device, const VkQueryPool queryPool)
       : QueryPool()
     {
-      Reset(device, queryPool);
+      Reset(claimMode, device, queryPool);
     }
 
     //! @brief Create the requested resource
@@ -131,7 +132,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the QueryPool (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, const VkQueryPool queryPool)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkQueryPool queryPool)
     {
       if (IsValid())
         Reset();
@@ -192,6 +193,12 @@ namespace RapidVulkan
     VkQueryPool Get() const
     {
       return m_queryPool;
+    }
+
+    //! @brief Get a pointer to the associated resource handle
+    const VkQueryPool* GetPointer() const
+    {
+      return &m_queryPool;
     }
 
     //! @brief Check if this object contains a valid resource

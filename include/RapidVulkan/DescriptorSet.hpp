@@ -24,6 +24,7 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
+#include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -84,10 +85,10 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the DescriptorSet (this object becomes responsible for releasing it)
-    explicit DescriptorSet(const VkDevice device, const VkDescriptorPool descriptorPool, const VkDescriptorSet descriptorSets)
+    explicit DescriptorSet(const ClaimMode claimMode, const VkDevice device, const VkDescriptorPool descriptorPool, const VkDescriptorSet descriptorSets)
       : DescriptorSet()
     {
-      Reset(device, descriptorPool, descriptorSets);
+      Reset(claimMode, device, descriptorPool, descriptorSets);
     }
 
     //! @brief Create the requested resource
@@ -140,7 +141,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the DescriptorSet (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, const VkDescriptorPool descriptorPool, const VkDescriptorSet descriptorSets)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkDescriptorPool descriptorPool, const VkDescriptorSet descriptorSets)
     {
       if (IsValid())
         Reset();
@@ -212,6 +213,12 @@ namespace RapidVulkan
     VkDescriptorSet Get() const
     {
       return m_descriptorSets;
+    }
+
+    //! @brief Get a pointer to the associated resource handle
+    const VkDescriptorSet* GetPointer() const
+    {
+      return &m_descriptorSets;
     }
 
     //! @brief Check if this object contains a valid resource

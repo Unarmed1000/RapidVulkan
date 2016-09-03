@@ -24,6 +24,7 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
+#include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -78,10 +79,10 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the BufferView (this object becomes responsible for releasing it)
-    explicit BufferView(const VkDevice device, const VkBufferView view)
+    explicit BufferView(const ClaimMode claimMode, const VkDevice device, const VkBufferView view)
       : BufferView()
     {
-      Reset(device, view);
+      Reset(claimMode, device, view);
     }
 
     //! @brief Create the requested resource
@@ -131,7 +132,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the BufferView (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, const VkBufferView view)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkBufferView view)
     {
       if (IsValid())
         Reset();
@@ -193,6 +194,12 @@ namespace RapidVulkan
     VkBufferView Get() const
     {
       return m_view;
+    }
+
+    //! @brief Get a pointer to the associated resource handle
+    const VkBufferView* GetPointer() const
+    {
+      return &m_view;
     }
 
     //! @brief Check if this object contains a valid resource

@@ -24,6 +24,7 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
+#include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -78,10 +79,10 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the ShaderModule (this object becomes responsible for releasing it)
-    explicit ShaderModule(const VkDevice device, const VkShaderModule shaderModule)
+    explicit ShaderModule(const ClaimMode claimMode, const VkDevice device, const VkShaderModule shaderModule)
       : ShaderModule()
     {
-      Reset(device, shaderModule);
+      Reset(claimMode, device, shaderModule);
     }
 
     //! @brief Create the requested resource
@@ -131,7 +132,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the ShaderModule (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, const VkShaderModule shaderModule)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkShaderModule shaderModule)
     {
       if (IsValid())
         Reset();
@@ -191,6 +192,12 @@ namespace RapidVulkan
     VkShaderModule Get() const
     {
       return m_shaderModule;
+    }
+
+    //! @brief Get a pointer to the associated resource handle
+    const VkShaderModule* GetPointer() const
+    {
+      return &m_shaderModule;
     }
 
     //! @brief Check if this object contains a valid resource

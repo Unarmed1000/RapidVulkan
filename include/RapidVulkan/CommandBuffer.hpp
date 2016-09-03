@@ -24,6 +24,7 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
+#include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -84,10 +85,10 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the CommandBuffer (this object becomes responsible for releasing it)
-    explicit CommandBuffer(const VkDevice device, const VkCommandPool commandPool, const VkCommandBuffer commandBuffers)
+    explicit CommandBuffer(const ClaimMode claimMode, const VkDevice device, const VkCommandPool commandPool, const VkCommandBuffer commandBuffers)
       : CommandBuffer()
     {
-      Reset(device, commandPool, commandBuffers);
+      Reset(claimMode, device, commandPool, commandBuffers);
     }
 
     //! @brief Create the requested resource
@@ -140,7 +141,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the CommandBuffer (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, const VkCommandPool commandPool, const VkCommandBuffer commandBuffers)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkCommandPool commandPool, const VkCommandBuffer commandBuffers)
     {
       if (IsValid())
         Reset();
@@ -212,6 +213,12 @@ namespace RapidVulkan
     VkCommandBuffer Get() const
     {
       return m_commandBuffers;
+    }
+
+    //! @brief Get a pointer to the associated resource handle
+    const VkCommandBuffer* GetPointer() const
+    {
+      return &m_commandBuffers;
     }
 
     //! @brief Check if this object contains a valid resource

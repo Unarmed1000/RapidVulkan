@@ -24,6 +24,7 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
+#include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -78,10 +79,10 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the ImageView (this object becomes responsible for releasing it)
-    explicit ImageView(const VkDevice device, const VkImageView view)
+    explicit ImageView(const ClaimMode claimMode, const VkDevice device, const VkImageView view)
       : ImageView()
     {
-      Reset(device, view);
+      Reset(claimMode, device, view);
     }
 
     //! @brief Create the requested resource
@@ -131,7 +132,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the ImageView (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, const VkImageView view)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkImageView view)
     {
       if (IsValid())
         Reset();
@@ -194,6 +195,12 @@ namespace RapidVulkan
     VkImageView Get() const
     {
       return m_view;
+    }
+
+    //! @brief Get a pointer to the associated resource handle
+    const VkImageView* GetPointer() const
+    {
+      return &m_view;
     }
 
     //! @brief Check if this object contains a valid resource

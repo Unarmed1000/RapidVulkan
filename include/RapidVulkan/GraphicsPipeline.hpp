@@ -24,6 +24,7 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
+#include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -78,27 +79,27 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the GraphicsPipeline (this object becomes responsible for releasing it)
-    explicit GraphicsPipeline(const VkDevice device, const VkPipeline pipelines)
+    explicit GraphicsPipeline(const ClaimMode claimMode, const VkDevice device, const VkPipeline pipelines)
       : GraphicsPipeline()
     {
-      Reset(device, pipelines);
+      Reset(claimMode, device, pipelines);
     }
 
     //! @brief Create the requested resource
     //! @note  Function: vkCreateGraphicsPipelines
-    GraphicsPipeline(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkGraphicsPipelineCreateInfo& createInfos)
+    GraphicsPipeline(const VkDevice device, const VkPipelineCache pipelineCache, const VkGraphicsPipelineCreateInfo& createInfos)
       : GraphicsPipeline()
     {
-      Reset(device, pipelineCache, createInfoCount, createInfos);
+      Reset(device, pipelineCache, createInfos);
     }
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
     //! @note  Function: vkCreateGraphicsPipelines
-    GraphicsPipeline(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkPipelineCreateFlags flags, const uint32_t stageCount, VkPipelineShaderStageCreateInfo*const pStages, VkPipelineVertexInputStateCreateInfo*const pVertexInputState, VkPipelineInputAssemblyStateCreateInfo*const pInputAssemblyState, VkPipelineTessellationStateCreateInfo*const pTessellationState, VkPipelineViewportStateCreateInfo*const pViewportState, VkPipelineRasterizationStateCreateInfo*const pRasterizationState, VkPipelineMultisampleStateCreateInfo*const pMultisampleState, VkPipelineDepthStencilStateCreateInfo*const pDepthStencilState, VkPipelineColorBlendStateCreateInfo*const pColorBlendState, VkPipelineDynamicStateCreateInfo*const pDynamicState, const VkPipelineLayout layout, const VkRenderPass renderPass, const uint32_t subpass, const VkPipeline basePipelineHandle, const int32_t basePipelineIndex)
+    GraphicsPipeline(const VkDevice device, const VkPipelineCache pipelineCache, const VkPipelineCreateFlags flags, const uint32_t stageCount, VkPipelineShaderStageCreateInfo*const pStages, VkPipelineVertexInputStateCreateInfo*const pVertexInputState, VkPipelineInputAssemblyStateCreateInfo*const pInputAssemblyState, VkPipelineTessellationStateCreateInfo*const pTessellationState, VkPipelineViewportStateCreateInfo*const pViewportState, VkPipelineRasterizationStateCreateInfo*const pRasterizationState, VkPipelineMultisampleStateCreateInfo*const pMultisampleState, VkPipelineDepthStencilStateCreateInfo*const pDepthStencilState, VkPipelineColorBlendStateCreateInfo*const pColorBlendState, VkPipelineDynamicStateCreateInfo*const pDynamicState, const VkPipelineLayout layout, const VkRenderPass renderPass, const uint32_t subpass, const VkPipeline basePipelineHandle, const int32_t basePipelineIndex)
       : GraphicsPipeline()
     {
-      Reset(device, pipelineCache, createInfoCount, flags, stageCount, pStages, pVertexInputState, pInputAssemblyState, pTessellationState, pViewportState, pRasterizationState, pMultisampleState, pDepthStencilState, pColorBlendState, pDynamicState, layout, renderPass, subpass, basePipelineHandle, basePipelineIndex);
+      Reset(device, pipelineCache, flags, stageCount, pStages, pVertexInputState, pInputAssemblyState, pTessellationState, pViewportState, pRasterizationState, pMultisampleState, pDepthStencilState, pColorBlendState, pDynamicState, layout, renderPass, subpass, basePipelineHandle, basePipelineIndex);
     }
 #endif
 
@@ -131,7 +132,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the GraphicsPipeline (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, const VkPipeline pipelines)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkPipeline pipelines)
     {
       if (IsValid())
         Reset();
@@ -143,7 +144,7 @@ namespace RapidVulkan
 
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkCreateGraphicsPipelines
-    void Reset(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkGraphicsPipelineCreateInfo& createInfos)
+    void Reset(const VkDevice device, const VkPipelineCache pipelineCache, const VkGraphicsPipelineCreateInfo& createInfos)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
@@ -159,7 +160,7 @@ namespace RapidVulkan
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
       VkPipeline pipelines;
-      Util::Check(vkCreateGraphicsPipelines(device, pipelineCache, createInfoCount, &createInfos, nullptr, &pipelines), "vkCreateGraphicsPipelines", __FILE__, __LINE__);
+      Util::Check(vkCreateGraphicsPipelines(device, pipelineCache, 1, &createInfos, nullptr, &pipelines), "vkCreateGraphicsPipelines", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
@@ -169,7 +170,7 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkCreateGraphicsPipelines
-    void Reset(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkPipelineCreateFlags flags, const uint32_t stageCount, VkPipelineShaderStageCreateInfo*const pStages, VkPipelineVertexInputStateCreateInfo*const pVertexInputState, VkPipelineInputAssemblyStateCreateInfo*const pInputAssemblyState, VkPipelineTessellationStateCreateInfo*const pTessellationState, VkPipelineViewportStateCreateInfo*const pViewportState, VkPipelineRasterizationStateCreateInfo*const pRasterizationState, VkPipelineMultisampleStateCreateInfo*const pMultisampleState, VkPipelineDepthStencilStateCreateInfo*const pDepthStencilState, VkPipelineColorBlendStateCreateInfo*const pColorBlendState, VkPipelineDynamicStateCreateInfo*const pDynamicState, const VkPipelineLayout layout, const VkRenderPass renderPass, const uint32_t subpass, const VkPipeline basePipelineHandle, const int32_t basePipelineIndex)
+    void Reset(const VkDevice device, const VkPipelineCache pipelineCache, const VkPipelineCreateFlags flags, const uint32_t stageCount, VkPipelineShaderStageCreateInfo*const pStages, VkPipelineVertexInputStateCreateInfo*const pVertexInputState, VkPipelineInputAssemblyStateCreateInfo*const pInputAssemblyState, VkPipelineTessellationStateCreateInfo*const pTessellationState, VkPipelineViewportStateCreateInfo*const pViewportState, VkPipelineRasterizationStateCreateInfo*const pRasterizationState, VkPipelineMultisampleStateCreateInfo*const pMultisampleState, VkPipelineDepthStencilStateCreateInfo*const pDepthStencilState, VkPipelineColorBlendStateCreateInfo*const pColorBlendState, VkPipelineDynamicStateCreateInfo*const pDynamicState, const VkPipelineLayout layout, const VkRenderPass renderPass, const uint32_t subpass, const VkPipeline basePipelineHandle, const int32_t basePipelineIndex)
     {
       VkGraphicsPipelineCreateInfo createInfos{};
       createInfos.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
@@ -192,7 +193,7 @@ namespace RapidVulkan
       createInfos.basePipelineHandle = basePipelineHandle;
       createInfos.basePipelineIndex = basePipelineIndex;
 
-      Reset(device, pipelineCache, createInfoCount, createInfos);
+      Reset(device, pipelineCache, createInfos);
     }
 #endif
 
@@ -206,6 +207,12 @@ namespace RapidVulkan
     VkPipeline Get() const
     {
       return m_pipelines;
+    }
+
+    //! @brief Get a pointer to the associated resource handle
+    const VkPipeline* GetPointer() const
+    {
+      return &m_pipelines;
     }
 
     //! @brief Check if this object contains a valid resource

@@ -24,10 +24,11 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
+#include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
-#include <util>
+#include <utility>
 #include <vector>
 
 namespace RapidVulkan
@@ -84,10 +85,10 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the CommandBuffers (this object becomes responsible for releasing it)
-    //explicit CommandBuffers(const VkDevice device, const VkCommandPool commandPool, const VkCommandBuffer commandBuffers)
+    //explicit CommandBuffers(const ClaimMode claimMode, const VkDevice device, const VkCommandPool commandPool, const VkCommandBuffer commandBuffers)
     //  : CommandBuffers()
     //{
-    //  Reset(device, commandPool, commandBuffers);
+    //  Reset(claimMode, device, commandPool, commandBuffers);
     //}
 
     //! @brief Create the requested resource
@@ -131,7 +132,7 @@ namespace RapidVulkan
 
       assert(m_device != VK_NULL_HANDLE);
       assert(m_commandPool != VK_NULL_HANDLE);
-      assert(m_commandBuffers != VK_NULL_HANDLE);
+      assert(m_commandBuffers.size() > 0);
 
       vkFreeCommandBuffers(m_device, m_commandPool, m_commandBuffers.size(), m_commandBuffers.data());
       m_device = VK_NULL_HANDLE;
@@ -141,7 +142,7 @@ namespace RapidVulkan
 
 /*    
     //! @brief Destroys any owned resources and assume control of the CommandBuffers (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, const VkCommandPool commandPool, const VkCommandBuffer commandBuffers)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkCommandPool commandPool, const VkCommandBuffer commandBuffers)
     {
       if (IsValid())
         Reset();
@@ -226,6 +227,13 @@ namespace RapidVulkan
     {
       assert(arrayIndex < m_commandBuffers.size());
       return m_commandBuffers[arrayIndex];
+    }
+
+    //! @brief get a pointer to the resource at the given index
+    const VkCommandBuffer* GetPointer(const std::size_t arrayIndex) const
+    {
+      assert(arrayIndex < m_commandBuffers.size());
+      return &m_commandBuffers[arrayIndex];
     }
 
     //! @brief Check if this object contains a valid resource

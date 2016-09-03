@@ -24,6 +24,7 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
+#include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -78,10 +79,10 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the RenderPass (this object becomes responsible for releasing it)
-    explicit RenderPass(const VkDevice device, const VkRenderPass renderPass)
+    explicit RenderPass(const ClaimMode claimMode, const VkDevice device, const VkRenderPass renderPass)
       : RenderPass()
     {
-      Reset(device, renderPass);
+      Reset(claimMode, device, renderPass);
     }
 
     //! @brief Create the requested resource
@@ -131,7 +132,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the RenderPass (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, const VkRenderPass renderPass)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkRenderPass renderPass)
     {
       if (IsValid())
         Reset();
@@ -195,6 +196,12 @@ namespace RapidVulkan
     VkRenderPass Get() const
     {
       return m_renderPass;
+    }
+
+    //! @brief Get a pointer to the associated resource handle
+    const VkRenderPass* GetPointer() const
+    {
+      return &m_renderPass;
     }
 
     //! @brief Check if this object contains a valid resource

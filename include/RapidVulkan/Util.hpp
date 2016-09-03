@@ -1,5 +1,5 @@
-#ifndef RAPIDVULKAN_VULKANUTIL_HPP
-#define RAPIDVULKAN_VULKANUTIL_HPP
+#ifndef RAPIDVULKAN_UTIL_HPP
+#define RAPIDVULKAN_UTIL_HPP
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*

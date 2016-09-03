@@ -24,6 +24,7 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
+#include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -78,10 +79,10 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the Semaphore (this object becomes responsible for releasing it)
-    explicit Semaphore(const VkDevice device, const VkSemaphore semaphore)
+    explicit Semaphore(const ClaimMode claimMode, const VkDevice device, const VkSemaphore semaphore)
       : Semaphore()
     {
-      Reset(device, semaphore);
+      Reset(claimMode, device, semaphore);
     }
 
     //! @brief Create the requested resource
@@ -131,7 +132,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the Semaphore (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, const VkSemaphore semaphore)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkSemaphore semaphore)
     {
       if (IsValid())
         Reset();
@@ -189,6 +190,12 @@ namespace RapidVulkan
     VkSemaphore Get() const
     {
       return m_semaphore;
+    }
+
+    //! @brief Get a pointer to the associated resource handle
+    const VkSemaphore* GetPointer() const
+    {
+      return &m_semaphore;
     }
 
     //! @brief Check if this object contains a valid resource

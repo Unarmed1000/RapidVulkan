@@ -24,6 +24,7 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
+#include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -78,10 +79,10 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the DescriptorSetLayout (this object becomes responsible for releasing it)
-    explicit DescriptorSetLayout(const VkDevice device, const VkDescriptorSetLayout setLayout)
+    explicit DescriptorSetLayout(const ClaimMode claimMode, const VkDevice device, const VkDescriptorSetLayout setLayout)
       : DescriptorSetLayout()
     {
-      Reset(device, setLayout);
+      Reset(claimMode, device, setLayout);
     }
 
     //! @brief Create the requested resource
@@ -131,7 +132,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the DescriptorSetLayout (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, const VkDescriptorSetLayout setLayout)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkDescriptorSetLayout setLayout)
     {
       if (IsValid())
         Reset();
@@ -191,6 +192,12 @@ namespace RapidVulkan
     VkDescriptorSetLayout Get() const
     {
       return m_setLayout;
+    }
+
+    //! @brief Get a pointer to the associated resource handle
+    const VkDescriptorSetLayout* GetPointer() const
+    {
+      return &m_setLayout;
     }
 
     //! @brief Check if this object contains a valid resource

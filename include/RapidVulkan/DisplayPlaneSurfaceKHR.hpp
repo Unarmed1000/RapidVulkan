@@ -24,6 +24,7 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
+#include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -78,10 +79,10 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the DisplayPlaneSurfaceKHR (this object becomes responsible for releasing it)
-    explicit DisplayPlaneSurfaceKHR(const VkInstance instance, const VkSurfaceKHR surface)
+    explicit DisplayPlaneSurfaceKHR(const ClaimMode claimMode, const VkInstance instance, const VkSurfaceKHR surface)
       : DisplayPlaneSurfaceKHR()
     {
-      Reset(instance, surface);
+      Reset(claimMode, instance, surface);
     }
 
     //! @brief Create the requested resource
@@ -131,7 +132,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the DisplayPlaneSurfaceKHR (this object becomes responsible for releasing it)
-    void Reset(const VkInstance instance, const VkSurfaceKHR surface)
+    void Reset(const ClaimMode claimMode, const VkInstance instance, const VkSurfaceKHR surface)
     {
       if (IsValid())
         Reset();
@@ -171,7 +172,7 @@ namespace RapidVulkan
     void Reset(const VkInstance instance, const VkDisplaySurfaceCreateFlagsKHR flags, const VkDisplayModeKHR displayMode, const uint32_t planeIndex, const uint32_t planeStackIndex, const VkSurfaceTransformFlagBitsKHR transform, const float globalAlpha, const VkDisplayPlaneAlphaFlagBitsKHR alphaMode, const VkExtent2D imageExtent)
     {
       VkDisplaySurfaceCreateInfoKHR createInfo{};
-      createInfo.sType = VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_K_H_R;
+      createInfo.sType = VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR;
       createInfo.pNext = nullptr;
       createInfo.flags = flags;
       createInfo.displayMode = displayMode;
@@ -196,6 +197,12 @@ namespace RapidVulkan
     VkSurfaceKHR Get() const
     {
       return m_surface;
+    }
+
+    //! @brief Get a pointer to the associated resource handle
+    const VkSurfaceKHR* GetPointer() const
+    {
+      return &m_surface;
     }
 
     //! @brief Check if this object contains a valid resource

@@ -24,6 +24,7 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
+#include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -78,10 +79,10 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the PipelineCache (this object becomes responsible for releasing it)
-    explicit PipelineCache(const VkDevice device, const VkPipelineCache pipelineCache)
+    explicit PipelineCache(const ClaimMode claimMode, const VkDevice device, const VkPipelineCache pipelineCache)
       : PipelineCache()
     {
-      Reset(device, pipelineCache);
+      Reset(claimMode, device, pipelineCache);
     }
 
     //! @brief Create the requested resource
@@ -131,7 +132,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the PipelineCache (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, const VkPipelineCache pipelineCache)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkPipelineCache pipelineCache)
     {
       if (IsValid())
         Reset();
@@ -191,6 +192,12 @@ namespace RapidVulkan
     VkPipelineCache Get() const
     {
       return m_pipelineCache;
+    }
+
+    //! @brief Get a pointer to the associated resource handle
+    const VkPipelineCache* GetPointer() const
+    {
+      return &m_pipelineCache;
     }
 
     //! @brief Check if this object contains a valid resource

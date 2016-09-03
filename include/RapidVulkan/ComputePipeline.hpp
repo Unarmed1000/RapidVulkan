@@ -24,6 +24,7 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
+#include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -78,27 +79,27 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the ComputePipeline (this object becomes responsible for releasing it)
-    explicit ComputePipeline(const VkDevice device, const VkPipeline pipelines)
+    explicit ComputePipeline(const ClaimMode claimMode, const VkDevice device, const VkPipeline pipelines)
       : ComputePipeline()
     {
-      Reset(device, pipelines);
+      Reset(claimMode, device, pipelines);
     }
 
     //! @brief Create the requested resource
     //! @note  Function: vkCreateComputePipelines
-    ComputePipeline(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkComputePipelineCreateInfo& createInfos)
+    ComputePipeline(const VkDevice device, const VkPipelineCache pipelineCache, const VkComputePipelineCreateInfo& createInfos)
       : ComputePipeline()
     {
-      Reset(device, pipelineCache, createInfoCount, createInfos);
+      Reset(device, pipelineCache, createInfos);
     }
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
     //! @note  Function: vkCreateComputePipelines
-    ComputePipeline(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkPipelineCreateFlags flags, const VkPipelineShaderStageCreateInfo stage, const VkPipelineLayout layout, const VkPipeline basePipelineHandle, const int32_t basePipelineIndex)
+    ComputePipeline(const VkDevice device, const VkPipelineCache pipelineCache, const VkPipelineCreateFlags flags, const VkPipelineShaderStageCreateInfo stage, const VkPipelineLayout layout, const VkPipeline basePipelineHandle, const int32_t basePipelineIndex)
       : ComputePipeline()
     {
-      Reset(device, pipelineCache, createInfoCount, flags, stage, layout, basePipelineHandle, basePipelineIndex);
+      Reset(device, pipelineCache, flags, stage, layout, basePipelineHandle, basePipelineIndex);
     }
 #endif
 
@@ -131,7 +132,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the ComputePipeline (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, const VkPipeline pipelines)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkPipeline pipelines)
     {
       if (IsValid())
         Reset();
@@ -143,7 +144,7 @@ namespace RapidVulkan
 
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkCreateComputePipelines
-    void Reset(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkComputePipelineCreateInfo& createInfos)
+    void Reset(const VkDevice device, const VkPipelineCache pipelineCache, const VkComputePipelineCreateInfo& createInfos)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
@@ -159,7 +160,7 @@ namespace RapidVulkan
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
       VkPipeline pipelines;
-      Util::Check(vkCreateComputePipelines(device, pipelineCache, createInfoCount, &createInfos, nullptr, &pipelines), "vkCreateComputePipelines", __FILE__, __LINE__);
+      Util::Check(vkCreateComputePipelines(device, pipelineCache, 1, &createInfos, nullptr, &pipelines), "vkCreateComputePipelines", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
@@ -169,7 +170,7 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkCreateComputePipelines
-    void Reset(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkPipelineCreateFlags flags, const VkPipelineShaderStageCreateInfo stage, const VkPipelineLayout layout, const VkPipeline basePipelineHandle, const int32_t basePipelineIndex)
+    void Reset(const VkDevice device, const VkPipelineCache pipelineCache, const VkPipelineCreateFlags flags, const VkPipelineShaderStageCreateInfo stage, const VkPipelineLayout layout, const VkPipeline basePipelineHandle, const int32_t basePipelineIndex)
     {
       VkComputePipelineCreateInfo createInfos{};
       createInfos.sType = VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO;
@@ -180,7 +181,7 @@ namespace RapidVulkan
       createInfos.basePipelineHandle = basePipelineHandle;
       createInfos.basePipelineIndex = basePipelineIndex;
 
-      Reset(device, pipelineCache, createInfoCount, createInfos);
+      Reset(device, pipelineCache, createInfos);
     }
 #endif
 
@@ -194,6 +195,12 @@ namespace RapidVulkan
     VkPipeline Get() const
     {
       return m_pipelines;
+    }
+
+    //! @brief Get a pointer to the associated resource handle
+    const VkPipeline* GetPointer() const
+    {
+      return &m_pipelines;
     }
 
     //! @brief Check if this object contains a valid resource

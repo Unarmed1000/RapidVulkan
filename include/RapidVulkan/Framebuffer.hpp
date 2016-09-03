@@ -24,6 +24,7 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
+#include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -78,10 +79,10 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the Framebuffer (this object becomes responsible for releasing it)
-    explicit Framebuffer(const VkDevice device, const VkFramebuffer framebuffer)
+    explicit Framebuffer(const ClaimMode claimMode, const VkDevice device, const VkFramebuffer framebuffer)
       : Framebuffer()
     {
-      Reset(device, framebuffer);
+      Reset(claimMode, device, framebuffer);
     }
 
     //! @brief Create the requested resource
@@ -131,7 +132,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the Framebuffer (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, const VkFramebuffer framebuffer)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkFramebuffer framebuffer)
     {
       if (IsValid())
         Reset();
@@ -195,6 +196,12 @@ namespace RapidVulkan
     VkFramebuffer Get() const
     {
       return m_framebuffer;
+    }
+
+    //! @brief Get a pointer to the associated resource handle
+    const VkFramebuffer* GetPointer() const
+    {
+      return &m_framebuffer;
     }
 
     //! @brief Check if this object contains a valid resource

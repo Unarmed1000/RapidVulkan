@@ -24,6 +24,7 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
+#include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -72,10 +73,10 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the Instance (this object becomes responsible for releasing it)
-    explicit Instance(const VkInstance instance)
+    explicit Instance(const ClaimMode claimMode, const VkInstance instance)
       : Instance()
     {
-      Reset(instance);
+      Reset(claimMode, instance);
     }
 
     //! @brief Create the requested resource
@@ -122,7 +123,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the Instance (this object becomes responsible for releasing it)
-    void Reset(const VkInstance instance)
+    void Reset(const ClaimMode claimMode, const VkInstance instance)
     {
       if (IsValid())
         Reset();
@@ -174,6 +175,12 @@ namespace RapidVulkan
     VkInstance Get() const
     {
       return m_instance;
+    }
+
+    //! @brief Get a pointer to the associated resource handle
+    const VkInstance* GetPointer() const
+    {
+      return &m_instance;
     }
 
     //! @brief Check if this object contains a valid resource

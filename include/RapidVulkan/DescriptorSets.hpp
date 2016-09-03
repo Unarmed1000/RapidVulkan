@@ -24,10 +24,11 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
+#include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
-#include <util>
+#include <utility>
 #include <vector>
 
 namespace RapidVulkan
@@ -84,10 +85,10 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the DescriptorSets (this object becomes responsible for releasing it)
-    //explicit DescriptorSets(const VkDevice device, const VkDescriptorPool descriptorPool, const VkDescriptorSet descriptorSets)
+    //explicit DescriptorSets(const ClaimMode claimMode, const VkDevice device, const VkDescriptorPool descriptorPool, const VkDescriptorSet descriptorSets)
     //  : DescriptorSets()
     //{
-    //  Reset(device, descriptorPool, descriptorSets);
+    //  Reset(claimMode, device, descriptorPool, descriptorSets);
     //}
 
     //! @brief Create the requested resource
@@ -131,7 +132,7 @@ namespace RapidVulkan
 
       assert(m_device != VK_NULL_HANDLE);
       assert(m_descriptorPool != VK_NULL_HANDLE);
-      assert(m_descriptorSets != VK_NULL_HANDLE);
+      assert(m_descriptorSets.size() > 0);
 
       vkFreeDescriptorSets(m_device, m_descriptorPool, m_descriptorSets.size(), m_descriptorSets.data());
       m_device = VK_NULL_HANDLE;
@@ -141,7 +142,7 @@ namespace RapidVulkan
 
 /*    
     //! @brief Destroys any owned resources and assume control of the DescriptorSets (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, const VkDescriptorPool descriptorPool, const VkDescriptorSet descriptorSets)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkDescriptorPool descriptorPool, const VkDescriptorSet descriptorSets)
     {
       if (IsValid())
         Reset();
@@ -226,6 +227,13 @@ namespace RapidVulkan
     {
       assert(arrayIndex < m_descriptorSets.size());
       return m_descriptorSets[arrayIndex];
+    }
+
+    //! @brief get a pointer to the resource at the given index
+    const VkDescriptorSet* GetPointer(const std::size_t arrayIndex) const
+    {
+      assert(arrayIndex < m_descriptorSets.size());
+      return &m_descriptorSets[arrayIndex];
     }
 
     //! @brief Check if this object contains a valid resource

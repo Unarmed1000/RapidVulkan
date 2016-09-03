@@ -24,6 +24,7 @@
 
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000)
 
+#include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -78,10 +79,10 @@ namespace RapidVulkan
     }
 
     //! @brief Assume control of the Event (this object becomes responsible for releasing it)
-    explicit Event(const VkDevice device, const VkEvent event)
+    explicit Event(const ClaimMode claimMode, const VkDevice device, const VkEvent event)
       : Event()
     {
-      Reset(device, event);
+      Reset(claimMode, device, event);
     }
 
     //! @brief Create the requested resource
@@ -131,7 +132,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and assume control of the Event (this object becomes responsible for releasing it)
-    void Reset(const VkDevice device, const VkEvent event)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkEvent event)
     {
       if (IsValid())
         Reset();
@@ -189,6 +190,12 @@ namespace RapidVulkan
     VkEvent Get() const
     {
       return m_event;
+    }
+
+    //! @brief Get a pointer to the associated resource handle
+    const VkEvent* GetPointer() const
+    {
+      return &m_event;
     }
 
     //! @brief Check if this object contains a valid resource
