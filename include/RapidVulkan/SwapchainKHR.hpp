@@ -144,6 +144,7 @@ namespace RapidVulkan
 
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkCreateSwapchainKHR
+    //!        If we detect that createInfo.oldSwapchain == m_swapchain then we ensure that m_swapchain isn't destroyed before the new swapchain has been created
     void Reset(const VkDevice device, const VkSwapchainCreateInfoKHR& createInfo)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
@@ -153,13 +154,20 @@ namespace RapidVulkan
       assert(device != VK_NULL_HANDLE);
 #endif
 
-      // Free any currently allocated resource
-      if (IsValid())
+      // Detect a 'special case' where we are referencing this objects resource and
+      // need it to create the new resource
+      bool delayedReset = false;
+      if (IsValid() && createInfo.oldSwapchain != m_swapchain)
+      {
         Reset();
+        delayedReset = true;
+      }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
       VkSwapchainKHR swapchain;
       Util::Check(vkCreateSwapchainKHR(device, &createInfo, nullptr, &swapchain), "vkCreateSwapchainKHR", __FILE__, __LINE__);
+      if (delayedReset)
+        Reset();
 
       // Everything is ready, so assign the members
       m_device = device;
