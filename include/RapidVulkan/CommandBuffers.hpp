@@ -134,7 +134,7 @@ namespace RapidVulkan
       assert(m_commandPool != VK_NULL_HANDLE);
       assert(m_commandBuffers.size() > 0);
 
-      vkFreeCommandBuffers(m_device, m_commandPool, m_commandBuffers.size(), m_commandBuffers.data());
+      vkFreeCommandBuffers(m_device, m_commandPool, static_cast<uint32_t>(m_commandBuffers.size()), m_commandBuffers.data());
       m_device = VK_NULL_HANDLE;
       m_commandPool = VK_NULL_HANDLE;
       m_commandBuffers.clear();

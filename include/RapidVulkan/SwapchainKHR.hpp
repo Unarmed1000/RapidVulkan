@@ -226,6 +226,18 @@ namespace RapidVulkan
     {
       return m_swapchain != VK_NULL_HANDLE;
     }
+
+    //! @note  Function: vkGetSwapchainImagesKHR
+    void GetSwapchainImagesKHR(uint32_t * pSwapchainImageCount, VkImage * pSwapchainImages)
+    {
+      Util::Check(vkGetSwapchainImagesKHR(m_device, m_swapchain, pSwapchainImageCount, pSwapchainImages), "vkGetSwapchainImagesKHR", __FILE__, __LINE__);
+    }
+
+    //! @note  Function: vkAcquireNextImageKHR
+    void AcquireNextImageKHR(const uint64_t timeout, const VkSemaphore semaphore, const VkFence fence, uint32_t * pImageIndex)
+    {
+      Util::Check(vkAcquireNextImageKHR(m_device, m_swapchain, timeout, semaphore, fence, pImageIndex), "vkAcquireNextImageKHR", __FILE__, __LINE__);
+    }
   };
 }
 

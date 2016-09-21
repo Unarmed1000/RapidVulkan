@@ -204,6 +204,24 @@ namespace RapidVulkan
     {
       return m_memory != VK_NULL_HANDLE;
     }
+
+    //! @note  Function: vkMapMemory
+    void MapMemory(const VkDeviceSize offset, const VkDeviceSize size, const VkMemoryMapFlags flags, void ** ppData)
+    {
+      Util::Check(vkMapMemory(m_device, m_memory, offset, size, flags, ppData), "vkMapMemory", __FILE__, __LINE__);
+    }
+
+    //! @note  Function: vkUnmapMemory
+    void UnmapMemory()
+    {
+      vkUnmapMemory(m_device, m_memory);
+    }
+
+    //! @note  Function: vkGetDeviceMemoryCommitment
+    void GetDeviceMemoryCommitment(VkDeviceSize * pCommittedMemoryInBytes)
+    {
+      vkGetDeviceMemoryCommitment(m_device, m_memory, pCommittedMemoryInBytes);
+    }
   };
 }
 

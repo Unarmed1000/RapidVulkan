@@ -190,6 +190,66 @@ namespace RapidVulkan
     {
       return m_device != VK_NULL_HANDLE;
     }
+
+    //! @note  Function: vkGetDeviceProcAddr
+    PFN_vkVoidFunction GetDeviceProcAddr(const char * pName)
+    {
+      return vkGetDeviceProcAddr(m_device, pName);
+    }
+
+    //! @note  Function: vkGetDeviceQueue
+    void GetDeviceQueue(const uint32_t queueFamilyIndex, const uint32_t queueIndex, VkQueue * pQueue)
+    {
+      vkGetDeviceQueue(m_device, queueFamilyIndex, queueIndex, pQueue);
+    }
+
+    //! @note  Function: vkDeviceWaitIdle
+    void DeviceWaitIdle()
+    {
+      Util::Check(vkDeviceWaitIdle(m_device), "vkDeviceWaitIdle", __FILE__, __LINE__);
+    }
+
+    //! @note  Function: vkFlushMappedMemoryRanges
+    void FlushMappedMemoryRanges(const uint32_t memoryRangeCount, const VkMappedMemoryRange * pMemoryRanges)
+    {
+      Util::Check(vkFlushMappedMemoryRanges(m_device, memoryRangeCount, pMemoryRanges), "vkFlushMappedMemoryRanges", __FILE__, __LINE__);
+    }
+
+    //! @note  Function: vkInvalidateMappedMemoryRanges
+    void InvalidateMappedMemoryRanges(const uint32_t memoryRangeCount, const VkMappedMemoryRange * pMemoryRanges)
+    {
+      Util::Check(vkInvalidateMappedMemoryRanges(m_device, memoryRangeCount, pMemoryRanges), "vkInvalidateMappedMemoryRanges", __FILE__, __LINE__);
+    }
+
+    //! @note  Function: vkResetFences
+    void ResetFences(const uint32_t fenceCount, const VkFence * pFences)
+    {
+      Util::Check(vkResetFences(m_device, fenceCount, pFences), "vkResetFences", __FILE__, __LINE__);
+    }
+
+    //! @note  Function: vkWaitForFences
+    void WaitForFences(const uint32_t fenceCount, const VkFence * pFences, const VkBool32 waitAll, const uint64_t timeout)
+    {
+      Util::Check(vkWaitForFences(m_device, fenceCount, pFences, waitAll, timeout), "vkWaitForFences", __FILE__, __LINE__);
+    }
+
+    //! @note  Function: vkUpdateDescriptorSets
+    void UpdateDescriptorSets(const uint32_t descriptorWriteCount, const VkWriteDescriptorSet * pDescriptorWrites, const uint32_t descriptorCopyCount, const VkCopyDescriptorSet * pDescriptorCopies)
+    {
+      vkUpdateDescriptorSets(m_device, descriptorWriteCount, pDescriptorWrites, descriptorCopyCount, pDescriptorCopies);
+    }
+
+    //! @note  Function: vkDebugMarkerSetObjectTagEXT
+    void DebugMarkerSetObjectTagEXT(VkDebugMarkerObjectTagInfoEXT * pTagInfo)
+    {
+      Util::Check(vkDebugMarkerSetObjectTagEXT(m_device, pTagInfo), "vkDebugMarkerSetObjectTagEXT", __FILE__, __LINE__);
+    }
+
+    //! @note  Function: vkDebugMarkerSetObjectNameEXT
+    void DebugMarkerSetObjectNameEXT(VkDebugMarkerObjectNameInfoEXT * pNameInfo)
+    {
+      Util::Check(vkDebugMarkerSetObjectNameEXT(m_device, pNameInfo), "vkDebugMarkerSetObjectNameEXT", __FILE__, __LINE__);
+    }
   };
 }
 

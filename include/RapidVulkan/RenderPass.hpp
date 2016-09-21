@@ -209,6 +209,12 @@ namespace RapidVulkan
     {
       return m_renderPass != VK_NULL_HANDLE;
     }
+
+    //! @note  Function: vkGetRenderAreaGranularity
+    void GetRenderAreaGranularity(VkExtent2D * pGranularity)
+    {
+      vkGetRenderAreaGranularity(m_device, m_renderPass, pGranularity);
+    }
   };
 }
 

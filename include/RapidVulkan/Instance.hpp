@@ -188,6 +188,24 @@ namespace RapidVulkan
     {
       return m_instance != VK_NULL_HANDLE;
     }
+
+    //! @note  Function: vkEnumeratePhysicalDevices
+    void EnumeratePhysicalDevices(uint32_t * pPhysicalDeviceCount, VkPhysicalDevice * pPhysicalDevices)
+    {
+      Util::Check(vkEnumeratePhysicalDevices(m_instance, pPhysicalDeviceCount, pPhysicalDevices), "vkEnumeratePhysicalDevices", __FILE__, __LINE__);
+    }
+
+    //! @note  Function: vkGetInstanceProcAddr
+    PFN_vkVoidFunction GetInstanceProcAddr(const char * pName)
+    {
+      return vkGetInstanceProcAddr(m_instance, pName);
+    }
+
+    //! @note  Function: vkDebugReportMessageEXT
+    void DebugReportMessageEXT(const VkDebugReportFlagsEXT flags, const VkDebugReportObjectTypeEXT objectType, const uint64_t object, const size_t location, const int32_t messageCode, const char * pLayerPrefix, const char * pMessage)
+    {
+      vkDebugReportMessageEXT(m_instance, flags, objectType, object, location, messageCode, pLayerPrefix, pMessage);
+    }
   };
 }
 

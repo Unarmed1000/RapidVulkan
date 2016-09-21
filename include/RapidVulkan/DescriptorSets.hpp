@@ -134,7 +134,7 @@ namespace RapidVulkan
       assert(m_descriptorPool != VK_NULL_HANDLE);
       assert(m_descriptorSets.size() > 0);
 
-      vkFreeDescriptorSets(m_device, m_descriptorPool, m_descriptorSets.size(), m_descriptorSets.data());
+      vkFreeDescriptorSets(m_device, m_descriptorPool, static_cast<uint32_t>(m_descriptorSets.size()), m_descriptorSets.data());
       m_device = VK_NULL_HANDLE;
       m_descriptorPool = VK_NULL_HANDLE;
       m_descriptorSets.clear();

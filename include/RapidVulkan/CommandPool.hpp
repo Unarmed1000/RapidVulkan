@@ -204,6 +204,12 @@ namespace RapidVulkan
     {
       return m_commandPool != VK_NULL_HANDLE;
     }
+
+    //! @note  Function: vkResetCommandPool
+    void ResetCommandPool(const VkCommandPoolResetFlags flags)
+    {
+      Util::Check(vkResetCommandPool(m_device, m_commandPool, flags), "vkResetCommandPool", __FILE__, __LINE__);
+    }
   };
 }
 

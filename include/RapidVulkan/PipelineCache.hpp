@@ -205,6 +205,18 @@ namespace RapidVulkan
     {
       return m_pipelineCache != VK_NULL_HANDLE;
     }
+
+    //! @note  Function: vkGetPipelineCacheData
+    void GetPipelineCacheData(size_t * pDataSize, void * pData)
+    {
+      Util::Check(vkGetPipelineCacheData(m_device, m_pipelineCache, pDataSize, pData), "vkGetPipelineCacheData", __FILE__, __LINE__);
+    }
+
+    //! @note  Function: vkMergePipelineCaches
+    void MergePipelineCaches(const uint32_t srcCacheCount, const VkPipelineCache * pSrcCaches)
+    {
+      Util::Check(vkMergePipelineCaches(m_device, m_pipelineCache, srcCacheCount, pSrcCaches), "vkMergePipelineCaches", __FILE__, __LINE__);
+    }
   };
 }
 

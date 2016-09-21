@@ -208,6 +208,12 @@ namespace RapidVulkan
     {
       return m_buffer != VK_NULL_HANDLE;
     }
+
+    //! @note  Function: vkGetBufferMemoryRequirements
+    void GetBufferMemoryRequirements(VkMemoryRequirements * pMemoryRequirements)
+    {
+      vkGetBufferMemoryRequirements(m_device, m_buffer, pMemoryRequirements);
+    }
   };
 }
 

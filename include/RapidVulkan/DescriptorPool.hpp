@@ -206,6 +206,12 @@ namespace RapidVulkan
     {
       return m_descriptorPool != VK_NULL_HANDLE;
     }
+
+    //! @note  Function: vkResetDescriptorPool
+    void ResetDescriptorPool(const VkDescriptorPoolResetFlags flags)
+    {
+      Util::Check(vkResetDescriptorPool(m_device, m_descriptorPool, flags), "vkResetDescriptorPool", __FILE__, __LINE__);
+    }
   };
 }
 

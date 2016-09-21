@@ -215,6 +215,24 @@ namespace RapidVulkan
     {
       return m_image != VK_NULL_HANDLE;
     }
+
+    //! @note  Function: vkGetImageMemoryRequirements
+    void GetImageMemoryRequirements(VkMemoryRequirements * pMemoryRequirements)
+    {
+      vkGetImageMemoryRequirements(m_device, m_image, pMemoryRequirements);
+    }
+
+    //! @note  Function: vkGetImageSparseMemoryRequirements
+    void GetImageSparseMemoryRequirements(uint32_t * pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements * pSparseMemoryRequirements)
+    {
+      vkGetImageSparseMemoryRequirements(m_device, m_image, pSparseMemoryRequirementCount, pSparseMemoryRequirements);
+    }
+
+    //! @note  Function: vkGetImageSubresourceLayout
+    void GetImageSubresourceLayout(const VkImageSubresource * pSubresource, VkSubresourceLayout * pLayout)
+    {
+      vkGetImageSubresourceLayout(m_device, m_image, pSubresource, pLayout);
+    }
   };
 }
 

@@ -203,6 +203,24 @@ namespace RapidVulkan
     {
       return m_event != VK_NULL_HANDLE;
     }
+
+    //! @note  Function: vkGetEventStatus
+    void GetEventStatus()
+    {
+      Util::Check(vkGetEventStatus(m_device, m_event), "vkGetEventStatus", __FILE__, __LINE__);
+    }
+
+    //! @note  Function: vkSetEvent
+    void SetEvent()
+    {
+      Util::Check(vkSetEvent(m_device, m_event), "vkSetEvent", __FILE__, __LINE__);
+    }
+
+    //! @note  Function: vkResetEvent
+    void ResetEvent()
+    {
+      Util::Check(vkResetEvent(m_device, m_event), "vkResetEvent", __FILE__, __LINE__);
+    }
   };
 }
 

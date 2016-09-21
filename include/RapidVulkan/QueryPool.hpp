@@ -206,6 +206,12 @@ namespace RapidVulkan
     {
       return m_queryPool != VK_NULL_HANDLE;
     }
+
+    //! @note  Function: vkGetQueryPoolResults
+    void GetQueryPoolResults(const uint32_t firstQuery, const uint32_t queryCount, const size_t dataSize, void * pData, const VkDeviceSize stride, const VkQueryResultFlags flags)
+    {
+      Util::Check(vkGetQueryPoolResults(m_device, m_queryPool, firstQuery, queryCount, dataSize, pData, stride, flags), "vkGetQueryPoolResults", __FILE__, __LINE__);
+    }
   };
 }
 

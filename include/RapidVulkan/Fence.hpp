@@ -203,6 +203,12 @@ namespace RapidVulkan
     {
       return m_fence != VK_NULL_HANDLE;
     }
+
+    //! @note  Function: vkGetFenceStatus
+    void GetFenceStatus()
+    {
+      Util::Check(vkGetFenceStatus(m_device, m_fence), "vkGetFenceStatus", __FILE__, __LINE__);
+    }
   };
 }
 
