@@ -200,12 +200,6 @@ namespace RapidVulkan
     {
       return vkGetInstanceProcAddr(m_instance, pName);
     }
-
-    //! @note  Function: vkDebugReportMessageEXT
-    void DebugReportMessageEXT(const VkDebugReportFlagsEXT flags, const VkDebugReportObjectTypeEXT objectType, const uint64_t object, const size_t location, const int32_t messageCode, const char * pLayerPrefix, const char * pMessage)
-    {
-      vkDebugReportMessageEXT(m_instance, flags, objectType, object, location, messageCode, pLayerPrefix, pMessage);
-    }
   };
 }
 

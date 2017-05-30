@@ -1,9 +1,9 @@
-#ifndef RAPIDVULKAN_EXCEPTIONS_HPP
-#define RAPIDVULKAN_EXCEPTIONS_HPP
+#ifndef RAPIDVULKAN_SYSTEM_LOG_HPP
+#define RAPIDVULKAN_SYSTEM_LOG_HPP
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2016, Rene Thrane
+//* Copyright (c) 2017, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -22,85 +22,21 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-#include <stdexcept>
-#include <string>
-#include <vulkan/vulkan.h>
+// Define some basic logging macros.
 
-namespace RapidVulkan
-{
-  class VulkanException : public std::runtime_error
-  {
-    std::string m_fileName;
-    int m_lineNumber;
-  public:
-    explicit VulkanException(const std::string& whatArg)
-      : std::runtime_error(whatArg)
-      , m_fileName()
-      , m_lineNumber(0)
-    {
-    }
+#define RAPIDVULKAN_LOG(X)                               {}
+#define RAPIDVULKAN_LOG_IF(cONDITION, X)                 {}
+#define RAPIDVULKAN_LOG_WARNING(X)                       {}
+#define RAPIDVULKAN_LOG_WARNING_IF(cONDITION, X)         {}
+#define RAPIDVULKAN_LOG_ERROR(X)                         {}
+#define RAPIDVULKAN_LOG_ERROR_IF(cONDITION, X)           {}
 
-    explicit VulkanException(const std::string& whatArg, const std::string& fileName, const int lineNumber)
-      : std::runtime_error(whatArg)
-      , m_fileName(fileName)
-      , m_lineNumber(lineNumber)
-    {
-    }
-
-
-    std::string GetFileName() const
-    {
-      return m_fileName;
-    }
-
-
-    int GetLineNumber() const
-    {
-      return m_lineNumber;
-    }
-  };
-
-
-
-  class VulkanErrorException : public VulkanException
-  {
-    VkResult m_result;
-  public:
-    explicit VulkanErrorException(const std::string& whatArg, const VkResult result)
-      : VulkanException(whatArg)
-      , m_result(result)
-    {
-    }
-
-    explicit VulkanErrorException(const std::string& whatArg, const VkResult result, const std::string& fileName, const int lineNumber)
-      : VulkanException(whatArg, fileName, lineNumber)
-      , m_result(result)
-    {
-    }
-
-    VkResult GetResult() const
-    {
-      return m_result;
-    }
-  };
-
-  class UnsupportedVulkanPixelFormatException : public VulkanException
-  {
-    VkFormat m_pixelFormat;
-  public:
-    UnsupportedVulkanPixelFormatException(const std::string& str, const VkFormat pixelFormat)
-      : VulkanException(str)
-      , m_pixelFormat(pixelFormat)
-    {
-    }
-
-    UnsupportedVulkanPixelFormatException(const VkFormat pixelFormat)
-      : VulkanException("Unsupported pixel format")
-      , m_pixelFormat(pixelFormat)
-    {
-    }
-  };
-
-}
+// Log statements that are only included in debug builds.
+#define RAPIDVULKAN_LOG_DEBUG(X)                         {}
+#define RAPIDVULKAN_LOG_DEBUG_IF(cONDITION, X)           {}
+#define RAPIDVULKAN_LOG_DEBUG_WARNING(X)                 {}
+#define RAPIDVULKAN_LOG_DEBUG_WARNING_IF(cONDITION, X)   {}
+#define RAPIDVULKAN_LOG_DEBUG_ERROR(X)                   {}
+#define RAPIDVULKAN_LOG_DEBUG_ERROR_IF(cONDITION, X)     {}
 
 #endif

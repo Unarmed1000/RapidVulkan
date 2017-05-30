@@ -1,5 +1,5 @@
-#ifndef RAPIDVULKAN_FENCE_HPP
-#define RAPIDVULKAN_FENCE_HPP
+#ifndef RAPIDVULKAN_OBJECTTABLENVX_HPP
+#define RAPIDVULKAN_OBJECTTABLENVX_HPP
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -26,23 +26,22 @@
 
 #include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
-#include <RapidVulkan/System/Log.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
 
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
-  class Fence
+  class ObjectTableNVX
   {
     VkDevice m_device;
-    VkFence m_fence;
+    VkObjectTableNVX m_objectTable;
   public:
-    Fence(const Fence&) = delete;
-    Fence& operator=(const Fence&) = delete;
+    ObjectTableNVX(const ObjectTableNVX&) = delete;
+    ObjectTableNVX& operator=(const ObjectTableNVX&) = delete;
 
     //! @brief Move assignment operator
-    Fence& operator=(Fence&& other)
+    ObjectTableNVX& operator=(ObjectTableNVX&& other)
     {
       if (this != &other)
       {
@@ -52,69 +51,69 @@ namespace RapidVulkan
 
         // Claim ownership here
         m_device = other.m_device;
-        m_fence = other.m_fence;
+        m_objectTable = other.m_objectTable;
 
         // Remove the data from other
         other.m_device = VK_NULL_HANDLE;
-        other.m_fence = VK_NULL_HANDLE;
+        other.m_objectTable = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       }
       return *this;
     }
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    Fence(Fence&& other)
+    ObjectTableNVX(ObjectTableNVX&& other)
       : m_device(other.m_device)
-      , m_fence(other.m_fence)
+      , m_objectTable(other.m_objectTable)
     {
       // Remove the data from other
       other.m_device = VK_NULL_HANDLE;
-      other.m_fence = VK_NULL_HANDLE;
+      other.m_objectTable = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    Fence()
+    ObjectTableNVX()
       : m_device(VK_NULL_HANDLE)
-      , m_fence(VK_NULL_HANDLE)
+      , m_objectTable(FIX_DEFAULT_FOR_TYPE_NOT_DEFINED)
     {
     }
 
-    //! @brief Assume control of the Fence (this object becomes responsible for releasing it)
-    explicit Fence(const ClaimMode claimMode, const VkDevice device, const VkFence fence)
-      : Fence()
+    //! @brief Assume control of the ObjectTableNVX (this object becomes responsible for releasing it)
+    explicit ObjectTableNVX(const ClaimMode claimMode, const VkDevice device, const VkObjectTableNVX objectTable)
+      : ObjectTableNVX()
     {
-      Reset(claimMode, device, fence);
+      Reset(claimMode, device, objectTable);
     }
 
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateFence
-    Fence(const VkDevice device, const VkFenceCreateInfo& createInfo)
-      : Fence()
+    //! @note  Function: vkCreateObjectTableNVX
+    ObjectTableNVX(const VkDevice device, const VkObjectTableCreateInfoNVX& createInfo)
+      : ObjectTableNVX()
     {
       Reset(device, createInfo);
     }
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateFence
-    Fence(const VkDevice device, const VkFenceCreateFlags flags)
-      : Fence()
+    //! @note  Function: vkCreateObjectTableNVX
+    ObjectTableNVX(const VkDevice device, const uint32_t objectCount, const VkObjectEntryTypeNVX * pObjectEntryTypes, const uint32_t * pObjectEntryCounts, const VkObjectEntryUsageFlagsNVX * pObjectEntryUsageFlags, const uint32_t maxUniformBuffersPerDescriptor, const uint32_t maxStorageBuffersPerDescriptor, const uint32_t maxStorageImagesPerDescriptor, const uint32_t maxSampledImagesPerDescriptor, const uint32_t maxPipelineLayouts)
+      : ObjectTableNVX()
     {
-      Reset(device, flags);
+      Reset(device, objectCount, pObjectEntryTypes, pObjectEntryCounts, pObjectEntryUsageFlags, maxUniformBuffersPerDescriptor, maxStorageBuffersPerDescriptor, maxStorageImagesPerDescriptor, maxSampledImagesPerDescriptor, maxPipelineLayouts);
     }
 #endif
 
-    ~Fence()
+    ~ObjectTableNVX()
     {
       Reset();
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkFence Release()
+    VkObjectTableNVX Release()
     {
-      const auto resource = m_fence;
+      const auto resource = m_objectTable;
       m_device = VK_NULL_HANDLE;
-      m_fence = VK_NULL_HANDLE;
+      m_objectTable = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       return resource;
     }
 
@@ -125,27 +124,27 @@ namespace RapidVulkan
         return;
 
       assert(m_device != VK_NULL_HANDLE);
-      assert(m_fence != VK_NULL_HANDLE);
+      assert(m_objectTable != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED);
 
-      vkDestroyFence(m_device, m_fence, nullptr);
+      vkDestroyObjectTableNVX(m_device, m_objectTable, nullptr);
       m_device = VK_NULL_HANDLE;
-      m_fence = VK_NULL_HANDLE;
+      m_objectTable = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
-    //! @brief Destroys any owned resources and assume control of the Fence (this object becomes responsible for releasing it)
-    void Reset(const ClaimMode claimMode, const VkDevice device, const VkFence fence)
+    //! @brief Destroys any owned resources and assume control of the ObjectTableNVX (this object becomes responsible for releasing it)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkObjectTableNVX objectTable)
     {
       if (IsValid())
         Reset();
 
 
       m_device = device;
-      m_fence = fence;
+      m_objectTable = objectTable;
     }
 
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateFence
-    void Reset(const VkDevice device, const VkFenceCreateInfo& createInfo)
+    //! @note  Function: vkCreateObjectTableNVX
+    void Reset(const VkDevice device, const VkObjectTableCreateInfoNVX& createInfo)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
@@ -159,23 +158,31 @@ namespace RapidVulkan
         Reset();
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkFence fence;
-      Util::Check(vkCreateFence(device, &createInfo, nullptr, &fence), "vkCreateFence", __FILE__, __LINE__);
+      VkObjectTableNVX objectTable;
+      Util::Check(vkCreateObjectTableNVX(device, &createInfo, nullptr, &objectTable), "vkCreateObjectTableNVX", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
-      m_fence = fence;
+      m_objectTable = objectTable;
     }
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateFence
-    void Reset(const VkDevice device, const VkFenceCreateFlags flags)
+    //! @note  Function: vkCreateObjectTableNVX
+    void Reset(const VkDevice device, const uint32_t objectCount, const VkObjectEntryTypeNVX * pObjectEntryTypes, const uint32_t * pObjectEntryCounts, const VkObjectEntryUsageFlagsNVX * pObjectEntryUsageFlags, const uint32_t maxUniformBuffersPerDescriptor, const uint32_t maxStorageBuffersPerDescriptor, const uint32_t maxStorageImagesPerDescriptor, const uint32_t maxSampledImagesPerDescriptor, const uint32_t maxPipelineLayouts)
     {
-      VkFenceCreateInfo createInfo{};
-      createInfo.sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
+      VkObjectTableCreateInfoNVX createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_OBJECT_TABLE_CREATE_INFO_NVX;
       createInfo.pNext = nullptr;
-      createInfo.flags = flags;
+      createInfo.objectCount = objectCount;
+      createInfo.pObjectEntryTypes = pObjectEntryTypes;
+      createInfo.pObjectEntryCounts = pObjectEntryCounts;
+      createInfo.pObjectEntryUsageFlags = pObjectEntryUsageFlags;
+      createInfo.maxUniformBuffersPerDescriptor = maxUniformBuffersPerDescriptor;
+      createInfo.maxStorageBuffersPerDescriptor = maxStorageBuffersPerDescriptor;
+      createInfo.maxStorageImagesPerDescriptor = maxStorageImagesPerDescriptor;
+      createInfo.maxSampledImagesPerDescriptor = maxSampledImagesPerDescriptor;
+      createInfo.maxPipelineLayouts = maxPipelineLayouts;
 
       Reset(device, createInfo);
     }
@@ -188,47 +195,33 @@ namespace RapidVulkan
     }
 
     //! @brief Get the associated resource handle
-    VkFence Get() const
+    VkObjectTableNVX Get() const
     {
-      return m_fence;
+      return m_objectTable;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkFence* GetPointer() const
+    const VkObjectTableNVX* GetPointer() const
     {
-      return &m_fence;
+      return &m_objectTable;
     }
 
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_fence != VK_NULL_HANDLE;
+      return m_objectTable != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
-
-    //! @note  Function: vkGetFenceStatus
-    VkResult GetFenceStatus() const
+    //! @note  Function: vkRegisterObjectsNVX
+    void RegisterObjectsNVX(const uint32_t objectCount, const VkObjectTableEntryNVX *const * ppObjectTableEntries, const uint32_t * pObjectIndices)
     {
-      RAPIDVULKAN_LOG_DEBUG_WARNING_IF(m_device == VK_NULL_HANDLE || m_fence == VK_NULL_HANDLE, "Fence: GetFenceStatus called on a VK_NULL_HANDLE");
-      return vkGetFenceStatus(m_device, m_fence);
+      Util::Check(vkRegisterObjectsNVX(m_device, m_objectTable, objectCount, ppObjectTableEntries, pObjectIndices), "vkRegisterObjectsNVX", __FILE__, __LINE__);
     }
 
-
-    void WaitForFence(const uint64_t timeout)
+    //! @note  Function: vkUnregisterObjectsNVX
+    void UnregisterObjectsNVX(const uint32_t objectCount, const VkObjectEntryTypeNVX * pObjectEntryTypes, const uint32_t * pObjectIndices)
     {
-      Util::Check(vkWaitForFences(m_device, 1, &m_fence, VK_TRUE, timeout), "vkWaitForFences", __FILE__, __LINE__);
-    }
-
-
-    VkResult TryWaitForFence(const uint64_t timeout)
-    {
-      return vkWaitForFences(m_device, 1, &m_fence, VK_TRUE, timeout);
-    }
-
-
-    void ResetFence()
-    {
-      Util::Check(vkResetFences(m_device, 1, &m_fence), "vkResetFences", __FILE__, __LINE__);
+      Util::Check(vkUnregisterObjectsNVX(m_device, m_objectTable, objectCount, pObjectEntryTypes, pObjectIndices), "vkUnregisterObjectsNVX", __FILE__, __LINE__);
     }
   };
 }

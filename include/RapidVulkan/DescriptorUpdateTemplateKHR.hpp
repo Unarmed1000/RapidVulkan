@@ -1,5 +1,5 @@
-#ifndef RAPIDVULKAN_FENCE_HPP
-#define RAPIDVULKAN_FENCE_HPP
+#ifndef RAPIDVULKAN_DESCRIPTORUPDATETEMPLATEKHR_HPP
+#define RAPIDVULKAN_DESCRIPTORUPDATETEMPLATEKHR_HPP
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -26,23 +26,22 @@
 
 #include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
-#include <RapidVulkan/System/Log.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
 
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
-  class Fence
+  class DescriptorUpdateTemplateKHR
   {
     VkDevice m_device;
-    VkFence m_fence;
+    VkDescriptorUpdateTemplateKHR m_descriptorUpdateTemplate;
   public:
-    Fence(const Fence&) = delete;
-    Fence& operator=(const Fence&) = delete;
+    DescriptorUpdateTemplateKHR(const DescriptorUpdateTemplateKHR&) = delete;
+    DescriptorUpdateTemplateKHR& operator=(const DescriptorUpdateTemplateKHR&) = delete;
 
     //! @brief Move assignment operator
-    Fence& operator=(Fence&& other)
+    DescriptorUpdateTemplateKHR& operator=(DescriptorUpdateTemplateKHR&& other)
     {
       if (this != &other)
       {
@@ -52,69 +51,69 @@ namespace RapidVulkan
 
         // Claim ownership here
         m_device = other.m_device;
-        m_fence = other.m_fence;
+        m_descriptorUpdateTemplate = other.m_descriptorUpdateTemplate;
 
         // Remove the data from other
         other.m_device = VK_NULL_HANDLE;
-        other.m_fence = VK_NULL_HANDLE;
+        other.m_descriptorUpdateTemplate = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       }
       return *this;
     }
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    Fence(Fence&& other)
+    DescriptorUpdateTemplateKHR(DescriptorUpdateTemplateKHR&& other)
       : m_device(other.m_device)
-      , m_fence(other.m_fence)
+      , m_descriptorUpdateTemplate(other.m_descriptorUpdateTemplate)
     {
       // Remove the data from other
       other.m_device = VK_NULL_HANDLE;
-      other.m_fence = VK_NULL_HANDLE;
+      other.m_descriptorUpdateTemplate = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    Fence()
+    DescriptorUpdateTemplateKHR()
       : m_device(VK_NULL_HANDLE)
-      , m_fence(VK_NULL_HANDLE)
+      , m_descriptorUpdateTemplate(FIX_DEFAULT_FOR_TYPE_NOT_DEFINED)
     {
     }
 
-    //! @brief Assume control of the Fence (this object becomes responsible for releasing it)
-    explicit Fence(const ClaimMode claimMode, const VkDevice device, const VkFence fence)
-      : Fence()
+    //! @brief Assume control of the DescriptorUpdateTemplateKHR (this object becomes responsible for releasing it)
+    explicit DescriptorUpdateTemplateKHR(const ClaimMode claimMode, const VkDevice device, const VkDescriptorUpdateTemplateKHR descriptorUpdateTemplate)
+      : DescriptorUpdateTemplateKHR()
     {
-      Reset(claimMode, device, fence);
+      Reset(claimMode, device, descriptorUpdateTemplate);
     }
 
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateFence
-    Fence(const VkDevice device, const VkFenceCreateInfo& createInfo)
-      : Fence()
+    //! @note  Function: vkCreateDescriptorUpdateTemplateKHR
+    DescriptorUpdateTemplateKHR(const VkDevice device, const VkDescriptorUpdateTemplateCreateInfoKHR& createInfo)
+      : DescriptorUpdateTemplateKHR()
     {
       Reset(device, createInfo);
     }
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateFence
-    Fence(const VkDevice device, const VkFenceCreateFlags flags)
-      : Fence()
+    //! @note  Function: vkCreateDescriptorUpdateTemplateKHR
+    DescriptorUpdateTemplateKHR(const VkDevice device, const VkDescriptorUpdateTemplateCreateFlagsKHR flags, const uint32_t descriptorUpdateEntryCount, VkDescriptorUpdateTemplateEntryKHR*const pDescriptorUpdateEntries, const VkDescriptorUpdateTemplateTypeKHR templateType, const VkDescriptorSetLayout descriptorSetLayout, const VkPipelineBindPoint pipelineBindPoint, const VkPipelineLayout pipelineLayout, const uint32_t set)
+      : DescriptorUpdateTemplateKHR()
     {
-      Reset(device, flags);
+      Reset(device, flags, descriptorUpdateEntryCount, pDescriptorUpdateEntries, templateType, descriptorSetLayout, pipelineBindPoint, pipelineLayout, set);
     }
 #endif
 
-    ~Fence()
+    ~DescriptorUpdateTemplateKHR()
     {
       Reset();
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkFence Release()
+    VkDescriptorUpdateTemplateKHR Release()
     {
-      const auto resource = m_fence;
+      const auto resource = m_descriptorUpdateTemplate;
       m_device = VK_NULL_HANDLE;
-      m_fence = VK_NULL_HANDLE;
+      m_descriptorUpdateTemplate = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       return resource;
     }
 
@@ -125,27 +124,27 @@ namespace RapidVulkan
         return;
 
       assert(m_device != VK_NULL_HANDLE);
-      assert(m_fence != VK_NULL_HANDLE);
+      assert(m_descriptorUpdateTemplate != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED);
 
-      vkDestroyFence(m_device, m_fence, nullptr);
+      vkDestroyDescriptorUpdateTemplateKHR(m_device, m_descriptorUpdateTemplate, nullptr);
       m_device = VK_NULL_HANDLE;
-      m_fence = VK_NULL_HANDLE;
+      m_descriptorUpdateTemplate = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
-    //! @brief Destroys any owned resources and assume control of the Fence (this object becomes responsible for releasing it)
-    void Reset(const ClaimMode claimMode, const VkDevice device, const VkFence fence)
+    //! @brief Destroys any owned resources and assume control of the DescriptorUpdateTemplateKHR (this object becomes responsible for releasing it)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkDescriptorUpdateTemplateKHR descriptorUpdateTemplate)
     {
       if (IsValid())
         Reset();
 
 
       m_device = device;
-      m_fence = fence;
+      m_descriptorUpdateTemplate = descriptorUpdateTemplate;
     }
 
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateFence
-    void Reset(const VkDevice device, const VkFenceCreateInfo& createInfo)
+    //! @note  Function: vkCreateDescriptorUpdateTemplateKHR
+    void Reset(const VkDevice device, const VkDescriptorUpdateTemplateCreateInfoKHR& createInfo)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
@@ -159,23 +158,30 @@ namespace RapidVulkan
         Reset();
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkFence fence;
-      Util::Check(vkCreateFence(device, &createInfo, nullptr, &fence), "vkCreateFence", __FILE__, __LINE__);
+      VkDescriptorUpdateTemplateKHR descriptorUpdateTemplate;
+      Util::Check(vkCreateDescriptorUpdateTemplateKHR(device, &createInfo, nullptr, &descriptorUpdateTemplate), "vkCreateDescriptorUpdateTemplateKHR", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
-      m_fence = fence;
+      m_descriptorUpdateTemplate = descriptorUpdateTemplate;
     }
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateFence
-    void Reset(const VkDevice device, const VkFenceCreateFlags flags)
+    //! @note  Function: vkCreateDescriptorUpdateTemplateKHR
+    void Reset(const VkDevice device, const VkDescriptorUpdateTemplateCreateFlagsKHR flags, const uint32_t descriptorUpdateEntryCount, VkDescriptorUpdateTemplateEntryKHR*const pDescriptorUpdateEntries, const VkDescriptorUpdateTemplateTypeKHR templateType, const VkDescriptorSetLayout descriptorSetLayout, const VkPipelineBindPoint pipelineBindPoint, const VkPipelineLayout pipelineLayout, const uint32_t set)
     {
-      VkFenceCreateInfo createInfo{};
-      createInfo.sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
+      VkDescriptorUpdateTemplateCreateInfoKHR createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO_KHR;
       createInfo.pNext = nullptr;
       createInfo.flags = flags;
+      createInfo.descriptorUpdateEntryCount = descriptorUpdateEntryCount;
+      createInfo.pDescriptorUpdateEntries = pDescriptorUpdateEntries;
+      createInfo.templateType = templateType;
+      createInfo.descriptorSetLayout = descriptorSetLayout;
+      createInfo.pipelineBindPoint = pipelineBindPoint;
+      createInfo.pipelineLayout = pipelineLayout;
+      createInfo.set = set;
 
       Reset(device, createInfo);
     }
@@ -188,47 +194,21 @@ namespace RapidVulkan
     }
 
     //! @brief Get the associated resource handle
-    VkFence Get() const
+    VkDescriptorUpdateTemplateKHR Get() const
     {
-      return m_fence;
+      return m_descriptorUpdateTemplate;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkFence* GetPointer() const
+    const VkDescriptorUpdateTemplateKHR* GetPointer() const
     {
-      return &m_fence;
+      return &m_descriptorUpdateTemplate;
     }
 
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_fence != VK_NULL_HANDLE;
-    }
-
-
-    //! @note  Function: vkGetFenceStatus
-    VkResult GetFenceStatus() const
-    {
-      RAPIDVULKAN_LOG_DEBUG_WARNING_IF(m_device == VK_NULL_HANDLE || m_fence == VK_NULL_HANDLE, "Fence: GetFenceStatus called on a VK_NULL_HANDLE");
-      return vkGetFenceStatus(m_device, m_fence);
-    }
-
-
-    void WaitForFence(const uint64_t timeout)
-    {
-      Util::Check(vkWaitForFences(m_device, 1, &m_fence, VK_TRUE, timeout), "vkWaitForFences", __FILE__, __LINE__);
-    }
-
-
-    VkResult TryWaitForFence(const uint64_t timeout)
-    {
-      return vkWaitForFences(m_device, 1, &m_fence, VK_TRUE, timeout);
-    }
-
-
-    void ResetFence()
-    {
-      Util::Check(vkResetFences(m_device, 1, &m_fence), "vkResetFences", __FILE__, __LINE__);
+      return m_descriptorUpdateTemplate != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
   };
 }

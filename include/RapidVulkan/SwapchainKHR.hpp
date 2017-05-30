@@ -238,6 +238,14 @@ namespace RapidVulkan
     {
       Util::Check(vkAcquireNextImageKHR(m_device, m_swapchain, timeout, semaphore, fence, pImageIndex), "vkAcquireNextImageKHR", __FILE__, __LINE__);
     }
+
+#if VK_HEADER_VERSION >= 50
+    //! @note  Function: vkGetSwapchainStatusKHR
+    void GetSwapchainStatusKHR()
+    {
+      Util::Check(vkGetSwapchainStatusKHR(m_device, m_swapchain), "vkGetSwapchainStatusKHR", __FILE__, __LINE__);
+    }
+#endif
   };
 }
 

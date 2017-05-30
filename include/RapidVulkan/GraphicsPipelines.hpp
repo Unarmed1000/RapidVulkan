@@ -213,11 +213,27 @@ namespace RapidVulkan
       return m_pipelines.size();
     }
 
+
+    //! @brief Get direct access to the vector content
+    const VkPipeline* Data() const
+    {
+      return m_pipelines.data();
+    }
+
+
     //! @brief Get the associated resource handles
     const std::vector<VkPipeline>& Get() const
     {
       return m_pipelines;
     }
+
+
+    VkPipeline Get(const std::size_t arrayIndex) const
+    {
+      assert(arrayIndex < m_pipelines.size());
+      return m_pipelines[arrayIndex];
+    }
+
 
     //! @brief Access the resource at a given index
     VkPipeline operator[] (const std::size_t arrayIndex) const

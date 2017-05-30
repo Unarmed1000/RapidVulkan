@@ -214,6 +214,14 @@ namespace RapidVulkan
     {
       vkGetBufferMemoryRequirements(m_device, m_buffer, pMemoryRequirements);
     }
+
+
+    VkMemoryRequirements GetBufferMemoryRequirements() const
+    {
+      VkMemoryRequirements requirements;
+      vkGetBufferMemoryRequirements(m_device, m_buffer, &requirements);
+      return requirements;
+    }
   };
 }
 

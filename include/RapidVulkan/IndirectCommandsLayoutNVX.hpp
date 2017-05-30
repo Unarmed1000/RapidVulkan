@@ -1,5 +1,5 @@
-#ifndef RAPIDVULKAN_FENCE_HPP
-#define RAPIDVULKAN_FENCE_HPP
+#ifndef RAPIDVULKAN_INDIRECTCOMMANDSLAYOUTNVX_HPP
+#define RAPIDVULKAN_INDIRECTCOMMANDSLAYOUTNVX_HPP
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -26,23 +26,22 @@
 
 #include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
-#include <RapidVulkan/System/Log.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
 
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
-  class Fence
+  class IndirectCommandsLayoutNVX
   {
     VkDevice m_device;
-    VkFence m_fence;
+    VkIndirectCommandsLayoutNVX m_indirectCommandsLayout;
   public:
-    Fence(const Fence&) = delete;
-    Fence& operator=(const Fence&) = delete;
+    IndirectCommandsLayoutNVX(const IndirectCommandsLayoutNVX&) = delete;
+    IndirectCommandsLayoutNVX& operator=(const IndirectCommandsLayoutNVX&) = delete;
 
     //! @brief Move assignment operator
-    Fence& operator=(Fence&& other)
+    IndirectCommandsLayoutNVX& operator=(IndirectCommandsLayoutNVX&& other)
     {
       if (this != &other)
       {
@@ -52,69 +51,69 @@ namespace RapidVulkan
 
         // Claim ownership here
         m_device = other.m_device;
-        m_fence = other.m_fence;
+        m_indirectCommandsLayout = other.m_indirectCommandsLayout;
 
         // Remove the data from other
         other.m_device = VK_NULL_HANDLE;
-        other.m_fence = VK_NULL_HANDLE;
+        other.m_indirectCommandsLayout = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       }
       return *this;
     }
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    Fence(Fence&& other)
+    IndirectCommandsLayoutNVX(IndirectCommandsLayoutNVX&& other)
       : m_device(other.m_device)
-      , m_fence(other.m_fence)
+      , m_indirectCommandsLayout(other.m_indirectCommandsLayout)
     {
       // Remove the data from other
       other.m_device = VK_NULL_HANDLE;
-      other.m_fence = VK_NULL_HANDLE;
+      other.m_indirectCommandsLayout = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    Fence()
+    IndirectCommandsLayoutNVX()
       : m_device(VK_NULL_HANDLE)
-      , m_fence(VK_NULL_HANDLE)
+      , m_indirectCommandsLayout(FIX_DEFAULT_FOR_TYPE_NOT_DEFINED)
     {
     }
 
-    //! @brief Assume control of the Fence (this object becomes responsible for releasing it)
-    explicit Fence(const ClaimMode claimMode, const VkDevice device, const VkFence fence)
-      : Fence()
+    //! @brief Assume control of the IndirectCommandsLayoutNVX (this object becomes responsible for releasing it)
+    explicit IndirectCommandsLayoutNVX(const ClaimMode claimMode, const VkDevice device, const VkIndirectCommandsLayoutNVX indirectCommandsLayout)
+      : IndirectCommandsLayoutNVX()
     {
-      Reset(claimMode, device, fence);
+      Reset(claimMode, device, indirectCommandsLayout);
     }
 
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateFence
-    Fence(const VkDevice device, const VkFenceCreateInfo& createInfo)
-      : Fence()
+    //! @note  Function: vkCreateIndirectCommandsLayoutNVX
+    IndirectCommandsLayoutNVX(const VkDevice device, const VkIndirectCommandsLayoutCreateInfoNVX& createInfo)
+      : IndirectCommandsLayoutNVX()
     {
       Reset(device, createInfo);
     }
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateFence
-    Fence(const VkDevice device, const VkFenceCreateFlags flags)
-      : Fence()
+    //! @note  Function: vkCreateIndirectCommandsLayoutNVX
+    IndirectCommandsLayoutNVX(const VkDevice device, const VkPipelineBindPoint pipelineBindPoint, const VkIndirectCommandsLayoutUsageFlagsNVX flags, const uint32_t tokenCount, VkIndirectCommandsLayoutTokenNVX*const pTokens)
+      : IndirectCommandsLayoutNVX()
     {
-      Reset(device, flags);
+      Reset(device, pipelineBindPoint, flags, tokenCount, pTokens);
     }
 #endif
 
-    ~Fence()
+    ~IndirectCommandsLayoutNVX()
     {
       Reset();
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkFence Release()
+    VkIndirectCommandsLayoutNVX Release()
     {
-      const auto resource = m_fence;
+      const auto resource = m_indirectCommandsLayout;
       m_device = VK_NULL_HANDLE;
-      m_fence = VK_NULL_HANDLE;
+      m_indirectCommandsLayout = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       return resource;
     }
 
@@ -125,27 +124,27 @@ namespace RapidVulkan
         return;
 
       assert(m_device != VK_NULL_HANDLE);
-      assert(m_fence != VK_NULL_HANDLE);
+      assert(m_indirectCommandsLayout != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED);
 
-      vkDestroyFence(m_device, m_fence, nullptr);
+      vkDestroyIndirectCommandsLayoutNVX(m_device, m_indirectCommandsLayout, nullptr);
       m_device = VK_NULL_HANDLE;
-      m_fence = VK_NULL_HANDLE;
+      m_indirectCommandsLayout = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
-    //! @brief Destroys any owned resources and assume control of the Fence (this object becomes responsible for releasing it)
-    void Reset(const ClaimMode claimMode, const VkDevice device, const VkFence fence)
+    //! @brief Destroys any owned resources and assume control of the IndirectCommandsLayoutNVX (this object becomes responsible for releasing it)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkIndirectCommandsLayoutNVX indirectCommandsLayout)
     {
       if (IsValid())
         Reset();
 
 
       m_device = device;
-      m_fence = fence;
+      m_indirectCommandsLayout = indirectCommandsLayout;
     }
 
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateFence
-    void Reset(const VkDevice device, const VkFenceCreateInfo& createInfo)
+    //! @note  Function: vkCreateIndirectCommandsLayoutNVX
+    void Reset(const VkDevice device, const VkIndirectCommandsLayoutCreateInfoNVX& createInfo)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
@@ -159,23 +158,26 @@ namespace RapidVulkan
         Reset();
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkFence fence;
-      Util::Check(vkCreateFence(device, &createInfo, nullptr, &fence), "vkCreateFence", __FILE__, __LINE__);
+      VkIndirectCommandsLayoutNVX indirectCommandsLayout;
+      Util::Check(vkCreateIndirectCommandsLayoutNVX(device, &createInfo, nullptr, &indirectCommandsLayout), "vkCreateIndirectCommandsLayoutNVX", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
-      m_fence = fence;
+      m_indirectCommandsLayout = indirectCommandsLayout;
     }
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateFence
-    void Reset(const VkDevice device, const VkFenceCreateFlags flags)
+    //! @note  Function: vkCreateIndirectCommandsLayoutNVX
+    void Reset(const VkDevice device, const VkPipelineBindPoint pipelineBindPoint, const VkIndirectCommandsLayoutUsageFlagsNVX flags, const uint32_t tokenCount, VkIndirectCommandsLayoutTokenNVX*const pTokens)
     {
-      VkFenceCreateInfo createInfo{};
-      createInfo.sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
+      VkIndirectCommandsLayoutCreateInfoNVX createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NVX;
       createInfo.pNext = nullptr;
+      createInfo.pipelineBindPoint = pipelineBindPoint;
       createInfo.flags = flags;
+      createInfo.tokenCount = tokenCount;
+      createInfo.pTokens = pTokens;
 
       Reset(device, createInfo);
     }
@@ -188,47 +190,21 @@ namespace RapidVulkan
     }
 
     //! @brief Get the associated resource handle
-    VkFence Get() const
+    VkIndirectCommandsLayoutNVX Get() const
     {
-      return m_fence;
+      return m_indirectCommandsLayout;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkFence* GetPointer() const
+    const VkIndirectCommandsLayoutNVX* GetPointer() const
     {
-      return &m_fence;
+      return &m_indirectCommandsLayout;
     }
 
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_fence != VK_NULL_HANDLE;
-    }
-
-
-    //! @note  Function: vkGetFenceStatus
-    VkResult GetFenceStatus() const
-    {
-      RAPIDVULKAN_LOG_DEBUG_WARNING_IF(m_device == VK_NULL_HANDLE || m_fence == VK_NULL_HANDLE, "Fence: GetFenceStatus called on a VK_NULL_HANDLE");
-      return vkGetFenceStatus(m_device, m_fence);
-    }
-
-
-    void WaitForFence(const uint64_t timeout)
-    {
-      Util::Check(vkWaitForFences(m_device, 1, &m_fence, VK_TRUE, timeout), "vkWaitForFences", __FILE__, __LINE__);
-    }
-
-
-    VkResult TryWaitForFence(const uint64_t timeout)
-    {
-      return vkWaitForFences(m_device, 1, &m_fence, VK_TRUE, timeout);
-    }
-
-
-    void ResetFence()
-    {
-      Util::Check(vkResetFences(m_device, 1, &m_fence), "vkResetFences", __FILE__, __LINE__);
+      return m_indirectCommandsLayout != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
   };
 }

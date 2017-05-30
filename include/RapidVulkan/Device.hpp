@@ -238,18 +238,6 @@ namespace RapidVulkan
     {
       vkUpdateDescriptorSets(m_device, descriptorWriteCount, pDescriptorWrites, descriptorCopyCount, pDescriptorCopies);
     }
-
-    //! @note  Function: vkDebugMarkerSetObjectTagEXT
-    void DebugMarkerSetObjectTagEXT(VkDebugMarkerObjectTagInfoEXT * pTagInfo)
-    {
-      Util::Check(vkDebugMarkerSetObjectTagEXT(m_device, pTagInfo), "vkDebugMarkerSetObjectTagEXT", __FILE__, __LINE__);
-    }
-
-    //! @note  Function: vkDebugMarkerSetObjectNameEXT
-    void DebugMarkerSetObjectNameEXT(VkDebugMarkerObjectNameInfoEXT * pNameInfo)
-    {
-      Util::Check(vkDebugMarkerSetObjectNameEXT(m_device, pNameInfo), "vkDebugMarkerSetObjectNameEXT", __FILE__, __LINE__);
-    }
   };
 }
 

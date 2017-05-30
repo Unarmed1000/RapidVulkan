@@ -216,11 +216,27 @@ namespace RapidVulkan
       return m_descriptorSets.size();
     }
 
+
+    //! @brief Get direct access to the vector content
+    const VkDescriptorSet* Data() const
+    {
+      return m_descriptorSets.data();
+    }
+
+
     //! @brief Get the associated resource handles
     const std::vector<VkDescriptorSet>& Get() const
     {
       return m_descriptorSets;
     }
+
+
+      VkDescriptorSet Get(const std::size_t arrayIndex) const
+      {
+        assert(arrayIndex < m_descriptorSets.size());
+        return m_descriptorSets[arrayIndex];
+      }
+
 
     //! @brief Access the resource at a given index
     VkDescriptorSet operator[] (const std::size_t arrayIndex) const
@@ -240,6 +256,12 @@ namespace RapidVulkan
     inline bool IsValid() const
     {
       return m_descriptorSets.size() > 0;
+    }
+
+
+    void UpdateDescriptorSets(const uint32_t writeCount, const VkWriteDescriptorSet*const pDescriptorWrites, const uint32_t copyCount, const VkCopyDescriptorSet*const pDescriptorCopies)
+    {
+      vkUpdateDescriptorSets(m_device, writeCount, pDescriptorWrites, copyCount, pDescriptorCopies);
     }
   };
 }
