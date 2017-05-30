@@ -26,6 +26,7 @@
 
 #include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/Util.hpp>
+#include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
 
@@ -103,7 +104,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkDevice Release()
+    VkDevice Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
     {
       const auto resource = m_device;
       m_device = VK_NULL_HANDLE;

@@ -1,9 +1,9 @@
-#ifndef RAPIDVULKAN_EXCEPTIONS_HPP
-#define RAPIDVULKAN_EXCEPTIONS_HPP
+#ifndef RAPIDVULKAN_SYSTEM_ERRORFORMATTER_HPP
+#define RAPIDVULKAN_SYSTEM_ERRORFORMATTER_HPP
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2016, Rene Thrane
+//* Copyright (c) 2017, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -22,83 +22,35 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-#include <RapidVulkan/System/ErrorFormatter.hpp>
-#include <stdexcept>
+#include <RapidVulkan/System/Macro.hpp>
 #include <string>
 #include <vulkan/vulkan.h>
 
 namespace RapidVulkan
 {
-  class VulkanException : public std::runtime_error
+  namespace ErrorFormatter
   {
-    std::string m_fileName;
-    int m_lineNumber;
-  public:
-    explicit VulkanException(const std::string& whatArg)
-      : std::runtime_error(whatArg)
-      , m_fileName()
-      , m_lineNumber(0)
+#ifdef RAPIDVULKAN_ERRORFORMATTER_EXTERN
+    extern std::string Format(const std::string& message, const VkResult errorCode);
+    extern std::string Format(const std::string& message, const VkResult errorCode, const std::string& fileName, const int lineNumber);
+#else
+
+    inline std::string Format(const std::string& message, const VkResult errorCode)
     {
+      RAPIDVULKAN_PARAM_NOT_USED(errorCode);
+      return message;
     }
 
-    explicit VulkanException(const std::string& whatArg, const std::string& fileName, const int lineNumber)
-      : std::runtime_error(whatArg)
-      , m_fileName(fileName)
-      , m_lineNumber(lineNumber)
+    inline std::string Format(const std::string& message, const VkResult errorCode, const std::string& fileName, const int lineNumber)
     {
-    }
+      RAPIDVULKAN_PARAM_NOT_USED(errorCode);
+      RAPIDVULKAN_PARAM_NOT_USED(fileName);
+      RAPIDVULKAN_PARAM_NOT_USED(lineNumber);
+      return message;
+    }      
 
-
-    std::string GetFileName() const
-    {
-      return m_fileName;
-    }
-
-
-    int GetLineNumber() const
-    {
-      return m_lineNumber;
-    }
-  };
-
-
-  class VulkanUsageErrorException : public std::logic_error
-  {
-  public:
-    VulkanUsageErrorException()
-      : std::logic_error("VulkanUsageErrorException")
-    {
-    }
-
-    explicit VulkanUsageErrorException(const std::string& what_arg)
-      : std::logic_error(what_arg)
-    {
-    }
-  };
-
-
-  class VulkanErrorException : public VulkanException
-  {
-    VkResult m_result;
-  public:
-    explicit VulkanErrorException(const std::string& whatArg, const VkResult result)
-      : VulkanException(ErrorFormatter::Format(whatArg, result))
-      , m_result(result)
-    {
-    }
-
-    explicit VulkanErrorException(const std::string& whatArg, const VkResult result, const std::string& fileName, const int lineNumber)
-      : VulkanException(ErrorFormatter::Format(whatArg, result, fileName, lineNumber), fileName, lineNumber)
-      , m_result(result)
-    {
-    }
-
-    VkResult GetResult() const
-    {
-      return m_result;
-    }
-  };
-
+    #endif
+  }
 }
 
 #endif

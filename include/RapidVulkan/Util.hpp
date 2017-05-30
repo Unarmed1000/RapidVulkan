@@ -43,7 +43,7 @@ namespace RapidVulkan
       if (result != VK_SUCCESS)
       {
         assert(pszMessage != nullptr);
-        throw VulkanErrorException(message, result);
+        throw VulkanErrorException(pszMessage, result);
       }
     }
 

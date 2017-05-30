@@ -1,9 +1,9 @@
-#ifndef RAPIDVULKAN_EXCEPTIONS_HPP
-#define RAPIDVULKAN_EXCEPTIONS_HPP
+#ifndef RAPIDVULKAN_SYSTEM_MACRO_HPP
+#define RAPIDVULKAN_SYSTEM_MACRO_HPP
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2016, Rene Thrane
+//* Copyright (c) 2017, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -22,83 +22,42 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-#include <RapidVulkan/System/ErrorFormatter.hpp>
-#include <stdexcept>
-#include <string>
-#include <vulkan/vulkan.h>
-
-namespace RapidVulkan
-{
-  class VulkanException : public std::runtime_error
-  {
-    std::string m_fileName;
-    int m_lineNumber;
-  public:
-    explicit VulkanException(const std::string& whatArg)
-      : std::runtime_error(whatArg)
-      , m_fileName()
-      , m_lineNumber(0)
-    {
-    }
-
-    explicit VulkanException(const std::string& whatArg, const std::string& fileName, const int lineNumber)
-      : std::runtime_error(whatArg)
-      , m_fileName(fileName)
-      , m_lineNumber(lineNumber)
-    {
-    }
+#define RAPIDVULKAN_PARAM_NOT_USED(pARAM)    ((void)(pARAM))
 
 
-    std::string GetFileName() const
-    {
-      return m_fileName;
-    }
+#ifdef FSL_DEMOFRAMEWORK
 
+// Use the FslBase implementation
+#include <FslBase/Attributes.hpp>
+#define RAPIDVULKAN_ATTR_DEPRECATED                            FSL_ATTR_DEPRECATED
+#define RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT            FSL_FUNC_POSTFIX_WARN_UNUSED_RESULT
 
-    int GetLineNumber() const
-    {
-      return m_lineNumber;
-    }
-  };
+#else
 
+  #ifdef __GNUC__
 
-  class VulkanUsageErrorException : public std::logic_error
-  {
-  public:
-    VulkanUsageErrorException()
-      : std::logic_error("VulkanUsageErrorException")
-    {
-    }
+    // GCC
+    #if __cplusplus > 201103 // Check if its C++14
+      #define RAPIDVULKAN_ATTR_DEPRECATED                        [[deprecated]]
+    #else
+      #define RAPIDVULKAN_ATTR_DEPRECATED
+    #endif
+    #define RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT          __attribute__((warn_unused_result))
 
-    explicit VulkanUsageErrorException(const std::string& what_arg)
-      : std::logic_error(what_arg)
-    {
-    }
-  };
+  #elif defined(_MSC_VER)
 
+    // Visual studio
+    #define RAPIDVULKAN_ATTR_DEPRECATED                          __declspec(deprecated)
+    #define RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
 
-  class VulkanErrorException : public VulkanException
-  {
-    VkResult m_result;
-  public:
-    explicit VulkanErrorException(const std::string& whatArg, const VkResult result)
-      : VulkanException(ErrorFormatter::Format(whatArg, result))
-      , m_result(result)
-    {
-    }
+  #else
 
-    explicit VulkanErrorException(const std::string& whatArg, const VkResult result, const std::string& fileName, const int lineNumber)
-      : VulkanException(ErrorFormatter::Format(whatArg, result, fileName, lineNumber), fileName, lineNumber)
-      , m_result(result)
-    {
-    }
+    #pragma message("WARNING: RAPIDVULKAN_ATTR_DEPRECATED, RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT not implemented for this compiler")
+    #define RAPIDVULKAN_ATTR_DEPRECATED
+    #define RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
+  
+  #endif
 
-    VkResult GetResult() const
-    {
-      return m_result;
-    }
-  };
-
-}
+#endif
 
 #endif

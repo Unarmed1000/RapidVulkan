@@ -24,19 +24,41 @@
 
 // Define some basic logging macros.
 
-#define RAPIDVULKAN_LOG(X)                               {}
-#define RAPIDVULKAN_LOG_IF(cONDITION, X)                 {}
-#define RAPIDVULKAN_LOG_WARNING(X)                       {}
-#define RAPIDVULKAN_LOG_WARNING_IF(cONDITION, X)         {}
-#define RAPIDVULKAN_LOG_ERROR(X)                         {}
-#define RAPIDVULKAN_LOG_ERROR_IF(cONDITION, X)           {}
+#ifdef FSL_DEMOFRAMEWORK
 
-// Log statements that are only included in debug builds.
-#define RAPIDVULKAN_LOG_DEBUG(X)                         {}
-#define RAPIDVULKAN_LOG_DEBUG_IF(cONDITION, X)           {}
-#define RAPIDVULKAN_LOG_DEBUG_WARNING(X)                 {}
-#define RAPIDVULKAN_LOG_DEBUG_WARNING_IF(cONDITION, X)   {}
-#define RAPIDVULKAN_LOG_DEBUG_ERROR(X)                   {}
-#define RAPIDVULKAN_LOG_DEBUG_ERROR_IF(cONDITION, X)     {}
+  #include <FslBase/Log/BasicLog.hpp>
+  #define RAPIDVULKAN_LOG(X)                               FSLBASICLOG(X)
+  #define RAPIDVULKAN_LOG_IF(cONDITION, X)                 FSLBASICLOG_IF(cONDITION, X)
+  #define RAPIDVULKAN_LOG_WARNING(X)                       FSLBASICLOG_WARNING(X)
+  #define RAPIDVULKAN_LOG_WARNING_IF(cONDITION, X)         FSLBASICLOG_WARNING_IF(cONDITION, X)
+  #define RAPIDVULKAN_LOG_ERROR(X)                         FSLBASICLOG_ERROR(X)
+  #define RAPIDVULKAN_LOG_ERROR_IF(cONDITION, X)           FSLBASICLOG_ERROR_IF(cONDITION, X)
+
+  // Log statements that are only included in debug builds.
+  #define RAPIDVULKAN_LOG_DEBUG(X)                         FSLBASICLOG_DEBUG(X)
+  #define RAPIDVULKAN_LOG_DEBUG_IF(cONDITION, X)           FSLBASICLOG_DEBUG_IF(cONDITION, X)
+  #define RAPIDVULKAN_LOG_DEBUG_WARNING(X)                 FSLBASICLOG_DEBUG_WARNING(X)
+  #define RAPIDVULKAN_LOG_DEBUG_WARNING_IF(cONDITION, X)   FSLBASICLOG_DEBUG_WARNING_IF(cONDITION, X)
+  #define RAPIDVULKAN_LOG_DEBUG_ERROR(X)                   FSLBASICLOG_DEBUG_ERROR(X)
+  #define RAPIDVULKAN_LOG_DEBUG_ERROR_IF(cONDITION, X)     FSLBASICLOG_DEBUG_ERROR_IF(cONDITION, X)
+
+#else
+
+  #define RAPIDVULKAN_LOG(X)                               {}
+  #define RAPIDVULKAN_LOG_IF(cONDITION, X)                 {}
+  #define RAPIDVULKAN_LOG_WARNING(X)                       {}
+  #define RAPIDVULKAN_LOG_WARNING_IF(cONDITION, X)         {}
+  #define RAPIDVULKAN_LOG_ERROR(X)                         {}
+  #define RAPIDVULKAN_LOG_ERROR_IF(cONDITION, X)           {}
+
+  // Log statements that are only included in debug builds.
+  #define RAPIDVULKAN_LOG_DEBUG(X)                         {}
+  #define RAPIDVULKAN_LOG_DEBUG_IF(cONDITION, X)           {}
+  #define RAPIDVULKAN_LOG_DEBUG_WARNING(X)                 {}
+  #define RAPIDVULKAN_LOG_DEBUG_WARNING_IF(cONDITION, X)   {}
+  #define RAPIDVULKAN_LOG_DEBUG_ERROR(X)                   {}
+  #define RAPIDVULKAN_LOG_DEBUG_ERROR_IF(cONDITION, X)     {}
+
+#endif
 
 #endif
