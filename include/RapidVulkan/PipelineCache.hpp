@@ -25,7 +25,7 @@
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
-#include <RapidVulkan/ErrorCheck.hpp>
+#include <RapidVulkan/CheckError.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -160,7 +160,7 @@ namespace RapidVulkan
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
       VkPipelineCache pipelineCache;
-      ErrorCheck(vkCreatePipelineCache(device, &createInfo, nullptr, &pipelineCache), "vkCreatePipelineCache", __FILE__, __LINE__);
+      CheckError(vkCreatePipelineCache(device, &createInfo, nullptr, &pipelineCache), "vkCreatePipelineCache", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
@@ -210,13 +210,13 @@ namespace RapidVulkan
     //! @note  Function: vkGetPipelineCacheData
     void GetPipelineCacheData(size_t * pDataSize, void * pData)
     {
-      ErrorCheck(vkGetPipelineCacheData(m_device, m_pipelineCache, pDataSize, pData), "vkGetPipelineCacheData", __FILE__, __LINE__);
+      CheckError(vkGetPipelineCacheData(m_device, m_pipelineCache, pDataSize, pData), "vkGetPipelineCacheData", __FILE__, __LINE__);
     }
 
     //! @note  Function: vkMergePipelineCaches
     void MergePipelineCaches(const uint32_t srcCacheCount, const VkPipelineCache * pSrcCaches)
     {
-      ErrorCheck(vkMergePipelineCaches(m_device, m_pipelineCache, srcCacheCount, pSrcCaches), "vkMergePipelineCaches", __FILE__, __LINE__);
+      CheckError(vkMergePipelineCaches(m_device, m_pipelineCache, srcCacheCount, pSrcCaches), "vkMergePipelineCaches", __FILE__, __LINE__);
     }
   };
 }

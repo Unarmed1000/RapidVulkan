@@ -25,7 +25,7 @@
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
-#include <RapidVulkan/ErrorCheck.hpp>
+#include <RapidVulkan/CheckError.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -160,7 +160,7 @@ namespace RapidVulkan
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
       VkQueryPool queryPool;
-      ErrorCheck(vkCreateQueryPool(device, &createInfo, nullptr, &queryPool), "vkCreateQueryPool", __FILE__, __LINE__);
+      CheckError(vkCreateQueryPool(device, &createInfo, nullptr, &queryPool), "vkCreateQueryPool", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
@@ -211,7 +211,7 @@ namespace RapidVulkan
     //! @note  Function: vkGetQueryPoolResults
     void GetQueryPoolResults(const uint32_t firstQuery, const uint32_t queryCount, const size_t dataSize, void * pData, const VkDeviceSize stride, const VkQueryResultFlags flags)
     {
-      ErrorCheck(vkGetQueryPoolResults(m_device, m_queryPool, firstQuery, queryCount, dataSize, pData, stride, flags), "vkGetQueryPoolResults", __FILE__, __LINE__);
+      CheckError(vkGetQueryPoolResults(m_device, m_queryPool, firstQuery, queryCount, dataSize, pData, stride, flags), "vkGetQueryPoolResults", __FILE__, __LINE__);
     }
   };
 }

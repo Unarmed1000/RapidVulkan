@@ -25,7 +25,7 @@
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
-#include <RapidVulkan/ErrorCheck.hpp>
+#include <RapidVulkan/CheckError.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -166,7 +166,7 @@ namespace RapidVulkan
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
       VkSwapchainKHR swapchain;
-      ErrorCheck(vkCreateSwapchainKHR(device, &createInfo, nullptr, &swapchain), "vkCreateSwapchainKHR", __FILE__, __LINE__);
+      CheckError(vkCreateSwapchainKHR(device, &createInfo, nullptr, &swapchain), "vkCreateSwapchainKHR", __FILE__, __LINE__);
       if (delayedReset)
         Reset();
 
@@ -231,20 +231,20 @@ namespace RapidVulkan
     //! @note  Function: vkGetSwapchainImagesKHR
     void GetSwapchainImagesKHR(uint32_t * pSwapchainImageCount, VkImage * pSwapchainImages)
     {
-      ErrorCheck(vkGetSwapchainImagesKHR(m_device, m_swapchain, pSwapchainImageCount, pSwapchainImages), "vkGetSwapchainImagesKHR", __FILE__, __LINE__);
+      CheckError(vkGetSwapchainImagesKHR(m_device, m_swapchain, pSwapchainImageCount, pSwapchainImages), "vkGetSwapchainImagesKHR", __FILE__, __LINE__);
     }
 
     //! @note  Function: vkAcquireNextImageKHR
     void AcquireNextImageKHR(const uint64_t timeout, const VkSemaphore semaphore, const VkFence fence, uint32_t * pImageIndex)
     {
-      ErrorCheck(vkAcquireNextImageKHR(m_device, m_swapchain, timeout, semaphore, fence, pImageIndex), "vkAcquireNextImageKHR", __FILE__, __LINE__);
+      CheckError(vkAcquireNextImageKHR(m_device, m_swapchain, timeout, semaphore, fence, pImageIndex), "vkAcquireNextImageKHR", __FILE__, __LINE__);
     }
 
 #if VK_HEADER_VERSION >= 50
     //! @note  Function: vkGetSwapchainStatusKHR
     void GetSwapchainStatusKHR()
     {
-      ErrorCheck(vkGetSwapchainStatusKHR(m_device, m_swapchain), "vkGetSwapchainStatusKHR", __FILE__, __LINE__);
+      CheckError(vkGetSwapchainStatusKHR(m_device, m_swapchain), "vkGetSwapchainStatusKHR", __FILE__, __LINE__);
     }
 #endif
   };

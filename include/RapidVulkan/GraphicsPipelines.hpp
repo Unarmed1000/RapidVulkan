@@ -25,7 +25,7 @@
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
-#include <RapidVulkan/ErrorCheck.hpp>
+#include <RapidVulkan/CheckError.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
 #include <utility>
@@ -164,7 +164,7 @@ namespace RapidVulkan
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
       std::vector<VkPipeline> pipelines();
-      ErrorCheck(vkCreateGraphicsPipelines(device, pipelineCache, createInfoCount, &createInfos, nullptr, pipelines.data()), "vkCreateGraphicsPipelines", __FILE__, __LINE__);
+      CheckError(vkCreateGraphicsPipelines(device, pipelineCache, createInfoCount, &createInfos, nullptr, pipelines.data()), "vkCreateGraphicsPipelines", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;

@@ -25,7 +25,7 @@
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
-#include <RapidVulkan/ErrorCheck.hpp>
+#include <RapidVulkan/CheckError.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -160,7 +160,7 @@ namespace RapidVulkan
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
       VkDescriptorPool descriptorPool;
-      ErrorCheck(vkCreateDescriptorPool(device, &createInfo, nullptr, &descriptorPool), "vkCreateDescriptorPool", __FILE__, __LINE__);
+      CheckError(vkCreateDescriptorPool(device, &createInfo, nullptr, &descriptorPool), "vkCreateDescriptorPool", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
@@ -211,7 +211,7 @@ namespace RapidVulkan
     //! @note  Function: vkResetDescriptorPool
     void ResetDescriptorPool(const VkDescriptorPoolResetFlags flags)
     {
-      ErrorCheck(vkResetDescriptorPool(m_device, m_descriptorPool, flags), "vkResetDescriptorPool", __FILE__, __LINE__);
+      CheckError(vkResetDescriptorPool(m_device, m_descriptorPool, flags), "vkResetDescriptorPool", __FILE__, __LINE__);
     }
   };
 }

@@ -25,7 +25,7 @@
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
-#include <RapidVulkan/ErrorCheck.hpp>
+#include <RapidVulkan/CheckError.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -174,7 +174,7 @@ namespace RapidVulkan
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
       VkCommandBuffer commandBuffers;
-      ErrorCheck(vkAllocateCommandBuffers(device, &allocateInfo, &commandBuffers), "vkAllocateCommandBuffers", __FILE__, __LINE__);
+      CheckError(vkAllocateCommandBuffers(device, &allocateInfo, &commandBuffers), "vkAllocateCommandBuffers", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
@@ -256,7 +256,7 @@ namespace RapidVulkan
       if (m_commandBuffers == VK_NULL_HANDLE)
         throw VulkanUsageErrorException("Can not call Begin on a NULL handle");
 
-      ErrorCheck(vkBeginCommandBuffer(m_commandBuffers, &commandBufferBeginInfo), "vkBeginCommandBuffer", __FILE__, __LINE__);
+      CheckError(vkBeginCommandBuffer(m_commandBuffers, &commandBufferBeginInfo), "vkBeginCommandBuffer", __FILE__, __LINE__);
     }
 
 
@@ -265,7 +265,7 @@ namespace RapidVulkan
       if (m_commandBuffers == VK_NULL_HANDLE)
         throw VulkanUsageErrorException("Can not call End on a NULL handle");
 
-      ErrorCheck(vkEndCommandBuffer(m_commandBuffers), "vkEndCommandBuffer", __FILE__, __LINE__);
+      CheckError(vkEndCommandBuffer(m_commandBuffers), "vkEndCommandBuffer", __FILE__, __LINE__);
     }
 
 
