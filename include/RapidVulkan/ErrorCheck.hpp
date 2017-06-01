@@ -1,5 +1,5 @@
-#ifndef RAPIDVULKAN_UTIL_HPP
-#define RAPIDVULKAN_UTIL_HPP
+#ifndef RAPIDVULKAN_ERRORCHECK_HPP
+#define RAPIDVULKAN_ERRORCHECK_HPP
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -29,70 +29,70 @@
 
 namespace RapidVulkan
 {
-  class Util
+  inline void ErrorCheck(const VkResult result)
   {
-  public:
-    static inline void Check(const VkResult result)
+    if (result != VK_SUCCESS)
+      throw VulkanErrorException("Unknown", result);
+  }
+
+
+  inline void ErrorCheck(const VkResult result, const char*const pszMessage)
+  {
+    if (result != VK_SUCCESS)
     {
-      if (result != VK_SUCCESS)
-        throw VulkanErrorException("Unknown", result);
+      assert(pszMessage != nullptr);
+      throw VulkanErrorException(pszMessage, result);
     }
+  }
 
-    static inline void Check(const VkResult result, const char*const pszMessage)
+
+  inline void ErrorCheck(const VkResult result, const std::string& message)
+  {
+    if (result != VK_SUCCESS)
     {
-      if (result != VK_SUCCESS)
-      {
-        assert(pszMessage != nullptr);
-        throw VulkanErrorException(pszMessage, result);
-      }
+      throw VulkanErrorException(message, result);
     }
+  }
 
-    static inline void Check(const VkResult result, const std::string& message)
+
+  inline void ErrorCheck(const VkResult result, const char*const pszMessage, const char*const pszFileName, const int lineNumber)
+  {
+    if (result != VK_SUCCESS)
     {
-      if (result != VK_SUCCESS)
-      {
-        throw VulkanErrorException(message, result);
-      }
+      assert(pszMessage != nullptr);
+      assert(pszFileName != nullptr);
+      throw VulkanErrorException(pszMessage, result, pszFileName, lineNumber);
     }
+  }
 
-    static inline void Check(const VkResult result, const char*const pszMessage, const char*const pszFileName, const int lineNumber)
+
+  inline void ErrorCheck(const VkResult result, const char*const pszMessage, const std::string& fileName, const int lineNumber)
+  {
+    if (result != VK_SUCCESS)
     {
-      if (result != VK_SUCCESS)
-      {
-        assert(pszMessage != nullptr);
-        assert(pszFileName != nullptr);
-        throw VulkanErrorException(pszMessage, result, pszFileName, lineNumber);
-      }
+      assert(pszMessage != nullptr);
+      throw VulkanErrorException(pszMessage, result, fileName, lineNumber);
     }
+  }
 
-    static inline void Check(const VkResult result, const char*const pszMessage, const std::string& fileName, const int lineNumber)
+
+  inline void ErrorCheck(const VkResult result, const std::string& message, const char*const pszFileName, const int lineNumber)
+  {
+    if (result != VK_SUCCESS)
     {
-      if (result != VK_SUCCESS)
-      {
-        assert(pszMessage != nullptr);
-        throw VulkanErrorException(pszMessage, result, fileName, lineNumber);
-      }
+      assert(pszFileName != nullptr);
+      throw VulkanErrorException(message, result, pszFileName, lineNumber);
     }
+  }
 
 
-    static inline void Check(const VkResult result, const std::string& message, const char*const pszFileName, const int lineNumber)
+  inline void ErrorCheck(const VkResult result, const std::string& message, const std::string& fileName, const int lineNumber)
+  {
+    if (result != VK_SUCCESS)
     {
-      if (result != VK_SUCCESS)
-      {
-        assert(pszFileName != nullptr);
-        throw VulkanErrorException(message, result, pszFileName, lineNumber);
-      }
+      throw VulkanErrorException(message, result, fileName, lineNumber);
     }
-
-    static inline void Check(const VkResult result, const std::string& message, const std::string& fileName, const int lineNumber)
-    {
-      if (result != VK_SUCCESS)
-      {
-        throw VulkanErrorException(message, result, fileName, lineNumber);
-      }
-    }
-
-  };
+  }
 }
 
 #endif

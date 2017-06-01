@@ -25,7 +25,7 @@
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
-#include <RapidVulkan/Util.hpp>
+#include <RapidVulkan/ErrorCheck.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -160,7 +160,7 @@ namespace RapidVulkan
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
       VkShaderModule shaderModule;
-      Util::Check(vkCreateShaderModule(device, &createInfo, nullptr, &shaderModule), "vkCreateShaderModule", __FILE__, __LINE__);
+      ErrorCheck(vkCreateShaderModule(device, &createInfo, nullptr, &shaderModule), "vkCreateShaderModule", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;

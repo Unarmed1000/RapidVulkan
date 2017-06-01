@@ -25,7 +25,7 @@
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
-#include <RapidVulkan/Util.hpp>
+#include <RapidVulkan/ErrorCheck.hpp>
 #include <RapidVulkan/System/Log.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
@@ -161,7 +161,7 @@ namespace RapidVulkan
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
       VkFence fence;
-      Util::Check(vkCreateFence(device, &createInfo, nullptr, &fence), "vkCreateFence", __FILE__, __LINE__);
+      ErrorCheck(vkCreateFence(device, &createInfo, nullptr, &fence), "vkCreateFence", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
@@ -217,7 +217,7 @@ namespace RapidVulkan
 
     void WaitForFence(const uint64_t timeout)
     {
-      Util::Check(vkWaitForFences(m_device, 1, &m_fence, VK_TRUE, timeout), "vkWaitForFences", __FILE__, __LINE__);
+      ErrorCheck(vkWaitForFences(m_device, 1, &m_fence, VK_TRUE, timeout), "vkWaitForFences", __FILE__, __LINE__);
     }
 
 
@@ -229,7 +229,7 @@ namespace RapidVulkan
 
     void ResetFence()
     {
-      Util::Check(vkResetFences(m_device, 1, &m_fence), "vkResetFences", __FILE__, __LINE__);
+      ErrorCheck(vkResetFences(m_device, 1, &m_fence), "vkResetFences", __FILE__, __LINE__);
     }
   };
 }

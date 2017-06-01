@@ -25,7 +25,7 @@
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
-#include <RapidVulkan/Util.hpp>
+#include <RapidVulkan/ErrorCheck.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -147,7 +147,7 @@ namespace RapidVulkan
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
       VkDevice device;
-      Util::Check(vkCreateDevice(physicalDevice, &createInfo, nullptr, &device), "vkCreateDevice", __FILE__, __LINE__);
+      ErrorCheck(vkCreateDevice(physicalDevice, &createInfo, nullptr, &device), "vkCreateDevice", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
@@ -207,31 +207,31 @@ namespace RapidVulkan
     //! @note  Function: vkDeviceWaitIdle
     void DeviceWaitIdle()
     {
-      Util::Check(vkDeviceWaitIdle(m_device), "vkDeviceWaitIdle", __FILE__, __LINE__);
+      ErrorCheck(vkDeviceWaitIdle(m_device), "vkDeviceWaitIdle", __FILE__, __LINE__);
     }
 
     //! @note  Function: vkFlushMappedMemoryRanges
     void FlushMappedMemoryRanges(const uint32_t memoryRangeCount, const VkMappedMemoryRange * pMemoryRanges)
     {
-      Util::Check(vkFlushMappedMemoryRanges(m_device, memoryRangeCount, pMemoryRanges), "vkFlushMappedMemoryRanges", __FILE__, __LINE__);
+      ErrorCheck(vkFlushMappedMemoryRanges(m_device, memoryRangeCount, pMemoryRanges), "vkFlushMappedMemoryRanges", __FILE__, __LINE__);
     }
 
     //! @note  Function: vkInvalidateMappedMemoryRanges
     void InvalidateMappedMemoryRanges(const uint32_t memoryRangeCount, const VkMappedMemoryRange * pMemoryRanges)
     {
-      Util::Check(vkInvalidateMappedMemoryRanges(m_device, memoryRangeCount, pMemoryRanges), "vkInvalidateMappedMemoryRanges", __FILE__, __LINE__);
+      ErrorCheck(vkInvalidateMappedMemoryRanges(m_device, memoryRangeCount, pMemoryRanges), "vkInvalidateMappedMemoryRanges", __FILE__, __LINE__);
     }
 
     //! @note  Function: vkResetFences
     void ResetFences(const uint32_t fenceCount, const VkFence * pFences)
     {
-      Util::Check(vkResetFences(m_device, fenceCount, pFences), "vkResetFences", __FILE__, __LINE__);
+      ErrorCheck(vkResetFences(m_device, fenceCount, pFences), "vkResetFences", __FILE__, __LINE__);
     }
 
     //! @note  Function: vkWaitForFences
     void WaitForFences(const uint32_t fenceCount, const VkFence * pFences, const VkBool32 waitAll, const uint64_t timeout)
     {
-      Util::Check(vkWaitForFences(m_device, fenceCount, pFences, waitAll, timeout), "vkWaitForFences", __FILE__, __LINE__);
+      ErrorCheck(vkWaitForFences(m_device, fenceCount, pFences, waitAll, timeout), "vkWaitForFences", __FILE__, __LINE__);
     }
 
     //! @note  Function: vkUpdateDescriptorSets

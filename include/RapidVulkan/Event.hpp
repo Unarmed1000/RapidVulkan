@@ -25,7 +25,7 @@
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
-#include <RapidVulkan/Util.hpp>
+#include <RapidVulkan/ErrorCheck.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -160,7 +160,7 @@ namespace RapidVulkan
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
       VkEvent event;
-      Util::Check(vkCreateEvent(device, &createInfo, nullptr, &event), "vkCreateEvent", __FILE__, __LINE__);
+      ErrorCheck(vkCreateEvent(device, &createInfo, nullptr, &event), "vkCreateEvent", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
@@ -208,19 +208,19 @@ namespace RapidVulkan
     //! @note  Function: vkGetEventStatus
     void GetEventStatus()
     {
-      Util::Check(vkGetEventStatus(m_device, m_event), "vkGetEventStatus", __FILE__, __LINE__);
+      ErrorCheck(vkGetEventStatus(m_device, m_event), "vkGetEventStatus", __FILE__, __LINE__);
     }
 
     //! @note  Function: vkSetEvent
     void SetEvent()
     {
-      Util::Check(vkSetEvent(m_device, m_event), "vkSetEvent", __FILE__, __LINE__);
+      ErrorCheck(vkSetEvent(m_device, m_event), "vkSetEvent", __FILE__, __LINE__);
     }
 
     //! @note  Function: vkResetEvent
     void ResetEvent()
     {
-      Util::Check(vkResetEvent(m_device, m_event), "vkResetEvent", __FILE__, __LINE__);
+      ErrorCheck(vkResetEvent(m_device, m_event), "vkResetEvent", __FILE__, __LINE__);
     }
   };
 }

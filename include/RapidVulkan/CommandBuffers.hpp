@@ -25,7 +25,7 @@
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
-#include <RapidVulkan/Util.hpp>
+#include <RapidVulkan/ErrorCheck.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
 #include <utility>
@@ -174,7 +174,7 @@ namespace RapidVulkan
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
       std::vector<VkCommandBuffer> commandBuffers(allocateInfo.commandBufferCount);
-      Util::Check(vkAllocateCommandBuffers(device, &allocateInfo, commandBuffers.data()), "vkAllocateCommandBuffers", __FILE__, __LINE__);
+      ErrorCheck(vkAllocateCommandBuffers(device, &allocateInfo, commandBuffers.data()), "vkAllocateCommandBuffers", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
@@ -286,7 +286,7 @@ namespace RapidVulkan
       if (index >= m_commandBuffers.size() || m_commandBuffers[index] == VK_NULL_HANDLE)
         throw VulkanUsageErrorException("Index must be valid and/or can not call Begin on a NULL handle");
 
-      Util::Check(vkBeginCommandBuffer(m_commandBuffers[index], &commandBufferBeginInfo), "vkBeginCommandBuffer", __FILE__, __LINE__);
+      ErrorCheck(vkBeginCommandBuffer(m_commandBuffers[index], &commandBufferBeginInfo), "vkBeginCommandBuffer", __FILE__, __LINE__);
     }
 
     void End(const std::size_t index)
@@ -294,7 +294,7 @@ namespace RapidVulkan
       if (index >= m_commandBuffers.size() || m_commandBuffers[index] == VK_NULL_HANDLE)
         throw VulkanUsageErrorException("Index must be valid and/or can not call End on a NULL handle");
 
-      Util::Check(vkEndCommandBuffer(m_commandBuffers[index]), "vkEndCommandBuffer", __FILE__, __LINE__);
+      ErrorCheck(vkEndCommandBuffer(m_commandBuffers[index]), "vkEndCommandBuffer", __FILE__, __LINE__);
     }
 
     void CmdBeginRenderPass(const std::size_t index, const VkRenderPassBeginInfo* pRenderPassBeginInfo, const VkSubpassContents contents)

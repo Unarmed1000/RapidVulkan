@@ -25,7 +25,7 @@
 // Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
-#include <RapidVulkan/Util.hpp>
+#include <RapidVulkan/ErrorCheck.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
@@ -160,7 +160,7 @@ namespace RapidVulkan
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
       VkObjectTableNVX objectTable;
-      Util::Check(vkCreateObjectTableNVX(device, &createInfo, nullptr, &objectTable), "vkCreateObjectTableNVX", __FILE__, __LINE__);
+      ErrorCheck(vkCreateObjectTableNVX(device, &createInfo, nullptr, &objectTable), "vkCreateObjectTableNVX", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
@@ -216,13 +216,13 @@ namespace RapidVulkan
     //! @note  Function: vkRegisterObjectsNVX
     void RegisterObjectsNVX(const uint32_t objectCount, const VkObjectTableEntryNVX *const * ppObjectTableEntries, const uint32_t * pObjectIndices)
     {
-      Util::Check(vkRegisterObjectsNVX(m_device, m_objectTable, objectCount, ppObjectTableEntries, pObjectIndices), "vkRegisterObjectsNVX", __FILE__, __LINE__);
+      ErrorCheck(vkRegisterObjectsNVX(m_device, m_objectTable, objectCount, ppObjectTableEntries, pObjectIndices), "vkRegisterObjectsNVX", __FILE__, __LINE__);
     }
 
     //! @note  Function: vkUnregisterObjectsNVX
     void UnregisterObjectsNVX(const uint32_t objectCount, const VkObjectEntryTypeNVX * pObjectEntryTypes, const uint32_t * pObjectIndices)
     {
-      Util::Check(vkUnregisterObjectsNVX(m_device, m_objectTable, objectCount, pObjectEntryTypes, pObjectIndices), "vkUnregisterObjectsNVX", __FILE__, __LINE__);
+      ErrorCheck(vkUnregisterObjectsNVX(m_device, m_objectTable, objectCount, pObjectEntryTypes, pObjectIndices), "vkUnregisterObjectsNVX", __FILE__, __LINE__);
     }
   };
 }

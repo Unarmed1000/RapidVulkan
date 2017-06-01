@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    const char* ToString(const VkFenceCreateFlagBits& value)
+    inline const char* ToString(const VkFenceCreateFlagBits& value)
     {
       switch(value)
       {
@@ -44,7 +44,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkFormat& value)
+    inline const char* ToString(const VkFormat& value)
     {
       switch(value)
       {
@@ -440,7 +440,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkBufferUsageFlagBits& value)
+    inline const char* ToString(const VkBufferUsageFlagBits& value)
     {
       switch(value)
       {
@@ -468,7 +468,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkImageAspectFlagBits& value)
+    inline const char* ToString(const VkImageAspectFlagBits& value)
     {
       switch(value)
       {
@@ -486,7 +486,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkCommandBufferLevel& value)
+    inline const char* ToString(const VkCommandBufferLevel& value)
     {
       switch(value)
       {
@@ -500,7 +500,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkInternalAllocationType& value)
+    inline const char* ToString(const VkInternalAllocationType& value)
     {
       switch(value)
       {
@@ -512,7 +512,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkObjectType& value)
+    inline const char* ToString(const VkObjectType& value)
     {
       switch(value)
       {
@@ -574,7 +574,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkPipelineCacheHeaderVersion& value)
+    inline const char* ToString(const VkPipelineCacheHeaderVersion& value)
     {
       switch(value)
       {
@@ -586,7 +586,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkSharingMode& value)
+    inline const char* ToString(const VkSharingMode& value)
     {
       switch(value)
       {
@@ -600,7 +600,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkSystemAllocationScope& value)
+    inline const char* ToString(const VkSystemAllocationScope& value)
     {
       switch(value)
       {
@@ -620,7 +620,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkDescriptorPoolCreateFlagBits& value)
+    inline const char* ToString(const VkDescriptorPoolCreateFlagBits& value)
     {
       switch(value)
       {
@@ -632,7 +632,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkStructureType& value)
+    inline const char* ToString(const VkStructureType& value)
     {
       switch(value)
       {
@@ -746,7 +746,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkQueueFlagBits& value)
+    inline const char* ToString(const VkQueueFlagBits& value)
     {
       switch(value)
       {
@@ -764,7 +764,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkResult& value)
+    inline const char* ToString(const VkResult& value)
     {
       switch(value)
       {
@@ -810,7 +810,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkDescriptorType& value)
+    inline const char* ToString(const VkDescriptorType& value)
     {
       switch(value)
       {
@@ -842,7 +842,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkImageType& value)
+    inline const char* ToString(const VkImageType& value)
     {
       switch(value)
       {
@@ -858,7 +858,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkQueryPipelineStatisticFlagBits& value)
+    inline const char* ToString(const VkQueryPipelineStatisticFlagBits& value)
     {
       switch(value)
       {
@@ -890,7 +890,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkFrontFace& value)
+    inline const char* ToString(const VkFrontFace& value)
     {
       switch(value)
       {
@@ -904,7 +904,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkPipelineStageFlagBits& value)
+    inline const char* ToString(const VkPipelineStageFlagBits& value)
     {
       switch(value)
       {
@@ -948,7 +948,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkImageTiling& value)
+    inline const char* ToString(const VkImageTiling& value)
     {
       switch(value)
       {
@@ -962,7 +962,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkPhysicalDeviceType& value)
+    inline const char* ToString(const VkPhysicalDeviceType& value)
     {
       switch(value)
       {
@@ -982,7 +982,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkAccessFlagBits& value)
+    inline const char* ToString(const VkAccessFlagBits& value)
     {
       switch(value)
       {
@@ -1026,7 +1026,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkIndexType& value)
+    inline const char* ToString(const VkIndexType& value)
     {
       switch(value)
       {
@@ -1040,7 +1040,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkBlendOp& value)
+    inline const char* ToString(const VkBlendOp& value)
     {
       switch(value)
       {
@@ -1060,7 +1060,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkQueryType& value)
+    inline const char* ToString(const VkQueryType& value)
     {
       switch(value)
       {
@@ -1076,7 +1076,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkQueryResultFlagBits& value)
+    inline const char* ToString(const VkQueryResultFlagBits& value)
     {
       switch(value)
       {
@@ -1094,7 +1094,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkMemoryHeapFlagBits& value)
+    inline const char* ToString(const VkMemoryHeapFlagBits& value)
     {
       switch(value)
       {
@@ -1106,7 +1106,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkImageLayout& value)
+    inline const char* ToString(const VkImageLayout& value)
     {
       switch(value)
       {
@@ -1134,7 +1134,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkPipelineCreateFlagBits& value)
+    inline const char* ToString(const VkPipelineCreateFlagBits& value)
     {
       switch(value)
       {
@@ -1150,7 +1150,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkImageViewType& value)
+    inline const char* ToString(const VkImageViewType& value)
     {
       switch(value)
       {
@@ -1174,7 +1174,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkComponentSwizzle& value)
+    inline const char* ToString(const VkComponentSwizzle& value)
     {
       switch(value)
       {
@@ -1198,7 +1198,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkCommandBufferUsageFlagBits& value)
+    inline const char* ToString(const VkCommandBufferUsageFlagBits& value)
     {
       switch(value)
       {
@@ -1214,7 +1214,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkPrimitiveTopology& value)
+    inline const char* ToString(const VkPrimitiveTopology& value)
     {
       switch(value)
       {
@@ -1246,7 +1246,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkVertexInputRate& value)
+    inline const char* ToString(const VkVertexInputRate& value)
     {
       switch(value)
       {
@@ -1260,7 +1260,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkPolygonMode& value)
+    inline const char* ToString(const VkPolygonMode& value)
     {
       switch(value)
       {
@@ -1276,7 +1276,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkCompareOp& value)
+    inline const char* ToString(const VkCompareOp& value)
     {
       switch(value)
       {
@@ -1302,7 +1302,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkStencilOp& value)
+    inline const char* ToString(const VkStencilOp& value)
     {
       switch(value)
       {
@@ -1328,7 +1328,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkLogicOp& value)
+    inline const char* ToString(const VkLogicOp& value)
     {
       switch(value)
       {
@@ -1370,7 +1370,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkMemoryPropertyFlagBits& value)
+    inline const char* ToString(const VkMemoryPropertyFlagBits& value)
     {
       switch(value)
       {
@@ -1390,7 +1390,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkBlendFactor& value)
+    inline const char* ToString(const VkBlendFactor& value)
     {
       switch(value)
       {
@@ -1438,7 +1438,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkDynamicState& value)
+    inline const char* ToString(const VkDynamicState& value)
     {
       switch(value)
       {
@@ -1466,7 +1466,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkFilter& value)
+    inline const char* ToString(const VkFilter& value)
     {
       switch(value)
       {
@@ -1482,7 +1482,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkDependencyFlagBits& value)
+    inline const char* ToString(const VkDependencyFlagBits& value)
     {
       switch(value)
       {
@@ -1494,7 +1494,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkSamplerAddressMode& value)
+    inline const char* ToString(const VkSamplerAddressMode& value)
     {
       switch(value)
       {
@@ -1514,7 +1514,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkSamplerMipmapMode& value)
+    inline const char* ToString(const VkSamplerMipmapMode& value)
     {
       switch(value)
       {
@@ -1528,7 +1528,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkSubpassContents& value)
+    inline const char* ToString(const VkSubpassContents& value)
     {
       switch(value)
       {
@@ -1542,7 +1542,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkBorderColor& value)
+    inline const char* ToString(const VkBorderColor& value)
     {
       switch(value)
       {
@@ -1564,7 +1564,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkAttachmentLoadOp& value)
+    inline const char* ToString(const VkAttachmentLoadOp& value)
     {
       switch(value)
       {
@@ -1580,7 +1580,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkFormatFeatureFlagBits& value)
+    inline const char* ToString(const VkFormatFeatureFlagBits& value)
     {
       switch(value)
       {
@@ -1618,7 +1618,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkAttachmentStoreOp& value)
+    inline const char* ToString(const VkAttachmentStoreOp& value)
     {
       switch(value)
       {
@@ -1632,7 +1632,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkPipelineBindPoint& value)
+    inline const char* ToString(const VkPipelineBindPoint& value)
     {
       switch(value)
       {
@@ -1646,7 +1646,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkImageUsageFlagBits& value)
+    inline const char* ToString(const VkImageUsageFlagBits& value)
     {
       switch(value)
       {
@@ -1672,7 +1672,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkImageCreateFlagBits& value)
+    inline const char* ToString(const VkImageCreateFlagBits& value)
     {
       switch(value)
       {
@@ -1692,7 +1692,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkSampleCountFlagBits& value)
+    inline const char* ToString(const VkSampleCountFlagBits& value)
     {
       switch(value)
       {
@@ -1716,7 +1716,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkSparseImageFormatFlagBits& value)
+    inline const char* ToString(const VkSparseImageFormatFlagBits& value)
     {
       switch(value)
       {
@@ -1732,7 +1732,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkSparseMemoryBindFlagBits& value)
+    inline const char* ToString(const VkSparseMemoryBindFlagBits& value)
     {
       switch(value)
       {
@@ -1744,7 +1744,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkBufferCreateFlagBits& value)
+    inline const char* ToString(const VkBufferCreateFlagBits& value)
     {
       switch(value)
       {
@@ -1760,7 +1760,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkShaderStageFlagBits& value)
+    inline const char* ToString(const VkShaderStageFlagBits& value)
     {
       switch(value)
       {
@@ -1786,7 +1786,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkCullModeFlagBits& value)
+    inline const char* ToString(const VkCullModeFlagBits& value)
     {
       switch(value)
       {
@@ -1804,7 +1804,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkColorComponentFlagBits& value)
+    inline const char* ToString(const VkColorComponentFlagBits& value)
     {
       switch(value)
       {
@@ -1822,7 +1822,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkAttachmentDescriptionFlagBits& value)
+    inline const char* ToString(const VkAttachmentDescriptionFlagBits& value)
     {
       switch(value)
       {
@@ -1834,7 +1834,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkCommandPoolCreateFlagBits& value)
+    inline const char* ToString(const VkCommandPoolCreateFlagBits& value)
     {
       switch(value)
       {
@@ -1848,7 +1848,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkCommandPoolResetFlagBits& value)
+    inline const char* ToString(const VkCommandPoolResetFlagBits& value)
     {
       switch(value)
       {
@@ -1860,7 +1860,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkQueryControlFlagBits& value)
+    inline const char* ToString(const VkQueryControlFlagBits& value)
     {
       switch(value)
       {
@@ -1872,7 +1872,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkCommandBufferResetFlagBits& value)
+    inline const char* ToString(const VkCommandBufferResetFlagBits& value)
     {
       switch(value)
       {
@@ -1884,7 +1884,7 @@ namespace RapidVulkan
     };
 
 
-    const char* ToString(const VkStencilFaceFlagBits& value)
+    inline const char* ToString(const VkStencilFaceFlagBits& value)
     {
       switch(value)
       {
