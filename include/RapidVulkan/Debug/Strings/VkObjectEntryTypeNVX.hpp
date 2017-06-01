@@ -1,5 +1,6 @@
 #ifndef RAPIDVULKAN_DEBUG_STRINGS_VKOBJECTENTRYTYPENVX_HPP
 #define RAPIDVULKAN_DEBUG_STRINGS_VKOBJECTENTRYTYPENVX_HPP
+#if VK_HEADER_VERSION >= 37
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -36,16 +37,26 @@ namespace RapidVulkan
     {
       switch(value)
       {
+#if VK_HEADER_VERSION >= 37
       case VK_OBJECT_ENTRY_DESCRIPTOR_SET_NVX:
         return "VK_OBJECT_ENTRY_DESCRIPTOR_SET_NVX";
+#endif
+#if VK_HEADER_VERSION >= 37
       case VK_OBJECT_ENTRY_PIPELINE_NVX:
         return "VK_OBJECT_ENTRY_PIPELINE_NVX";
+#endif
+#if VK_HEADER_VERSION >= 37
       case VK_OBJECT_ENTRY_INDEX_BUFFER_NVX:
         return "VK_OBJECT_ENTRY_INDEX_BUFFER_NVX";
+#endif
+#if VK_HEADER_VERSION >= 37
       case VK_OBJECT_ENTRY_VERTEX_BUFFER_NVX:
         return "VK_OBJECT_ENTRY_VERTEX_BUFFER_NVX";
+#endif
+#if VK_HEADER_VERSION >= 37
       case VK_OBJECT_ENTRY_PUSH_CONSTANT_NVX:
         return "VK_OBJECT_ENTRY_PUSH_CONSTANT_NVX";
+#endif
       default:
         return "*Unknown*";
       }
@@ -53,4 +64,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

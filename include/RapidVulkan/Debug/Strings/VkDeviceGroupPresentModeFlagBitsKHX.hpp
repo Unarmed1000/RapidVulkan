@@ -1,5 +1,6 @@
 #ifndef RAPIDVULKAN_DEBUG_STRINGS_VKDEVICEGROUPPRESENTMODEFLAGBITSKHX_HPP
 #define RAPIDVULKAN_DEBUG_STRINGS_VKDEVICEGROUPPRESENTMODEFLAGBITSKHX_HPP
+#if VK_HEADER_VERSION >= 42
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -36,14 +37,22 @@ namespace RapidVulkan
     {
       switch(value)
       {
+#if VK_HEADER_VERSION >= 42
       case VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHX:
         return "VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHX";
+#endif
+#if VK_HEADER_VERSION >= 42
       case VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHX:
         return "VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHX";
+#endif
+#if VK_HEADER_VERSION >= 42
       case VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHX:
         return "VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHX";
+#endif
+#if VK_HEADER_VERSION >= 42
       case VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHX:
         return "VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHX";
+#endif
       default:
         return "*Unknown*";
       }
@@ -51,4 +60,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

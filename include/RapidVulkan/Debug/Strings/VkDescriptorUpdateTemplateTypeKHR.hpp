@@ -1,5 +1,6 @@
 #ifndef RAPIDVULKAN_DEBUG_STRINGS_VKDESCRIPTORUPDATETEMPLATETYPEKHR_HPP
 #define RAPIDVULKAN_DEBUG_STRINGS_VKDESCRIPTORUPDATETEMPLATETYPEKHR_HPP
+#if VK_HEADER_VERSION >= 42
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -36,10 +37,14 @@ namespace RapidVulkan
     {
       switch(value)
       {
+#if VK_HEADER_VERSION >= 42
       case VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET_KHR:
         return "VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET_KHR";
+#endif
+#if VK_HEADER_VERSION >= 42
       case VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS_KHR:
         return "VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS_KHR";
+#endif
       default:
         return "*Unknown*";
       }
@@ -47,4 +52,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

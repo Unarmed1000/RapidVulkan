@@ -1,5 +1,6 @@
 #ifndef RAPIDVULKAN_DEBUG_STRINGS_VKOBJECTENTRYUSAGEFLAGBITSNVX_HPP
 #define RAPIDVULKAN_DEBUG_STRINGS_VKOBJECTENTRYUSAGEFLAGBITSNVX_HPP
+#if VK_HEADER_VERSION >= 37
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -36,10 +37,14 @@ namespace RapidVulkan
     {
       switch(value)
       {
+#if VK_HEADER_VERSION >= 37
       case VK_OBJECT_ENTRY_USAGE_GRAPHICS_BIT_NVX:
         return "VK_OBJECT_ENTRY_USAGE_GRAPHICS_BIT_NVX";
+#endif
+#if VK_HEADER_VERSION >= 37
       case VK_OBJECT_ENTRY_USAGE_COMPUTE_BIT_NVX:
         return "VK_OBJECT_ENTRY_USAGE_COMPUTE_BIT_NVX";
+#endif
       default:
         return "*Unknown*";
       }
@@ -47,4 +52,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

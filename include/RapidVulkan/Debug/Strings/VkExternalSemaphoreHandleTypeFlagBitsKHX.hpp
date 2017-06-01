@@ -1,5 +1,6 @@
 #ifndef RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALSEMAPHOREHANDLETYPEFLAGBITSKHX_HPP
 #define RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALSEMAPHOREHANDLETYPEFLAGBITSKHX_HPP
+#if VK_HEADER_VERSION >= 42
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -36,16 +37,26 @@ namespace RapidVulkan
     {
       switch(value)
       {
+#if VK_HEADER_VERSION >= 42
       case VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT_KHX:
         return "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT_KHX";
+#endif
+#if VK_HEADER_VERSION >= 42
       case VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHX:
         return "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHX";
+#endif
+#if VK_HEADER_VERSION >= 42
       case VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_KHX:
         return "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_KHX";
+#endif
+#if VK_HEADER_VERSION >= 42
       case VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT_KHX:
         return "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT_KHX";
+#endif
+#if VK_HEADER_VERSION >= 42
       case VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_FENCE_FD_BIT_KHX:
         return "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_FENCE_FD_BIT_KHX";
+#endif
       default:
         return "*Unknown*";
       }
@@ -53,4 +64,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

@@ -1,5 +1,6 @@
 #ifndef RAPIDVULKAN_OBJECTTABLENVX_HPP
 #define RAPIDVULKAN_OBJECTTABLENVX_HPP
+#if VK_HEADER_VERSION >= 37
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -213,18 +214,25 @@ namespace RapidVulkan
       return m_objectTable != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
+
+#if VK_HEADER_VERSION >= 37
     //! @note  Function: vkRegisterObjectsNVX
     void RegisterObjectsNVX(const uint32_t objectCount, const VkObjectTableEntryNVX *const * ppObjectTableEntries, const uint32_t * pObjectIndices)
     {
       CheckError(vkRegisterObjectsNVX(m_device, m_objectTable, objectCount, ppObjectTableEntries, pObjectIndices), "vkRegisterObjectsNVX", __FILE__, __LINE__);
     }
+#endif
 
+
+#if VK_HEADER_VERSION >= 37
     //! @note  Function: vkUnregisterObjectsNVX
     void UnregisterObjectsNVX(const uint32_t objectCount, const VkObjectEntryTypeNVX * pObjectEntryTypes, const uint32_t * pObjectIndices)
     {
       CheckError(vkUnregisterObjectsNVX(m_device, m_objectTable, objectCount, pObjectEntryTypes, pObjectIndices), "vkUnregisterObjectsNVX", __FILE__, __LINE__);
     }
+#endif
   };
 }
 
+#endif
 #endif

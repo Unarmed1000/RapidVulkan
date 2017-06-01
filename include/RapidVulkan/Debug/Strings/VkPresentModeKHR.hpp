@@ -44,10 +44,14 @@ namespace RapidVulkan
         return "VK_PRESENT_MODE_FIFO_KHR";
       case VK_PRESENT_MODE_FIFO_RELAXED_KHR:
         return "VK_PRESENT_MODE_FIFO_RELAXED_KHR";
+#if VK_HEADER_VERSION >= 49
       case VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR:
         return "VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR";
+#endif
+#if VK_HEADER_VERSION >= 49
       case VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR:
         return "VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR";
+#endif
       default:
         return "*Unknown*";
       }

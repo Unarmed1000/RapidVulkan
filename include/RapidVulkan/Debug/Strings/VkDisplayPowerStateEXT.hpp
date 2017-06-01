@@ -1,5 +1,6 @@
 #ifndef RAPIDVULKAN_DEBUG_STRINGS_VKDISPLAYPOWERSTATEEXT_HPP
 #define RAPIDVULKAN_DEBUG_STRINGS_VKDISPLAYPOWERSTATEEXT_HPP
+#if VK_HEADER_VERSION >= 39
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -36,12 +37,18 @@ namespace RapidVulkan
     {
       switch(value)
       {
+#if VK_HEADER_VERSION >= 39
       case VK_DISPLAY_POWER_STATE_OFF_EXT:
         return "VK_DISPLAY_POWER_STATE_OFF_EXT";
+#endif
+#if VK_HEADER_VERSION >= 39
       case VK_DISPLAY_POWER_STATE_SUSPEND_EXT:
         return "VK_DISPLAY_POWER_STATE_SUSPEND_EXT";
+#endif
+#if VK_HEADER_VERSION >= 39
       case VK_DISPLAY_POWER_STATE_ON_EXT:
         return "VK_DISPLAY_POWER_STATE_ON_EXT";
+#endif
       default:
         return "*Unknown*";
       }
@@ -49,4 +56,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

@@ -1,5 +1,6 @@
 #ifndef RAPIDVULKAN_DESCRIPTORUPDATETEMPLATEKHR_HPP
 #define RAPIDVULKAN_DESCRIPTORUPDATETEMPLATEKHR_HPP
+#if VK_HEADER_VERSION >= 42
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -214,4 +215,5 @@ namespace RapidVulkan
   };
 }
 
+#endif
 #endif

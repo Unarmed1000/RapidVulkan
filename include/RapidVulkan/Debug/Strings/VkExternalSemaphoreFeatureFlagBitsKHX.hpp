@@ -1,5 +1,6 @@
 #ifndef RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALSEMAPHOREFEATUREFLAGBITSKHX_HPP
 #define RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALSEMAPHOREFEATUREFLAGBITSKHX_HPP
+#if VK_HEADER_VERSION >= 42
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -36,10 +37,14 @@ namespace RapidVulkan
     {
       switch(value)
       {
+#if VK_HEADER_VERSION >= 42
       case VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT_KHX:
         return "VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT_KHX";
+#endif
+#if VK_HEADER_VERSION >= 42
       case VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT_KHX:
         return "VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT_KHX";
+#endif
       default:
         return "*Unknown*";
       }
@@ -47,4 +52,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

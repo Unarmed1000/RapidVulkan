@@ -1,5 +1,6 @@
 #ifndef RAPIDVULKAN_DEBUG_STRINGS_VKINDIRECTCOMMANDSLAYOUTUSAGEFLAGBITSNVX_HPP
 #define RAPIDVULKAN_DEBUG_STRINGS_VKINDIRECTCOMMANDSLAYOUTUSAGEFLAGBITSNVX_HPP
+#if VK_HEADER_VERSION >= 37
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -36,14 +37,22 @@ namespace RapidVulkan
     {
       switch(value)
       {
+#if VK_HEADER_VERSION >= 37
       case VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_NVX:
         return "VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_NVX";
+#endif
+#if VK_HEADER_VERSION >= 37
       case VK_INDIRECT_COMMANDS_LAYOUT_USAGE_SPARSE_SEQUENCES_BIT_NVX:
         return "VK_INDIRECT_COMMANDS_LAYOUT_USAGE_SPARSE_SEQUENCES_BIT_NVX";
+#endif
+#if VK_HEADER_VERSION >= 37
       case VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EMPTY_EXECUTIONS_BIT_NVX:
         return "VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EMPTY_EXECUTIONS_BIT_NVX";
+#endif
+#if VK_HEADER_VERSION >= 37
       case VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NVX:
         return "VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NVX";
+#endif
       default:
         return "*Unknown*";
       }
@@ -51,4 +60,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

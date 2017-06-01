@@ -1,5 +1,6 @@
 #ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSURFACECOUNTERFLAGBITSEXT_HPP
 #define RAPIDVULKAN_DEBUG_STRINGS_VKSURFACECOUNTERFLAGBITSEXT_HPP
+#if VK_HEADER_VERSION >= 39
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -36,8 +37,10 @@ namespace RapidVulkan
     {
       switch(value)
       {
+#if VK_HEADER_VERSION >= 39
       case VK_SURFACE_COUNTER_VBLANK_EXT:
         return "VK_SURFACE_COUNTER_VBLANK_EXT";
+#endif
       default:
         return "*Unknown*";
       }
@@ -45,4 +48,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

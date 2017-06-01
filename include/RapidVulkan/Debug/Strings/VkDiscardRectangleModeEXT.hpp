@@ -1,5 +1,6 @@
 #ifndef RAPIDVULKAN_DEBUG_STRINGS_VKDISCARDRECTANGLEMODEEXT_HPP
 #define RAPIDVULKAN_DEBUG_STRINGS_VKDISCARDRECTANGLEMODEEXT_HPP
+#if VK_HEADER_VERSION >= 42
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -36,10 +37,14 @@ namespace RapidVulkan
     {
       switch(value)
       {
+#if VK_HEADER_VERSION >= 42
       case VK_DISCARD_RECTANGLE_MODE_INCLUSIVE_EXT:
         return "VK_DISCARD_RECTANGLE_MODE_INCLUSIVE_EXT";
+#endif
+#if VK_HEADER_VERSION >= 42
       case VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT:
         return "VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT";
+#endif
       default:
         return "*Unknown*";
       }
@@ -47,4 +52,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

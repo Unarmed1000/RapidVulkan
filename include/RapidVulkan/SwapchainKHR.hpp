@@ -240,7 +240,8 @@ namespace RapidVulkan
       CheckError(vkAcquireNextImageKHR(m_device, m_swapchain, timeout, semaphore, fence, pImageIndex), "vkAcquireNextImageKHR", __FILE__, __LINE__);
     }
 
-#if VK_HEADER_VERSION >= 50
+
+#if VK_HEADER_VERSION >= 49
     //! @note  Function: vkGetSwapchainStatusKHR
     void GetSwapchainStatusKHR()
     {

@@ -38,8 +38,10 @@ namespace RapidVulkan
       {
       case VK_VALIDATION_CHECK_ALL_EXT:
         return "VK_VALIDATION_CHECK_ALL_EXT";
+#if VK_HEADER_VERSION >= 50
       case VK_VALIDATION_CHECK_SHADERS_EXT:
         return "VK_VALIDATION_CHECK_SHADERS_EXT";
+#endif
       default:
         return "*Unknown*";
       }

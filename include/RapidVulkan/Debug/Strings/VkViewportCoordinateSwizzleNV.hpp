@@ -1,5 +1,6 @@
 #ifndef RAPIDVULKAN_DEBUG_STRINGS_VKVIEWPORTCOORDINATESWIZZLENV_HPP
 #define RAPIDVULKAN_DEBUG_STRINGS_VKVIEWPORTCOORDINATESWIZZLENV_HPP
+#if VK_HEADER_VERSION >= 42
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -36,22 +37,38 @@ namespace RapidVulkan
     {
       switch(value)
       {
+#if VK_HEADER_VERSION >= 42
       case VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_X_NV:
         return "VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_X_NV";
+#endif
+#if VK_HEADER_VERSION >= 42
       case VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_X_NV:
         return "VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_X_NV";
+#endif
+#if VK_HEADER_VERSION >= 42
       case VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_Y_NV:
         return "VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_Y_NV";
+#endif
+#if VK_HEADER_VERSION >= 42
       case VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_Y_NV:
         return "VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_Y_NV";
+#endif
+#if VK_HEADER_VERSION >= 42
       case VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_Z_NV:
         return "VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_Z_NV";
+#endif
+#if VK_HEADER_VERSION >= 42
       case VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_Z_NV:
         return "VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_Z_NV";
+#endif
+#if VK_HEADER_VERSION >= 42
       case VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_W_NV:
         return "VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_W_NV";
+#endif
+#if VK_HEADER_VERSION >= 42
       case VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_W_NV:
         return "VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_W_NV";
+#endif
       default:
         return "*Unknown*";
       }
@@ -59,4 +76,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

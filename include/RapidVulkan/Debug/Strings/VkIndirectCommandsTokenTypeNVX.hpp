@@ -1,5 +1,6 @@
 #ifndef RAPIDVULKAN_DEBUG_STRINGS_VKINDIRECTCOMMANDSTOKENTYPENVX_HPP
 #define RAPIDVULKAN_DEBUG_STRINGS_VKINDIRECTCOMMANDSTOKENTYPENVX_HPP
+#if VK_HEADER_VERSION >= 37
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -36,22 +37,38 @@ namespace RapidVulkan
     {
       switch(value)
       {
+#if VK_HEADER_VERSION >= 37
       case VK_INDIRECT_COMMANDS_TOKEN_PIPELINE_NVX:
         return "VK_INDIRECT_COMMANDS_TOKEN_PIPELINE_NVX";
+#endif
+#if VK_HEADER_VERSION >= 37
       case VK_INDIRECT_COMMANDS_TOKEN_DESCRIPTOR_SET_NVX:
         return "VK_INDIRECT_COMMANDS_TOKEN_DESCRIPTOR_SET_NVX";
+#endif
+#if VK_HEADER_VERSION >= 37
       case VK_INDIRECT_COMMANDS_TOKEN_INDEX_BUFFER_NVX:
         return "VK_INDIRECT_COMMANDS_TOKEN_INDEX_BUFFER_NVX";
+#endif
+#if VK_HEADER_VERSION >= 37
       case VK_INDIRECT_COMMANDS_TOKEN_VERTEX_BUFFER_NVX:
         return "VK_INDIRECT_COMMANDS_TOKEN_VERTEX_BUFFER_NVX";
+#endif
+#if VK_HEADER_VERSION >= 37
       case VK_INDIRECT_COMMANDS_TOKEN_PUSH_CONSTANT_NVX:
         return "VK_INDIRECT_COMMANDS_TOKEN_PUSH_CONSTANT_NVX";
+#endif
+#if VK_HEADER_VERSION >= 37
       case VK_INDIRECT_COMMANDS_TOKEN_DRAW_INDEXED_NVX:
         return "VK_INDIRECT_COMMANDS_TOKEN_DRAW_INDEXED_NVX";
+#endif
+#if VK_HEADER_VERSION >= 37
       case VK_INDIRECT_COMMANDS_TOKEN_DRAW_NVX:
         return "VK_INDIRECT_COMMANDS_TOKEN_DRAW_NVX";
+#endif
+#if VK_HEADER_VERSION >= 37
       case VK_INDIRECT_COMMANDS_TOKEN_DISPATCH_NVX:
         return "VK_INDIRECT_COMMANDS_TOKEN_DISPATCH_NVX";
+#endif
       default:
         return "*Unknown*";
       }
@@ -59,4 +76,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

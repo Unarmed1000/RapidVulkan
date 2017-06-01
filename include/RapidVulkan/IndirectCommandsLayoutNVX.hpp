@@ -1,5 +1,6 @@
 #ifndef RAPIDVULKAN_INDIRECTCOMMANDSLAYOUTNVX_HPP
 #define RAPIDVULKAN_INDIRECTCOMMANDSLAYOUTNVX_HPP
+#if VK_HEADER_VERSION >= 37
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -210,4 +211,5 @@ namespace RapidVulkan
   };
 }
 
+#endif
 #endif
