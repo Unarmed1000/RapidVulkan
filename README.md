@@ -69,7 +69,7 @@ imageCreateInfo.tiling = VK_IMAGE_TILING_OPTIMAL;
 imageCreateInfo.usage = VK_IMAGE_USAGE_SAMPLED_BIT;
 imageCreateInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
 imageCreateInfo.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
-imageCreateInfo.extent = Convert(texExtent);
+imageCreateInfo.extent = texExtent;
 imageCreateInfo.usage = VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT;
   
 RapidVulkan::Image texImage(device, imageCreateInfo);
