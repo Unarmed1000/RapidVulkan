@@ -87,6 +87,7 @@ namespace RapidVulkan
       Reset(claimMode, device, indirectCommandsLayout);
     }
 
+#if VK_HEADER_VERSION >= 37
     //! @brief Create the requested resource
     //! @note  Function: vkCreateIndirectCommandsLayoutNVX
     IndirectCommandsLayoutNVX(const VkDevice device, const VkIndirectCommandsLayoutCreateInfoNVX& createInfo)
@@ -94,6 +95,7 @@ namespace RapidVulkan
     {
       Reset(device, createInfo);
     }
+#endif
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
@@ -144,6 +146,7 @@ namespace RapidVulkan
       m_indirectCommandsLayout = indirectCommandsLayout;
     }
 
+#if VK_HEADER_VERSION >= 37
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkCreateIndirectCommandsLayoutNVX
     void Reset(const VkDevice device, const VkIndirectCommandsLayoutCreateInfoNVX& createInfo)
@@ -167,6 +170,7 @@ namespace RapidVulkan
       m_device = device;
       m_indirectCommandsLayout = indirectCommandsLayout;
     }
+#endif
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one

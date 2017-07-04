@@ -26,6 +26,7 @@
 
 #include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/CheckError.hpp>
+#include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
 #include <utility>
@@ -109,7 +110,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    std::vector<VkPipeline> Release()
+    std::vector<VkPipeline> Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
     {
       auto resource = std::move(m_pipelines); 
       m_device = VK_NULL_HANDLE;
