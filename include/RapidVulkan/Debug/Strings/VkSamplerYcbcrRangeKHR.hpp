@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKVALIDATIONCHECKEXT_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKVALIDATIONCHECKEXT_HPP
-#if VK_HEADER_VERSION >= 30
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSAMPLERYCBCRRANGEKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKSAMPLERYCBCRRANGEKHR_HPP
+#if VK_HEADER_VERSION >= 61
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,17 +33,17 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkValidationCheckEXT& value)
+    inline const char* ToString(const VkSamplerYcbcrRangeKHR& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 30
-      case VK_VALIDATION_CHECK_ALL_EXT:
-        return "VK_VALIDATION_CHECK_ALL_EXT";
+#if VK_HEADER_VERSION >= 61
+      case VK_SAMPLER_YCBCR_RANGE_ITU_FULL_KHR:
+        return "VK_SAMPLER_YCBCR_RANGE_ITU_FULL_KHR";
 #endif
-#if VK_HEADER_VERSION >= 51
-      case VK_VALIDATION_CHECK_SHADERS_EXT:
-        return "VK_VALIDATION_CHECK_SHADERS_EXT";
+#if VK_HEADER_VERSION >= 61
+      case VK_SAMPLER_YCBCR_RANGE_ITU_NARROW_KHR:
+        return "VK_SAMPLER_YCBCR_RANGE_ITU_NARROW_KHR";
 #endif
       default:
         return "*Unknown*";

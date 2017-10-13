@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALSEMAPHOREHANDLETYPEFLAGBITSKHX_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALSEMAPHOREHANDLETYPEFLAGBITSKHX_HPP
-#if VK_HEADER_VERSION >= 42
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKVALIDATIONCACHEHEADERVERSIONEXT_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKVALIDATIONCACHEHEADERVERSIONEXT_HPP
+#if VK_HEADER_VERSION >= 61
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,29 +33,13 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkExternalSemaphoreHandleTypeFlagBitsKHX& value)
+    inline const char* ToString(const VkValidationCacheHeaderVersionEXT& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 42
-      case VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT_KHX:
-        return "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT_KHX";
-#endif
-#if VK_HEADER_VERSION >= 42
-      case VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHX:
-        return "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHX";
-#endif
-#if VK_HEADER_VERSION >= 42
-      case VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_KHX:
-        return "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_KHX";
-#endif
-#if VK_HEADER_VERSION >= 42
-      case VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT_KHX:
-        return "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT_KHX";
-#endif
-#if VK_HEADER_VERSION >= 42
-      case VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_FENCE_FD_BIT_KHX:
-        return "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_FENCE_FD_BIT_KHX";
+#if VK_HEADER_VERSION >= 61
+      case VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT:
+        return "VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT";
 #endif
       default:
         return "*Unknown*";

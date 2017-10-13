@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKVALIDATIONCHECKEXT_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKVALIDATIONCHECKEXT_HPP
-#if VK_HEADER_VERSION >= 30
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKPOINTCLIPPINGBEHAVIORKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKPOINTCLIPPINGBEHAVIORKHR_HPP
+#if VK_HEADER_VERSION >= 61
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,17 +33,17 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkValidationCheckEXT& value)
+    inline const char* ToString(const VkPointClippingBehaviorKHR& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 30
-      case VK_VALIDATION_CHECK_ALL_EXT:
-        return "VK_VALIDATION_CHECK_ALL_EXT";
+#if VK_HEADER_VERSION >= 61
+      case VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES_KHR:
+        return "VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES_KHR";
 #endif
-#if VK_HEADER_VERSION >= 51
-      case VK_VALIDATION_CHECK_SHADERS_EXT:
-        return "VK_VALIDATION_CHECK_SHADERS_EXT";
+#if VK_HEADER_VERSION >= 61
+      case VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY_KHR:
+        return "VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY_KHR";
 #endif
       default:
         return "*Unknown*";

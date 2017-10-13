@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_OBJECTTABLENVX_HPP
-#define RAPIDVULKAN_OBJECTTABLENVX_HPP
-#if VK_HEADER_VERSION >= 37
+#ifndef RAPIDVULKAN_VALIDATIONCACHEEXT_HPP
+#define RAPIDVULKAN_VALIDATIONCACHEEXT_HPP
+#if VK_HEADER_VERSION >= 61
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -34,16 +34,16 @@
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
-  class ObjectTableNVX
+  class ValidationCacheEXT
   {
     VkDevice m_device;
-    VkObjectTableNVX m_objectTable;
+    VkValidationCacheEXT m_validationCache;
   public:
-    ObjectTableNVX(const ObjectTableNVX&) = delete;
-    ObjectTableNVX& operator=(const ObjectTableNVX&) = delete;
+    ValidationCacheEXT(const ValidationCacheEXT&) = delete;
+    ValidationCacheEXT& operator=(const ValidationCacheEXT&) = delete;
 
     //! @brief Move assignment operator
-    ObjectTableNVX& operator=(ObjectTableNVX&& other)
+    ValidationCacheEXT& operator=(ValidationCacheEXT&& other)
     {
       if (this != &other)
       {
@@ -53,45 +53,45 @@ namespace RapidVulkan
 
         // Claim ownership here
         m_device = other.m_device;
-        m_objectTable = other.m_objectTable;
+        m_validationCache = other.m_validationCache;
 
         // Remove the data from other
         other.m_device = VK_NULL_HANDLE;
-        other.m_objectTable = VK_NULL_HANDLE;
+        other.m_validationCache = VK_NULL_HANDLE;
       }
       return *this;
     }
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    ObjectTableNVX(ObjectTableNVX&& other)
+    ValidationCacheEXT(ValidationCacheEXT&& other)
       : m_device(other.m_device)
-      , m_objectTable(other.m_objectTable)
+      , m_validationCache(other.m_validationCache)
     {
       // Remove the data from other
       other.m_device = VK_NULL_HANDLE;
-      other.m_objectTable = VK_NULL_HANDLE;
+      other.m_validationCache = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    ObjectTableNVX()
+    ValidationCacheEXT()
       : m_device(VK_NULL_HANDLE)
-      , m_objectTable(VK_NULL_HANDLE)
+      , m_validationCache(VK_NULL_HANDLE)
     {
     }
 
-    //! @brief Assume control of the ObjectTableNVX (this object becomes responsible for releasing it)
-    explicit ObjectTableNVX(const ClaimMode claimMode, const VkDevice device, const VkObjectTableNVX objectTable)
-      : ObjectTableNVX()
+    //! @brief Assume control of the ValidationCacheEXT (this object becomes responsible for releasing it)
+    explicit ValidationCacheEXT(const ClaimMode claimMode, const VkDevice device, const VkValidationCacheEXT validationCache)
+      : ValidationCacheEXT()
     {
-      Reset(claimMode, device, objectTable);
+      Reset(claimMode, device, validationCache);
     }
 
-#if VK_HEADER_VERSION >= 37
+#if VK_HEADER_VERSION >= 61
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateObjectTableNVX
-    ObjectTableNVX(const VkDevice device, const VkObjectTableCreateInfoNVX& createInfo)
-      : ObjectTableNVX()
+    //! @note  Function: vkCreateValidationCacheEXT
+    ValidationCacheEXT(const VkDevice device, const VkValidationCacheCreateInfoEXT& createInfo)
+      : ValidationCacheEXT()
     {
       Reset(device, createInfo);
     }
@@ -99,25 +99,25 @@ namespace RapidVulkan
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateObjectTableNVX
-    ObjectTableNVX(const VkDevice device, const uint32_t objectCount, const VkObjectEntryTypeNVX * pObjectEntryTypes, const uint32_t * pObjectEntryCounts, const VkObjectEntryUsageFlagsNVX * pObjectEntryUsageFlags, const uint32_t maxUniformBuffersPerDescriptor, const uint32_t maxStorageBuffersPerDescriptor, const uint32_t maxStorageImagesPerDescriptor, const uint32_t maxSampledImagesPerDescriptor, const uint32_t maxPipelineLayouts)
-      : ObjectTableNVX()
+    //! @note  Function: vkCreateValidationCacheEXT
+    ValidationCacheEXT(const VkDevice device, const VkValidationCacheCreateFlagsEXT flags, const size_t initialDataSize, const void * pInitialData)
+      : ValidationCacheEXT()
     {
-      Reset(device, objectCount, pObjectEntryTypes, pObjectEntryCounts, pObjectEntryUsageFlags, maxUniformBuffersPerDescriptor, maxStorageBuffersPerDescriptor, maxStorageImagesPerDescriptor, maxSampledImagesPerDescriptor, maxPipelineLayouts);
+      Reset(device, flags, initialDataSize, pInitialData);
     }
 #endif
 
-    ~ObjectTableNVX()
+    ~ValidationCacheEXT()
     {
       Reset();
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkObjectTableNVX Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
+    VkValidationCacheEXT Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
     {
-      const auto resource = m_objectTable;
+      const auto resource = m_validationCache;
       m_device = VK_NULL_HANDLE;
-      m_objectTable = VK_NULL_HANDLE;
+      m_validationCache = VK_NULL_HANDLE;
       return resource;
     }
 
@@ -128,28 +128,28 @@ namespace RapidVulkan
         return;
 
       assert(m_device != VK_NULL_HANDLE);
-      assert(m_objectTable != VK_NULL_HANDLE);
+      assert(m_validationCache != VK_NULL_HANDLE);
 
-      vkDestroyObjectTableNVX(m_device, m_objectTable, nullptr);
+      vkDestroyValidationCacheEXT(m_device, m_validationCache, nullptr);
       m_device = VK_NULL_HANDLE;
-      m_objectTable = VK_NULL_HANDLE;
+      m_validationCache = VK_NULL_HANDLE;
     }
 
-    //! @brief Destroys any owned resources and assume control of the ObjectTableNVX (this object becomes responsible for releasing it)
-    void Reset(const ClaimMode claimMode, const VkDevice device, const VkObjectTableNVX objectTable)
+    //! @brief Destroys any owned resources and assume control of the ValidationCacheEXT (this object becomes responsible for releasing it)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkValidationCacheEXT validationCache)
     {
       if (IsValid())
         Reset();
 
 
       m_device = device;
-      m_objectTable = objectTable;
+      m_validationCache = validationCache;
     }
 
-#if VK_HEADER_VERSION >= 37
+#if VK_HEADER_VERSION >= 61
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateObjectTableNVX
-    void Reset(const VkDevice device, const VkObjectTableCreateInfoNVX& createInfo)
+    //! @note  Function: vkCreateValidationCacheEXT
+    void Reset(const VkDevice device, const VkValidationCacheCreateInfoEXT& createInfo)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
@@ -163,32 +163,26 @@ namespace RapidVulkan
         Reset();
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkObjectTableNVX objectTable;
-      CheckError(vkCreateObjectTableNVX(device, &createInfo, nullptr, &objectTable), "vkCreateObjectTableNVX", __FILE__, __LINE__);
+      VkValidationCacheEXT validationCache;
+      CheckError(vkCreateValidationCacheEXT(device, &createInfo, nullptr, &validationCache), "vkCreateValidationCacheEXT", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
-      m_objectTable = objectTable;
+      m_validationCache = validationCache;
     }
 #endif
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateObjectTableNVX
-    void Reset(const VkDevice device, const uint32_t objectCount, const VkObjectEntryTypeNVX * pObjectEntryTypes, const uint32_t * pObjectEntryCounts, const VkObjectEntryUsageFlagsNVX * pObjectEntryUsageFlags, const uint32_t maxUniformBuffersPerDescriptor, const uint32_t maxStorageBuffersPerDescriptor, const uint32_t maxStorageImagesPerDescriptor, const uint32_t maxSampledImagesPerDescriptor, const uint32_t maxPipelineLayouts)
+    //! @note  Function: vkCreateValidationCacheEXT
+    void Reset(const VkDevice device, const VkValidationCacheCreateFlagsEXT flags, const size_t initialDataSize, const void * pInitialData)
     {
-      VkObjectTableCreateInfoNVX createInfo{};
-      createInfo.sType = VK_STRUCTURE_TYPE_OBJECT_TABLE_CREATE_INFO_NVX;
+      VkValidationCacheCreateInfoEXT createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_VALIDATION_CACHE_CREATE_INFO_EXT;
       createInfo.pNext = nullptr;
-      createInfo.objectCount = objectCount;
-      createInfo.pObjectEntryTypes = pObjectEntryTypes;
-      createInfo.pObjectEntryCounts = pObjectEntryCounts;
-      createInfo.pObjectEntryUsageFlags = pObjectEntryUsageFlags;
-      createInfo.maxUniformBuffersPerDescriptor = maxUniformBuffersPerDescriptor;
-      createInfo.maxStorageBuffersPerDescriptor = maxStorageBuffersPerDescriptor;
-      createInfo.maxStorageImagesPerDescriptor = maxStorageImagesPerDescriptor;
-      createInfo.maxSampledImagesPerDescriptor = maxSampledImagesPerDescriptor;
-      createInfo.maxPipelineLayouts = maxPipelineLayouts;
+      createInfo.flags = flags;
+      createInfo.initialDataSize = initialDataSize;
+      createInfo.pInitialData = pInitialData;
 
       Reset(device, createInfo);
     }
@@ -201,38 +195,38 @@ namespace RapidVulkan
     }
 
     //! @brief Get the associated resource handle
-    VkObjectTableNVX Get() const
+    VkValidationCacheEXT Get() const
     {
-      return m_objectTable;
+      return m_validationCache;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkObjectTableNVX* GetPointer() const
+    const VkValidationCacheEXT* GetPointer() const
     {
-      return &m_objectTable;
+      return &m_validationCache;
     }
 
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_objectTable != VK_NULL_HANDLE;
+      return m_validationCache != VK_NULL_HANDLE;
     }
 
 
-#if VK_HEADER_VERSION >= 37
-    //! @note  Function: vkRegisterObjectsNVX
-    void RegisterObjectsNVX(const uint32_t objectCount, const VkObjectTableEntryNVX *const * ppObjectTableEntries, const uint32_t * pObjectIndices)
+#if VK_HEADER_VERSION >= 61
+    //! @note  Function: vkMergeValidationCachesEXT
+    void MergeValidationCachesEXT(const uint32_t srcCacheCount, const VkValidationCacheEXT * pSrcCaches)
     {
-      CheckError(vkRegisterObjectsNVX(m_device, m_objectTable, objectCount, ppObjectTableEntries, pObjectIndices), "vkRegisterObjectsNVX", __FILE__, __LINE__);
+      CheckError(vkMergeValidationCachesEXT(m_device, m_validationCache, srcCacheCount, pSrcCaches), "vkMergeValidationCachesEXT", __FILE__, __LINE__);
     }
 #endif
 
 
-#if VK_HEADER_VERSION >= 37
-    //! @note  Function: vkUnregisterObjectsNVX
-    void UnregisterObjectsNVX(const uint32_t objectCount, const VkObjectEntryTypeNVX * pObjectEntryTypes, const uint32_t * pObjectIndices)
+#if VK_HEADER_VERSION >= 61
+    //! @note  Function: vkGetValidationCacheDataEXT
+    void GetValidationCacheDataEXT(size_t * pDataSize, void * pData)
     {
-      CheckError(vkUnregisterObjectsNVX(m_device, m_objectTable, objectCount, pObjectEntryTypes, pObjectIndices), "vkUnregisterObjectsNVX", __FILE__, __LINE__);
+      CheckError(vkGetValidationCacheDataEXT(m_device, m_validationCache, pDataSize, pData), "vkGetValidationCacheDataEXT", __FILE__, __LINE__);
     }
 #endif
   };

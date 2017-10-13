@@ -57,7 +57,7 @@ namespace RapidVulkan
 
         // Remove the data from other
         other.m_device = VK_NULL_HANDLE;
-        other.m_descriptorUpdateTemplate = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+        other.m_descriptorUpdateTemplate = VK_NULL_HANDLE;
       }
       return *this;
     }
@@ -70,13 +70,13 @@ namespace RapidVulkan
     {
       // Remove the data from other
       other.m_device = VK_NULL_HANDLE;
-      other.m_descriptorUpdateTemplate = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      other.m_descriptorUpdateTemplate = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     DescriptorUpdateTemplateKHR()
       : m_device(VK_NULL_HANDLE)
-      , m_descriptorUpdateTemplate(FIX_DEFAULT_FOR_TYPE_NOT_DEFINED)
+      , m_descriptorUpdateTemplate(VK_NULL_HANDLE)
     {
     }
 
@@ -117,7 +117,7 @@ namespace RapidVulkan
     {
       const auto resource = m_descriptorUpdateTemplate;
       m_device = VK_NULL_HANDLE;
-      m_descriptorUpdateTemplate = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      m_descriptorUpdateTemplate = VK_NULL_HANDLE;
       return resource;
     }
 
@@ -128,11 +128,11 @@ namespace RapidVulkan
         return;
 
       assert(m_device != VK_NULL_HANDLE);
-      assert(m_descriptorUpdateTemplate != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED);
+      assert(m_descriptorUpdateTemplate != VK_NULL_HANDLE);
 
       vkDestroyDescriptorUpdateTemplateKHR(m_device, m_descriptorUpdateTemplate, nullptr);
       m_device = VK_NULL_HANDLE;
-      m_descriptorUpdateTemplate = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      m_descriptorUpdateTemplate = VK_NULL_HANDLE;
     }
 
     //! @brief Destroys any owned resources and assume control of the DescriptorUpdateTemplateKHR (this object becomes responsible for releasing it)
@@ -214,7 +214,7 @@ namespace RapidVulkan
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_descriptorUpdateTemplate != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      return m_descriptorUpdateTemplate != VK_NULL_HANDLE;
     }
   };
 }

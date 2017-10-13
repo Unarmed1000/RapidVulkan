@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALSEMAPHOREFEATUREFLAGBITSKHX_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALSEMAPHOREFEATUREFLAGBITSKHX_HPP
-#if VK_HEADER_VERSION >= 42
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKTESSELLATIONDOMAINORIGINKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKTESSELLATIONDOMAINORIGINKHR_HPP
+#if VK_HEADER_VERSION >= 61
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,17 +33,17 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkExternalSemaphoreFeatureFlagBitsKHX& value)
+    inline const char* ToString(const VkTessellationDomainOriginKHR& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 42
-      case VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT_KHX:
-        return "VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT_KHX";
+#if VK_HEADER_VERSION >= 61
+      case VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT_KHR:
+        return "VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT_KHR";
 #endif
-#if VK_HEADER_VERSION >= 42
-      case VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT_KHX:
-        return "VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT_KHX";
+#if VK_HEADER_VERSION >= 61
+      case VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT_KHR:
+        return "VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT_KHR";
 #endif
       default:
         return "*Unknown*";

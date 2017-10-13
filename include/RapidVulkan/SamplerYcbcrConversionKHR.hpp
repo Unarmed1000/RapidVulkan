@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_INDIRECTCOMMANDSLAYOUTNVX_HPP
-#define RAPIDVULKAN_INDIRECTCOMMANDSLAYOUTNVX_HPP
-#if VK_HEADER_VERSION >= 37
+#ifndef RAPIDVULKAN_SAMPLERYCBCRCONVERSIONKHR_HPP
+#define RAPIDVULKAN_SAMPLERYCBCRCONVERSIONKHR_HPP
+#if VK_HEADER_VERSION >= 61
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -34,16 +34,16 @@
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
-  class IndirectCommandsLayoutNVX
+  class SamplerYcbcrConversionKHR
   {
     VkDevice m_device;
-    VkIndirectCommandsLayoutNVX m_indirectCommandsLayout;
+    VkSamplerYcbcrConversionKHR m_ycbcrConversion;
   public:
-    IndirectCommandsLayoutNVX(const IndirectCommandsLayoutNVX&) = delete;
-    IndirectCommandsLayoutNVX& operator=(const IndirectCommandsLayoutNVX&) = delete;
+    SamplerYcbcrConversionKHR(const SamplerYcbcrConversionKHR&) = delete;
+    SamplerYcbcrConversionKHR& operator=(const SamplerYcbcrConversionKHR&) = delete;
 
     //! @brief Move assignment operator
-    IndirectCommandsLayoutNVX& operator=(IndirectCommandsLayoutNVX&& other)
+    SamplerYcbcrConversionKHR& operator=(SamplerYcbcrConversionKHR&& other)
     {
       if (this != &other)
       {
@@ -53,45 +53,45 @@ namespace RapidVulkan
 
         // Claim ownership here
         m_device = other.m_device;
-        m_indirectCommandsLayout = other.m_indirectCommandsLayout;
+        m_ycbcrConversion = other.m_ycbcrConversion;
 
         // Remove the data from other
         other.m_device = VK_NULL_HANDLE;
-        other.m_indirectCommandsLayout = VK_NULL_HANDLE;
+        other.m_ycbcrConversion = VK_NULL_HANDLE;
       }
       return *this;
     }
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    IndirectCommandsLayoutNVX(IndirectCommandsLayoutNVX&& other)
+    SamplerYcbcrConversionKHR(SamplerYcbcrConversionKHR&& other)
       : m_device(other.m_device)
-      , m_indirectCommandsLayout(other.m_indirectCommandsLayout)
+      , m_ycbcrConversion(other.m_ycbcrConversion)
     {
       // Remove the data from other
       other.m_device = VK_NULL_HANDLE;
-      other.m_indirectCommandsLayout = VK_NULL_HANDLE;
+      other.m_ycbcrConversion = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    IndirectCommandsLayoutNVX()
+    SamplerYcbcrConversionKHR()
       : m_device(VK_NULL_HANDLE)
-      , m_indirectCommandsLayout(VK_NULL_HANDLE)
+      , m_ycbcrConversion(VK_NULL_HANDLE)
     {
     }
 
-    //! @brief Assume control of the IndirectCommandsLayoutNVX (this object becomes responsible for releasing it)
-    explicit IndirectCommandsLayoutNVX(const ClaimMode claimMode, const VkDevice device, const VkIndirectCommandsLayoutNVX indirectCommandsLayout)
-      : IndirectCommandsLayoutNVX()
+    //! @brief Assume control of the SamplerYcbcrConversionKHR (this object becomes responsible for releasing it)
+    explicit SamplerYcbcrConversionKHR(const ClaimMode claimMode, const VkDevice device, const VkSamplerYcbcrConversionKHR ycbcrConversion)
+      : SamplerYcbcrConversionKHR()
     {
-      Reset(claimMode, device, indirectCommandsLayout);
+      Reset(claimMode, device, ycbcrConversion);
     }
 
-#if VK_HEADER_VERSION >= 37
+#if VK_HEADER_VERSION >= 61
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateIndirectCommandsLayoutNVX
-    IndirectCommandsLayoutNVX(const VkDevice device, const VkIndirectCommandsLayoutCreateInfoNVX& createInfo)
-      : IndirectCommandsLayoutNVX()
+    //! @note  Function: vkCreateSamplerYcbcrConversionKHR
+    SamplerYcbcrConversionKHR(const VkDevice device, const VkSamplerYcbcrConversionCreateInfoKHR& createInfo)
+      : SamplerYcbcrConversionKHR()
     {
       Reset(device, createInfo);
     }
@@ -99,25 +99,25 @@ namespace RapidVulkan
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateIndirectCommandsLayoutNVX
-    IndirectCommandsLayoutNVX(const VkDevice device, const VkPipelineBindPoint pipelineBindPoint, const VkIndirectCommandsLayoutUsageFlagsNVX flags, const uint32_t tokenCount, VkIndirectCommandsLayoutTokenNVX*const pTokens)
-      : IndirectCommandsLayoutNVX()
+    //! @note  Function: vkCreateSamplerYcbcrConversionKHR
+    SamplerYcbcrConversionKHR(const VkDevice device, const VkFormat format, const VkSamplerYcbcrModelConversionKHR ycbcrModel, const VkSamplerYcbcrRangeKHR ycbcrRange, const VkComponentMapping components, const VkChromaLocationKHR xChromaOffset, const VkChromaLocationKHR yChromaOffset, const VkFilter chromaFilter, const VkBool32 forceExplicitReconstruction)
+      : SamplerYcbcrConversionKHR()
     {
-      Reset(device, pipelineBindPoint, flags, tokenCount, pTokens);
+      Reset(device, format, ycbcrModel, ycbcrRange, components, xChromaOffset, yChromaOffset, chromaFilter, forceExplicitReconstruction);
     }
 #endif
 
-    ~IndirectCommandsLayoutNVX()
+    ~SamplerYcbcrConversionKHR()
     {
       Reset();
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkIndirectCommandsLayoutNVX Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
+    VkSamplerYcbcrConversionKHR Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
     {
-      const auto resource = m_indirectCommandsLayout;
+      const auto resource = m_ycbcrConversion;
       m_device = VK_NULL_HANDLE;
-      m_indirectCommandsLayout = VK_NULL_HANDLE;
+      m_ycbcrConversion = VK_NULL_HANDLE;
       return resource;
     }
 
@@ -128,28 +128,28 @@ namespace RapidVulkan
         return;
 
       assert(m_device != VK_NULL_HANDLE);
-      assert(m_indirectCommandsLayout != VK_NULL_HANDLE);
+      assert(m_ycbcrConversion != VK_NULL_HANDLE);
 
-      vkDestroyIndirectCommandsLayoutNVX(m_device, m_indirectCommandsLayout, nullptr);
+      vkDestroySamplerYcbcrConversionKHR(m_device, m_ycbcrConversion, nullptr);
       m_device = VK_NULL_HANDLE;
-      m_indirectCommandsLayout = VK_NULL_HANDLE;
+      m_ycbcrConversion = VK_NULL_HANDLE;
     }
 
-    //! @brief Destroys any owned resources and assume control of the IndirectCommandsLayoutNVX (this object becomes responsible for releasing it)
-    void Reset(const ClaimMode claimMode, const VkDevice device, const VkIndirectCommandsLayoutNVX indirectCommandsLayout)
+    //! @brief Destroys any owned resources and assume control of the SamplerYcbcrConversionKHR (this object becomes responsible for releasing it)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkSamplerYcbcrConversionKHR ycbcrConversion)
     {
       if (IsValid())
         Reset();
 
 
       m_device = device;
-      m_indirectCommandsLayout = indirectCommandsLayout;
+      m_ycbcrConversion = ycbcrConversion;
     }
 
-#if VK_HEADER_VERSION >= 37
+#if VK_HEADER_VERSION >= 61
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateIndirectCommandsLayoutNVX
-    void Reset(const VkDevice device, const VkIndirectCommandsLayoutCreateInfoNVX& createInfo)
+    //! @note  Function: vkCreateSamplerYcbcrConversionKHR
+    void Reset(const VkDevice device, const VkSamplerYcbcrConversionCreateInfoKHR& createInfo)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
@@ -163,27 +163,31 @@ namespace RapidVulkan
         Reset();
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkIndirectCommandsLayoutNVX indirectCommandsLayout;
-      CheckError(vkCreateIndirectCommandsLayoutNVX(device, &createInfo, nullptr, &indirectCommandsLayout), "vkCreateIndirectCommandsLayoutNVX", __FILE__, __LINE__);
+      VkSamplerYcbcrConversionKHR ycbcrConversion;
+      CheckError(vkCreateSamplerYcbcrConversionKHR(device, &createInfo, nullptr, &ycbcrConversion), "vkCreateSamplerYcbcrConversionKHR", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
-      m_indirectCommandsLayout = indirectCommandsLayout;
+      m_ycbcrConversion = ycbcrConversion;
     }
 #endif
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateIndirectCommandsLayoutNVX
-    void Reset(const VkDevice device, const VkPipelineBindPoint pipelineBindPoint, const VkIndirectCommandsLayoutUsageFlagsNVX flags, const uint32_t tokenCount, VkIndirectCommandsLayoutTokenNVX*const pTokens)
+    //! @note  Function: vkCreateSamplerYcbcrConversionKHR
+    void Reset(const VkDevice device, const VkFormat format, const VkSamplerYcbcrModelConversionKHR ycbcrModel, const VkSamplerYcbcrRangeKHR ycbcrRange, const VkComponentMapping components, const VkChromaLocationKHR xChromaOffset, const VkChromaLocationKHR yChromaOffset, const VkFilter chromaFilter, const VkBool32 forceExplicitReconstruction)
     {
-      VkIndirectCommandsLayoutCreateInfoNVX createInfo{};
-      createInfo.sType = VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NVX;
+      VkSamplerYcbcrConversionCreateInfoKHR createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_CREATE_INFO_KHR;
       createInfo.pNext = nullptr;
-      createInfo.pipelineBindPoint = pipelineBindPoint;
-      createInfo.flags = flags;
-      createInfo.tokenCount = tokenCount;
-      createInfo.pTokens = pTokens;
+      createInfo.format = format;
+      createInfo.ycbcrModel = ycbcrModel;
+      createInfo.ycbcrRange = ycbcrRange;
+      createInfo.components = components;
+      createInfo.xChromaOffset = xChromaOffset;
+      createInfo.yChromaOffset = yChromaOffset;
+      createInfo.chromaFilter = chromaFilter;
+      createInfo.forceExplicitReconstruction = forceExplicitReconstruction;
 
       Reset(device, createInfo);
     }
@@ -196,21 +200,21 @@ namespace RapidVulkan
     }
 
     //! @brief Get the associated resource handle
-    VkIndirectCommandsLayoutNVX Get() const
+    VkSamplerYcbcrConversionKHR Get() const
     {
-      return m_indirectCommandsLayout;
+      return m_ycbcrConversion;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkIndirectCommandsLayoutNVX* GetPointer() const
+    const VkSamplerYcbcrConversionKHR* GetPointer() const
     {
-      return &m_indirectCommandsLayout;
+      return &m_ycbcrConversion;
     }
 
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_indirectCommandsLayout != VK_NULL_HANDLE;
+      return m_ycbcrConversion != VK_NULL_HANDLE;
     }
   };
 }

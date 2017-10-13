@@ -241,7 +241,7 @@ namespace RapidVulkan
     }
 
 
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
     //! @note  Function: vkGetSwapchainStatusKHR
     void GetSwapchainStatusKHR()
     {

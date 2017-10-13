@@ -1,6 +1,6 @@
 #ifndef RAPIDVULKAN_DEBUG_STRINGS_VKOBJECTTYPE_HPP
 #define RAPIDVULKAN_DEBUG_STRINGS_VKOBJECTTYPE_HPP
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -37,107 +37,107 @@ namespace RapidVulkan
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_UNKNOWN:
         return "VK_OBJECT_TYPE_UNKNOWN";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_INSTANCE:
         return "VK_OBJECT_TYPE_INSTANCE";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_PHYSICAL_DEVICE:
         return "VK_OBJECT_TYPE_PHYSICAL_DEVICE";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_DEVICE:
         return "VK_OBJECT_TYPE_DEVICE";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_QUEUE:
         return "VK_OBJECT_TYPE_QUEUE";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_SEMAPHORE:
         return "VK_OBJECT_TYPE_SEMAPHORE";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_COMMAND_BUFFER:
         return "VK_OBJECT_TYPE_COMMAND_BUFFER";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_FENCE:
         return "VK_OBJECT_TYPE_FENCE";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_DEVICE_MEMORY:
         return "VK_OBJECT_TYPE_DEVICE_MEMORY";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_BUFFER:
         return "VK_OBJECT_TYPE_BUFFER";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_IMAGE:
         return "VK_OBJECT_TYPE_IMAGE";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_EVENT:
         return "VK_OBJECT_TYPE_EVENT";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_QUERY_POOL:
         return "VK_OBJECT_TYPE_QUERY_POOL";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_BUFFER_VIEW:
         return "VK_OBJECT_TYPE_BUFFER_VIEW";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_IMAGE_VIEW:
         return "VK_OBJECT_TYPE_IMAGE_VIEW";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_SHADER_MODULE:
         return "VK_OBJECT_TYPE_SHADER_MODULE";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_PIPELINE_CACHE:
         return "VK_OBJECT_TYPE_PIPELINE_CACHE";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_PIPELINE_LAYOUT:
         return "VK_OBJECT_TYPE_PIPELINE_LAYOUT";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_RENDER_PASS:
         return "VK_OBJECT_TYPE_RENDER_PASS";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_PIPELINE:
         return "VK_OBJECT_TYPE_PIPELINE";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT:
         return "VK_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_SAMPLER:
         return "VK_OBJECT_TYPE_SAMPLER";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_DESCRIPTOR_POOL:
         return "VK_OBJECT_TYPE_DESCRIPTOR_POOL";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_DESCRIPTOR_SET:
         return "VK_OBJECT_TYPE_DESCRIPTOR_SET";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_FRAMEBUFFER:
         return "VK_OBJECT_TYPE_FRAMEBUFFER";
 #endif
-#if VK_HEADER_VERSION >= 49
+#if VK_HEADER_VERSION >= 51
       case VK_OBJECT_TYPE_COMMAND_POOL:
         return "VK_OBJECT_TYPE_COMMAND_POOL";
 #endif
