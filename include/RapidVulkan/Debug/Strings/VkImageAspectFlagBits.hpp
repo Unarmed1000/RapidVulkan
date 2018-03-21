@@ -44,6 +44,18 @@ namespace RapidVulkan
         return "VK_IMAGE_ASPECT_STENCIL_BIT";
       case VK_IMAGE_ASPECT_METADATA_BIT:
         return "VK_IMAGE_ASPECT_METADATA_BIT";
+#if VK_HEADER_VERSION >= 70
+      case VK_IMAGE_ASPECT_PLANE_0_BIT:
+        return "VK_IMAGE_ASPECT_PLANE_0_BIT";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_IMAGE_ASPECT_PLANE_1_BIT:
+        return "VK_IMAGE_ASPECT_PLANE_1_BIT";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_IMAGE_ASPECT_PLANE_2_BIT:
+        return "VK_IMAGE_ASPECT_PLANE_2_BIT";
+#endif
       default:
         return "*Unknown*";
       }

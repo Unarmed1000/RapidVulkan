@@ -1,5 +1,6 @@
-#ifndef RAPIDVULKAN_COMMANDPOOL_HPP
-#define RAPIDVULKAN_COMMANDPOOL_HPP
+#ifndef RAPIDVULKAN_DESCRIPTORUPDATETEMPLATE_HPP
+#define RAPIDVULKAN_DESCRIPTORUPDATETEMPLATE_HPP
+#if VK_HEADER_VERSION >= 70
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,16 +34,16 @@
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
-  class CommandPool
+  class DescriptorUpdateTemplate
   {
     VkDevice m_device;
-    VkCommandPool m_commandPool;
+    VkDescriptorUpdateTemplate m_descriptorUpdateTemplate;
   public:
-    CommandPool(const CommandPool&) = delete;
-    CommandPool& operator=(const CommandPool&) = delete;
+    DescriptorUpdateTemplate(const DescriptorUpdateTemplate&) = delete;
+    DescriptorUpdateTemplate& operator=(const DescriptorUpdateTemplate&) = delete;
 
     //! @brief Move assignment operator
-    CommandPool& operator=(CommandPool&& other)
+    DescriptorUpdateTemplate& operator=(DescriptorUpdateTemplate&& other)
     {
       if (this != &other)
       {
@@ -52,69 +53,71 @@ namespace RapidVulkan
 
         // Claim ownership here
         m_device = other.m_device;
-        m_commandPool = other.m_commandPool;
+        m_descriptorUpdateTemplate = other.m_descriptorUpdateTemplate;
 
         // Remove the data from other
         other.m_device = VK_NULL_HANDLE;
-        other.m_commandPool = VK_NULL_HANDLE;
+        other.m_descriptorUpdateTemplate = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       }
       return *this;
     }
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    CommandPool(CommandPool&& other)
+    DescriptorUpdateTemplate(DescriptorUpdateTemplate&& other)
       : m_device(other.m_device)
-      , m_commandPool(other.m_commandPool)
+      , m_descriptorUpdateTemplate(other.m_descriptorUpdateTemplate)
     {
       // Remove the data from other
       other.m_device = VK_NULL_HANDLE;
-      other.m_commandPool = VK_NULL_HANDLE;
+      other.m_descriptorUpdateTemplate = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    CommandPool()
+    DescriptorUpdateTemplate()
       : m_device(VK_NULL_HANDLE)
-      , m_commandPool(VK_NULL_HANDLE)
+      , m_descriptorUpdateTemplate(FIX_DEFAULT_FOR_TYPE_NOT_DEFINED)
     {
     }
 
-    //! @brief Assume control of the CommandPool (this object becomes responsible for releasing it)
-    explicit CommandPool(const ClaimMode claimMode, const VkDevice device, const VkCommandPool commandPool)
-      : CommandPool()
+    //! @brief Assume control of the DescriptorUpdateTemplate (this object becomes responsible for releasing it)
+    explicit DescriptorUpdateTemplate(const ClaimMode claimMode, const VkDevice device, const VkDescriptorUpdateTemplate descriptorUpdateTemplate)
+      : DescriptorUpdateTemplate()
     {
-      Reset(claimMode, device, commandPool);
+      Reset(claimMode, device, descriptorUpdateTemplate);
     }
 
+#if VK_HEADER_VERSION >= 70
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateCommandPool
-    CommandPool(const VkDevice device, const VkCommandPoolCreateInfo& createInfo)
-      : CommandPool()
+    //! @note  Function: vkCreateDescriptorUpdateTemplate
+    DescriptorUpdateTemplate(const VkDevice device, const VkDescriptorUpdateTemplateCreateInfo& createInfo)
+      : DescriptorUpdateTemplate()
     {
       Reset(device, createInfo);
     }
+#endif
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateCommandPool
-    CommandPool(const VkDevice device, const VkCommandPoolCreateFlags flags, const uint32_t queueFamilyIndex)
-      : CommandPool()
+    //! @note  Function: vkCreateDescriptorUpdateTemplate
+    DescriptorUpdateTemplate(const VkDevice device, const VkDescriptorUpdateTemplateCreateFlags flags, const uint32_t descriptorUpdateEntryCount, VkDescriptorUpdateTemplateEntry*const pDescriptorUpdateEntries, const VkDescriptorUpdateTemplateType templateType, const VkDescriptorSetLayout descriptorSetLayout, const VkPipelineBindPoint pipelineBindPoint, const VkPipelineLayout pipelineLayout, const uint32_t set)
+      : DescriptorUpdateTemplate()
     {
-      Reset(device, flags, queueFamilyIndex);
+      Reset(device, flags, descriptorUpdateEntryCount, pDescriptorUpdateEntries, templateType, descriptorSetLayout, pipelineBindPoint, pipelineLayout, set);
     }
 #endif
 
-    ~CommandPool()
+    ~DescriptorUpdateTemplate()
     {
       Reset();
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkCommandPool Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
+    VkDescriptorUpdateTemplate Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
     {
-      const auto resource = m_commandPool;
+      const auto resource = m_descriptorUpdateTemplate;
       m_device = VK_NULL_HANDLE;
-      m_commandPool = VK_NULL_HANDLE;
+      m_descriptorUpdateTemplate = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       return resource;
     }
 
@@ -125,27 +128,28 @@ namespace RapidVulkan
         return;
 
       assert(m_device != VK_NULL_HANDLE);
-      assert(m_commandPool != VK_NULL_HANDLE);
+      assert(m_descriptorUpdateTemplate != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED);
 
-      vkDestroyCommandPool(m_device, m_commandPool, nullptr);
+      vkDestroyDescriptorUpdateTemplate(m_device, m_descriptorUpdateTemplate, nullptr);
       m_device = VK_NULL_HANDLE;
-      m_commandPool = VK_NULL_HANDLE;
+      m_descriptorUpdateTemplate = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
-    //! @brief Destroys any owned resources and assume control of the CommandPool (this object becomes responsible for releasing it)
-    void Reset(const ClaimMode claimMode, const VkDevice device, const VkCommandPool commandPool)
+    //! @brief Destroys any owned resources and assume control of the DescriptorUpdateTemplate (this object becomes responsible for releasing it)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkDescriptorUpdateTemplate descriptorUpdateTemplate)
     {
       if (IsValid())
         Reset();
 
 
       m_device = device;
-      m_commandPool = commandPool;
+      m_descriptorUpdateTemplate = descriptorUpdateTemplate;
     }
 
+#if VK_HEADER_VERSION >= 70
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateCommandPool
-    void Reset(const VkDevice device, const VkCommandPoolCreateInfo& createInfo)
+    //! @note  Function: vkCreateDescriptorUpdateTemplate
+    void Reset(const VkDevice device, const VkDescriptorUpdateTemplateCreateInfo& createInfo)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
@@ -159,24 +163,31 @@ namespace RapidVulkan
         Reset();
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkCommandPool commandPool;
-      CheckError(vkCreateCommandPool(device, &createInfo, nullptr, &commandPool), "vkCreateCommandPool", __FILE__, __LINE__);
+      VkDescriptorUpdateTemplate descriptorUpdateTemplate;
+      CheckError(vkCreateDescriptorUpdateTemplate(device, &createInfo, nullptr, &descriptorUpdateTemplate), "vkCreateDescriptorUpdateTemplate", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
-      m_commandPool = commandPool;
+      m_descriptorUpdateTemplate = descriptorUpdateTemplate;
     }
+#endif
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateCommandPool
-    void Reset(const VkDevice device, const VkCommandPoolCreateFlags flags, const uint32_t queueFamilyIndex)
+    //! @note  Function: vkCreateDescriptorUpdateTemplate
+    void Reset(const VkDevice device, const VkDescriptorUpdateTemplateCreateFlags flags, const uint32_t descriptorUpdateEntryCount, VkDescriptorUpdateTemplateEntry*const pDescriptorUpdateEntries, const VkDescriptorUpdateTemplateType templateType, const VkDescriptorSetLayout descriptorSetLayout, const VkPipelineBindPoint pipelineBindPoint, const VkPipelineLayout pipelineLayout, const uint32_t set)
     {
-      VkCommandPoolCreateInfo createInfo{};
-      createInfo.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
+      VkDescriptorUpdateTemplateCreateInfo createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO;
       createInfo.pNext = nullptr;
       createInfo.flags = flags;
-      createInfo.queueFamilyIndex = queueFamilyIndex;
+      createInfo.descriptorUpdateEntryCount = descriptorUpdateEntryCount;
+      createInfo.pDescriptorUpdateEntries = pDescriptorUpdateEntries;
+      createInfo.templateType = templateType;
+      createInfo.descriptorSetLayout = descriptorSetLayout;
+      createInfo.pipelineBindPoint = pipelineBindPoint;
+      createInfo.pipelineLayout = pipelineLayout;
+      createInfo.set = set;
 
       Reset(device, createInfo);
     }
@@ -189,38 +200,24 @@ namespace RapidVulkan
     }
 
     //! @brief Get the associated resource handle
-    VkCommandPool Get() const
+    VkDescriptorUpdateTemplate Get() const
     {
-      return m_commandPool;
+      return m_descriptorUpdateTemplate;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkCommandPool* GetPointer() const
+    const VkDescriptorUpdateTemplate* GetPointer() const
     {
-      return &m_commandPool;
+      return &m_descriptorUpdateTemplate;
     }
 
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_commandPool != VK_NULL_HANDLE;
+      return m_descriptorUpdateTemplate != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
-
-    //! @note  Function: vkResetCommandPool
-    void ResetCommandPool(const VkCommandPoolResetFlags flags)
-    {
-      CheckError(vkResetCommandPool(m_device, m_commandPool, flags), "vkResetCommandPool", __FILE__, __LINE__);
-    }
-
-
-#if VK_HEADER_VERSION >= 70
-    //! @note  Function: vkTrimCommandPool
-    void TrimCommandPool(const VkCommandPoolTrimFlags flags)
-    {
-      vkTrimCommandPool(m_device, m_commandPool, flags);
-    }
-#endif
   };
 }
 
+#endif
 #endif

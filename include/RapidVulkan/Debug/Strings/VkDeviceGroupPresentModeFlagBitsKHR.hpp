@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKMEMORYALLOCATEFLAGBITSKHX_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKMEMORYALLOCATEFLAGBITSKHX_HPP
-#if VK_HEADER_VERSION >= 42
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKDEVICEGROUPPRESENTMODEFLAGBITSKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKDEVICEGROUPPRESENTMODEFLAGBITSKHR_HPP
+#if VK_HEADER_VERSION >= 70
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,13 +33,25 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkMemoryAllocateFlagBitsKHX& value)
+    inline const char* ToString(const VkDeviceGroupPresentModeFlagBitsKHR& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 42
-      case VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT_KHX:
-        return "VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT_KHX";
+#if VK_HEADER_VERSION >= 70
+      case VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR:
+        return "VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR:
+        return "VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR:
+        return "VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR:
+        return "VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR";
 #endif
       default:
         return "*Unknown*";

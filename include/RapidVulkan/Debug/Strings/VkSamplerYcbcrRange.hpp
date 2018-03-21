@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKDEVICEGROUPPRESENTMODEFLAGBITSKHX_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKDEVICEGROUPPRESENTMODEFLAGBITSKHX_HPP
-#if VK_HEADER_VERSION >= 42
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSAMPLERYCBCRRANGE_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKSAMPLERYCBCRRANGE_HPP
+#if VK_HEADER_VERSION >= 70
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,25 +33,17 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkDeviceGroupPresentModeFlagBitsKHX& value)
+    inline const char* ToString(const VkSamplerYcbcrRange& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 42
-      case VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHX:
-        return "VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHX";
+#if VK_HEADER_VERSION >= 70
+      case VK_SAMPLER_YCBCR_RANGE_ITU_FULL:
+        return "VK_SAMPLER_YCBCR_RANGE_ITU_FULL";
 #endif
-#if VK_HEADER_VERSION >= 42
-      case VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHX:
-        return "VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHX";
-#endif
-#if VK_HEADER_VERSION >= 42
-      case VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHX:
-        return "VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHX";
-#endif
-#if VK_HEADER_VERSION >= 42
-      case VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHX:
-        return "VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHX";
+#if VK_HEADER_VERSION >= 70
+      case VK_SAMPLER_YCBCR_RANGE_ITU_NARROW:
+        return "VK_SAMPLER_YCBCR_RANGE_ITU_NARROW";
 #endif
       default:
         return "*Unknown*";

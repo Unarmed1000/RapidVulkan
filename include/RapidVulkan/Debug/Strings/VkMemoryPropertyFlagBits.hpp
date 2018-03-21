@@ -46,6 +46,10 @@ namespace RapidVulkan
         return "VK_MEMORY_PROPERTY_HOST_CACHED_BIT";
       case VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT:
         return "VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT";
+#if VK_HEADER_VERSION >= 70
+      case VK_MEMORY_PROPERTY_PROTECTED_BIT:
+        return "VK_MEMORY_PROPERTY_PROTECTED_BIT";
+#endif
       default:
         return "*Unknown*";
       }

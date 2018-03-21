@@ -1,5 +1,6 @@
-#ifndef RAPIDVULKAN_INSTANCE_HPP
-#define RAPIDVULKAN_INSTANCE_HPP
+#ifndef RAPIDVULKAN_DEBUGUTILSMESSENGEREXT_HPP
+#define RAPIDVULKAN_DEBUGUTILSMESSENGEREXT_HPP
+#if VK_HEADER_VERSION >= 70
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,15 +34,16 @@
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
-  class Instance
+  class DebugUtilsMessengerEXT
   {
     VkInstance m_instance;
+    VkDebugUtilsMessengerEXT m_messenger;
   public:
-    Instance(const Instance&) = delete;
-    Instance& operator=(const Instance&) = delete;
+    DebugUtilsMessengerEXT(const DebugUtilsMessengerEXT&) = delete;
+    DebugUtilsMessengerEXT& operator=(const DebugUtilsMessengerEXT&) = delete;
 
     //! @brief Move assignment operator
-    Instance& operator=(Instance&& other)
+    DebugUtilsMessengerEXT& operator=(DebugUtilsMessengerEXT&& other)
     {
       if (this != &other)
       {
@@ -51,63 +53,71 @@ namespace RapidVulkan
 
         // Claim ownership here
         m_instance = other.m_instance;
+        m_messenger = other.m_messenger;
 
         // Remove the data from other
         other.m_instance = VK_NULL_HANDLE;
+        other.m_messenger = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       }
       return *this;
     }
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    Instance(Instance&& other)
+    DebugUtilsMessengerEXT(DebugUtilsMessengerEXT&& other)
       : m_instance(other.m_instance)
+      , m_messenger(other.m_messenger)
     {
       // Remove the data from other
       other.m_instance = VK_NULL_HANDLE;
+      other.m_messenger = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    Instance()
+    DebugUtilsMessengerEXT()
       : m_instance(VK_NULL_HANDLE)
+      , m_messenger(FIX_DEFAULT_FOR_TYPE_NOT_DEFINED)
     {
     }
 
-    //! @brief Assume control of the Instance (this object becomes responsible for releasing it)
-    explicit Instance(const ClaimMode claimMode, const VkInstance instance)
-      : Instance()
+    //! @brief Assume control of the DebugUtilsMessengerEXT (this object becomes responsible for releasing it)
+    explicit DebugUtilsMessengerEXT(const ClaimMode claimMode, const VkInstance instance, const VkDebugUtilsMessengerEXT messenger)
+      : DebugUtilsMessengerEXT()
     {
-      Reset(claimMode, instance);
+      Reset(claimMode, instance, messenger);
     }
 
+#if VK_HEADER_VERSION >= 70
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateInstance
-    Instance(const VkInstanceCreateInfo& createInfo)
-      : Instance()
+    //! @note  Function: vkCreateDebugUtilsMessengerEXT
+    DebugUtilsMessengerEXT(const VkInstance instance, const VkDebugUtilsMessengerCreateInfoEXT& createInfo)
+      : DebugUtilsMessengerEXT()
     {
-      Reset(createInfo);
-    }
-
-#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
-    //! @brief Create the requested resource
-    //! @note  Function: vkCreateInstance
-    Instance(const VkInstanceCreateFlags flags, VkApplicationInfo*const pApplicationInfo, const uint32_t enabledLayerCount, const char *const * ppEnabledLayerNames, const uint32_t enabledExtensionCount, const char *const * ppEnabledExtensionNames)
-      : Instance()
-    {
-      Reset(flags, pApplicationInfo, enabledLayerCount, ppEnabledLayerNames, enabledExtensionCount, ppEnabledExtensionNames);
+      Reset(instance, createInfo);
     }
 #endif
 
-    ~Instance()
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkCreateDebugUtilsMessengerEXT
+    DebugUtilsMessengerEXT(const VkInstance instance, const VkDebugUtilsMessengerCreateFlagsEXT flags, const VkDebugUtilsMessageSeverityFlagsEXT messageSeverity, const VkDebugUtilsMessageTypeFlagsEXT messageType, const PFN_vkDebugUtilsMessengerCallbackEXT pfnUserCallback, void * pUserData)
+      : DebugUtilsMessengerEXT()
+    {
+      Reset(instance, flags, messageSeverity, messageType, pfnUserCallback, pUserData);
+    }
+#endif
+
+    ~DebugUtilsMessengerEXT()
     {
       Reset();
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkInstance Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
+    VkDebugUtilsMessengerEXT Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
     {
-      const auto resource = m_instance;
+      const auto resource = m_messenger;
       m_instance = VK_NULL_HANDLE;
+      m_messenger = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       return resource;
     }
 
@@ -118,27 +128,34 @@ namespace RapidVulkan
         return;
 
       assert(m_instance != VK_NULL_HANDLE);
+      assert(m_messenger != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED);
 
-      vkDestroyInstance(m_instance, nullptr);
+      vkDestroyDebugUtilsMessengerEXT(m_instance, m_messenger, nullptr);
       m_instance = VK_NULL_HANDLE;
+      m_messenger = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
-    //! @brief Destroys any owned resources and assume control of the Instance (this object becomes responsible for releasing it)
-    void Reset(const ClaimMode claimMode, const VkInstance instance)
+    //! @brief Destroys any owned resources and assume control of the DebugUtilsMessengerEXT (this object becomes responsible for releasing it)
+    void Reset(const ClaimMode claimMode, const VkInstance instance, const VkDebugUtilsMessengerEXT messenger)
     {
       if (IsValid())
         Reset();
 
 
       m_instance = instance;
+      m_messenger = messenger;
     }
 
+#if VK_HEADER_VERSION >= 70
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateInstance
-    void Reset(const VkInstanceCreateInfo& createInfo)
+    //! @note  Function: vkCreateDebugUtilsMessengerEXT
+    void Reset(const VkInstance instance, const VkDebugUtilsMessengerCreateInfoEXT& createInfo)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
+      if (instance == VK_NULL_HANDLE)
+        throw std::invalid_argument("instance can not be VK_NULL_HANDLE");
 #else
+      assert(instance != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
@@ -146,71 +163,58 @@ namespace RapidVulkan
         Reset();
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkInstance instance;
-      CheckError(vkCreateInstance(&createInfo, nullptr, &instance), "vkCreateInstance", __FILE__, __LINE__);
+      VkDebugUtilsMessengerEXT messenger;
+      CheckError(vkCreateDebugUtilsMessengerEXT(instance, &createInfo, nullptr, &messenger), "vkCreateDebugUtilsMessengerEXT", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_instance = instance;
-    }
-
-#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
-    //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateInstance
-    void Reset(const VkInstanceCreateFlags flags, VkApplicationInfo*const pApplicationInfo, const uint32_t enabledLayerCount, const char *const * ppEnabledLayerNames, const uint32_t enabledExtensionCount, const char *const * ppEnabledExtensionNames)
-    {
-      VkInstanceCreateInfo createInfo{};
-      createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
-      createInfo.pNext = nullptr;
-      createInfo.flags = flags;
-      createInfo.pApplicationInfo = pApplicationInfo;
-      createInfo.enabledLayerCount = enabledLayerCount;
-      createInfo.ppEnabledLayerNames = ppEnabledLayerNames;
-      createInfo.enabledExtensionCount = enabledExtensionCount;
-      createInfo.ppEnabledExtensionNames = ppEnabledExtensionNames;
-
-      Reset(createInfo);
+      m_messenger = messenger;
     }
 #endif
 
-    //! @brief Get the associated resource handle
-    VkInstance Get() const
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkCreateDebugUtilsMessengerEXT
+    void Reset(const VkInstance instance, const VkDebugUtilsMessengerCreateFlagsEXT flags, const VkDebugUtilsMessageSeverityFlagsEXT messageSeverity, const VkDebugUtilsMessageTypeFlagsEXT messageType, const PFN_vkDebugUtilsMessengerCallbackEXT pfnUserCallback, void * pUserData)
+    {
+      VkDebugUtilsMessengerCreateInfoEXT createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT;
+      createInfo.pNext = nullptr;
+      createInfo.flags = flags;
+      createInfo.messageSeverity = messageSeverity;
+      createInfo.messageType = messageType;
+      createInfo.pfnUserCallback = pfnUserCallback;
+      createInfo.pUserData = pUserData;
+
+      Reset(instance, createInfo);
+    }
+#endif
+
+    //! @brief Get the associated 'Instance'
+    VkInstance GetInstance() const
     {
       return m_instance;
     }
 
-    //! @brief Get a pointer to the associated resource handle
-    const VkInstance* GetPointer() const
+    //! @brief Get the associated resource handle
+    VkDebugUtilsMessengerEXT Get() const
     {
-      return &m_instance;
+      return m_messenger;
+    }
+
+    //! @brief Get a pointer to the associated resource handle
+    const VkDebugUtilsMessengerEXT* GetPointer() const
+    {
+      return &m_messenger;
     }
 
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_instance != VK_NULL_HANDLE;
+      return m_messenger != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
-
-    //! @note  Function: vkEnumeratePhysicalDevices
-    void EnumeratePhysicalDevices(uint32_t * pPhysicalDeviceCount, VkPhysicalDevice * pPhysicalDevices)
-    {
-      CheckError(vkEnumeratePhysicalDevices(m_instance, pPhysicalDeviceCount, pPhysicalDevices), "vkEnumeratePhysicalDevices", __FILE__, __LINE__);
-    }
-
-    //! @note  Function: vkGetInstanceProcAddr
-    PFN_vkVoidFunction GetInstanceProcAddr(const char * pName)
-    {
-      return vkGetInstanceProcAddr(m_instance, pName);
-    }
-
-
-#if VK_HEADER_VERSION >= 70
-    //! @note  Function: vkEnumeratePhysicalDeviceGroups
-    void EnumeratePhysicalDeviceGroups(uint32_t * pPhysicalDeviceGroupCount, VkPhysicalDeviceGroupProperties * pPhysicalDeviceGroupProperties)
-    {
-      CheckError(vkEnumeratePhysicalDeviceGroups(m_instance, pPhysicalDeviceGroupCount, pPhysicalDeviceGroupProperties), "vkEnumeratePhysicalDeviceGroups", __FILE__, __LINE__);
-    }
-#endif
   };
 }
 
+#endif
 #endif

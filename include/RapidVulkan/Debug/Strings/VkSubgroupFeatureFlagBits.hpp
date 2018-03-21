@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALMEMORYFEATUREFLAGBITSKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALMEMORYFEATUREFLAGBITSKHR_HPP
-#if VK_HEADER_VERSION >= 54
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSUBGROUPFEATUREFLAGBITS_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKSUBGROUPFEATUREFLAGBITS_HPP
+#if VK_HEADER_VERSION >= 70
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,21 +33,41 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkExternalMemoryFeatureFlagBitsKHR& value)
+    inline const char* ToString(const VkSubgroupFeatureFlagBits& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 54
-      case VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT_KHR:
-        return "VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT_KHR";
+#if VK_HEADER_VERSION >= 70
+      case VK_SUBGROUP_FEATURE_BASIC_BIT:
+        return "VK_SUBGROUP_FEATURE_BASIC_BIT";
 #endif
-#if VK_HEADER_VERSION >= 54
-      case VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT_KHR:
-        return "VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT_KHR";
+#if VK_HEADER_VERSION >= 70
+      case VK_SUBGROUP_FEATURE_VOTE_BIT:
+        return "VK_SUBGROUP_FEATURE_VOTE_BIT";
 #endif
-#if VK_HEADER_VERSION >= 54
-      case VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT_KHR:
-        return "VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT_KHR";
+#if VK_HEADER_VERSION >= 70
+      case VK_SUBGROUP_FEATURE_ARITHMETIC_BIT:
+        return "VK_SUBGROUP_FEATURE_ARITHMETIC_BIT";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_SUBGROUP_FEATURE_BALLOT_BIT:
+        return "VK_SUBGROUP_FEATURE_BALLOT_BIT";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_SUBGROUP_FEATURE_SHUFFLE_BIT:
+        return "VK_SUBGROUP_FEATURE_SHUFFLE_BIT";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT:
+        return "VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_SUBGROUP_FEATURE_CLUSTERED_BIT:
+        return "VK_SUBGROUP_FEATURE_CLUSTERED_BIT";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_SUBGROUP_FEATURE_QUAD_BIT:
+        return "VK_SUBGROUP_FEATURE_QUAD_BIT";
 #endif
       default:
         return "*Unknown*";

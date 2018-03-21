@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSAMPLERYCBCRMODELCONVERSIONKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKSAMPLERYCBCRMODELCONVERSIONKHR_HPP
-#if VK_HEADER_VERSION >= 61
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKPEERMEMORYFEATUREFLAGBITS_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKPEERMEMORYFEATUREFLAGBITS_HPP
+#if VK_HEADER_VERSION >= 70
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,29 +33,25 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkSamplerYcbcrModelConversionKHR& value)
+    inline const char* ToString(const VkPeerMemoryFeatureFlagBits& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 61
-      case VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY_KHR:
-        return "VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY_KHR";
+#if VK_HEADER_VERSION >= 70
+      case VK_PEER_MEMORY_FEATURE_COPY_SRC_BIT:
+        return "VK_PEER_MEMORY_FEATURE_COPY_SRC_BIT";
 #endif
-#if VK_HEADER_VERSION >= 61
-      case VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_IDENTITY_KHR:
-        return "VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_IDENTITY_KHR";
+#if VK_HEADER_VERSION >= 70
+      case VK_PEER_MEMORY_FEATURE_COPY_DST_BIT:
+        return "VK_PEER_MEMORY_FEATURE_COPY_DST_BIT";
 #endif
-#if VK_HEADER_VERSION >= 61
-      case VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_709_KHR:
-        return "VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_709_KHR";
+#if VK_HEADER_VERSION >= 70
+      case VK_PEER_MEMORY_FEATURE_GENERIC_SRC_BIT:
+        return "VK_PEER_MEMORY_FEATURE_GENERIC_SRC_BIT";
 #endif
-#if VK_HEADER_VERSION >= 61
-      case VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_601_KHR:
-        return "VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_601_KHR";
-#endif
-#if VK_HEADER_VERSION >= 61
-      case VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_2020_KHR:
-        return "VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_2020_KHR";
+#if VK_HEADER_VERSION >= 70
+      case VK_PEER_MEMORY_FEATURE_GENERIC_DST_BIT:
+        return "VK_PEER_MEMORY_FEATURE_GENERIC_DST_BIT";
 #endif
       default:
         return "*Unknown*";

@@ -38,6 +38,14 @@ namespace RapidVulkan
       {
       case VK_DEPENDENCY_BY_REGION_BIT:
         return "VK_DEPENDENCY_BY_REGION_BIT";
+#if VK_HEADER_VERSION >= 70
+      case VK_DEPENDENCY_DEVICE_GROUP_BIT:
+        return "VK_DEPENDENCY_DEVICE_GROUP_BIT";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_DEPENDENCY_VIEW_LOCAL_BIT:
+        return "VK_DEPENDENCY_VIEW_LOCAL_BIT";
+#endif
       default:
         return "*Unknown*";
       }

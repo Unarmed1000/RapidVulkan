@@ -40,6 +40,10 @@ namespace RapidVulkan
         return "VK_COMMAND_POOL_CREATE_TRANSIENT_BIT";
       case VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT:
         return "VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT";
+#if VK_HEADER_VERSION >= 70
+      case VK_COMMAND_POOL_CREATE_PROTECTED_BIT:
+        return "VK_COMMAND_POOL_CREATE_PROTECTED_BIT";
+#endif
       default:
         return "*Unknown*";
       }

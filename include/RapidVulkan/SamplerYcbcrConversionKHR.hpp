@@ -37,7 +37,7 @@ namespace RapidVulkan
   class SamplerYcbcrConversionKHR
   {
     VkDevice m_device;
-    VkSamplerYcbcrConversionKHR m_ycbcrConversion;
+    VkSamplerYcbcrConversion m_ycbcrConversion;
   public:
     SamplerYcbcrConversionKHR(const SamplerYcbcrConversionKHR&) = delete;
     SamplerYcbcrConversionKHR& operator=(const SamplerYcbcrConversionKHR&) = delete;
@@ -57,7 +57,7 @@ namespace RapidVulkan
 
         // Remove the data from other
         other.m_device = VK_NULL_HANDLE;
-        other.m_ycbcrConversion = VK_NULL_HANDLE;
+        other.m_ycbcrConversion = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       }
       return *this;
     }
@@ -70,18 +70,18 @@ namespace RapidVulkan
     {
       // Remove the data from other
       other.m_device = VK_NULL_HANDLE;
-      other.m_ycbcrConversion = VK_NULL_HANDLE;
+      other.m_ycbcrConversion = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     SamplerYcbcrConversionKHR()
       : m_device(VK_NULL_HANDLE)
-      , m_ycbcrConversion(VK_NULL_HANDLE)
+      , m_ycbcrConversion(FIX_DEFAULT_FOR_TYPE_NOT_DEFINED)
     {
     }
 
     //! @brief Assume control of the SamplerYcbcrConversionKHR (this object becomes responsible for releasing it)
-    explicit SamplerYcbcrConversionKHR(const ClaimMode claimMode, const VkDevice device, const VkSamplerYcbcrConversionKHR ycbcrConversion)
+    explicit SamplerYcbcrConversionKHR(const ClaimMode claimMode, const VkDevice device, const VkSamplerYcbcrConversion ycbcrConversion)
       : SamplerYcbcrConversionKHR()
     {
       Reset(claimMode, device, ycbcrConversion);
@@ -90,7 +90,7 @@ namespace RapidVulkan
 #if VK_HEADER_VERSION >= 61
     //! @brief Create the requested resource
     //! @note  Function: vkCreateSamplerYcbcrConversionKHR
-    SamplerYcbcrConversionKHR(const VkDevice device, const VkSamplerYcbcrConversionCreateInfoKHR& createInfo)
+    SamplerYcbcrConversionKHR(const VkDevice device, const VkSamplerYcbcrConversionCreateInfo& createInfo)
       : SamplerYcbcrConversionKHR()
     {
       Reset(device, createInfo);
@@ -100,7 +100,7 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
     //! @note  Function: vkCreateSamplerYcbcrConversionKHR
-    SamplerYcbcrConversionKHR(const VkDevice device, const VkFormat format, const VkSamplerYcbcrModelConversionKHR ycbcrModel, const VkSamplerYcbcrRangeKHR ycbcrRange, const VkComponentMapping components, const VkChromaLocationKHR xChromaOffset, const VkChromaLocationKHR yChromaOffset, const VkFilter chromaFilter, const VkBool32 forceExplicitReconstruction)
+    SamplerYcbcrConversionKHR(const VkDevice device, const VkFormat format, const VkSamplerYcbcrModelConversion ycbcrModel, const VkSamplerYcbcrRange ycbcrRange, const VkComponentMapping components, const VkChromaLocation xChromaOffset, const VkChromaLocation yChromaOffset, const VkFilter chromaFilter, const VkBool32 forceExplicitReconstruction)
       : SamplerYcbcrConversionKHR()
     {
       Reset(device, format, ycbcrModel, ycbcrRange, components, xChromaOffset, yChromaOffset, chromaFilter, forceExplicitReconstruction);
@@ -113,11 +113,11 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkSamplerYcbcrConversionKHR Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
+    VkSamplerYcbcrConversion Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
     {
       const auto resource = m_ycbcrConversion;
       m_device = VK_NULL_HANDLE;
-      m_ycbcrConversion = VK_NULL_HANDLE;
+      m_ycbcrConversion = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       return resource;
     }
 
@@ -128,15 +128,15 @@ namespace RapidVulkan
         return;
 
       assert(m_device != VK_NULL_HANDLE);
-      assert(m_ycbcrConversion != VK_NULL_HANDLE);
+      assert(m_ycbcrConversion != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED);
 
       vkDestroySamplerYcbcrConversionKHR(m_device, m_ycbcrConversion, nullptr);
       m_device = VK_NULL_HANDLE;
-      m_ycbcrConversion = VK_NULL_HANDLE;
+      m_ycbcrConversion = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
     //! @brief Destroys any owned resources and assume control of the SamplerYcbcrConversionKHR (this object becomes responsible for releasing it)
-    void Reset(const ClaimMode claimMode, const VkDevice device, const VkSamplerYcbcrConversionKHR ycbcrConversion)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkSamplerYcbcrConversion ycbcrConversion)
     {
       if (IsValid())
         Reset();
@@ -149,7 +149,7 @@ namespace RapidVulkan
 #if VK_HEADER_VERSION >= 61
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkCreateSamplerYcbcrConversionKHR
-    void Reset(const VkDevice device, const VkSamplerYcbcrConversionCreateInfoKHR& createInfo)
+    void Reset(const VkDevice device, const VkSamplerYcbcrConversionCreateInfo& createInfo)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
@@ -163,7 +163,7 @@ namespace RapidVulkan
         Reset();
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkSamplerYcbcrConversionKHR ycbcrConversion;
+      VkSamplerYcbcrConversion ycbcrConversion;
       CheckError(vkCreateSamplerYcbcrConversionKHR(device, &createInfo, nullptr, &ycbcrConversion), "vkCreateSamplerYcbcrConversionKHR", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
@@ -175,10 +175,10 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkCreateSamplerYcbcrConversionKHR
-    void Reset(const VkDevice device, const VkFormat format, const VkSamplerYcbcrModelConversionKHR ycbcrModel, const VkSamplerYcbcrRangeKHR ycbcrRange, const VkComponentMapping components, const VkChromaLocationKHR xChromaOffset, const VkChromaLocationKHR yChromaOffset, const VkFilter chromaFilter, const VkBool32 forceExplicitReconstruction)
+    void Reset(const VkDevice device, const VkFormat format, const VkSamplerYcbcrModelConversion ycbcrModel, const VkSamplerYcbcrRange ycbcrRange, const VkComponentMapping components, const VkChromaLocation xChromaOffset, const VkChromaLocation yChromaOffset, const VkFilter chromaFilter, const VkBool32 forceExplicitReconstruction)
     {
-      VkSamplerYcbcrConversionCreateInfoKHR createInfo{};
-      createInfo.sType = VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_CREATE_INFO_KHR;
+      VkSamplerYcbcrConversionCreateInfo createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_CREATE_INFO;
       createInfo.pNext = nullptr;
       createInfo.format = format;
       createInfo.ycbcrModel = ycbcrModel;
@@ -200,13 +200,13 @@ namespace RapidVulkan
     }
 
     //! @brief Get the associated resource handle
-    VkSamplerYcbcrConversionKHR Get() const
+    VkSamplerYcbcrConversion Get() const
     {
       return m_ycbcrConversion;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkSamplerYcbcrConversionKHR* GetPointer() const
+    const VkSamplerYcbcrConversion* GetPointer() const
     {
       return &m_ycbcrConversion;
     }
@@ -214,7 +214,7 @@ namespace RapidVulkan
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_ycbcrConversion != VK_NULL_HANDLE;
+      return m_ycbcrConversion != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
   };
 }

@@ -1,5 +1,6 @@
-#ifndef RAPIDVULKAN_COMMANDPOOL_HPP
-#define RAPIDVULKAN_COMMANDPOOL_HPP
+#ifndef RAPIDVULKAN_SAMPLERYCBCRCONVERSION_HPP
+#define RAPIDVULKAN_SAMPLERYCBCRCONVERSION_HPP
+#if VK_HEADER_VERSION >= 70
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,16 +34,16 @@
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
-  class CommandPool
+  class SamplerYcbcrConversion
   {
     VkDevice m_device;
-    VkCommandPool m_commandPool;
+    VkSamplerYcbcrConversion m_ycbcrConversion;
   public:
-    CommandPool(const CommandPool&) = delete;
-    CommandPool& operator=(const CommandPool&) = delete;
+    SamplerYcbcrConversion(const SamplerYcbcrConversion&) = delete;
+    SamplerYcbcrConversion& operator=(const SamplerYcbcrConversion&) = delete;
 
     //! @brief Move assignment operator
-    CommandPool& operator=(CommandPool&& other)
+    SamplerYcbcrConversion& operator=(SamplerYcbcrConversion&& other)
     {
       if (this != &other)
       {
@@ -52,69 +53,71 @@ namespace RapidVulkan
 
         // Claim ownership here
         m_device = other.m_device;
-        m_commandPool = other.m_commandPool;
+        m_ycbcrConversion = other.m_ycbcrConversion;
 
         // Remove the data from other
         other.m_device = VK_NULL_HANDLE;
-        other.m_commandPool = VK_NULL_HANDLE;
+        other.m_ycbcrConversion = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       }
       return *this;
     }
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    CommandPool(CommandPool&& other)
+    SamplerYcbcrConversion(SamplerYcbcrConversion&& other)
       : m_device(other.m_device)
-      , m_commandPool(other.m_commandPool)
+      , m_ycbcrConversion(other.m_ycbcrConversion)
     {
       // Remove the data from other
       other.m_device = VK_NULL_HANDLE;
-      other.m_commandPool = VK_NULL_HANDLE;
+      other.m_ycbcrConversion = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    CommandPool()
+    SamplerYcbcrConversion()
       : m_device(VK_NULL_HANDLE)
-      , m_commandPool(VK_NULL_HANDLE)
+      , m_ycbcrConversion(FIX_DEFAULT_FOR_TYPE_NOT_DEFINED)
     {
     }
 
-    //! @brief Assume control of the CommandPool (this object becomes responsible for releasing it)
-    explicit CommandPool(const ClaimMode claimMode, const VkDevice device, const VkCommandPool commandPool)
-      : CommandPool()
+    //! @brief Assume control of the SamplerYcbcrConversion (this object becomes responsible for releasing it)
+    explicit SamplerYcbcrConversion(const ClaimMode claimMode, const VkDevice device, const VkSamplerYcbcrConversion ycbcrConversion)
+      : SamplerYcbcrConversion()
     {
-      Reset(claimMode, device, commandPool);
+      Reset(claimMode, device, ycbcrConversion);
     }
 
+#if VK_HEADER_VERSION >= 70
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateCommandPool
-    CommandPool(const VkDevice device, const VkCommandPoolCreateInfo& createInfo)
-      : CommandPool()
+    //! @note  Function: vkCreateSamplerYcbcrConversion
+    SamplerYcbcrConversion(const VkDevice device, const VkSamplerYcbcrConversionCreateInfo& createInfo)
+      : SamplerYcbcrConversion()
     {
       Reset(device, createInfo);
     }
+#endif
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateCommandPool
-    CommandPool(const VkDevice device, const VkCommandPoolCreateFlags flags, const uint32_t queueFamilyIndex)
-      : CommandPool()
+    //! @note  Function: vkCreateSamplerYcbcrConversion
+    SamplerYcbcrConversion(const VkDevice device, const VkFormat format, const VkSamplerYcbcrModelConversion ycbcrModel, const VkSamplerYcbcrRange ycbcrRange, const VkComponentMapping components, const VkChromaLocation xChromaOffset, const VkChromaLocation yChromaOffset, const VkFilter chromaFilter, const VkBool32 forceExplicitReconstruction)
+      : SamplerYcbcrConversion()
     {
-      Reset(device, flags, queueFamilyIndex);
+      Reset(device, format, ycbcrModel, ycbcrRange, components, xChromaOffset, yChromaOffset, chromaFilter, forceExplicitReconstruction);
     }
 #endif
 
-    ~CommandPool()
+    ~SamplerYcbcrConversion()
     {
       Reset();
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkCommandPool Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
+    VkSamplerYcbcrConversion Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
     {
-      const auto resource = m_commandPool;
+      const auto resource = m_ycbcrConversion;
       m_device = VK_NULL_HANDLE;
-      m_commandPool = VK_NULL_HANDLE;
+      m_ycbcrConversion = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       return resource;
     }
 
@@ -125,27 +128,28 @@ namespace RapidVulkan
         return;
 
       assert(m_device != VK_NULL_HANDLE);
-      assert(m_commandPool != VK_NULL_HANDLE);
+      assert(m_ycbcrConversion != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED);
 
-      vkDestroyCommandPool(m_device, m_commandPool, nullptr);
+      vkDestroySamplerYcbcrConversion(m_device, m_ycbcrConversion, nullptr);
       m_device = VK_NULL_HANDLE;
-      m_commandPool = VK_NULL_HANDLE;
+      m_ycbcrConversion = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
-    //! @brief Destroys any owned resources and assume control of the CommandPool (this object becomes responsible for releasing it)
-    void Reset(const ClaimMode claimMode, const VkDevice device, const VkCommandPool commandPool)
+    //! @brief Destroys any owned resources and assume control of the SamplerYcbcrConversion (this object becomes responsible for releasing it)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkSamplerYcbcrConversion ycbcrConversion)
     {
       if (IsValid())
         Reset();
 
 
       m_device = device;
-      m_commandPool = commandPool;
+      m_ycbcrConversion = ycbcrConversion;
     }
 
+#if VK_HEADER_VERSION >= 70
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateCommandPool
-    void Reset(const VkDevice device, const VkCommandPoolCreateInfo& createInfo)
+    //! @note  Function: vkCreateSamplerYcbcrConversion
+    void Reset(const VkDevice device, const VkSamplerYcbcrConversionCreateInfo& createInfo)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
@@ -159,24 +163,31 @@ namespace RapidVulkan
         Reset();
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkCommandPool commandPool;
-      CheckError(vkCreateCommandPool(device, &createInfo, nullptr, &commandPool), "vkCreateCommandPool", __FILE__, __LINE__);
+      VkSamplerYcbcrConversion ycbcrConversion;
+      CheckError(vkCreateSamplerYcbcrConversion(device, &createInfo, nullptr, &ycbcrConversion), "vkCreateSamplerYcbcrConversion", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
-      m_commandPool = commandPool;
+      m_ycbcrConversion = ycbcrConversion;
     }
+#endif
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateCommandPool
-    void Reset(const VkDevice device, const VkCommandPoolCreateFlags flags, const uint32_t queueFamilyIndex)
+    //! @note  Function: vkCreateSamplerYcbcrConversion
+    void Reset(const VkDevice device, const VkFormat format, const VkSamplerYcbcrModelConversion ycbcrModel, const VkSamplerYcbcrRange ycbcrRange, const VkComponentMapping components, const VkChromaLocation xChromaOffset, const VkChromaLocation yChromaOffset, const VkFilter chromaFilter, const VkBool32 forceExplicitReconstruction)
     {
-      VkCommandPoolCreateInfo createInfo{};
-      createInfo.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
+      VkSamplerYcbcrConversionCreateInfo createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_CREATE_INFO;
       createInfo.pNext = nullptr;
-      createInfo.flags = flags;
-      createInfo.queueFamilyIndex = queueFamilyIndex;
+      createInfo.format = format;
+      createInfo.ycbcrModel = ycbcrModel;
+      createInfo.ycbcrRange = ycbcrRange;
+      createInfo.components = components;
+      createInfo.xChromaOffset = xChromaOffset;
+      createInfo.yChromaOffset = yChromaOffset;
+      createInfo.chromaFilter = chromaFilter;
+      createInfo.forceExplicitReconstruction = forceExplicitReconstruction;
 
       Reset(device, createInfo);
     }
@@ -189,38 +200,24 @@ namespace RapidVulkan
     }
 
     //! @brief Get the associated resource handle
-    VkCommandPool Get() const
+    VkSamplerYcbcrConversion Get() const
     {
-      return m_commandPool;
+      return m_ycbcrConversion;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkCommandPool* GetPointer() const
+    const VkSamplerYcbcrConversion* GetPointer() const
     {
-      return &m_commandPool;
+      return &m_ycbcrConversion;
     }
 
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_commandPool != VK_NULL_HANDLE;
+      return m_ycbcrConversion != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
-
-    //! @note  Function: vkResetCommandPool
-    void ResetCommandPool(const VkCommandPoolResetFlags flags)
-    {
-      CheckError(vkResetCommandPool(m_device, m_commandPool, flags), "vkResetCommandPool", __FILE__, __LINE__);
-    }
-
-
-#if VK_HEADER_VERSION >= 70
-    //! @note  Function: vkTrimCommandPool
-    void TrimCommandPool(const VkCommandPoolTrimFlags flags)
-    {
-      vkTrimCommandPool(m_device, m_commandPool, flags);
-    }
-#endif
   };
 }
 
+#endif
 #endif

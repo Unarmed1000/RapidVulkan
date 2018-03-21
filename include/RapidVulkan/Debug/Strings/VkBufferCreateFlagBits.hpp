@@ -42,6 +42,10 @@ namespace RapidVulkan
         return "VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT";
       case VK_BUFFER_CREATE_SPARSE_ALIASED_BIT:
         return "VK_BUFFER_CREATE_SPARSE_ALIASED_BIT";
+#if VK_HEADER_VERSION >= 70
+      case VK_BUFFER_CREATE_PROTECTED_BIT:
+        return "VK_BUFFER_CREATE_PROTECTED_BIT";
+#endif
       default:
         return "*Unknown*";
       }

@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKFENCEIMPORTFLAGBITSKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKFENCEIMPORTFLAGBITSKHR_HPP
-#if VK_HEADER_VERSION >= 54
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKDEBUGUTILSMESSAGESEVERITYFLAGBITSEXT_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKDEBUGUTILSMESSAGESEVERITYFLAGBITSEXT_HPP
+#if VK_HEADER_VERSION >= 70
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,13 +33,25 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkFenceImportFlagBitsKHR& value)
+    inline const char* ToString(const VkDebugUtilsMessageSeverityFlagBitsEXT& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 54
-      case VK_FENCE_IMPORT_TEMPORARY_BIT_KHR:
-        return "VK_FENCE_IMPORT_TEMPORARY_BIT_KHR";
+#if VK_HEADER_VERSION >= 70
+      case VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT:
+        return "VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT:
+        return "VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT:
+        return "VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT:
+        return "VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT";
 #endif
       default:
         return "*Unknown*";

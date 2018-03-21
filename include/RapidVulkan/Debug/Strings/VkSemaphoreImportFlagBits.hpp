@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKTESSELLATIONDOMAINORIGINKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKTESSELLATIONDOMAINORIGINKHR_HPP
-#if VK_HEADER_VERSION >= 61
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSEMAPHOREIMPORTFLAGBITS_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKSEMAPHOREIMPORTFLAGBITS_HPP
+#if VK_HEADER_VERSION >= 70
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,17 +33,13 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkTessellationDomainOriginKHR& value)
+    inline const char* ToString(const VkSemaphoreImportFlagBits& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 61
-      case VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT_KHR:
-        return "VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT_KHR";
-#endif
-#if VK_HEADER_VERSION >= 61
-      case VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT_KHR:
-        return "VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT_KHR";
+#if VK_HEADER_VERSION >= 70
+      case VK_SEMAPHORE_IMPORT_TEMPORARY_BIT:
+        return "VK_SEMAPHORE_IMPORT_TEMPORARY_BIT";
 #endif
       default:
         return "*Unknown*";

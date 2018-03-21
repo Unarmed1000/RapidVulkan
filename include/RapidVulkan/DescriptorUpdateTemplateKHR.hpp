@@ -37,7 +37,7 @@ namespace RapidVulkan
   class DescriptorUpdateTemplateKHR
   {
     VkDevice m_device;
-    VkDescriptorUpdateTemplateKHR m_descriptorUpdateTemplate;
+    VkDescriptorUpdateTemplate m_descriptorUpdateTemplate;
   public:
     DescriptorUpdateTemplateKHR(const DescriptorUpdateTemplateKHR&) = delete;
     DescriptorUpdateTemplateKHR& operator=(const DescriptorUpdateTemplateKHR&) = delete;
@@ -57,7 +57,7 @@ namespace RapidVulkan
 
         // Remove the data from other
         other.m_device = VK_NULL_HANDLE;
-        other.m_descriptorUpdateTemplate = VK_NULL_HANDLE;
+        other.m_descriptorUpdateTemplate = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       }
       return *this;
     }
@@ -70,18 +70,18 @@ namespace RapidVulkan
     {
       // Remove the data from other
       other.m_device = VK_NULL_HANDLE;
-      other.m_descriptorUpdateTemplate = VK_NULL_HANDLE;
+      other.m_descriptorUpdateTemplate = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     DescriptorUpdateTemplateKHR()
       : m_device(VK_NULL_HANDLE)
-      , m_descriptorUpdateTemplate(VK_NULL_HANDLE)
+      , m_descriptorUpdateTemplate(FIX_DEFAULT_FOR_TYPE_NOT_DEFINED)
     {
     }
 
     //! @brief Assume control of the DescriptorUpdateTemplateKHR (this object becomes responsible for releasing it)
-    explicit DescriptorUpdateTemplateKHR(const ClaimMode claimMode, const VkDevice device, const VkDescriptorUpdateTemplateKHR descriptorUpdateTemplate)
+    explicit DescriptorUpdateTemplateKHR(const ClaimMode claimMode, const VkDevice device, const VkDescriptorUpdateTemplate descriptorUpdateTemplate)
       : DescriptorUpdateTemplateKHR()
     {
       Reset(claimMode, device, descriptorUpdateTemplate);
@@ -90,7 +90,7 @@ namespace RapidVulkan
 #if VK_HEADER_VERSION >= 42
     //! @brief Create the requested resource
     //! @note  Function: vkCreateDescriptorUpdateTemplateKHR
-    DescriptorUpdateTemplateKHR(const VkDevice device, const VkDescriptorUpdateTemplateCreateInfoKHR& createInfo)
+    DescriptorUpdateTemplateKHR(const VkDevice device, const VkDescriptorUpdateTemplateCreateInfo& createInfo)
       : DescriptorUpdateTemplateKHR()
     {
       Reset(device, createInfo);
@@ -100,7 +100,7 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
     //! @note  Function: vkCreateDescriptorUpdateTemplateKHR
-    DescriptorUpdateTemplateKHR(const VkDevice device, const VkDescriptorUpdateTemplateCreateFlagsKHR flags, const uint32_t descriptorUpdateEntryCount, VkDescriptorUpdateTemplateEntryKHR*const pDescriptorUpdateEntries, const VkDescriptorUpdateTemplateTypeKHR templateType, const VkDescriptorSetLayout descriptorSetLayout, const VkPipelineBindPoint pipelineBindPoint, const VkPipelineLayout pipelineLayout, const uint32_t set)
+    DescriptorUpdateTemplateKHR(const VkDevice device, const VkDescriptorUpdateTemplateCreateFlags flags, const uint32_t descriptorUpdateEntryCount, VkDescriptorUpdateTemplateEntry*const pDescriptorUpdateEntries, const VkDescriptorUpdateTemplateType templateType, const VkDescriptorSetLayout descriptorSetLayout, const VkPipelineBindPoint pipelineBindPoint, const VkPipelineLayout pipelineLayout, const uint32_t set)
       : DescriptorUpdateTemplateKHR()
     {
       Reset(device, flags, descriptorUpdateEntryCount, pDescriptorUpdateEntries, templateType, descriptorSetLayout, pipelineBindPoint, pipelineLayout, set);
@@ -113,11 +113,11 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkDescriptorUpdateTemplateKHR Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
+    VkDescriptorUpdateTemplate Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
     {
       const auto resource = m_descriptorUpdateTemplate;
       m_device = VK_NULL_HANDLE;
-      m_descriptorUpdateTemplate = VK_NULL_HANDLE;
+      m_descriptorUpdateTemplate = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       return resource;
     }
 
@@ -128,15 +128,15 @@ namespace RapidVulkan
         return;
 
       assert(m_device != VK_NULL_HANDLE);
-      assert(m_descriptorUpdateTemplate != VK_NULL_HANDLE);
+      assert(m_descriptorUpdateTemplate != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED);
 
       vkDestroyDescriptorUpdateTemplateKHR(m_device, m_descriptorUpdateTemplate, nullptr);
       m_device = VK_NULL_HANDLE;
-      m_descriptorUpdateTemplate = VK_NULL_HANDLE;
+      m_descriptorUpdateTemplate = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
     //! @brief Destroys any owned resources and assume control of the DescriptorUpdateTemplateKHR (this object becomes responsible for releasing it)
-    void Reset(const ClaimMode claimMode, const VkDevice device, const VkDescriptorUpdateTemplateKHR descriptorUpdateTemplate)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkDescriptorUpdateTemplate descriptorUpdateTemplate)
     {
       if (IsValid())
         Reset();
@@ -149,7 +149,7 @@ namespace RapidVulkan
 #if VK_HEADER_VERSION >= 42
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkCreateDescriptorUpdateTemplateKHR
-    void Reset(const VkDevice device, const VkDescriptorUpdateTemplateCreateInfoKHR& createInfo)
+    void Reset(const VkDevice device, const VkDescriptorUpdateTemplateCreateInfo& createInfo)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
@@ -163,7 +163,7 @@ namespace RapidVulkan
         Reset();
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkDescriptorUpdateTemplateKHR descriptorUpdateTemplate;
+      VkDescriptorUpdateTemplate descriptorUpdateTemplate;
       CheckError(vkCreateDescriptorUpdateTemplateKHR(device, &createInfo, nullptr, &descriptorUpdateTemplate), "vkCreateDescriptorUpdateTemplateKHR", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
@@ -175,10 +175,10 @@ namespace RapidVulkan
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkCreateDescriptorUpdateTemplateKHR
-    void Reset(const VkDevice device, const VkDescriptorUpdateTemplateCreateFlagsKHR flags, const uint32_t descriptorUpdateEntryCount, VkDescriptorUpdateTemplateEntryKHR*const pDescriptorUpdateEntries, const VkDescriptorUpdateTemplateTypeKHR templateType, const VkDescriptorSetLayout descriptorSetLayout, const VkPipelineBindPoint pipelineBindPoint, const VkPipelineLayout pipelineLayout, const uint32_t set)
+    void Reset(const VkDevice device, const VkDescriptorUpdateTemplateCreateFlags flags, const uint32_t descriptorUpdateEntryCount, VkDescriptorUpdateTemplateEntry*const pDescriptorUpdateEntries, const VkDescriptorUpdateTemplateType templateType, const VkDescriptorSetLayout descriptorSetLayout, const VkPipelineBindPoint pipelineBindPoint, const VkPipelineLayout pipelineLayout, const uint32_t set)
     {
-      VkDescriptorUpdateTemplateCreateInfoKHR createInfo{};
-      createInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO_KHR;
+      VkDescriptorUpdateTemplateCreateInfo createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO;
       createInfo.pNext = nullptr;
       createInfo.flags = flags;
       createInfo.descriptorUpdateEntryCount = descriptorUpdateEntryCount;
@@ -200,13 +200,13 @@ namespace RapidVulkan
     }
 
     //! @brief Get the associated resource handle
-    VkDescriptorUpdateTemplateKHR Get() const
+    VkDescriptorUpdateTemplate Get() const
     {
       return m_descriptorUpdateTemplate;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkDescriptorUpdateTemplateKHR* GetPointer() const
+    const VkDescriptorUpdateTemplate* GetPointer() const
     {
       return &m_descriptorUpdateTemplate;
     }
@@ -214,7 +214,7 @@ namespace RapidVulkan
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_descriptorUpdateTemplate != VK_NULL_HANDLE;
+      return m_descriptorUpdateTemplate != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
   };
 }

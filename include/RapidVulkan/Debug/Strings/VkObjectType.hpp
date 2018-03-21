@@ -141,6 +141,14 @@ namespace RapidVulkan
       case VK_OBJECT_TYPE_COMMAND_POOL:
         return "VK_OBJECT_TYPE_COMMAND_POOL";
 #endif
+#if VK_HEADER_VERSION >= 70
+      case VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION:
+        return "VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE:
+        return "VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE";
+#endif
       default:
         return "*Unknown*";
       }

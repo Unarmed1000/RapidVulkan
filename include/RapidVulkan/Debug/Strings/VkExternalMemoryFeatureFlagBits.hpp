@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALFENCEHANDLETYPEFLAGBITSKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALFENCEHANDLETYPEFLAGBITSKHR_HPP
-#if VK_HEADER_VERSION >= 54
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALMEMORYFEATUREFLAGBITS_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALMEMORYFEATUREFLAGBITS_HPP
+#if VK_HEADER_VERSION >= 70
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,25 +33,21 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkExternalFenceHandleTypeFlagBitsKHR& value)
+    inline const char* ToString(const VkExternalMemoryFeatureFlagBits& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 54
-      case VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT_KHR:
-        return "VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT_KHR";
+#if VK_HEADER_VERSION >= 70
+      case VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT:
+        return "VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT";
 #endif
-#if VK_HEADER_VERSION >= 54
-      case VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR:
-        return "VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR";
+#if VK_HEADER_VERSION >= 70
+      case VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT:
+        return "VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT";
 #endif
-#if VK_HEADER_VERSION >= 54
-      case VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_KHR:
-        return "VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_KHR";
-#endif
-#if VK_HEADER_VERSION >= 54
-      case VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT_KHR:
-        return "VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT_KHR";
+#if VK_HEADER_VERSION >= 70
+      case VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT:
+        return "VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT";
 #endif
       default:
         return "*Unknown*";

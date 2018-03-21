@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKCHROMALOCATIONKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKCHROMALOCATIONKHR_HPP
-#if VK_HEADER_VERSION >= 61
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKFENCEIMPORTFLAGBITS_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKFENCEIMPORTFLAGBITS_HPP
+#if VK_HEADER_VERSION >= 70
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,17 +33,13 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkChromaLocationKHR& value)
+    inline const char* ToString(const VkFenceImportFlagBits& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 61
-      case VK_CHROMA_LOCATION_COSITED_EVEN_KHR:
-        return "VK_CHROMA_LOCATION_COSITED_EVEN_KHR";
-#endif
-#if VK_HEADER_VERSION >= 61
-      case VK_CHROMA_LOCATION_MIDPOINT_KHR:
-        return "VK_CHROMA_LOCATION_MIDPOINT_KHR";
+#if VK_HEADER_VERSION >= 70
+      case VK_FENCE_IMPORT_TEMPORARY_BIT:
+        return "VK_FENCE_IMPORT_TEMPORARY_BIT";
 #endif
       default:
         return "*Unknown*";

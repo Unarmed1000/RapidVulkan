@@ -42,6 +42,14 @@ namespace RapidVulkan
         return "VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT";
       case VK_PIPELINE_CREATE_DERIVATIVE_BIT:
         return "VK_PIPELINE_CREATE_DERIVATIVE_BIT";
+#if VK_HEADER_VERSION >= 70
+      case VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT:
+        return "VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_PIPELINE_CREATE_DISPATCH_BASE:
+        return "VK_PIPELINE_CREATE_DISPATCH_BASE";
+#endif
       default:
         return "*Unknown*";
       }

@@ -1,5 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKQUEUEFLAGBITS_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKQUEUEFLAGBITS_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALFENCEHANDLETYPEFLAGBITS_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALFENCEHANDLETYPEFLAGBITS_HPP
+#if VK_HEADER_VERSION >= 70
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -32,21 +33,25 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkQueueFlagBits& value)
+    inline const char* ToString(const VkExternalFenceHandleTypeFlagBits& value)
     {
       switch(value)
       {
-      case VK_QUEUE_GRAPHICS_BIT:
-        return "VK_QUEUE_GRAPHICS_BIT";
-      case VK_QUEUE_COMPUTE_BIT:
-        return "VK_QUEUE_COMPUTE_BIT";
-      case VK_QUEUE_TRANSFER_BIT:
-        return "VK_QUEUE_TRANSFER_BIT";
-      case VK_QUEUE_SPARSE_BINDING_BIT:
-        return "VK_QUEUE_SPARSE_BINDING_BIT";
 #if VK_HEADER_VERSION >= 70
-      case VK_QUEUE_PROTECTED_BIT:
-        return "VK_QUEUE_PROTECTED_BIT";
+      case VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT:
+        return "VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT:
+        return "VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT:
+        return "VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT:
+        return "VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT";
 #endif
       default:
         return "*Unknown*";
@@ -55,4 +60,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

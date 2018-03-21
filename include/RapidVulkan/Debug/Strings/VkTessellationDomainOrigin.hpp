@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKPOINTCLIPPINGBEHAVIORKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKPOINTCLIPPINGBEHAVIORKHR_HPP
-#if VK_HEADER_VERSION >= 61
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKTESSELLATIONDOMAINORIGIN_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKTESSELLATIONDOMAINORIGIN_HPP
+#if VK_HEADER_VERSION >= 70
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,17 +33,17 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkPointClippingBehaviorKHR& value)
+    inline const char* ToString(const VkTessellationDomainOrigin& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 61
-      case VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES_KHR:
-        return "VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES_KHR";
+#if VK_HEADER_VERSION >= 70
+      case VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT:
+        return "VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT";
 #endif
-#if VK_HEADER_VERSION >= 61
-      case VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY_KHR:
-        return "VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY_KHR";
+#if VK_HEADER_VERSION >= 70
+      case VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT:
+        return "VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT";
 #endif
       default:
         return "*Unknown*";

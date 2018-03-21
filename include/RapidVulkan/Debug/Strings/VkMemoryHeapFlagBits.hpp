@@ -38,6 +38,10 @@ namespace RapidVulkan
       {
       case VK_MEMORY_HEAP_DEVICE_LOCAL_BIT:
         return "VK_MEMORY_HEAP_DEVICE_LOCAL_BIT";
+#if VK_HEADER_VERSION >= 70
+      case VK_MEMORY_HEAP_MULTI_INSTANCE_BIT:
+        return "VK_MEMORY_HEAP_MULTI_INSTANCE_BIT";
+#endif
       default:
         return "*Unknown*";
       }

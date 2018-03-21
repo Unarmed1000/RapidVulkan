@@ -72,6 +72,14 @@ namespace RapidVulkan
         return "VK_ERROR_FORMAT_NOT_SUPPORTED";
       case VK_ERROR_FRAGMENTED_POOL:
         return "VK_ERROR_FRAGMENTED_POOL";
+#if VK_HEADER_VERSION >= 70
+      case VK_ERROR_OUT_OF_POOL_MEMORY:
+        return "VK_ERROR_OUT_OF_POOL_MEMORY";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_ERROR_INVALID_EXTERNAL_HANDLE:
+        return "VK_ERROR_INVALID_EXTERNAL_HANDLE";
+#endif
       default:
         return "*Unknown*";
       }

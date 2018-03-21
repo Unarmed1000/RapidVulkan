@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKPEERMEMORYFEATUREFLAGBITSKHX_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKPEERMEMORYFEATUREFLAGBITSKHX_HPP
-#if VK_HEADER_VERSION >= 42
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALSEMAPHOREFEATUREFLAGBITS_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALSEMAPHOREFEATUREFLAGBITS_HPP
+#if VK_HEADER_VERSION >= 70
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,25 +33,17 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkPeerMemoryFeatureFlagBitsKHX& value)
+    inline const char* ToString(const VkExternalSemaphoreFeatureFlagBits& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 42
-      case VK_PEER_MEMORY_FEATURE_COPY_SRC_BIT_KHX:
-        return "VK_PEER_MEMORY_FEATURE_COPY_SRC_BIT_KHX";
+#if VK_HEADER_VERSION >= 70
+      case VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT:
+        return "VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT";
 #endif
-#if VK_HEADER_VERSION >= 42
-      case VK_PEER_MEMORY_FEATURE_COPY_DST_BIT_KHX:
-        return "VK_PEER_MEMORY_FEATURE_COPY_DST_BIT_KHX";
-#endif
-#if VK_HEADER_VERSION >= 42
-      case VK_PEER_MEMORY_FEATURE_GENERIC_SRC_BIT_KHX:
-        return "VK_PEER_MEMORY_FEATURE_GENERIC_SRC_BIT_KHX";
-#endif
-#if VK_HEADER_VERSION >= 42
-      case VK_PEER_MEMORY_FEATURE_GENERIC_DST_BIT_KHX:
-        return "VK_PEER_MEMORY_FEATURE_GENERIC_DST_BIT_KHX";
+#if VK_HEADER_VERSION >= 70
+      case VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT:
+        return "VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT";
 #endif
       default:
         return "*Unknown*";

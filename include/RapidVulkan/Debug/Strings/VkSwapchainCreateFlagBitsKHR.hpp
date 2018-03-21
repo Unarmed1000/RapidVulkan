@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSEMAPHOREIMPORTFLAGBITSKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKSEMAPHOREIMPORTFLAGBITSKHR_HPP
-#if VK_HEADER_VERSION >= 54
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSWAPCHAINCREATEFLAGBITSKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKSWAPCHAINCREATEFLAGBITSKHR_HPP
+#if VK_HEADER_VERSION >= 42
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,13 +33,17 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkSemaphoreImportFlagBitsKHR& value)
+    inline const char* ToString(const VkSwapchainCreateFlagBitsKHR& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 54
-      case VK_SEMAPHORE_IMPORT_TEMPORARY_BIT_KHR:
-        return "VK_SEMAPHORE_IMPORT_TEMPORARY_BIT_KHR";
+#if VK_HEADER_VERSION >= 70
+      case VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR:
+        return "VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR:
+        return "VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR";
 #endif
       default:
         return "*Unknown*";

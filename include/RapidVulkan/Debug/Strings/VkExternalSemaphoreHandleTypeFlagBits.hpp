@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSAMPLERYCBCRRANGEKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKSAMPLERYCBCRRANGEKHR_HPP
-#if VK_HEADER_VERSION >= 61
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALSEMAPHOREHANDLETYPEFLAGBITS_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALSEMAPHOREHANDLETYPEFLAGBITS_HPP
+#if VK_HEADER_VERSION >= 70
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,17 +33,29 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkSamplerYcbcrRangeKHR& value)
+    inline const char* ToString(const VkExternalSemaphoreHandleTypeFlagBits& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 61
-      case VK_SAMPLER_YCBCR_RANGE_ITU_FULL_KHR:
-        return "VK_SAMPLER_YCBCR_RANGE_ITU_FULL_KHR";
+#if VK_HEADER_VERSION >= 70
+      case VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT:
+        return "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT";
 #endif
-#if VK_HEADER_VERSION >= 61
-      case VK_SAMPLER_YCBCR_RANGE_ITU_NARROW_KHR:
-        return "VK_SAMPLER_YCBCR_RANGE_ITU_NARROW_KHR";
+#if VK_HEADER_VERSION >= 70
+      case VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT:
+        return "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT:
+        return "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT:
+        return "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT:
+        return "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT";
 #endif
       default:
         return "*Unknown*";

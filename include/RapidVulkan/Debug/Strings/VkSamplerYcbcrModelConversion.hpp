@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKDESCRIPTORUPDATETEMPLATETYPEKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKDESCRIPTORUPDATETEMPLATETYPEKHR_HPP
-#if VK_HEADER_VERSION >= 42
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSAMPLERYCBCRMODELCONVERSION_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKSAMPLERYCBCRMODELCONVERSION_HPP
+#if VK_HEADER_VERSION >= 70
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,17 +33,29 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkDescriptorUpdateTemplateTypeKHR& value)
+    inline const char* ToString(const VkSamplerYcbcrModelConversion& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 42
-      case VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET_KHR:
-        return "VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_DESCRIPTOR_SET_KHR";
+#if VK_HEADER_VERSION >= 70
+      case VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY:
+        return "VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY";
 #endif
-#if VK_HEADER_VERSION >= 42
-      case VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS_KHR:
-        return "VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS_KHR";
+#if VK_HEADER_VERSION >= 70
+      case VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_IDENTITY:
+        return "VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_IDENTITY";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_709:
+        return "VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_709";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_601:
+        return "VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_601";
+#endif
+#if VK_HEADER_VERSION >= 70
+      case VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_2020:
+        return "VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_2020";
 #endif
       default:
         return "*Unknown*";

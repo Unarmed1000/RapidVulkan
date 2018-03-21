@@ -239,6 +239,78 @@ namespace RapidVulkan
     {
       vkUpdateDescriptorSets(m_device, descriptorWriteCount, pDescriptorWrites, descriptorCopyCount, pDescriptorCopies);
     }
+
+
+#if VK_HEADER_VERSION >= 70
+    //! @note  Function: vkBindBufferMemory2
+    void BindBufferMemory2(const uint32_t bindInfoCount, const VkBindBufferMemoryInfo * pBindInfos)
+    {
+      CheckError(vkBindBufferMemory2(m_device, bindInfoCount, pBindInfos), "vkBindBufferMemory2", __FILE__, __LINE__);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 70
+    //! @note  Function: vkBindImageMemory2
+    void BindImageMemory2(const uint32_t bindInfoCount, const VkBindImageMemoryInfo * pBindInfos)
+    {
+      CheckError(vkBindImageMemory2(m_device, bindInfoCount, pBindInfos), "vkBindImageMemory2", __FILE__, __LINE__);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 70
+    //! @note  Function: vkGetDeviceGroupPeerMemoryFeatures
+    void GetDeviceGroupPeerMemoryFeatures(const uint32_t heapIndex, const uint32_t localDeviceIndex, const uint32_t remoteDeviceIndex, VkPeerMemoryFeatureFlags * pPeerMemoryFeatures)
+    {
+      vkGetDeviceGroupPeerMemoryFeatures(m_device, heapIndex, localDeviceIndex, remoteDeviceIndex, pPeerMemoryFeatures);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 70
+    //! @note  Function: vkGetImageMemoryRequirements2
+    void GetImageMemoryRequirements2(const VkImageMemoryRequirementsInfo2 * pInfo, VkMemoryRequirements2 * pMemoryRequirements)
+    {
+      vkGetImageMemoryRequirements2(m_device, pInfo, pMemoryRequirements);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 70
+    //! @note  Function: vkGetBufferMemoryRequirements2
+    void GetBufferMemoryRequirements2(const VkBufferMemoryRequirementsInfo2 * pInfo, VkMemoryRequirements2 * pMemoryRequirements)
+    {
+      vkGetBufferMemoryRequirements2(m_device, pInfo, pMemoryRequirements);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 70
+    //! @note  Function: vkGetImageSparseMemoryRequirements2
+    void GetImageSparseMemoryRequirements2(const VkImageSparseMemoryRequirementsInfo2 * pInfo, uint32_t * pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2 * pSparseMemoryRequirements)
+    {
+      vkGetImageSparseMemoryRequirements2(m_device, pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 70
+    //! @note  Function: vkGetDeviceQueue2
+    void GetDeviceQueue2(const VkDeviceQueueInfo2 * pQueueInfo, VkQueue * pQueue)
+    {
+      vkGetDeviceQueue2(m_device, pQueueInfo, pQueue);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 70
+    //! @note  Function: vkGetDescriptorSetLayoutSupport
+    void GetDescriptorSetLayoutSupport(const VkDescriptorSetLayoutCreateInfo * pCreateInfo, VkDescriptorSetLayoutSupport * pSupport)
+    {
+      vkGetDescriptorSetLayoutSupport(m_device, pCreateInfo, pSupport);
+    }
+#endif
   };
 }
 

@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALSEMAPHOREFEATUREFLAGBITSKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALSEMAPHOREFEATUREFLAGBITSKHR_HPP
-#if VK_HEADER_VERSION >= 54
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKCHROMALOCATION_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKCHROMALOCATION_HPP
+#if VK_HEADER_VERSION >= 70
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,17 +33,17 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkExternalSemaphoreFeatureFlagBitsKHR& value)
+    inline const char* ToString(const VkChromaLocation& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 54
-      case VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT_KHR:
-        return "VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT_KHR";
+#if VK_HEADER_VERSION >= 70
+      case VK_CHROMA_LOCATION_COSITED_EVEN:
+        return "VK_CHROMA_LOCATION_COSITED_EVEN";
 #endif
-#if VK_HEADER_VERSION >= 54
-      case VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT_KHR:
-        return "VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT_KHR";
+#if VK_HEADER_VERSION >= 70
+      case VK_CHROMA_LOCATION_MIDPOINT:
+        return "VK_CHROMA_LOCATION_MIDPOINT";
 #endif
       default:
         return "*Unknown*";
