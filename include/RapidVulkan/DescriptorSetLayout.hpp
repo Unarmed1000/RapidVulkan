@@ -42,7 +42,7 @@ namespace RapidVulkan
     DescriptorSetLayout& operator=(const DescriptorSetLayout&) = delete;
 
     //! @brief Move assignment operator
-    DescriptorSetLayout& operator=(DescriptorSetLayout&& other)
+    DescriptorSetLayout& operator=(DescriptorSetLayout&& other) noexcept
     {
       if (this != &other)
       {
@@ -63,7 +63,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    DescriptorSetLayout(DescriptorSetLayout&& other)
+    DescriptorSetLayout(DescriptorSetLayout&& other) noexcept
       : m_device(other.m_device)
       , m_setLayout(other.m_setLayout)
     {
@@ -119,7 +119,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
-    void Reset()
+    void Reset() noexcept
     {
       if (! IsValid())
         return;

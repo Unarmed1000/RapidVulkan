@@ -43,7 +43,7 @@ namespace RapidVulkan
     IndirectCommandsLayoutNVX& operator=(const IndirectCommandsLayoutNVX&) = delete;
 
     //! @brief Move assignment operator
-    IndirectCommandsLayoutNVX& operator=(IndirectCommandsLayoutNVX&& other)
+    IndirectCommandsLayoutNVX& operator=(IndirectCommandsLayoutNVX&& other) noexcept
     {
       if (this != &other)
       {
@@ -64,7 +64,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    IndirectCommandsLayoutNVX(IndirectCommandsLayoutNVX&& other)
+    IndirectCommandsLayoutNVX(IndirectCommandsLayoutNVX&& other) noexcept
       : m_device(other.m_device)
       , m_indirectCommandsLayout(other.m_indirectCommandsLayout)
     {
@@ -122,7 +122,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
-    void Reset()
+    void Reset() noexcept
     {
       if (! IsValid())
         return;

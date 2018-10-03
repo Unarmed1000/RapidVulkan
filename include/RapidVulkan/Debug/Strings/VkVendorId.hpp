@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALMEMORYHANDLETYPEFLAGBITS_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKEXTERNALMEMORYHANDLETYPEFLAGBITS_HPP
-#if VK_HEADER_VERSION >= 70
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKVENDORID_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKVENDORID_HPP
+#if VK_HEADER_VERSION >= 82
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,41 +33,21 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkExternalMemoryHandleTypeFlagBits& value)
+    inline const char* ToString(const VkVendorId& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 70
-      case VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT:
-        return "VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD_BIT";
+#if VK_HEADER_VERSION >= 82
+      case VK_VENDOR_ID_VIV:
+        return "VK_VENDOR_ID_VIV";
 #endif
-#if VK_HEADER_VERSION >= 70
-      case VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT:
-        return "VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT";
+#if VK_HEADER_VERSION >= 82
+      case VK_VENDOR_ID_VSI:
+        return "VK_VENDOR_ID_VSI";
 #endif
-#if VK_HEADER_VERSION >= 70
-      case VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT:
-        return "VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT";
-#endif
-#if VK_HEADER_VERSION >= 70
-      case VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT:
-        return "VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT";
-#endif
-#if VK_HEADER_VERSION >= 70
-      case VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT:
-        return "VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT";
-#endif
-#if VK_HEADER_VERSION >= 70
-      case VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT:
-        return "VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT";
-#endif
-#if VK_HEADER_VERSION >= 70
-      case VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT:
-        return "VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT";
-#endif
-#if VK_HEADER_VERSION >= 73
-      case VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID:
-        return "VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID_HARDWARE_BUFFER_BIT_ANDROID";
+#if VK_HEADER_VERSION >= 82
+      case VK_VENDOR_ID_KAZAN:
+        return "VK_VENDOR_ID_KAZAN";
 #endif
       default:
         return "*Unknown*";

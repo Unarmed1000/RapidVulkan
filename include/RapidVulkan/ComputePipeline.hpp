@@ -42,7 +42,7 @@ namespace RapidVulkan
     ComputePipeline& operator=(const ComputePipeline&) = delete;
 
     //! @brief Move assignment operator
-    ComputePipeline& operator=(ComputePipeline&& other)
+    ComputePipeline& operator=(ComputePipeline&& other) noexcept
     {
       if (this != &other)
       {
@@ -63,7 +63,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    ComputePipeline(ComputePipeline&& other)
+    ComputePipeline(ComputePipeline&& other) noexcept
       : m_device(other.m_device)
       , m_pipelines(other.m_pipelines)
     {
@@ -119,7 +119,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
-    void Reset()
+    void Reset() noexcept
     {
       if (! IsValid())
         return;

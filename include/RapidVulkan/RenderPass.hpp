@@ -42,7 +42,7 @@ namespace RapidVulkan
     RenderPass& operator=(const RenderPass&) = delete;
 
     //! @brief Move assignment operator
-    RenderPass& operator=(RenderPass&& other)
+    RenderPass& operator=(RenderPass&& other) noexcept
     {
       if (this != &other)
       {
@@ -63,7 +63,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    RenderPass(RenderPass&& other)
+    RenderPass(RenderPass&& other) noexcept
       : m_device(other.m_device)
       , m_renderPass(other.m_renderPass)
     {
@@ -119,7 +119,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
-    void Reset()
+    void Reset() noexcept
     {
       if (! IsValid())
         return;

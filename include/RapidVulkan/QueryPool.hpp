@@ -42,7 +42,7 @@ namespace RapidVulkan
     QueryPool& operator=(const QueryPool&) = delete;
 
     //! @brief Move assignment operator
-    QueryPool& operator=(QueryPool&& other)
+    QueryPool& operator=(QueryPool&& other) noexcept
     {
       if (this != &other)
       {
@@ -63,7 +63,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    QueryPool(QueryPool&& other)
+    QueryPool(QueryPool&& other) noexcept
       : m_device(other.m_device)
       , m_queryPool(other.m_queryPool)
     {
@@ -119,7 +119,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
-    void Reset()
+    void Reset() noexcept
     {
       if (! IsValid())
         return;

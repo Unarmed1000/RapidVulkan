@@ -43,7 +43,7 @@ namespace RapidVulkan
     DescriptorUpdateTemplate& operator=(const DescriptorUpdateTemplate&) = delete;
 
     //! @brief Move assignment operator
-    DescriptorUpdateTemplate& operator=(DescriptorUpdateTemplate&& other)
+    DescriptorUpdateTemplate& operator=(DescriptorUpdateTemplate&& other) noexcept
     {
       if (this != &other)
       {
@@ -64,7 +64,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    DescriptorUpdateTemplate(DescriptorUpdateTemplate&& other)
+    DescriptorUpdateTemplate(DescriptorUpdateTemplate&& other) noexcept
       : m_device(other.m_device)
       , m_descriptorUpdateTemplate(other.m_descriptorUpdateTemplate)
     {
@@ -122,7 +122,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
-    void Reset()
+    void Reset() noexcept
     {
       if (! IsValid())
         return;

@@ -42,7 +42,7 @@ namespace RapidVulkan
     Sampler& operator=(const Sampler&) = delete;
 
     //! @brief Move assignment operator
-    Sampler& operator=(Sampler&& other)
+    Sampler& operator=(Sampler&& other) noexcept
     {
       if (this != &other)
       {
@@ -63,7 +63,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    Sampler(Sampler&& other)
+    Sampler(Sampler&& other) noexcept
       : m_device(other.m_device)
       , m_sampler(other.m_sampler)
     {
@@ -119,7 +119,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
-    void Reset()
+    void Reset() noexcept
     {
       if (! IsValid())
         return;

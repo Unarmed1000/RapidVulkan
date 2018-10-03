@@ -42,7 +42,7 @@ namespace RapidVulkan
     ShaderModule& operator=(const ShaderModule&) = delete;
 
     //! @brief Move assignment operator
-    ShaderModule& operator=(ShaderModule&& other)
+    ShaderModule& operator=(ShaderModule&& other) noexcept
     {
       if (this != &other)
       {
@@ -63,7 +63,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    ShaderModule(ShaderModule&& other)
+    ShaderModule(ShaderModule&& other) noexcept
       : m_device(other.m_device)
       , m_shaderModule(other.m_shaderModule)
     {
@@ -119,7 +119,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
-    void Reset()
+    void Reset() noexcept
     {
       if (! IsValid())
         return;

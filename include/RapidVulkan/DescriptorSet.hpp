@@ -43,7 +43,7 @@ namespace RapidVulkan
     DescriptorSet& operator=(const DescriptorSet&) = delete;
 
     //! @brief Move assignment operator
-    DescriptorSet& operator=(DescriptorSet&& other)
+    DescriptorSet& operator=(DescriptorSet&& other) noexcept
     {
       if (this != &other)
       {
@@ -66,7 +66,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    DescriptorSet(DescriptorSet&& other)
+    DescriptorSet(DescriptorSet&& other) noexcept
       : m_device(other.m_device)
       , m_descriptorPool(other.m_descriptorPool)
       , m_descriptorSets(other.m_descriptorSets)
@@ -126,7 +126,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
-    void Reset()
+    void Reset() noexcept
     {
       if (! IsValid())
         return;

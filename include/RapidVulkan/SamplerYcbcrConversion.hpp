@@ -43,7 +43,7 @@ namespace RapidVulkan
     SamplerYcbcrConversion& operator=(const SamplerYcbcrConversion&) = delete;
 
     //! @brief Move assignment operator
-    SamplerYcbcrConversion& operator=(SamplerYcbcrConversion&& other)
+    SamplerYcbcrConversion& operator=(SamplerYcbcrConversion&& other) noexcept
     {
       if (this != &other)
       {
@@ -64,7 +64,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    SamplerYcbcrConversion(SamplerYcbcrConversion&& other)
+    SamplerYcbcrConversion(SamplerYcbcrConversion&& other) noexcept
       : m_device(other.m_device)
       , m_ycbcrConversion(other.m_ycbcrConversion)
     {
@@ -122,7 +122,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
-    void Reset()
+    void Reset() noexcept
     {
       if (! IsValid())
         return;

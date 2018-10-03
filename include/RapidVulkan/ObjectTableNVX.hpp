@@ -43,7 +43,7 @@ namespace RapidVulkan
     ObjectTableNVX& operator=(const ObjectTableNVX&) = delete;
 
     //! @brief Move assignment operator
-    ObjectTableNVX& operator=(ObjectTableNVX&& other)
+    ObjectTableNVX& operator=(ObjectTableNVX&& other) noexcept
     {
       if (this != &other)
       {
@@ -64,7 +64,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    ObjectTableNVX(ObjectTableNVX&& other)
+    ObjectTableNVX(ObjectTableNVX&& other) noexcept
       : m_device(other.m_device)
       , m_objectTable(other.m_objectTable)
     {
@@ -122,7 +122,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
-    void Reset()
+    void Reset() noexcept
     {
       if (! IsValid())
         return;

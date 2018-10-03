@@ -42,7 +42,7 @@ namespace RapidVulkan
     Event& operator=(const Event&) = delete;
 
     //! @brief Move assignment operator
-    Event& operator=(Event&& other)
+    Event& operator=(Event&& other) noexcept
     {
       if (this != &other)
       {
@@ -63,7 +63,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    Event(Event&& other)
+    Event(Event&& other) noexcept
       : m_device(other.m_device)
       , m_event(other.m_event)
     {
@@ -119,7 +119,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
-    void Reset()
+    void Reset() noexcept
     {
       if (! IsValid())
         return;

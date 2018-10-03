@@ -43,7 +43,7 @@ namespace RapidVulkan
     DebugUtilsMessengerEXT& operator=(const DebugUtilsMessengerEXT&) = delete;
 
     //! @brief Move assignment operator
-    DebugUtilsMessengerEXT& operator=(DebugUtilsMessengerEXT&& other)
+    DebugUtilsMessengerEXT& operator=(DebugUtilsMessengerEXT&& other) noexcept
     {
       if (this != &other)
       {
@@ -64,7 +64,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    DebugUtilsMessengerEXT(DebugUtilsMessengerEXT&& other)
+    DebugUtilsMessengerEXT(DebugUtilsMessengerEXT&& other) noexcept
       : m_instance(other.m_instance)
       , m_messenger(other.m_messenger)
     {
@@ -122,7 +122,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
-    void Reset()
+    void Reset() noexcept
     {
       if (! IsValid())
         return;
