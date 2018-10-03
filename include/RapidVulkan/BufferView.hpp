@@ -42,7 +42,7 @@ namespace RapidVulkan
     BufferView& operator=(const BufferView&) = delete;
 
     //! @brief Move assignment operator
-    BufferView& operator=(BufferView&& other)
+    BufferView& operator=(BufferView&& other) noexcept
     {
       if (this != &other)
       {
@@ -63,7 +63,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    BufferView(BufferView&& other)
+    BufferView(BufferView&& other) noexcept
       : m_device(other.m_device)
       , m_view(other.m_view)
     {
@@ -119,7 +119,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
-    void Reset()
+    void Reset() noexcept
     {
       if (! IsValid())
         return;

@@ -44,7 +44,7 @@ namespace RapidVulkan
     GraphicsPipelines& operator=(const GraphicsPipelines&) = delete;
 
     //! @brief Move assignment operator
-    GraphicsPipelines& operator=(GraphicsPipelines&& other)
+    GraphicsPipelines& operator=(GraphicsPipelines&& other) noexcept
     {
       if (this != &other)
       {
@@ -64,7 +64,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    GraphicsPipelines(GraphicsPipelines&& other)
+    GraphicsPipelines(GraphicsPipelines&& other) noexcept
       : m_device(other.m_device)
       , m_pipelines(std::move(other.m_pipelines))
     {
@@ -119,7 +119,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
-    void Reset()
+    void Reset() noexcept
     {
       if (! IsValid())
         return;

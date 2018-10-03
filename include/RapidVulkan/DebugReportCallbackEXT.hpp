@@ -42,7 +42,7 @@ namespace RapidVulkan
     DebugReportCallbackEXT& operator=(const DebugReportCallbackEXT&) = delete;
 
     //! @brief Move assignment operator
-    DebugReportCallbackEXT& operator=(DebugReportCallbackEXT&& other)
+    DebugReportCallbackEXT& operator=(DebugReportCallbackEXT&& other) noexcept
     {
       if (this != &other)
       {
@@ -63,7 +63,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    DebugReportCallbackEXT(DebugReportCallbackEXT&& other)
+    DebugReportCallbackEXT(DebugReportCallbackEXT&& other) noexcept
       : m_instance(other.m_instance)
       , m_callback(other.m_callback)
     {
@@ -119,7 +119,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
-    void Reset()
+    void Reset() noexcept
     {
       if (! IsValid())
         return;

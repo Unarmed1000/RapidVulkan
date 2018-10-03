@@ -42,7 +42,7 @@ namespace RapidVulkan
     DisplayPlaneSurfaceKHR& operator=(const DisplayPlaneSurfaceKHR&) = delete;
 
     //! @brief Move assignment operator
-    DisplayPlaneSurfaceKHR& operator=(DisplayPlaneSurfaceKHR&& other)
+    DisplayPlaneSurfaceKHR& operator=(DisplayPlaneSurfaceKHR&& other) noexcept
     {
       if (this != &other)
       {
@@ -63,7 +63,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    DisplayPlaneSurfaceKHR(DisplayPlaneSurfaceKHR&& other)
+    DisplayPlaneSurfaceKHR(DisplayPlaneSurfaceKHR&& other) noexcept
       : m_instance(other.m_instance)
       , m_surface(other.m_surface)
     {
@@ -119,7 +119,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
-    void Reset()
+    void Reset() noexcept
     {
       if (! IsValid())
         return;

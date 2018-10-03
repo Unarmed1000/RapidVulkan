@@ -42,7 +42,7 @@ namespace RapidVulkan
     Buffer& operator=(const Buffer&) = delete;
 
     //! @brief Move assignment operator
-    Buffer& operator=(Buffer&& other)
+    Buffer& operator=(Buffer&& other) noexcept
     {
       if (this != &other)
       {
@@ -63,7 +63,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    Buffer(Buffer&& other)
+    Buffer(Buffer&& other) noexcept
       : m_device(other.m_device)
       , m_buffer(other.m_buffer)
     {
@@ -119,7 +119,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
-    void Reset()
+    void Reset() noexcept
     {
       if (! IsValid())
         return;

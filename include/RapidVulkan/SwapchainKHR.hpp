@@ -42,7 +42,7 @@ namespace RapidVulkan
     SwapchainKHR& operator=(const SwapchainKHR&) = delete;
 
     //! @brief Move assignment operator
-    SwapchainKHR& operator=(SwapchainKHR&& other)
+    SwapchainKHR& operator=(SwapchainKHR&& other) noexcept
     {
       if (this != &other)
       {
@@ -63,7 +63,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    SwapchainKHR(SwapchainKHR&& other)
+    SwapchainKHR(SwapchainKHR&& other) noexcept
       : m_device(other.m_device)
       , m_swapchain(other.m_swapchain)
     {
@@ -119,7 +119,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
-    void Reset()
+    void Reset() noexcept
     {
       if (! IsValid())
         return;

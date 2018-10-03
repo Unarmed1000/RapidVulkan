@@ -43,7 +43,7 @@ namespace RapidVulkan
     ValidationCacheEXT& operator=(const ValidationCacheEXT&) = delete;
 
     //! @brief Move assignment operator
-    ValidationCacheEXT& operator=(ValidationCacheEXT&& other)
+    ValidationCacheEXT& operator=(ValidationCacheEXT&& other) noexcept
     {
       if (this != &other)
       {
@@ -64,7 +64,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    ValidationCacheEXT(ValidationCacheEXT&& other)
+    ValidationCacheEXT(ValidationCacheEXT&& other) noexcept
       : m_device(other.m_device)
       , m_validationCache(other.m_validationCache)
     {
@@ -122,7 +122,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
-    void Reset()
+    void Reset() noexcept
     {
       if (! IsValid())
         return;

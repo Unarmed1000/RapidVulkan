@@ -43,7 +43,7 @@ namespace RapidVulkan
     Fence& operator=(const Fence&) = delete;
 
     //! @brief Move assignment operator
-    Fence& operator=(Fence&& other)
+    Fence& operator=(Fence&& other) noexcept
     {
       if (this != &other)
       {
@@ -64,7 +64,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    Fence(Fence&& other)
+    Fence(Fence&& other) noexcept
       : m_device(other.m_device)
       , m_fence(other.m_fence)
     {
@@ -120,7 +120,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
-    void Reset()
+    void Reset() noexcept
     {
       if (! IsValid())
         return;

@@ -42,7 +42,7 @@ namespace RapidVulkan
     Framebuffer& operator=(const Framebuffer&) = delete;
 
     //! @brief Move assignment operator
-    Framebuffer& operator=(Framebuffer&& other)
+    Framebuffer& operator=(Framebuffer&& other) noexcept
     {
       if (this != &other)
       {
@@ -63,7 +63,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    Framebuffer(Framebuffer&& other)
+    Framebuffer(Framebuffer&& other) noexcept
       : m_device(other.m_device)
       , m_framebuffer(other.m_framebuffer)
     {
@@ -119,7 +119,7 @@ namespace RapidVulkan
     }
 
     //! @brief Destroys any owned resources and resets the object to its default state.
-    void Reset()
+    void Reset() noexcept
     {
       if (! IsValid())
         return;
