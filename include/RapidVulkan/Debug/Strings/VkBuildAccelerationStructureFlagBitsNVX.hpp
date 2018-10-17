@@ -1,5 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKCOLORSPACEKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKCOLORSPACEKHR_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKBUILDACCELERATIONSTRUCTUREFLAGBITSNVX_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKBUILDACCELERATIONSTRUCTUREFLAGBITSNVX_HPP
+#if VK_HEADER_VERSION >= 85
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -32,15 +33,29 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkColorSpaceKHR& value)
+    inline const char* ToString(const VkBuildAccelerationStructureFlagBitsNVX& value)
     {
       switch(value)
       {
-      case VK_COLOR_SPACE_SRGB_NONLINEAR_KHR:
-        return "VK_COLOR_SPACE_SRGB_NONLINEAR_KHR";
 #if VK_HEADER_VERSION >= 85
-      case VK_COLORSPACE_SRGB_NONLINEAR_KHR:
-        return "VK_COLORSPACE_SRGB_NONLINEAR_KHR";
+      case VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_NVX:
+        return "VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_NVX";
+#endif
+#if VK_HEADER_VERSION >= 85
+      case VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_NVX:
+        return "VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_NVX";
+#endif
+#if VK_HEADER_VERSION >= 85
+      case VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_NVX:
+        return "VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_NVX";
+#endif
+#if VK_HEADER_VERSION >= 85
+      case VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_BUILD_BIT_NVX:
+        return "VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_BUILD_BIT_NVX";
+#endif
+#if VK_HEADER_VERSION >= 85
+      case VK_BUILD_ACCELERATION_STRUCTURE_LOW_MEMORY_BIT_NVX:
+        return "VK_BUILD_ACCELERATION_STRUCTURE_LOW_MEMORY_BIT_NVX";
 #endif
       default:
         return "*Unknown*";
@@ -49,4 +64,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

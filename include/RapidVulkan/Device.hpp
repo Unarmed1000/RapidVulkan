@@ -311,6 +311,33 @@ namespace RapidVulkan
       vkGetDescriptorSetLayoutSupport(m_device, pCreateInfo, pSupport);
     }
 #endif
+
+
+#if VK_HEADER_VERSION >= 85
+    //! @note  Function: vkGetAccelerationStructureMemoryRequirementsNVX
+    void GetAccelerationStructureMemoryRequirementsNVX(const VkAccelerationStructureMemoryRequirementsInfoNVX * pInfo, VkMemoryRequirements2KHR * pMemoryRequirements)
+    {
+      vkGetAccelerationStructureMemoryRequirementsNVX(m_device, pInfo, pMemoryRequirements);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 85
+    //! @note  Function: vkGetAccelerationStructureScratchMemoryRequirementsNVX
+    void GetAccelerationStructureScratchMemoryRequirementsNVX(const VkAccelerationStructureMemoryRequirementsInfoNVX * pInfo, VkMemoryRequirements2KHR * pMemoryRequirements)
+    {
+      vkGetAccelerationStructureScratchMemoryRequirementsNVX(m_device, pInfo, pMemoryRequirements);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 85
+    //! @note  Function: vkBindAccelerationStructureMemoryNVX
+    void BindAccelerationStructureMemoryNVX(const uint32_t bindInfoCount, const VkBindAccelerationStructureMemoryInfoNVX * pBindInfos)
+    {
+      CheckError(vkBindAccelerationStructureMemoryNVX(m_device, bindInfoCount, pBindInfos), "vkBindAccelerationStructureMemoryNVX", __FILE__, __LINE__);
+    }
+#endif
   };
 }
 

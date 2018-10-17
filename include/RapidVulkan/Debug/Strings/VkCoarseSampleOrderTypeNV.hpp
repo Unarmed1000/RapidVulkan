@@ -1,5 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKCOLORSPACEKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKCOLORSPACEKHR_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKCOARSESAMPLEORDERTYPENV_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKCOARSESAMPLEORDERTYPENV_HPP
+#if VK_HEADER_VERSION >= 85
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -32,15 +33,25 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkColorSpaceKHR& value)
+    inline const char* ToString(const VkCoarseSampleOrderTypeNV& value)
     {
       switch(value)
       {
-      case VK_COLOR_SPACE_SRGB_NONLINEAR_KHR:
-        return "VK_COLOR_SPACE_SRGB_NONLINEAR_KHR";
 #if VK_HEADER_VERSION >= 85
-      case VK_COLORSPACE_SRGB_NONLINEAR_KHR:
-        return "VK_COLORSPACE_SRGB_NONLINEAR_KHR";
+      case VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV:
+        return "VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV";
+#endif
+#if VK_HEADER_VERSION >= 85
+      case VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV:
+        return "VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV";
+#endif
+#if VK_HEADER_VERSION >= 85
+      case VK_COARSE_SAMPLE_ORDER_TYPE_PIXEL_MAJOR_NV:
+        return "VK_COARSE_SAMPLE_ORDER_TYPE_PIXEL_MAJOR_NV";
+#endif
+#if VK_HEADER_VERSION >= 85
+      case VK_COARSE_SAMPLE_ORDER_TYPE_SAMPLE_MAJOR_NV:
+        return "VK_COARSE_SAMPLE_ORDER_TYPE_SAMPLE_MAJOR_NV";
 #endif
       default:
         return "*Unknown*";
@@ -49,4 +60,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

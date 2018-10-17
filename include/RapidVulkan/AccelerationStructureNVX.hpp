@@ -1,5 +1,6 @@
-#ifndef RAPIDVULKAN_COMPUTEPIPELINE_HPP
-#define RAPIDVULKAN_COMPUTEPIPELINE_HPP
+#ifndef RAPIDVULKAN_ACCELERATIONSTRUCTURENVX_HPP
+#define RAPIDVULKAN_ACCELERATIONSTRUCTURENVX_HPP
+#if VK_HEADER_VERSION >= 85
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,16 +34,16 @@
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
-  class ComputePipeline
+  class AccelerationStructureNVX
   {
     VkDevice m_device;
-    VkPipeline m_pipelines;
+    VkAccelerationStructureNVX m_accelerationStructure;
   public:
-    ComputePipeline(const ComputePipeline&) = delete;
-    ComputePipeline& operator=(const ComputePipeline&) = delete;
+    AccelerationStructureNVX(const AccelerationStructureNVX&) = delete;
+    AccelerationStructureNVX& operator=(const AccelerationStructureNVX&) = delete;
 
     //! @brief Move assignment operator
-    ComputePipeline& operator=(ComputePipeline&& other) noexcept
+    AccelerationStructureNVX& operator=(AccelerationStructureNVX&& other) noexcept
     {
       if (this != &other)
       {
@@ -52,69 +53,71 @@ namespace RapidVulkan
 
         // Claim ownership here
         m_device = other.m_device;
-        m_pipelines = other.m_pipelines;
+        m_accelerationStructure = other.m_accelerationStructure;
 
         // Remove the data from other
         other.m_device = VK_NULL_HANDLE;
-        other.m_pipelines = VK_NULL_HANDLE;
+        other.m_accelerationStructure = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       }
       return *this;
     }
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    ComputePipeline(ComputePipeline&& other) noexcept
+    AccelerationStructureNVX(AccelerationStructureNVX&& other) noexcept
       : m_device(other.m_device)
-      , m_pipelines(other.m_pipelines)
+      , m_accelerationStructure(other.m_accelerationStructure)
     {
       // Remove the data from other
       other.m_device = VK_NULL_HANDLE;
-      other.m_pipelines = VK_NULL_HANDLE;
+      other.m_accelerationStructure = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    ComputePipeline()
+    AccelerationStructureNVX()
       : m_device(VK_NULL_HANDLE)
-      , m_pipelines(VK_NULL_HANDLE)
+      , m_accelerationStructure(FIX_DEFAULT_FOR_TYPE_NOT_DEFINED)
     {
     }
 
-    //! @brief Assume control of the ComputePipeline (this object becomes responsible for releasing it)
-    explicit ComputePipeline(const ClaimMode claimMode, const VkDevice device, const VkPipeline pipelines)
-      : ComputePipeline()
+    //! @brief Assume control of the AccelerationStructureNVX (this object becomes responsible for releasing it)
+    explicit AccelerationStructureNVX(const ClaimMode claimMode, const VkDevice device, const VkAccelerationStructureNVX accelerationStructure)
+      : AccelerationStructureNVX()
     {
-      Reset(claimMode, device, pipelines);
+      Reset(claimMode, device, accelerationStructure);
     }
 
+#if VK_HEADER_VERSION >= 85
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateComputePipelines
-    ComputePipeline(const VkDevice device, const VkPipelineCache pipelineCache, const VkComputePipelineCreateInfo& createInfos)
-      : ComputePipeline()
+    //! @note  Function: vkCreateAccelerationStructureNVX
+    AccelerationStructureNVX(const VkDevice device, const VkAccelerationStructureCreateInfoNVX& createInfo)
+      : AccelerationStructureNVX()
     {
-      Reset(device, pipelineCache, createInfos);
-    }
-
-#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
-    //! @brief Create the requested resource
-    //! @note  Function: vkCreateComputePipelines
-    ComputePipeline(const VkDevice device, const VkPipelineCache pipelineCache, const VkPipelineCreateFlags flags, const VkPipelineShaderStageCreateInfo stage, const VkPipelineLayout layout, const VkPipeline basePipelineHandle, const int32_t basePipelineIndex)
-      : ComputePipeline()
-    {
-      Reset(device, pipelineCache, flags, stage, layout, basePipelineHandle, basePipelineIndex);
+      Reset(device, createInfo);
     }
 #endif
 
-    ~ComputePipeline()
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkCreateAccelerationStructureNVX
+    AccelerationStructureNVX(const VkDevice device, const VkAccelerationStructureTypeNVX type, const VkBuildAccelerationStructureFlagsNVX flags, const VkDeviceSize compactedSize, const uint32_t instanceCount, const uint32_t geometryCount, VkGeometryNVX*const pGeometries)
+      : AccelerationStructureNVX()
+    {
+      Reset(device, type, flags, compactedSize, instanceCount, geometryCount, pGeometries);
+    }
+#endif
+
+    ~AccelerationStructureNVX()
     {
       Reset();
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkPipeline Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
+    VkAccelerationStructureNVX Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
     {
-      const auto resource = m_pipelines;
+      const auto resource = m_accelerationStructure;
       m_device = VK_NULL_HANDLE;
-      m_pipelines = VK_NULL_HANDLE;
+      m_accelerationStructure = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       return resource;
     }
 
@@ -125,34 +128,34 @@ namespace RapidVulkan
         return;
 
       assert(m_device != VK_NULL_HANDLE);
-      assert(m_pipelines != VK_NULL_HANDLE);
+      assert(m_accelerationStructure != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED);
 
-      vkDestroyPipeline(m_device, m_pipelines, nullptr);
+      vkDestroyAccelerationStructureNVX(m_device, m_accelerationStructure, nullptr);
       m_device = VK_NULL_HANDLE;
-      m_pipelines = VK_NULL_HANDLE;
+      m_accelerationStructure = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
-    //! @brief Destroys any owned resources and assume control of the ComputePipeline (this object becomes responsible for releasing it)
-    void Reset(const ClaimMode claimMode, const VkDevice device, const VkPipeline pipelines)
+    //! @brief Destroys any owned resources and assume control of the AccelerationStructureNVX (this object becomes responsible for releasing it)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkAccelerationStructureNVX accelerationStructure)
     {
       if (IsValid())
         Reset();
 
 
       m_device = device;
-      m_pipelines = pipelines;
+      m_accelerationStructure = accelerationStructure;
     }
 
+#if VK_HEADER_VERSION >= 85
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateComputePipelines
-    void Reset(const VkDevice device, const VkPipelineCache pipelineCache, const VkComputePipelineCreateInfo& createInfos)
+    //! @note  Function: vkCreateAccelerationStructureNVX
+    void Reset(const VkDevice device, const VkAccelerationStructureCreateInfoNVX& createInfo)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
 #else
       assert(device != VK_NULL_HANDLE);
-      assert( == 1);
 #endif
 
       // Free any currently allocated resource
@@ -160,29 +163,31 @@ namespace RapidVulkan
         Reset();
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkPipeline pipelines;
-      CheckError(vkCreateComputePipelines(device, pipelineCache, 1, &createInfos, nullptr, &pipelines), "vkCreateComputePipelines", __FILE__, __LINE__);
+      VkAccelerationStructureNVX accelerationStructure;
+      CheckError(vkCreateAccelerationStructureNVX(device, &createInfo, nullptr, &accelerationStructure), "vkCreateAccelerationStructureNVX", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
-      m_pipelines = pipelines;
+      m_accelerationStructure = accelerationStructure;
     }
+#endif
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateComputePipelines
-    void Reset(const VkDevice device, const VkPipelineCache pipelineCache, const VkPipelineCreateFlags flags, const VkPipelineShaderStageCreateInfo stage, const VkPipelineLayout layout, const VkPipeline basePipelineHandle, const int32_t basePipelineIndex)
+    //! @note  Function: vkCreateAccelerationStructureNVX
+    void Reset(const VkDevice device, const VkAccelerationStructureTypeNVX type, const VkBuildAccelerationStructureFlagsNVX flags, const VkDeviceSize compactedSize, const uint32_t instanceCount, const uint32_t geometryCount, VkGeometryNVX*const pGeometries)
     {
-      VkComputePipelineCreateInfo createInfos{};
-      createInfos.sType = VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO;
-      createInfos.pNext = nullptr;
-      createInfos.flags = flags;
-      createInfos.stage = stage;
-      createInfos.layout = layout;
-      createInfos.basePipelineHandle = basePipelineHandle;
-      createInfos.basePipelineIndex = basePipelineIndex;
+      VkAccelerationStructureCreateInfoNVX createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_NVX;
+      createInfo.pNext = nullptr;
+      createInfo.type = type;
+      createInfo.flags = flags;
+      createInfo.compactedSize = compactedSize;
+      createInfo.instanceCount = instanceCount;
+      createInfo.geometryCount = geometryCount;
+      createInfo.pGeometries = pGeometries;
 
-      Reset(device, pipelineCache, createInfos);
+      Reset(device, createInfo);
     }
 #endif
 
@@ -193,41 +198,33 @@ namespace RapidVulkan
     }
 
     //! @brief Get the associated resource handle
-    VkPipeline Get() const
+    VkAccelerationStructureNVX Get() const
     {
-      return m_pipelines;
+      return m_accelerationStructure;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkPipeline* GetPointer() const
+    const VkAccelerationStructureNVX* GetPointer() const
     {
-      return &m_pipelines;
+      return &m_accelerationStructure;
     }
 
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_pipelines != VK_NULL_HANDLE;
+      return m_accelerationStructure != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
 
 #if VK_HEADER_VERSION >= 85
-    //! @note  Function: vkGetRaytracingShaderHandlesNVX
-    void GetRaytracingShaderHandlesNVX(const uint32_t firstGroup, const uint32_t groupCount, const size_t dataSize, void * pData)
+    //! @note  Function: vkGetAccelerationStructureHandleNVX
+    void GetAccelerationStructureHandleNVX(const size_t dataSize, void * pData)
     {
-      CheckError(vkGetRaytracingShaderHandlesNVX(m_device, m_pipelines, firstGroup, groupCount, dataSize, pData), "vkGetRaytracingShaderHandlesNVX", __FILE__, __LINE__);
-    }
-#endif
-
-
-#if VK_HEADER_VERSION >= 85
-    //! @note  Function: vkCompileDeferredNVX
-    void CompileDeferredNVX(const uint32_t shader)
-    {
-      CheckError(vkCompileDeferredNVX(m_device, m_pipelines, shader), "vkCompileDeferredNVX", __FILE__, __LINE__);
+      CheckError(vkGetAccelerationStructureHandleNVX(m_device, m_accelerationStructure, dataSize, pData), "vkGetAccelerationStructureHandleNVX", __FILE__, __LINE__);
     }
 #endif
   };
 }
 
+#endif
 #endif

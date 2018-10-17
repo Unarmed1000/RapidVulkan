@@ -1,5 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKCOLORSPACEKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKCOLORSPACEKHR_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKACCELERATIONSTRUCTURETYPENVX_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKACCELERATIONSTRUCTURETYPENVX_HPP
+#if VK_HEADER_VERSION >= 85
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -32,15 +33,17 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkColorSpaceKHR& value)
+    inline const char* ToString(const VkAccelerationStructureTypeNVX& value)
     {
       switch(value)
       {
-      case VK_COLOR_SPACE_SRGB_NONLINEAR_KHR:
-        return "VK_COLOR_SPACE_SRGB_NONLINEAR_KHR";
 #if VK_HEADER_VERSION >= 85
-      case VK_COLORSPACE_SRGB_NONLINEAR_KHR:
-        return "VK_COLORSPACE_SRGB_NONLINEAR_KHR";
+      case VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_NVX:
+        return "VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_NVX";
+#endif
+#if VK_HEADER_VERSION >= 85
+      case VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NVX:
+        return "VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NVX";
 #endif
       default:
         return "*Unknown*";
@@ -49,4 +52,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

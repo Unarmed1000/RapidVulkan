@@ -255,6 +255,24 @@ namespace RapidVulkan
     {
       return m_pipelines.size() > 0;
     }
+
+
+#if VK_HEADER_VERSION >= 85
+    //! @note  Function: vkGetRaytracingShaderHandlesNVX
+    void GetRaytracingShaderHandlesNVX(const uint32_t firstGroup, const uint32_t groupCount, const size_t dataSize, void * pData)
+    {
+      CheckError(vkGetRaytracingShaderHandlesNVX(m_device, m_pipelines, firstGroup, groupCount, dataSize, pData), "vkGetRaytracingShaderHandlesNVX", __FILE__, __LINE__);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 85
+    //! @note  Function: vkCompileDeferredNVX
+    void CompileDeferredNVX(const uint32_t shader)
+    {
+      CheckError(vkCompileDeferredNVX(m_device, m_pipelines, shader), "vkCompileDeferredNVX", __FILE__, __LINE__);
+    }
+#endif
   };
 }
 
