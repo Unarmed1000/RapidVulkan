@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkBlendOp& value)
+    inline const char* TryToString(const VkBlendOp& value)
     {
       switch(value)
       {
@@ -47,8 +47,14 @@ namespace RapidVulkan
       case VK_BLEND_OP_MAX:
         return "VK_BLEND_OP_MAX";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkBlendOp& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

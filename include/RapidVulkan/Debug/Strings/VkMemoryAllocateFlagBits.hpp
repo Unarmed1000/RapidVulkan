@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkMemoryAllocateFlagBits& value)
+    inline const char* TryToString(const VkMemoryAllocateFlagBits& value)
     {
       switch(value)
       {
@@ -42,8 +42,14 @@ namespace RapidVulkan
         return "VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkMemoryAllocateFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

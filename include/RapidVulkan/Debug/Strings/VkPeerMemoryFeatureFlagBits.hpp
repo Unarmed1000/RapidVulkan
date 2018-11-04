@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkPeerMemoryFeatureFlagBits& value)
+    inline const char* TryToString(const VkPeerMemoryFeatureFlagBits& value)
     {
       switch(value)
       {
@@ -54,8 +54,14 @@ namespace RapidVulkan
         return "VK_PEER_MEMORY_FEATURE_GENERIC_DST_BIT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkPeerMemoryFeatureFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

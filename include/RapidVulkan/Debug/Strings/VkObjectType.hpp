@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkObjectType& value)
+    inline const char* TryToString(const VkObjectType& value)
     {
       switch(value)
       {
@@ -150,8 +150,14 @@ namespace RapidVulkan
         return "VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkObjectType& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

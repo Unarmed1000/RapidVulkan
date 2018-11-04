@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkImageType& value)
+    inline const char* TryToString(const VkImageType& value)
     {
       switch(value)
       {
@@ -43,8 +43,14 @@ namespace RapidVulkan
       case VK_IMAGE_TYPE_3D:
         return "VK_IMAGE_TYPE_3D";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkImageType& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

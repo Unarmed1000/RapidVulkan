@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkPipelineCreateFlagBits& value)
+    inline const char* TryToString(const VkPipelineCreateFlagBits& value)
     {
       switch(value)
       {
@@ -51,8 +51,14 @@ namespace RapidVulkan
         return "VK_PIPELINE_CREATE_DISPATCH_BASE";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkPipelineCreateFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

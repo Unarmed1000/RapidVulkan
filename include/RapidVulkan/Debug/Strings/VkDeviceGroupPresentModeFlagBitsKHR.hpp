@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkDeviceGroupPresentModeFlagBitsKHR& value)
+    inline const char* TryToString(const VkDeviceGroupPresentModeFlagBitsKHR& value)
     {
       switch(value)
       {
@@ -54,8 +54,14 @@ namespace RapidVulkan
         return "VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkDeviceGroupPresentModeFlagBitsKHR& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

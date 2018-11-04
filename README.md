@@ -111,6 +111,8 @@ Define                                      | Functionality
 --------------------------------------------|------------------------
 RAPIDVULKAN_DISABLE_PARAM_VALIDATION        | Disable input parameter validation
 RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS | Disable the unrolled structs methods.
+RAPIDVULKAN_DISABLE_ARRAY_METHODS           | Disable support for std::array. if RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS is set array methods are also disabled.
+RAPIDVULKAN_DISABLE_VECTOR_METHODS          | Disable support for std::vector. if RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS is set vectory methods are also disabled
 RAPIDVULKAN_ERRORFORMATTER_EXTERN           | Use an extern ErrorFormatter, which allows you to format the exception message to fit your framework. See [ErrorFormatter.hpp](include/RapidVulkan/System/ErrorFormatter.hpp)
 
 ## Porting

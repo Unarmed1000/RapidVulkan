@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkPipelineStageFlagBits& value)
+    inline const char* TryToString(const VkPipelineStageFlagBits& value)
     {
       switch(value)
       {
@@ -71,8 +71,14 @@ namespace RapidVulkan
       case VK_PIPELINE_STAGE_ALL_COMMANDS_BIT:
         return "VK_PIPELINE_STAGE_ALL_COMMANDS_BIT";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkPipelineStageFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

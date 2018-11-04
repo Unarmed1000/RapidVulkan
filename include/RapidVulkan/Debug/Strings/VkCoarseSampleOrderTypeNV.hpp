@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkCoarseSampleOrderTypeNV& value)
+    inline const char* TryToString(const VkCoarseSampleOrderTypeNV& value)
     {
       switch(value)
       {
@@ -54,8 +54,14 @@ namespace RapidVulkan
         return "VK_COARSE_SAMPLE_ORDER_TYPE_SAMPLE_MAJOR_NV";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkCoarseSampleOrderTypeNV& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

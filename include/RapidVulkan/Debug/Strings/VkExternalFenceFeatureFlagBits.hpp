@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkExternalFenceFeatureFlagBits& value)
+    inline const char* TryToString(const VkExternalFenceFeatureFlagBits& value)
     {
       switch(value)
       {
@@ -46,8 +46,14 @@ namespace RapidVulkan
         return "VK_EXTERNAL_FENCE_FEATURE_IMPORTABLE_BIT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkExternalFenceFeatureFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

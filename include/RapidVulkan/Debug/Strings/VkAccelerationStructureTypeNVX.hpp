@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkAccelerationStructureTypeNVX& value)
+    inline const char* TryToString(const VkAccelerationStructureTypeNVX& value)
     {
       switch(value)
       {
@@ -46,8 +46,14 @@ namespace RapidVulkan
         return "VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NVX";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkAccelerationStructureTypeNVX& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

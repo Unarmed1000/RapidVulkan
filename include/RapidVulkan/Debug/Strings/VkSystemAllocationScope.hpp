@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkSystemAllocationScope& value)
+    inline const char* TryToString(const VkSystemAllocationScope& value)
     {
       switch(value)
       {
@@ -47,8 +47,14 @@ namespace RapidVulkan
       case VK_SYSTEM_ALLOCATION_SCOPE_INSTANCE:
         return "VK_SYSTEM_ALLOCATION_SCOPE_INSTANCE";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkSystemAllocationScope& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

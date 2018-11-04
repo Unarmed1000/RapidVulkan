@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkTessellationDomainOrigin& value)
+    inline const char* TryToString(const VkTessellationDomainOrigin& value)
     {
       switch(value)
       {
@@ -46,8 +46,14 @@ namespace RapidVulkan
         return "VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkTessellationDomainOrigin& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

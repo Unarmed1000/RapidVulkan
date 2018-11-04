@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkValidationCheckEXT& value)
+    inline const char* TryToString(const VkValidationCheckEXT& value)
     {
       switch(value)
       {
@@ -46,8 +46,14 @@ namespace RapidVulkan
         return "VK_VALIDATION_CHECK_SHADERS_EXT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkValidationCheckEXT& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

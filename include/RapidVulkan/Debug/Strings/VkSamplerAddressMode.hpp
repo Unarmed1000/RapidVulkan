@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkSamplerAddressMode& value)
+    inline const char* TryToString(const VkSamplerAddressMode& value)
     {
       switch(value)
       {
@@ -47,8 +47,14 @@ namespace RapidVulkan
       case VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE:
         return "VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkSamplerAddressMode& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

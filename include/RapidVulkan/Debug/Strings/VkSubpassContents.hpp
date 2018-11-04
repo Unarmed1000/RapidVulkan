@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkSubpassContents& value)
+    inline const char* TryToString(const VkSubpassContents& value)
     {
       switch(value)
       {
@@ -41,8 +41,14 @@ namespace RapidVulkan
       case VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS:
         return "VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkSubpassContents& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

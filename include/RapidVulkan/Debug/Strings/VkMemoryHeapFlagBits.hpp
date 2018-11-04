@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkMemoryHeapFlagBits& value)
+    inline const char* TryToString(const VkMemoryHeapFlagBits& value)
     {
       switch(value)
       {
@@ -43,8 +43,14 @@ namespace RapidVulkan
         return "VK_MEMORY_HEAP_MULTI_INSTANCE_BIT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkMemoryHeapFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

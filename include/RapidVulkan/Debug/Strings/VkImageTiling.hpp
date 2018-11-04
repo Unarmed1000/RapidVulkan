@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkImageTiling& value)
+    inline const char* TryToString(const VkImageTiling& value)
     {
       switch(value)
       {
@@ -41,8 +41,14 @@ namespace RapidVulkan
       case VK_IMAGE_TILING_LINEAR:
         return "VK_IMAGE_TILING_LINEAR";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkImageTiling& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

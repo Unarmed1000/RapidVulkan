@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkCommandBufferLevel& value)
+    inline const char* TryToString(const VkCommandBufferLevel& value)
     {
       switch(value)
       {
@@ -41,8 +41,14 @@ namespace RapidVulkan
       case VK_COMMAND_BUFFER_LEVEL_SECONDARY:
         return "VK_COMMAND_BUFFER_LEVEL_SECONDARY";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkCommandBufferLevel& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

@@ -32,15 +32,21 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkSparseMemoryBindFlagBits& value)
+    inline const char* TryToString(const VkSparseMemoryBindFlagBits& value)
     {
       switch(value)
       {
       case VK_SPARSE_MEMORY_BIND_METADATA_BIT:
         return "VK_SPARSE_MEMORY_BIND_METADATA_BIT";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkSparseMemoryBindFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

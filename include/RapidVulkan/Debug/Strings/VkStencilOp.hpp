@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkStencilOp& value)
+    inline const char* TryToString(const VkStencilOp& value)
     {
       switch(value)
       {
@@ -53,8 +53,14 @@ namespace RapidVulkan
       case VK_STENCIL_OP_DECREMENT_AND_WRAP:
         return "VK_STENCIL_OP_DECREMENT_AND_WRAP";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkStencilOp& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

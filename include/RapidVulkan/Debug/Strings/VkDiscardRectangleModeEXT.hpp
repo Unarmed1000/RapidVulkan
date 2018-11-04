@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkDiscardRectangleModeEXT& value)
+    inline const char* TryToString(const VkDiscardRectangleModeEXT& value)
     {
       switch(value)
       {
@@ -46,8 +46,14 @@ namespace RapidVulkan
         return "VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkDiscardRectangleModeEXT& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

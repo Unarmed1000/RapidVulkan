@@ -32,15 +32,21 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkFenceCreateFlagBits& value)
+    inline const char* TryToString(const VkFenceCreateFlagBits& value)
     {
       switch(value)
       {
       case VK_FENCE_CREATE_SIGNALED_BIT:
         return "VK_FENCE_CREATE_SIGNALED_BIT";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkFenceCreateFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

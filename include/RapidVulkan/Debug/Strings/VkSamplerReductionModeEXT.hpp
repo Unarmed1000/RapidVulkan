@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkSamplerReductionModeEXT& value)
+    inline const char* TryToString(const VkSamplerReductionModeEXT& value)
     {
       switch(value)
       {
@@ -50,8 +50,14 @@ namespace RapidVulkan
         return "VK_SAMPLER_REDUCTION_MODE_MAX_EXT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkSamplerReductionModeEXT& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

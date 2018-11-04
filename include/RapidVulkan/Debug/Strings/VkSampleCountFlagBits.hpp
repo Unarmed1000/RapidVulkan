@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkSampleCountFlagBits& value)
+    inline const char* TryToString(const VkSampleCountFlagBits& value)
     {
       switch(value)
       {
@@ -51,8 +51,14 @@ namespace RapidVulkan
       case VK_SAMPLE_COUNT_64_BIT:
         return "VK_SAMPLE_COUNT_64_BIT";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkSampleCountFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

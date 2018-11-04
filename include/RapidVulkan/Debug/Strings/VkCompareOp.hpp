@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkCompareOp& value)
+    inline const char* TryToString(const VkCompareOp& value)
     {
       switch(value)
       {
@@ -53,8 +53,14 @@ namespace RapidVulkan
       case VK_COMPARE_OP_ALWAYS:
         return "VK_COMPARE_OP_ALWAYS";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkCompareOp& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkImageCreateFlagBits& value)
+    inline const char* TryToString(const VkImageCreateFlagBits& value)
     {
       switch(value)
       {
@@ -75,8 +75,14 @@ namespace RapidVulkan
         return "VK_IMAGE_CREATE_DISJOINT_BIT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkImageCreateFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

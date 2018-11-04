@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkAttachmentStoreOp& value)
+    inline const char* TryToString(const VkAttachmentStoreOp& value)
     {
       switch(value)
       {
@@ -41,8 +41,14 @@ namespace RapidVulkan
       case VK_ATTACHMENT_STORE_OP_DONT_CARE:
         return "VK_ATTACHMENT_STORE_OP_DONT_CARE";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkAttachmentStoreOp& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

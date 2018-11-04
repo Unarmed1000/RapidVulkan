@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkMemoryPropertyFlagBits& value)
+    inline const char* TryToString(const VkMemoryPropertyFlagBits& value)
     {
       switch(value)
       {
@@ -51,8 +51,14 @@ namespace RapidVulkan
         return "VK_MEMORY_PROPERTY_PROTECTED_BIT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkMemoryPropertyFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

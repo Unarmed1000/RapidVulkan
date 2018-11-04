@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkValidationCacheHeaderVersionEXT& value)
+    inline const char* TryToString(const VkValidationCacheHeaderVersionEXT& value)
     {
       switch(value)
       {
@@ -42,8 +42,14 @@ namespace RapidVulkan
         return "VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkValidationCacheHeaderVersionEXT& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkExternalSemaphoreHandleTypeFlagBits& value)
+    inline const char* TryToString(const VkExternalSemaphoreHandleTypeFlagBits& value)
     {
       switch(value)
       {
@@ -58,8 +58,14 @@ namespace RapidVulkan
         return "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkExternalSemaphoreHandleTypeFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

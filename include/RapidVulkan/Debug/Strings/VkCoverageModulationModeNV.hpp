@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkCoverageModulationModeNV& value)
+    inline const char* TryToString(const VkCoverageModulationModeNV& value)
     {
       switch(value)
       {
@@ -54,8 +54,14 @@ namespace RapidVulkan
         return "VK_COVERAGE_MODULATION_MODE_RGBA_NV";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkCoverageModulationModeNV& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

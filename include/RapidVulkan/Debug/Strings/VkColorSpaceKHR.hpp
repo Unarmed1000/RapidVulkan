@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkColorSpaceKHR& value)
+    inline const char* TryToString(const VkColorSpaceKHR& value)
     {
       switch(value)
       {
@@ -43,8 +43,14 @@ namespace RapidVulkan
         return "VK_COLORSPACE_SRGB_NONLINEAR_KHR";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkColorSpaceKHR& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

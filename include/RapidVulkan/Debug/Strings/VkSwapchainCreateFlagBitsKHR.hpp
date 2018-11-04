@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkSwapchainCreateFlagBitsKHR& value)
+    inline const char* TryToString(const VkSwapchainCreateFlagBitsKHR& value)
     {
       switch(value)
       {
@@ -46,8 +46,14 @@ namespace RapidVulkan
         return "VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkSwapchainCreateFlagBitsKHR& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

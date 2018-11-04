@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkDependencyFlagBits& value)
+    inline const char* TryToString(const VkDependencyFlagBits& value)
     {
       switch(value)
       {
@@ -47,8 +47,14 @@ namespace RapidVulkan
         return "VK_DEPENDENCY_VIEW_LOCAL_BIT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkDependencyFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

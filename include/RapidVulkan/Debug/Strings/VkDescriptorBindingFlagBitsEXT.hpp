@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkDescriptorBindingFlagBitsEXT& value)
+    inline const char* TryToString(const VkDescriptorBindingFlagBitsEXT& value)
     {
       switch(value)
       {
@@ -54,8 +54,14 @@ namespace RapidVulkan
         return "VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT_EXT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkDescriptorBindingFlagBitsEXT& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

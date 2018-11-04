@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkSurfaceCounterFlagBitsEXT& value)
+    inline const char* TryToString(const VkSurfaceCounterFlagBitsEXT& value)
     {
       switch(value)
       {
@@ -42,8 +42,14 @@ namespace RapidVulkan
         return "VK_SURFACE_COUNTER_VBLANK_EXT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkSurfaceCounterFlagBitsEXT& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

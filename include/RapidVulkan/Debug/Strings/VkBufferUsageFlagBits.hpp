@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkBufferUsageFlagBits& value)
+    inline const char* TryToString(const VkBufferUsageFlagBits& value)
     {
       switch(value)
       {
@@ -55,8 +55,14 @@ namespace RapidVulkan
       case VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT:
         return "VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkBufferUsageFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

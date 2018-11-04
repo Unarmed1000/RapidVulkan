@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkDebugUtilsMessageSeverityFlagBitsEXT& value)
+    inline const char* TryToString(const VkDebugUtilsMessageSeverityFlagBitsEXT& value)
     {
       switch(value)
       {
@@ -54,8 +54,14 @@ namespace RapidVulkan
         return "VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkDebugUtilsMessageSeverityFlagBitsEXT& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

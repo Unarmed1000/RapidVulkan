@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkDescriptorType& value)
+    inline const char* TryToString(const VkDescriptorType& value)
     {
       switch(value)
       {
@@ -59,8 +59,14 @@ namespace RapidVulkan
       case VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT:
         return "VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkDescriptorType& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

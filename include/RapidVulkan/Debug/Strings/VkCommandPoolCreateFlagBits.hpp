@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkCommandPoolCreateFlagBits& value)
+    inline const char* TryToString(const VkCommandPoolCreateFlagBits& value)
     {
       switch(value)
       {
@@ -45,8 +45,14 @@ namespace RapidVulkan
         return "VK_COMMAND_POOL_CREATE_PROTECTED_BIT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkCommandPoolCreateFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

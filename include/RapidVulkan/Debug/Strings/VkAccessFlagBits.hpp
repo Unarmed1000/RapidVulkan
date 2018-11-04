@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkAccessFlagBits& value)
+    inline const char* TryToString(const VkAccessFlagBits& value)
     {
       switch(value)
       {
@@ -71,8 +71,14 @@ namespace RapidVulkan
       case VK_ACCESS_MEMORY_WRITE_BIT:
         return "VK_ACCESS_MEMORY_WRITE_BIT";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkAccessFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

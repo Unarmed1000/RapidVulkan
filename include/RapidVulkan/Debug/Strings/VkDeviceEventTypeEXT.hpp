@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkDeviceEventTypeEXT& value)
+    inline const char* TryToString(const VkDeviceEventTypeEXT& value)
     {
       switch(value)
       {
@@ -42,8 +42,14 @@ namespace RapidVulkan
         return "VK_DEVICE_EVENT_TYPE_DISPLAY_HOTPLUG_EXT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkDeviceEventTypeEXT& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

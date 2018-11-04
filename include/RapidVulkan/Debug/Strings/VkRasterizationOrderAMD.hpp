@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkRasterizationOrderAMD& value)
+    inline const char* TryToString(const VkRasterizationOrderAMD& value)
     {
       switch(value)
       {
@@ -41,8 +41,14 @@ namespace RapidVulkan
       case VK_RASTERIZATION_ORDER_RELAXED_AMD:
         return "VK_RASTERIZATION_ORDER_RELAXED_AMD";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkRasterizationOrderAMD& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

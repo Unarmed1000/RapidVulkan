@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkStructureType& value)
+    inline const char* TryToString(const VkStructureType& value)
     {
       switch(value)
       {
@@ -431,8 +431,14 @@ namespace RapidVulkan
         return "VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkStructureType& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

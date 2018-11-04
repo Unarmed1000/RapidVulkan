@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkFilter& value)
+    inline const char* TryToString(const VkFilter& value)
     {
       switch(value)
       {
@@ -43,8 +43,14 @@ namespace RapidVulkan
       case VK_FILTER_CUBIC_IMG:
         return "VK_FILTER_CUBIC_IMG";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkFilter& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

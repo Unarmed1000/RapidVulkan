@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkVendorId& value)
+    inline const char* TryToString(const VkVendorId& value)
     {
       switch(value)
       {
@@ -50,8 +50,14 @@ namespace RapidVulkan
         return "VK_VENDOR_ID_KAZAN";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkVendorId& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkBorderColor& value)
+    inline const char* TryToString(const VkBorderColor& value)
     {
       switch(value)
       {
@@ -49,8 +49,14 @@ namespace RapidVulkan
       case VK_BORDER_COLOR_INT_OPAQUE_WHITE:
         return "VK_BORDER_COLOR_INT_OPAQUE_WHITE";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkBorderColor& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

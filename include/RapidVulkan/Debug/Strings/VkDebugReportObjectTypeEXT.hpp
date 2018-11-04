@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkDebugReportObjectTypeEXT& value)
+    inline const char* TryToString(const VkDebugReportObjectTypeEXT& value)
     {
       switch(value)
       {
@@ -143,8 +143,14 @@ namespace RapidVulkan
         return "VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_KHR_EXT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkDebugReportObjectTypeEXT& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

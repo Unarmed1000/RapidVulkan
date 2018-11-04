@@ -32,15 +32,21 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkQueryControlFlagBits& value)
+    inline const char* TryToString(const VkQueryControlFlagBits& value)
     {
       switch(value)
       {
       case VK_QUERY_CONTROL_PRECISE_BIT:
         return "VK_QUERY_CONTROL_PRECISE_BIT";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkQueryControlFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

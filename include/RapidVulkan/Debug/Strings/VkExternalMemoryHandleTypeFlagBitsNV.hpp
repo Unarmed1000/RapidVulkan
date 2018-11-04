@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkExternalMemoryHandleTypeFlagBitsNV& value)
+    inline const char* TryToString(const VkExternalMemoryHandleTypeFlagBitsNV& value)
     {
       switch(value)
       {
@@ -45,8 +45,14 @@ namespace RapidVulkan
       case VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_KMT_BIT_NV:
         return "VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_KMT_BIT_NV";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkExternalMemoryHandleTypeFlagBitsNV& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

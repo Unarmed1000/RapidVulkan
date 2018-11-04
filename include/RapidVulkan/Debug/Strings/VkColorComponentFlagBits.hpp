@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkColorComponentFlagBits& value)
+    inline const char* TryToString(const VkColorComponentFlagBits& value)
     {
       switch(value)
       {
@@ -45,8 +45,14 @@ namespace RapidVulkan
       case VK_COLOR_COMPONENT_A_BIT:
         return "VK_COLOR_COMPONENT_A_BIT";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkColorComponentFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkComponentSwizzle& value)
+    inline const char* TryToString(const VkComponentSwizzle& value)
     {
       switch(value)
       {
@@ -51,8 +51,14 @@ namespace RapidVulkan
       case VK_COMPONENT_SWIZZLE_A:
         return "VK_COMPONENT_SWIZZLE_A";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkComponentSwizzle& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

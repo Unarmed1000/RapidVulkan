@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkShaderStageFlagBits& value)
+    inline const char* TryToString(const VkShaderStageFlagBits& value)
     {
       switch(value)
       {
@@ -53,8 +53,14 @@ namespace RapidVulkan
       case VK_SHADER_STAGE_ALL:
         return "VK_SHADER_STAGE_ALL";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkShaderStageFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

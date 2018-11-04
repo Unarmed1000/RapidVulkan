@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkLogicOp& value)
+    inline const char* TryToString(const VkLogicOp& value)
     {
       switch(value)
       {
@@ -69,8 +69,14 @@ namespace RapidVulkan
       case VK_LOGIC_OP_SET:
         return "VK_LOGIC_OP_SET";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkLogicOp& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

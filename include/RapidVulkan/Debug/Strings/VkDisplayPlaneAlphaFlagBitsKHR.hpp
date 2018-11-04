@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkDisplayPlaneAlphaFlagBitsKHR& value)
+    inline const char* TryToString(const VkDisplayPlaneAlphaFlagBitsKHR& value)
     {
       switch(value)
       {
@@ -45,8 +45,14 @@ namespace RapidVulkan
       case VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_PREMULTIPLIED_BIT_KHR:
         return "VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_PREMULTIPLIED_BIT_KHR";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkDisplayPlaneAlphaFlagBitsKHR& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

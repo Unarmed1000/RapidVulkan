@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkStencilFaceFlagBits& value)
+    inline const char* TryToString(const VkStencilFaceFlagBits& value)
     {
       switch(value)
       {
@@ -43,8 +43,14 @@ namespace RapidVulkan
       case VK_STENCIL_FRONT_AND_BACK:
         return "VK_STENCIL_FRONT_AND_BACK";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkStencilFaceFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

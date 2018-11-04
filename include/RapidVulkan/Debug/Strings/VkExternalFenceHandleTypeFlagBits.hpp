@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkExternalFenceHandleTypeFlagBits& value)
+    inline const char* TryToString(const VkExternalFenceHandleTypeFlagBits& value)
     {
       switch(value)
       {
@@ -54,8 +54,14 @@ namespace RapidVulkan
         return "VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkExternalFenceHandleTypeFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

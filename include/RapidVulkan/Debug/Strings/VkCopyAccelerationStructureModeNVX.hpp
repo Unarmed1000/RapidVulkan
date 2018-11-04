@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkCopyAccelerationStructureModeNVX& value)
+    inline const char* TryToString(const VkCopyAccelerationStructureModeNVX& value)
     {
       switch(value)
       {
@@ -46,8 +46,14 @@ namespace RapidVulkan
         return "VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_NVX";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkCopyAccelerationStructureModeNVX& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

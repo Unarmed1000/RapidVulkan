@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkVertexInputRate& value)
+    inline const char* TryToString(const VkVertexInputRate& value)
     {
       switch(value)
       {
@@ -41,8 +41,14 @@ namespace RapidVulkan
       case VK_VERTEX_INPUT_RATE_INSTANCE:
         return "VK_VERTEX_INPUT_RATE_INSTANCE";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkVertexInputRate& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

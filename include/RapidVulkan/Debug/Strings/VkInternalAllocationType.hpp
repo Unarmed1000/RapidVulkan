@@ -32,15 +32,21 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkInternalAllocationType& value)
+    inline const char* TryToString(const VkInternalAllocationType& value)
     {
       switch(value)
       {
       case VK_INTERNAL_ALLOCATION_TYPE_EXECUTABLE:
         return "VK_INTERNAL_ALLOCATION_TYPE_EXECUTABLE";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkInternalAllocationType& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

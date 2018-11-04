@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkQueueFlagBits& value)
+    inline const char* TryToString(const VkQueueFlagBits& value)
     {
       switch(value)
       {
@@ -49,8 +49,14 @@ namespace RapidVulkan
         return "VK_QUEUE_PROTECTED_BIT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkQueueFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

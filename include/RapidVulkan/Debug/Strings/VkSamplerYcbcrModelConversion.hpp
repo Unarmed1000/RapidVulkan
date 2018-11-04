@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkSamplerYcbcrModelConversion& value)
+    inline const char* TryToString(const VkSamplerYcbcrModelConversion& value)
     {
       switch(value)
       {
@@ -58,8 +58,14 @@ namespace RapidVulkan
         return "VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_2020";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkSamplerYcbcrModelConversion& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

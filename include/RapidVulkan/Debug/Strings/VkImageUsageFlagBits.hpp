@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkImageUsageFlagBits& value)
+    inline const char* TryToString(const VkImageUsageFlagBits& value)
     {
       switch(value)
       {
@@ -53,8 +53,14 @@ namespace RapidVulkan
       case VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT:
         return "VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkImageUsageFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

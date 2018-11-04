@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkSamplerMipmapMode& value)
+    inline const char* TryToString(const VkSamplerMipmapMode& value)
     {
       switch(value)
       {
@@ -41,8 +41,14 @@ namespace RapidVulkan
       case VK_SAMPLER_MIPMAP_MODE_LINEAR:
         return "VK_SAMPLER_MIPMAP_MODE_LINEAR";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkSamplerMipmapMode& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

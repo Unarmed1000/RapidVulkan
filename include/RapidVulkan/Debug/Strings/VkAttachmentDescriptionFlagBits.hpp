@@ -32,15 +32,21 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkAttachmentDescriptionFlagBits& value)
+    inline const char* TryToString(const VkAttachmentDescriptionFlagBits& value)
     {
       switch(value)
       {
       case VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT:
         return "VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkAttachmentDescriptionFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

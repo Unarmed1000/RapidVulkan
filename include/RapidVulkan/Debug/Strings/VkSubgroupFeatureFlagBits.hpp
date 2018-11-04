@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkSubgroupFeatureFlagBits& value)
+    inline const char* TryToString(const VkSubgroupFeatureFlagBits& value)
     {
       switch(value)
       {
@@ -70,8 +70,14 @@ namespace RapidVulkan
         return "VK_SUBGROUP_FEATURE_QUAD_BIT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkSubgroupFeatureFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

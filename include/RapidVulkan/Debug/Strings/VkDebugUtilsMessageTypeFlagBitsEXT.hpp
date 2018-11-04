@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkDebugUtilsMessageTypeFlagBitsEXT& value)
+    inline const char* TryToString(const VkDebugUtilsMessageTypeFlagBitsEXT& value)
     {
       switch(value)
       {
@@ -50,8 +50,14 @@ namespace RapidVulkan
         return "VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkDebugUtilsMessageTypeFlagBitsEXT& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

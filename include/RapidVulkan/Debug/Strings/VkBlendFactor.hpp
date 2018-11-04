@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkBlendFactor& value)
+    inline const char* TryToString(const VkBlendFactor& value)
     {
       switch(value)
       {
@@ -75,8 +75,14 @@ namespace RapidVulkan
       case VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA:
         return "VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkBlendFactor& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

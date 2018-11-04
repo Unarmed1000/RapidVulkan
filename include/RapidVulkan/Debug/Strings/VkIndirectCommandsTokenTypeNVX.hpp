@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkIndirectCommandsTokenTypeNVX& value)
+    inline const char* TryToString(const VkIndirectCommandsTokenTypeNVX& value)
     {
       switch(value)
       {
@@ -70,8 +70,14 @@ namespace RapidVulkan
         return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NVX";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkIndirectCommandsTokenTypeNVX& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

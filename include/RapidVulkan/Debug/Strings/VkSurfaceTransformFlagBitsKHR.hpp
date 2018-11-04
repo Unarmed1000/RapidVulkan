@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkSurfaceTransformFlagBitsKHR& value)
+    inline const char* TryToString(const VkSurfaceTransformFlagBitsKHR& value)
     {
       switch(value)
       {
@@ -55,8 +55,14 @@ namespace RapidVulkan
       case VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR:
         return "VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkSurfaceTransformFlagBitsKHR& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

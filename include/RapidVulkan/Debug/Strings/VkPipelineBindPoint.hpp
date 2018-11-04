@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkPipelineBindPoint& value)
+    inline const char* TryToString(const VkPipelineBindPoint& value)
     {
       switch(value)
       {
@@ -41,8 +41,14 @@ namespace RapidVulkan
       case VK_PIPELINE_BIND_POINT_COMPUTE:
         return "VK_PIPELINE_BIND_POINT_COMPUTE";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkPipelineBindPoint& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

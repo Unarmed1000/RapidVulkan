@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkResult& value)
+    inline const char* TryToString(const VkResult& value)
     {
       switch(value)
       {
@@ -81,8 +81,14 @@ namespace RapidVulkan
         return "VK_ERROR_INVALID_EXTERNAL_HANDLE";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkResult& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

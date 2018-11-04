@@ -32,15 +32,21 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkPipelineCacheHeaderVersion& value)
+    inline const char* TryToString(const VkPipelineCacheHeaderVersion& value)
     {
       switch(value)
       {
       case VK_PIPELINE_CACHE_HEADER_VERSION_ONE:
         return "VK_PIPELINE_CACHE_HEADER_VERSION_ONE";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkPipelineCacheHeaderVersion& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

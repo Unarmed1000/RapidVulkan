@@ -32,15 +32,21 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkCommandBufferResetFlagBits& value)
+    inline const char* TryToString(const VkCommandBufferResetFlagBits& value)
     {
       switch(value)
       {
       case VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT:
         return "VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkCommandBufferResetFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

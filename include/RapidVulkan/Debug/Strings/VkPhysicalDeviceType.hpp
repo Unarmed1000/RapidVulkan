@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkPhysicalDeviceType& value)
+    inline const char* TryToString(const VkPhysicalDeviceType& value)
     {
       switch(value)
       {
@@ -47,8 +47,14 @@ namespace RapidVulkan
       case VK_PHYSICAL_DEVICE_TYPE_CPU:
         return "VK_PHYSICAL_DEVICE_TYPE_CPU";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkPhysicalDeviceType& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

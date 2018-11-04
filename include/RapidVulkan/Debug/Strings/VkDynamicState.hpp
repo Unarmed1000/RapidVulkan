@@ -32,7 +32,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkDynamicState& value)
+    inline const char* TryToString(const VkDynamicState& value)
     {
       switch(value)
       {
@@ -55,8 +55,14 @@ namespace RapidVulkan
       case VK_DYNAMIC_STATE_STENCIL_REFERENCE:
         return "VK_DYNAMIC_STATE_STENCIL_REFERENCE";
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkDynamicState& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

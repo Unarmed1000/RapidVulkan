@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkShadingRatePaletteEntryNV& value)
+    inline const char* TryToString(const VkShadingRatePaletteEntryNV& value)
     {
       switch(value)
       {
@@ -86,8 +86,14 @@ namespace RapidVulkan
         return "VK_SHADING_RATE_PALETTE_ENTRY_1_INVOCATION_PER_4X4_PIXELS_NV";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkShadingRatePaletteEntryNV& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

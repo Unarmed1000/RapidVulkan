@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkShaderInfoTypeAMD& value)
+    inline const char* TryToString(const VkShaderInfoTypeAMD& value)
     {
       switch(value)
       {
@@ -50,8 +50,14 @@ namespace RapidVulkan
         return "VK_SHADER_INFO_TYPE_DISASSEMBLY_AMD";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkShaderInfoTypeAMD& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }

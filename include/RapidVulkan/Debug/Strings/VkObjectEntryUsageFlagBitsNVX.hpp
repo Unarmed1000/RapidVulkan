@@ -33,7 +33,7 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* ToString(const VkObjectEntryUsageFlagBitsNVX& value)
+    inline const char* TryToString(const VkObjectEntryUsageFlagBitsNVX& value)
     {
       switch(value)
       {
@@ -46,8 +46,14 @@ namespace RapidVulkan
         return "VK_OBJECT_ENTRY_USAGE_COMPUTE_BIT_NVX";
 #endif
       default:
-        return "*Unknown*";
+        return nullptr;
       }
+    };
+
+    inline const char* ToString(const VkObjectEntryUsageFlagBitsNVX& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
     };
   }
 }
