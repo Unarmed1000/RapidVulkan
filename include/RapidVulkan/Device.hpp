@@ -313,29 +313,20 @@ namespace RapidVulkan
 #endif
 
 
-#if VK_HEADER_VERSION >= 85
-    //! @note  Function: vkGetAccelerationStructureMemoryRequirementsNVX
-    void GetAccelerationStructureMemoryRequirementsNVX(const VkAccelerationStructureMemoryRequirementsInfoNVX * pInfo, VkMemoryRequirements2KHR * pMemoryRequirements)
+#if VK_HEADER_VERSION >= 92
+    //! @note  Function: vkGetAccelerationStructureMemoryRequirementsNV
+    void GetAccelerationStructureMemoryRequirementsNV(const VkAccelerationStructureMemoryRequirementsInfoNV * pInfo, VkMemoryRequirements2KHR * pMemoryRequirements)
     {
-      vkGetAccelerationStructureMemoryRequirementsNVX(m_device, pInfo, pMemoryRequirements);
+      vkGetAccelerationStructureMemoryRequirementsNV(m_device, pInfo, pMemoryRequirements);
     }
 #endif
 
 
-#if VK_HEADER_VERSION >= 85
-    //! @note  Function: vkGetAccelerationStructureScratchMemoryRequirementsNVX
-    void GetAccelerationStructureScratchMemoryRequirementsNVX(const VkAccelerationStructureMemoryRequirementsInfoNVX * pInfo, VkMemoryRequirements2KHR * pMemoryRequirements)
+#if VK_HEADER_VERSION >= 92
+    //! @note  Function: vkBindAccelerationStructureMemoryNV
+    void BindAccelerationStructureMemoryNV(const uint32_t bindInfoCount, const VkBindAccelerationStructureMemoryInfoNV * pBindInfos)
     {
-      vkGetAccelerationStructureScratchMemoryRequirementsNVX(m_device, pInfo, pMemoryRequirements);
-    }
-#endif
-
-
-#if VK_HEADER_VERSION >= 85
-    //! @note  Function: vkBindAccelerationStructureMemoryNVX
-    void BindAccelerationStructureMemoryNVX(const uint32_t bindInfoCount, const VkBindAccelerationStructureMemoryInfoNVX * pBindInfos)
-    {
-      CheckError(vkBindAccelerationStructureMemoryNVX(m_device, bindInfoCount, pBindInfos), "vkBindAccelerationStructureMemoryNVX", __FILE__, __LINE__);
+      CheckError(vkBindAccelerationStructureMemoryNV(m_device, bindInfoCount, pBindInfos), "vkBindAccelerationStructureMemoryNV", __FILE__, __LINE__);
     }
 #endif
   };

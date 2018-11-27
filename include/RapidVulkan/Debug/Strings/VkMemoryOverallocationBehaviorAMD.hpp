@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKGEOMETRYINSTANCEFLAGBITSNVX_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKGEOMETRYINSTANCEFLAGBITSNVX_HPP
-#if VK_HEADER_VERSION >= 85
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKMEMORYOVERALLOCATIONBEHAVIORAMD_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKMEMORYOVERALLOCATIONBEHAVIORAMD_HPP
+#if VK_HEADER_VERSION >= 92
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,32 +33,28 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkGeometryInstanceFlagBitsNVX& value)
+    inline const char* TryToString(const VkMemoryOverallocationBehaviorAMD& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 85
-      case VK_GEOMETRY_INSTANCE_TRIANGLE_CULL_DISABLE_BIT_NVX:
-        return "VK_GEOMETRY_INSTANCE_TRIANGLE_CULL_DISABLE_BIT_NVX";
+#if VK_HEADER_VERSION >= 92
+      case VK_MEMORY_OVERALLOCATION_BEHAVIOR_DEFAULT_AMD:
+        return "VK_MEMORY_OVERALLOCATION_BEHAVIOR_DEFAULT_AMD";
 #endif
-#if VK_HEADER_VERSION >= 85
-      case VK_GEOMETRY_INSTANCE_TRIANGLE_CULL_FLIP_WINDING_BIT_NVX:
-        return "VK_GEOMETRY_INSTANCE_TRIANGLE_CULL_FLIP_WINDING_BIT_NVX";
+#if VK_HEADER_VERSION >= 92
+      case VK_MEMORY_OVERALLOCATION_BEHAVIOR_ALLOWED_AMD:
+        return "VK_MEMORY_OVERALLOCATION_BEHAVIOR_ALLOWED_AMD";
 #endif
-#if VK_HEADER_VERSION >= 85
-      case VK_GEOMETRY_INSTANCE_FORCE_OPAQUE_BIT_NVX:
-        return "VK_GEOMETRY_INSTANCE_FORCE_OPAQUE_BIT_NVX";
-#endif
-#if VK_HEADER_VERSION >= 85
-      case VK_GEOMETRY_INSTANCE_FORCE_NO_OPAQUE_BIT_NVX:
-        return "VK_GEOMETRY_INSTANCE_FORCE_NO_OPAQUE_BIT_NVX";
+#if VK_HEADER_VERSION >= 92
+      case VK_MEMORY_OVERALLOCATION_BEHAVIOR_DISALLOWED_AMD:
+        return "VK_MEMORY_OVERALLOCATION_BEHAVIOR_DISALLOWED_AMD";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkGeometryInstanceFlagBitsNVX& value)
+    inline const char* ToString(const VkMemoryOverallocationBehaviorAMD& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

@@ -430,6 +430,10 @@ namespace RapidVulkan
       case VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID:
         return "VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID";
 #endif
+#if VK_HEADER_VERSION >= 92
+      case VK_STRUCTURE_TYPE_IMAGEPIPE_SURFACE_CREATE_INFO_FUCHSIA:
+        return "VK_STRUCTURE_TYPE_IMAGEPIPE_SURFACE_CREATE_INFO_FUCHSIA";
+#endif
       default:
         return nullptr;
       }

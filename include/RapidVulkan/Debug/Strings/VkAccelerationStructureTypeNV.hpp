@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKGEOMETRYFLAGBITSNVX_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKGEOMETRYFLAGBITSNVX_HPP
-#if VK_HEADER_VERSION >= 85
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKACCELERATIONSTRUCTURETYPENV_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKACCELERATIONSTRUCTURETYPENV_HPP
+#if VK_HEADER_VERSION >= 92
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,24 +33,24 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkGeometryFlagBitsNVX& value)
+    inline const char* TryToString(const VkAccelerationStructureTypeNV& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 85
-      case VK_GEOMETRY_OPAQUE_BIT_NVX:
-        return "VK_GEOMETRY_OPAQUE_BIT_NVX";
+#if VK_HEADER_VERSION >= 92
+      case VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_NV:
+        return "VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_NV";
 #endif
-#if VK_HEADER_VERSION >= 85
-      case VK_GEOMETRY_NO_DUPLICATE_ANY_HIT_INVOCATION_BIT_NVX:
-        return "VK_GEOMETRY_NO_DUPLICATE_ANY_HIT_INVOCATION_BIT_NVX";
+#if VK_HEADER_VERSION >= 92
+      case VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV:
+        return "VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkGeometryFlagBitsNVX& value)
+    inline const char* ToString(const VkAccelerationStructureTypeNV& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

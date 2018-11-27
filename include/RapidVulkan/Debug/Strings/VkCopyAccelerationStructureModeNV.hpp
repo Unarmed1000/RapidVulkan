@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKGEOMETRYTYPENVX_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKGEOMETRYTYPENVX_HPP
-#if VK_HEADER_VERSION >= 85
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKCOPYACCELERATIONSTRUCTUREMODENV_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKCOPYACCELERATIONSTRUCTUREMODENV_HPP
+#if VK_HEADER_VERSION >= 92
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,24 +33,24 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkGeometryTypeNVX& value)
+    inline const char* TryToString(const VkCopyAccelerationStructureModeNV& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 85
-      case VK_GEOMETRY_TYPE_TRIANGLES_NVX:
-        return "VK_GEOMETRY_TYPE_TRIANGLES_NVX";
+#if VK_HEADER_VERSION >= 92
+      case VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_NV:
+        return "VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_NV";
 #endif
-#if VK_HEADER_VERSION >= 85
-      case VK_GEOMETRY_TYPE_AABBS_NVX:
-        return "VK_GEOMETRY_TYPE_AABBS_NVX";
+#if VK_HEADER_VERSION >= 92
+      case VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_NV:
+        return "VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_NV";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkGeometryTypeNVX& value)
+    inline const char* ToString(const VkCopyAccelerationStructureModeNV& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");
