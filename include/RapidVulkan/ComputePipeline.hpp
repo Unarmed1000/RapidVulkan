@@ -209,24 +209,6 @@ namespace RapidVulkan
     {
       return m_pipelines != VK_NULL_HANDLE;
     }
-
-
-#if VK_HEADER_VERSION >= 92
-    //! @note  Function: vkGetRayTracingShaderGroupHandlesNV
-    void GetRayTracingShaderGroupHandlesNV(const uint32_t firstGroup, const uint32_t groupCount, const size_t dataSize, void * pData)
-    {
-      CheckError(vkGetRayTracingShaderGroupHandlesNV(m_device, m_pipelines, firstGroup, groupCount, dataSize, pData), "vkGetRayTracingShaderGroupHandlesNV", __FILE__, __LINE__);
-    }
-#endif
-
-
-#if VK_HEADER_VERSION >= 92
-    //! @note  Function: vkCompileDeferredNV
-    void CompileDeferredNV(const uint32_t shader)
-    {
-      CheckError(vkCompileDeferredNV(m_device, m_pipelines, shader), "vkCompileDeferredNV", __FILE__, __LINE__);
-    }
-#endif
   };
 }
 

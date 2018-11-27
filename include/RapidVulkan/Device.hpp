@@ -311,24 +311,6 @@ namespace RapidVulkan
       vkGetDescriptorSetLayoutSupport(m_device, pCreateInfo, pSupport);
     }
 #endif
-
-
-#if VK_HEADER_VERSION >= 92
-    //! @note  Function: vkGetAccelerationStructureMemoryRequirementsNV
-    void GetAccelerationStructureMemoryRequirementsNV(const VkAccelerationStructureMemoryRequirementsInfoNV * pInfo, VkMemoryRequirements2KHR * pMemoryRequirements)
-    {
-      vkGetAccelerationStructureMemoryRequirementsNV(m_device, pInfo, pMemoryRequirements);
-    }
-#endif
-
-
-#if VK_HEADER_VERSION >= 92
-    //! @note  Function: vkBindAccelerationStructureMemoryNV
-    void BindAccelerationStructureMemoryNV(const uint32_t bindInfoCount, const VkBindAccelerationStructureMemoryInfoNV * pBindInfos)
-    {
-      CheckError(vkBindAccelerationStructureMemoryNV(m_device, bindInfoCount, pBindInfos), "vkBindAccelerationStructureMemoryNV", __FILE__, __LINE__);
-    }
-#endif
   };
 }
 
