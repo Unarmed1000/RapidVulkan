@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKDRIVERIDKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKDRIVERIDKHR_HPP
-#if VK_HEADER_VERSION >= 92
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKVALIDATIONFEATUREENABLEEXT_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKVALIDATIONFEATUREENABLEEXT_HPP
+#if VK_HEADER_VERSION >= 97
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,56 +33,24 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkDriverIdKHR& value)
+    inline const char* TryToString(const VkValidationFeatureEnableEXT& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 92
-      case VK_DRIVER_ID_AMD_PROPRIETARY_KHR:
-        return "VK_DRIVER_ID_AMD_PROPRIETARY_KHR";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_DRIVER_ID_AMD_OPEN_SOURCE_KHR:
-        return "VK_DRIVER_ID_AMD_OPEN_SOURCE_KHR";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_DRIVER_ID_MESA_RADV_KHR:
-        return "VK_DRIVER_ID_MESA_RADV_KHR";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_DRIVER_ID_NVIDIA_PROPRIETARY_KHR:
-        return "VK_DRIVER_ID_NVIDIA_PROPRIETARY_KHR";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_DRIVER_ID_INTEL_PROPRIETARY_WINDOWS_KHR:
-        return "VK_DRIVER_ID_INTEL_PROPRIETARY_WINDOWS_KHR";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA_KHR:
-        return "VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA_KHR";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_DRIVER_ID_IMAGINATION_PROPRIETARY_KHR:
-        return "VK_DRIVER_ID_IMAGINATION_PROPRIETARY_KHR";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_DRIVER_ID_QUALCOMM_PROPRIETARY_KHR:
-        return "VK_DRIVER_ID_QUALCOMM_PROPRIETARY_KHR";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_DRIVER_ID_ARM_PROPRIETARY_KHR:
-        return "VK_DRIVER_ID_ARM_PROPRIETARY_KHR";
+#if VK_HEADER_VERSION >= 97
+      case VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT:
+        return "VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT";
 #endif
 #if VK_HEADER_VERSION >= 97
-      case VK_DRIVER_ID_GOOGLE_PASTEL_KHR:
-        return "VK_DRIVER_ID_GOOGLE_PASTEL_KHR";
+      case VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT:
+        return "VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkDriverIdKHR& value)
+    inline const char* ToString(const VkValidationFeatureEnableEXT& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

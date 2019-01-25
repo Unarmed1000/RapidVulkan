@@ -45,6 +45,10 @@ namespace RapidVulkan
       case VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR:
         return "VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR";
 #endif
+#if VK_HEADER_VERSION >= 97
+      case VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR:
+        return "VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR";
+#endif
       default:
         return nullptr;
       }

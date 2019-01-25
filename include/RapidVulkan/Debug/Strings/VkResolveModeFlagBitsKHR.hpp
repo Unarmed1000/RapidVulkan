@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKDRIVERIDKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKDRIVERIDKHR_HPP
-#if VK_HEADER_VERSION >= 92
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKRESOLVEMODEFLAGBITSKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKRESOLVEMODEFLAGBITSKHR_HPP
+#if VK_HEADER_VERSION >= 97
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,56 +33,36 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkDriverIdKHR& value)
+    inline const char* TryToString(const VkResolveModeFlagBitsKHR& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 92
-      case VK_DRIVER_ID_AMD_PROPRIETARY_KHR:
-        return "VK_DRIVER_ID_AMD_PROPRIETARY_KHR";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_DRIVER_ID_AMD_OPEN_SOURCE_KHR:
-        return "VK_DRIVER_ID_AMD_OPEN_SOURCE_KHR";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_DRIVER_ID_MESA_RADV_KHR:
-        return "VK_DRIVER_ID_MESA_RADV_KHR";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_DRIVER_ID_NVIDIA_PROPRIETARY_KHR:
-        return "VK_DRIVER_ID_NVIDIA_PROPRIETARY_KHR";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_DRIVER_ID_INTEL_PROPRIETARY_WINDOWS_KHR:
-        return "VK_DRIVER_ID_INTEL_PROPRIETARY_WINDOWS_KHR";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA_KHR:
-        return "VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA_KHR";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_DRIVER_ID_IMAGINATION_PROPRIETARY_KHR:
-        return "VK_DRIVER_ID_IMAGINATION_PROPRIETARY_KHR";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_DRIVER_ID_QUALCOMM_PROPRIETARY_KHR:
-        return "VK_DRIVER_ID_QUALCOMM_PROPRIETARY_KHR";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_DRIVER_ID_ARM_PROPRIETARY_KHR:
-        return "VK_DRIVER_ID_ARM_PROPRIETARY_KHR";
+#if VK_HEADER_VERSION >= 97
+      case VK_RESOLVE_MODE_NONE_KHR:
+        return "VK_RESOLVE_MODE_NONE_KHR";
 #endif
 #if VK_HEADER_VERSION >= 97
-      case VK_DRIVER_ID_GOOGLE_PASTEL_KHR:
-        return "VK_DRIVER_ID_GOOGLE_PASTEL_KHR";
+      case VK_RESOLVE_MODE_SAMPLE_ZERO_BIT_KHR:
+        return "VK_RESOLVE_MODE_SAMPLE_ZERO_BIT_KHR";
+#endif
+#if VK_HEADER_VERSION >= 97
+      case VK_RESOLVE_MODE_AVERAGE_BIT_KHR:
+        return "VK_RESOLVE_MODE_AVERAGE_BIT_KHR";
+#endif
+#if VK_HEADER_VERSION >= 97
+      case VK_RESOLVE_MODE_MIN_BIT_KHR:
+        return "VK_RESOLVE_MODE_MIN_BIT_KHR";
+#endif
+#if VK_HEADER_VERSION >= 97
+      case VK_RESOLVE_MODE_MAX_BIT_KHR:
+        return "VK_RESOLVE_MODE_MAX_BIT_KHR";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkDriverIdKHR& value)
+    inline const char* ToString(const VkResolveModeFlagBitsKHR& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");
