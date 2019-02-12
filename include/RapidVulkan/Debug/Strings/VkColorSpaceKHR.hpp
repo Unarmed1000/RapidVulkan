@@ -36,12 +36,14 @@ namespace RapidVulkan
     {
       switch(value)
       {
-      case VK_COLOR_SPACE_SRGB_NONLINEAR_KHR:
-        return "VK_COLOR_SPACE_SRGB_NONLINEAR_KHR";
 #if VK_HEADER_VERSION >= 85
       case VK_COLORSPACE_SRGB_NONLINEAR_KHR:
         return "VK_COLORSPACE_SRGB_NONLINEAR_KHR";
+#elif VK_HEADER_VERSION >= 0
+      case VK_COLOR_SPACE_SRGB_NONLINEAR_KHR:
+        return "VK_COLOR_SPACE_SRGB_NONLINEAR_KHR";
 #endif
+
       default:
         return nullptr;
       }
