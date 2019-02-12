@@ -160,7 +160,6 @@ namespace RapidVulkan
       }
 #else
       assert(device != VK_NULL_HANDLE);
-      assert( == 1);
 #endif
 
       // Free any currently allocated resource

@@ -242,11 +242,11 @@ namespace RapidVulkan
     }
 
 
-      VkCommandBuffer Get(const std::size_t arrayIndex) const
-      {
-        assert(arrayIndex < m_commandBuffers.size());
-        return m_commandBuffers[arrayIndex];
-      }
+    VkCommandBuffer Get(const std::size_t arrayIndex) const
+    {
+      assert(arrayIndex < m_commandBuffers.size());
+      return m_commandBuffers[arrayIndex];
+    }
 
 
     //! @brief Access the resource at a given index

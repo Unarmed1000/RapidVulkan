@@ -90,21 +90,11 @@ namespace RapidVulkan
 
     //! @brief Create the requested resource
     //! @note  Function: vkCreateGraphicsPipelines
-    GraphicsPipelines(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkGraphicsPipelineCreateInfo& createInfos)
+    GraphicsPipelines(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkGraphicsPipelineCreateInfo * pCreateInfos)
       : GraphicsPipelines()
     {
-      Reset(device, pipelineCache, createInfoCount, createInfos);
+      Reset(device, pipelineCache, createInfoCount, pCreateInfos);
     }
-
-#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
-    //! @brief Create the requested resource
-    //! @note  Function: vkCreateGraphicsPipelines
-    GraphicsPipelines(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkPipelineCreateFlags flags, const uint32_t stageCount, VkPipelineShaderStageCreateInfo*const pStages, VkPipelineVertexInputStateCreateInfo*const pVertexInputState, VkPipelineInputAssemblyStateCreateInfo*const pInputAssemblyState, VkPipelineTessellationStateCreateInfo*const pTessellationState, VkPipelineViewportStateCreateInfo*const pViewportState, VkPipelineRasterizationStateCreateInfo*const pRasterizationState, VkPipelineMultisampleStateCreateInfo*const pMultisampleState, VkPipelineDepthStencilStateCreateInfo*const pDepthStencilState, VkPipelineColorBlendStateCreateInfo*const pColorBlendState, VkPipelineDynamicStateCreateInfo*const pDynamicState, const VkPipelineLayout layout, const VkRenderPass renderPass, const uint32_t subpass, const VkPipeline basePipelineHandle, const int32_t basePipelineIndex)
-      : GraphicsPipelines()
-    {
-      Reset(device, pipelineCache, createInfoCount, flags, stageCount, pStages, pVertexInputState, pInputAssemblyState, pTessellationState, pViewportState, pRasterizationState, pMultisampleState, pDepthStencilState, pColorBlendState, pDynamicState, layout, renderPass, subpass, basePipelineHandle, basePipelineIndex);
-    }
-#endif
 
     ~GraphicsPipelines()
     {
@@ -154,7 +144,7 @@ namespace RapidVulkan
     
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkCreateGraphicsPipelines
-    void Reset(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkGraphicsPipelineCreateInfo& createInfos)
+    void Reset(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkGraphicsPipelineCreateInfo * pCreateInfos)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
@@ -172,43 +162,13 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      std::vector<VkPipeline> pipelines();
-      CheckError(vkCreateGraphicsPipelines(device, pipelineCache, createInfoCount, &createInfos, nullptr, pipelines.data()), "vkCreateGraphicsPipelines", __FILE__, __LINE__);
+      std::vector<VkPipeline> pipelines(createInfoCount);
+      CheckError(vkCreateGraphicsPipelines(device, pipelineCache, createInfoCount, pCreateInfos, nullptr, pipelines.data()), "vkCreateGraphicsPipelines", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
       m_pipelines = std::move(pipelines);
     }
-
-#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
-    //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateGraphicsPipelines
-    void Reset(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkPipelineCreateFlags flags, const uint32_t stageCount, VkPipelineShaderStageCreateInfo*const pStages, VkPipelineVertexInputStateCreateInfo*const pVertexInputState, VkPipelineInputAssemblyStateCreateInfo*const pInputAssemblyState, VkPipelineTessellationStateCreateInfo*const pTessellationState, VkPipelineViewportStateCreateInfo*const pViewportState, VkPipelineRasterizationStateCreateInfo*const pRasterizationState, VkPipelineMultisampleStateCreateInfo*const pMultisampleState, VkPipelineDepthStencilStateCreateInfo*const pDepthStencilState, VkPipelineColorBlendStateCreateInfo*const pColorBlendState, VkPipelineDynamicStateCreateInfo*const pDynamicState, const VkPipelineLayout layout, const VkRenderPass renderPass, const uint32_t subpass, const VkPipeline basePipelineHandle, const int32_t basePipelineIndex)
-    {
-      VkGraphicsPipelineCreateInfo createInfos{};
-      createInfos.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
-      createInfos.pNext = nullptr;
-      createInfos.flags = flags;
-      createInfos.stageCount = stageCount;
-      createInfos.pStages = pStages;
-      createInfos.pVertexInputState = pVertexInputState;
-      createInfos.pInputAssemblyState = pInputAssemblyState;
-      createInfos.pTessellationState = pTessellationState;
-      createInfos.pViewportState = pViewportState;
-      createInfos.pRasterizationState = pRasterizationState;
-      createInfos.pMultisampleState = pMultisampleState;
-      createInfos.pDepthStencilState = pDepthStencilState;
-      createInfos.pColorBlendState = pColorBlendState;
-      createInfos.pDynamicState = pDynamicState;
-      createInfos.layout = layout;
-      createInfos.renderPass = renderPass;
-      createInfos.subpass = subpass;
-      createInfos.basePipelineHandle = basePipelineHandle;
-      createInfos.basePipelineIndex = basePipelineIndex;
-
-      Reset(device, pipelineCache, createInfoCount, createInfos);
-    }
-#endif
 
     //! @brief Get the associated 'Device'
     VkDevice GetDevice() const

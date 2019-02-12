@@ -242,11 +242,11 @@ namespace RapidVulkan
     }
 
 
-      VkDescriptorSet Get(const std::size_t arrayIndex) const
-      {
-        assert(arrayIndex < m_descriptorSets.size());
-        return m_descriptorSets[arrayIndex];
-      }
+    VkDescriptorSet Get(const std::size_t arrayIndex) const
+    {
+      assert(arrayIndex < m_descriptorSets.size());
+      return m_descriptorSets[arrayIndex];
+    }
 
 
     //! @brief Access the resource at a given index

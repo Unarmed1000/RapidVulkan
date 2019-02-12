@@ -90,21 +90,11 @@ namespace RapidVulkan
 
     //! @brief Create the requested resource
     //! @note  Function: vkCreateComputePipelines
-    ComputePipelines(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkComputePipelineCreateInfo& createInfos)
+    ComputePipelines(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkComputePipelineCreateInfo * pCreateInfos)
       : ComputePipelines()
     {
-      Reset(device, pipelineCache, createInfoCount, createInfos);
+      Reset(device, pipelineCache, createInfoCount, pCreateInfos);
     }
-
-#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
-    //! @brief Create the requested resource
-    //! @note  Function: vkCreateComputePipelines
-    ComputePipelines(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkPipelineCreateFlags flags, const VkPipelineShaderStageCreateInfo stage, const VkPipelineLayout layout, const VkPipeline basePipelineHandle, const int32_t basePipelineIndex)
-      : ComputePipelines()
-    {
-      Reset(device, pipelineCache, createInfoCount, flags, stage, layout, basePipelineHandle, basePipelineIndex);
-    }
-#endif
 
     ~ComputePipelines()
     {
@@ -154,7 +144,7 @@ namespace RapidVulkan
     
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkCreateComputePipelines
-    void Reset(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkComputePipelineCreateInfo& createInfos)
+    void Reset(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkComputePipelineCreateInfo * pCreateInfos)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
@@ -172,31 +162,13 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      std::vector<VkPipeline> pipelines();
-      CheckError(vkCreateComputePipelines(device, pipelineCache, createInfoCount, &createInfos, nullptr, pipelines.data()), "vkCreateComputePipelines", __FILE__, __LINE__);
+      std::vector<VkPipeline> pipelines(createInfoCount);
+      CheckError(vkCreateComputePipelines(device, pipelineCache, createInfoCount, pCreateInfos, nullptr, pipelines.data()), "vkCreateComputePipelines", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
       m_pipelines = std::move(pipelines);
     }
-
-#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
-    //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateComputePipelines
-    void Reset(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkPipelineCreateFlags flags, const VkPipelineShaderStageCreateInfo stage, const VkPipelineLayout layout, const VkPipeline basePipelineHandle, const int32_t basePipelineIndex)
-    {
-      VkComputePipelineCreateInfo createInfos{};
-      createInfos.sType = VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO;
-      createInfos.pNext = nullptr;
-      createInfos.flags = flags;
-      createInfos.stage = stage;
-      createInfos.layout = layout;
-      createInfos.basePipelineHandle = basePipelineHandle;
-      createInfos.basePipelineIndex = basePipelineIndex;
-
-      Reset(device, pipelineCache, createInfoCount, createInfos);
-    }
-#endif
 
     //! @brief Get the associated 'Device'
     VkDevice GetDevice() const
