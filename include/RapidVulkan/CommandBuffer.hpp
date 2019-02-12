@@ -49,7 +49,9 @@ namespace RapidVulkan
       {
         // Free existing resources then transfer the content of other to this one and fill other with default values
         if (IsValid())
+        {
           Reset();
+        }
 
         // Claim ownership here
         m_device = other.m_device;
@@ -129,7 +131,9 @@ namespace RapidVulkan
     void Reset() noexcept
     {
       if (! IsValid())
+      {
         return;
+      }
 
       assert(m_device != VK_NULL_HANDLE);
       assert(m_commandPool != VK_NULL_HANDLE);
@@ -145,7 +149,9 @@ namespace RapidVulkan
     void Reset(const ClaimMode claimMode, const VkDevice device, const VkCommandPool commandPool, const VkCommandBuffer commandBuffers)
     {
       if (IsValid())
+      {
         Reset();
+      }
 
 
       m_device = device;
@@ -159,9 +165,13 @@ namespace RapidVulkan
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
+      {
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+      }
       if (allocateInfo.commandPool == VK_NULL_HANDLE)
+      {
         throw std::invalid_argument("allocateInfo.commandPool can not be VK_NULL_HANDLE");
+      }
 #else
       assert(device != VK_NULL_HANDLE);
       assert(allocateInfo.commandPool != VK_NULL_HANDLE);
@@ -170,7 +180,9 @@ namespace RapidVulkan
 
       // Free any currently allocated resource
       if (IsValid())
+      {
         Reset();
+      }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
       VkCommandBuffer commandBuffers;
@@ -254,7 +266,9 @@ namespace RapidVulkan
     void Begin(const VkCommandBufferBeginInfo& commandBufferBeginInfo)
     {
       if (m_commandBuffers == VK_NULL_HANDLE)
+      {
         throw VulkanUsageErrorException("Can not call Begin on a NULL handle");
+      }
 
       CheckError(vkBeginCommandBuffer(m_commandBuffers, &commandBufferBeginInfo), "vkBeginCommandBuffer", __FILE__, __LINE__);
     }
@@ -263,7 +277,9 @@ namespace RapidVulkan
     void End()
     {
       if (m_commandBuffers == VK_NULL_HANDLE)
+      {
         throw VulkanUsageErrorException("Can not call End on a NULL handle");
+      }
 
       CheckError(vkEndCommandBuffer(m_commandBuffers), "vkEndCommandBuffer", __FILE__, __LINE__);
     }

@@ -51,7 +51,9 @@ namespace RapidVulkan
       {
         // Free existing resources then transfer the content of other to this one and fill other with default values
         if (IsValid())
+        {
           Reset();
+        }
 
         // Claim ownership here
         m_device = other.m_device;
@@ -129,11 +131,13 @@ namespace RapidVulkan
     void Reset() noexcept
     {
       if (! IsValid())
+      {
         return;
+      }
 
       assert(m_device != VK_NULL_HANDLE);
       assert(m_descriptorPool != VK_NULL_HANDLE);
-      assert(m_descriptorSets.size() > 0);
+      assert(! m_descriptorSets.empty());
 
       vkFreeDescriptorSets(m_device, m_descriptorPool, static_cast<uint32_t>(m_descriptorSets.size()), m_descriptorSets.data());
       m_device = VK_NULL_HANDLE;
@@ -161,9 +165,13 @@ namespace RapidVulkan
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
+      {
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+      }
       if (allocateInfo.descriptorPool == VK_NULL_HANDLE)
+      {
         throw std::invalid_argument("allocateInfo.descriptorPool can not be VK_NULL_HANDLE");
+      }
 #else
       assert(device != VK_NULL_HANDLE);
       assert(allocateInfo.descriptorPool != VK_NULL_HANDLE);
@@ -171,7 +179,9 @@ namespace RapidVulkan
 
       // Free any currently allocated resource
       if (IsValid())
+      {
         Reset();
+      }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
       std::vector<VkDescriptorSet> descriptorSets(allocateInfo.descriptorSetCount);
@@ -256,7 +266,7 @@ namespace RapidVulkan
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_descriptorSets.size() > 0;
+      return ! m_descriptorSets.empty();
     }
 
 

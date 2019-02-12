@@ -32,7 +32,9 @@ namespace RapidVulkan
   inline void CheckError(const VkResult result)
   {
     if (result != VK_SUCCESS)
+    {
       throw VulkanErrorException("Unknown", result);
+    }
   }
 
 

@@ -51,7 +51,9 @@ namespace RapidVulkan
       {
         // Free existing resources then transfer the content of other to this one and fill other with default values
         if (IsValid())
+        {
           Reset();
+        }
 
         // Claim ownership here
         m_device = other.m_device;
@@ -129,11 +131,13 @@ namespace RapidVulkan
     void Reset() noexcept
     {
       if (! IsValid())
+      {
         return;
+      }
 
       assert(m_device != VK_NULL_HANDLE);
       assert(m_commandPool != VK_NULL_HANDLE);
-      assert(m_commandBuffers.size() > 0);
+      assert(! m_commandBuffers.empty());
 
       vkFreeCommandBuffers(m_device, m_commandPool, static_cast<uint32_t>(m_commandBuffers.size()), m_commandBuffers.data());
       m_device = VK_NULL_HANDLE;
@@ -161,9 +165,13 @@ namespace RapidVulkan
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
+      {
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+      }
       if (allocateInfo.commandPool == VK_NULL_HANDLE)
+      {
         throw std::invalid_argument("allocateInfo.commandPool can not be VK_NULL_HANDLE");
+      }
 #else
       assert(device != VK_NULL_HANDLE);
       assert(allocateInfo.commandPool != VK_NULL_HANDLE);
@@ -171,7 +179,9 @@ namespace RapidVulkan
 
       // Free any currently allocated resource
       if (IsValid())
+      {
         Reset();
+      }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
       std::vector<VkCommandBuffer> commandBuffers(allocateInfo.commandBufferCount);
@@ -256,7 +266,7 @@ namespace RapidVulkan
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_commandBuffers.size() > 0;
+      return ! m_commandBuffers.empty();
     }
 
 
@@ -285,7 +295,9 @@ namespace RapidVulkan
     void Begin(const std::size_t index, const VkCommandBufferBeginInfo& commandBufferBeginInfo)
     {
       if (index >= m_commandBuffers.size() || m_commandBuffers[index] == VK_NULL_HANDLE)
+      {
         throw VulkanUsageErrorException("Index must be valid and/or can not call Begin on a NULL handle");
+      }
 
       CheckError(vkBeginCommandBuffer(m_commandBuffers[index], &commandBufferBeginInfo), "vkBeginCommandBuffer", __FILE__, __LINE__);
     }
@@ -293,7 +305,9 @@ namespace RapidVulkan
     void End(const std::size_t index)
     {
       if (index >= m_commandBuffers.size() || m_commandBuffers[index] == VK_NULL_HANDLE)
+      {
         throw VulkanUsageErrorException("Index must be valid and/or can not call End on a NULL handle");
+      }
 
       CheckError(vkEndCommandBuffer(m_commandBuffers[index]), "vkEndCommandBuffer", __FILE__, __LINE__);
     }
@@ -301,7 +315,9 @@ namespace RapidVulkan
     void CmdBeginRenderPass(const std::size_t index, const VkRenderPassBeginInfo* pRenderPassBeginInfo, const VkSubpassContents contents)
     {
       if (index >= m_commandBuffers.size() || m_commandBuffers[index] == VK_NULL_HANDLE)
+      {
         throw VulkanUsageErrorException("Index must be valid and/or can not call CmdBeginRenderPass on a NULL handle");
+      }
 
       vkCmdBeginRenderPass(m_commandBuffers[index], pRenderPassBeginInfo, contents);
     }
@@ -309,7 +325,9 @@ namespace RapidVulkan
     void CmdEndRenderPass(const std::size_t index)
     {
       if (index >= m_commandBuffers.size() || m_commandBuffers[index] == VK_NULL_HANDLE)
+      {
         throw VulkanUsageErrorException("Index must be valid and/or can not call CmdEndRenderPass on a NULL handle");
+      }
 
       vkCmdEndRenderPass(m_commandBuffers[index]);
     }

@@ -49,7 +49,9 @@ namespace RapidVulkan
       {
         // Free existing resources then transfer the content of other to this one and fill other with default values
         if (IsValid())
+        {
           Reset();
+        }
 
         // Claim ownership here
         m_device = other.m_device;
@@ -125,7 +127,9 @@ namespace RapidVulkan
     void Reset() noexcept
     {
       if (! IsValid())
+      {
         return;
+      }
 
       assert(m_device != VK_NULL_HANDLE);
       assert(m_objectTable != VK_NULL_HANDLE);
@@ -139,7 +143,9 @@ namespace RapidVulkan
     void Reset(const ClaimMode claimMode, const VkDevice device, const VkObjectTableNVX objectTable)
     {
       if (IsValid())
+      {
         Reset();
+      }
 
 
       m_device = device;
@@ -153,14 +159,18 @@ namespace RapidVulkan
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
+      {
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+      }
 #else
       assert(device != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
       if (IsValid())
+      {
         Reset();
+      }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
       VkObjectTableNVX objectTable;

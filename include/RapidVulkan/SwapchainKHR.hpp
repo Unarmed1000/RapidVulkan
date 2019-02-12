@@ -48,7 +48,9 @@ namespace RapidVulkan
       {
         // Free existing resources then transfer the content of other to this one and fill other with default values
         if (IsValid())
+        {
           Reset();
+        }
 
         // Claim ownership here
         m_device = other.m_device;
@@ -122,7 +124,9 @@ namespace RapidVulkan
     void Reset() noexcept
     {
       if (! IsValid())
+      {
         return;
+      }
 
       assert(m_device != VK_NULL_HANDLE);
       assert(m_swapchain != VK_NULL_HANDLE);
@@ -136,7 +140,9 @@ namespace RapidVulkan
     void Reset(const ClaimMode claimMode, const VkDevice device, const VkSwapchainKHR swapchain)
     {
       if (IsValid())
+      {
         Reset();
+      }
 
 
       m_device = device;
@@ -150,7 +156,9 @@ namespace RapidVulkan
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
+      {
         throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+      }
 #else
       assert(device != VK_NULL_HANDLE);
 #endif
@@ -168,7 +176,9 @@ namespace RapidVulkan
       VkSwapchainKHR swapchain;
       CheckError(vkCreateSwapchainKHR(device, &createInfo, nullptr, &swapchain), "vkCreateSwapchainKHR", __FILE__, __LINE__);
       if (delayedReset)
+      {
         Reset();
+      }
 
       // Everything is ready, so assign the members
       m_device = device;

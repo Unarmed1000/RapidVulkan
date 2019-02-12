@@ -49,7 +49,9 @@ namespace RapidVulkan
       {
         // Free existing resources then transfer the content of other to this one and fill other with default values
         if (IsValid())
+        {
           Reset();
+        }
 
         // Claim ownership here
         m_instance = other.m_instance;
@@ -125,7 +127,9 @@ namespace RapidVulkan
     void Reset() noexcept
     {
       if (! IsValid())
+      {
         return;
+      }
 
       assert(m_instance != VK_NULL_HANDLE);
       assert(m_messenger != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED);
@@ -139,7 +143,9 @@ namespace RapidVulkan
     void Reset(const ClaimMode claimMode, const VkInstance instance, const VkDebugUtilsMessengerEXT messenger)
     {
       if (IsValid())
+      {
         Reset();
+      }
 
 
       m_instance = instance;
@@ -153,14 +159,18 @@ namespace RapidVulkan
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (instance == VK_NULL_HANDLE)
+      {
         throw std::invalid_argument("instance can not be VK_NULL_HANDLE");
+      }
 #else
       assert(instance != VK_NULL_HANDLE);
 #endif
 
       // Free any currently allocated resource
       if (IsValid())
+      {
         Reset();
+      }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
       VkDebugUtilsMessengerEXT messenger;
