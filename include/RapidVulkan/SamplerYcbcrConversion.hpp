@@ -59,7 +59,7 @@ namespace RapidVulkan
 
         // Remove the data from other
         other.m_device = VK_NULL_HANDLE;
-        other.m_ycbcrConversion = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+        other.m_ycbcrConversion = VK_NULL_HANDLE;
       }
       return *this;
     }
@@ -72,13 +72,13 @@ namespace RapidVulkan
     {
       // Remove the data from other
       other.m_device = VK_NULL_HANDLE;
-      other.m_ycbcrConversion = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      other.m_ycbcrConversion = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     SamplerYcbcrConversion()
       : m_device(VK_NULL_HANDLE)
-      , m_ycbcrConversion(FIX_DEFAULT_FOR_TYPE_NOT_DEFINED)
+      , m_ycbcrConversion(VK_NULL_HANDLE)
     {
     }
 
@@ -119,7 +119,7 @@ namespace RapidVulkan
     {
       const auto resource = m_ycbcrConversion;
       m_device = VK_NULL_HANDLE;
-      m_ycbcrConversion = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      m_ycbcrConversion = VK_NULL_HANDLE;
       return resource;
     }
 
@@ -132,11 +132,11 @@ namespace RapidVulkan
       }
 
       assert(m_device != VK_NULL_HANDLE);
-      assert(m_ycbcrConversion != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED);
+      assert(m_ycbcrConversion != VK_NULL_HANDLE);
 
       vkDestroySamplerYcbcrConversion(m_device, m_ycbcrConversion, nullptr);
       m_device = VK_NULL_HANDLE;
-      m_ycbcrConversion = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      m_ycbcrConversion = VK_NULL_HANDLE;
     }
 
     //! @brief Destroys any owned resources and assume control of the SamplerYcbcrConversion (this object becomes responsible for releasing it)
@@ -224,7 +224,7 @@ namespace RapidVulkan
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_ycbcrConversion != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      return m_ycbcrConversion != VK_NULL_HANDLE;
     }
   };
 }

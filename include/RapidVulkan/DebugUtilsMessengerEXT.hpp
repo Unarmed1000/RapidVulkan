@@ -59,7 +59,7 @@ namespace RapidVulkan
 
         // Remove the data from other
         other.m_instance = VK_NULL_HANDLE;
-        other.m_messenger = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+        other.m_messenger = VK_NULL_HANDLE;
       }
       return *this;
     }
@@ -72,13 +72,13 @@ namespace RapidVulkan
     {
       // Remove the data from other
       other.m_instance = VK_NULL_HANDLE;
-      other.m_messenger = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      other.m_messenger = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     DebugUtilsMessengerEXT()
       : m_instance(VK_NULL_HANDLE)
-      , m_messenger(FIX_DEFAULT_FOR_TYPE_NOT_DEFINED)
+      , m_messenger(VK_NULL_HANDLE)
     {
     }
 
@@ -119,7 +119,7 @@ namespace RapidVulkan
     {
       const auto resource = m_messenger;
       m_instance = VK_NULL_HANDLE;
-      m_messenger = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      m_messenger = VK_NULL_HANDLE;
       return resource;
     }
 
@@ -132,11 +132,11 @@ namespace RapidVulkan
       }
 
       assert(m_instance != VK_NULL_HANDLE);
-      assert(m_messenger != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED);
+      assert(m_messenger != VK_NULL_HANDLE);
 
       vkDestroyDebugUtilsMessengerEXT(m_instance, m_messenger, nullptr);
       m_instance = VK_NULL_HANDLE;
-      m_messenger = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      m_messenger = VK_NULL_HANDLE;
     }
 
     //! @brief Destroys any owned resources and assume control of the DebugUtilsMessengerEXT (this object becomes responsible for releasing it)
@@ -221,7 +221,7 @@ namespace RapidVulkan
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_messenger != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      return m_messenger != VK_NULL_HANDLE;
     }
   };
 }
