@@ -13,14 +13,19 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 # Project #
 ###########
 
-# Version matches the Vulkan header versions except we encode the "tweak" part as "tweak * 1000" 
-# All values below 1000 are 'tweaks' of this library
+# Version matches the Vulkan header versions except we encode the "tweak" part as "tweak * 1000". 
+# This means
+#   tweak / 1000 = the vulkan tweak version.
+#   tweak %1000 = this libraries tweak version.
+
+# Description is 3.9  
+#  DESCRIPTION "Low level header only C++11 RAII wrapper classes for the Vulkan API. The RAII class design is heavily inspired by std::unique_ptr and is compatible with STL containers."
+# URL is 12
+#  HOMEPAGE_URL https://github.com/Unarmed1000/RapidVulkan
 
 project(
   RapidVulkan
   VERSION 1.1.97.0001  
-  DESCRIPTION "Low level header only C++11 RAII wrapper classes for the Vulkan API. The RAII class design is heavily inspired by std::unique_ptr and is compatible with STL containers."
-  HOMEPAGE_URL https://github.com/Unarmed1000/RapidVulkan
   LANGUAGES CXX
 )
 # Disable project in-source buils
