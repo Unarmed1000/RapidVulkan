@@ -109,12 +109,6 @@ install(
   DESTINATION ${INSTALL_CONFIGDIR}
 )
 
-
-install(
-  FILES ${CMAKE_CURRENT_BINARY_DIR}/RapidVulkanConfigVersion.cmake
-  DESTINATION ${INSTALL_CONFIGDIR}
-)
-
 #############
 # Exporting #
 #############
