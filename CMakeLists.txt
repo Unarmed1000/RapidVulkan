@@ -1,5 +1,5 @@
-# stop if cmake version below 3.8.2
-cmake_minimum_required(VERSION 3.8.2 FATAL_ERROR)
+# stop if cmake version below 3.10.2
+cmake_minimum_required(VERSION 3.10.2 FATAL_ERROR)
 
 # Generate folders for IDE's
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
