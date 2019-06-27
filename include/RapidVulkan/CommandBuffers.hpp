@@ -83,7 +83,7 @@ namespace RapidVulkan
     CommandBuffers()
       : m_device(VK_NULL_HANDLE)
       , m_commandPool(VK_NULL_HANDLE)
-      , m_commandBuffers()
+
     {
     }
 
@@ -120,7 +120,7 @@ namespace RapidVulkan
     //! @brief returns the managed handle and releases the ownership.
     std::vector<VkCommandBuffer> Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
     {
-      auto resource = std::move(m_commandBuffers); 
+      auto resource = std::move(m_commandBuffers);
       m_device = VK_NULL_HANDLE;
       m_commandPool = VK_NULL_HANDLE;
       m_commandBuffers.clear();
@@ -145,7 +145,7 @@ namespace RapidVulkan
       m_commandBuffers.clear();
     }
 
-/*    
+/*
     //! @brief Destroys any owned resources and assume control of the CommandBuffers (this object becomes responsible for releasing it)
     void Reset(const ClaimMode claimMode, const VkDevice device, const VkCommandPool commandPool, const VkCommandBuffer commandBuffers)
     {
@@ -158,7 +158,7 @@ namespace RapidVulkan
       m_commandBuffers = std::move(commandBuffers);
     }
 */
-    
+
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkAllocateCommandBuffers
     void Reset(const VkDevice device, const VkCommandBufferAllocateInfo& allocateInfo)

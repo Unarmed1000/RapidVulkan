@@ -77,7 +77,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     ComputePipelines()
       : m_device(VK_NULL_HANDLE)
-      , m_pipelines()
+
     {
     }
 
@@ -104,7 +104,7 @@ namespace RapidVulkan
     //! @brief returns the managed handle and releases the ownership.
     std::vector<VkPipeline> Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
     {
-      auto resource = std::move(m_pipelines); 
+      auto resource = std::move(m_pipelines);
       m_device = VK_NULL_HANDLE;
       m_pipelines.clear();
       return resource;
@@ -129,7 +129,7 @@ namespace RapidVulkan
       m_pipelines.clear();
     }
 
-/*    
+/*
     //! @brief Destroys any owned resources and assume control of the ComputePipelines (this object becomes responsible for releasing it)
     void Reset(const ClaimMode claimMode, const VkDevice device, const VkPipeline pipelines)
     {
@@ -141,7 +141,7 @@ namespace RapidVulkan
       m_pipelines = std::move(pipelines);
     }
 */
-    
+
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkCreateComputePipelines
     void Reset(const VkDevice device, const VkPipelineCache pipelineCache, const uint32_t createInfoCount, const VkComputePipelineCreateInfo * pCreateInfos)

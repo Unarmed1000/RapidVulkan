@@ -36,7 +36,6 @@ namespace RapidVulkan
   public:
     explicit VulkanException(const std::string& whatArg)
       : std::runtime_error(whatArg)
-      , m_fileName()
       , m_lineNumber(0)
     {
     }

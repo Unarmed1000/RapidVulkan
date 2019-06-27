@@ -83,7 +83,7 @@ namespace RapidVulkan
     DescriptorSets()
       : m_device(VK_NULL_HANDLE)
       , m_descriptorPool(VK_NULL_HANDLE)
-      , m_descriptorSets()
+
     {
     }
 
@@ -120,7 +120,7 @@ namespace RapidVulkan
     //! @brief returns the managed handle and releases the ownership.
     std::vector<VkDescriptorSet> Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
     {
-      auto resource = std::move(m_descriptorSets); 
+      auto resource = std::move(m_descriptorSets);
       m_device = VK_NULL_HANDLE;
       m_descriptorPool = VK_NULL_HANDLE;
       m_descriptorSets.clear();
@@ -145,7 +145,7 @@ namespace RapidVulkan
       m_descriptorSets.clear();
     }
 
-/*    
+/*
     //! @brief Destroys any owned resources and assume control of the DescriptorSets (this object becomes responsible for releasing it)
     void Reset(const ClaimMode claimMode, const VkDevice device, const VkDescriptorPool descriptorPool, const VkDescriptorSet descriptorSets)
     {
@@ -158,7 +158,7 @@ namespace RapidVulkan
       m_descriptorSets = std::move(descriptorSets);
     }
 */
-    
+
     //! @brief Destroys any owned resources and then creates the requested one
     //! @note  Function: vkAllocateDescriptorSets
     void Reset(const VkDevice device, const VkDescriptorSetAllocateInfo& allocateInfo)

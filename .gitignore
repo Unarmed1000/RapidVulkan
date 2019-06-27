@@ -1,1 +1,14 @@
+/.StartProject.bat
+/.vs/
+/RapidVulkan.VC.VC.opendb
+/RapidVulkan.VC.db
+/RapidVulkan.manifest
+/RapidVulkan.opensdf
+/RapidVulkan.sdf
+/RapidVulkan.sln
+/RapidVulkan.v12.sdf
+/RapidVulkan.v12.suo
+/RapidVulkan.vcxproj
+/RapidVulkan.vcxproj.filters
+/RapidVulkan.vcxproj.user
 /build/
