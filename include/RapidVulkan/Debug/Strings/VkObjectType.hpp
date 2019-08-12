@@ -149,10 +149,6 @@ namespace RapidVulkan
       case VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE:
         return "VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE";
 #endif
-#if VK_HEADER_VERSION >= 114
-      case VK_OBJECT_TYPE_PERFORMANCE_CONFIGURATION_INTEL:
-        return "VK_OBJECT_TYPE_PERFORMANCE_CONFIGURATION_INTEL";
-#endif
       default:
         return nullptr;
       }
