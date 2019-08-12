@@ -319,6 +319,51 @@ namespace RapidVulkan
       vkGetDescriptorSetLayoutSupport(m_device, pCreateInfo, pSupport);
     }
 #endif
+
+
+#if VK_HEADER_VERSION >= 114
+    //! @note  Function: vkInitializePerformanceApiINTEL
+    void InitializePerformanceApiINTEL(const VkInitializePerformanceApiInfoINTEL * pInitializeInfo)
+    {
+      CheckError(vkInitializePerformanceApiINTEL(m_device, pInitializeInfo), "vkInitializePerformanceApiINTEL", __FILE__, __LINE__);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 114
+    //! @note  Function: vkUninitializePerformanceApiINTEL
+    void UninitializePerformanceApiINTEL()
+    {
+      vkUninitializePerformanceApiINTEL(m_device);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 114
+    //! @note  Function: vkAcquirePerformanceConfigurationINTEL
+    void AcquirePerformanceConfigurationINTEL(const VkPerformanceConfigurationAcquireInfoINTEL * pAcquireInfo, VkPerformanceConfigurationINTEL * pConfiguration)
+    {
+      CheckError(vkAcquirePerformanceConfigurationINTEL(m_device, pAcquireInfo, pConfiguration), "vkAcquirePerformanceConfigurationINTEL", __FILE__, __LINE__);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 114
+    //! @note  Function: vkReleasePerformanceConfigurationINTEL
+    void ReleasePerformanceConfigurationINTEL(const VkPerformanceConfigurationINTEL configuration)
+    {
+      CheckError(vkReleasePerformanceConfigurationINTEL(m_device, configuration), "vkReleasePerformanceConfigurationINTEL", __FILE__, __LINE__);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 114
+    //! @note  Function: vkGetPerformanceParameterINTEL
+    void GetPerformanceParameterINTEL(const VkPerformanceParameterTypeINTEL parameter, VkPerformanceValueINTEL * pValue)
+    {
+      CheckError(vkGetPerformanceParameterINTEL(m_device, parameter, pValue), "vkGetPerformanceParameterINTEL", __FILE__, __LINE__);
+    }
+#endif
   };
 }
 

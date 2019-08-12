@@ -1,9 +1,10 @@
-#ifndef RAPIDVULKAN_CHECK_HPP
-#define RAPIDVULKAN_CHECK_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKPERFORMANCECONFIGURATIONTYPEINTEL_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKPERFORMANCECONFIGURATIONTYPEINTEL_HPP
+#if VK_HEADER_VERSION >= 114
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2016, Rene Thrane
+//* Copyright (c) 2017, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -22,19 +23,36 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-#include <RapidVulkan/CheckError.hpp>
+// If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Define some ease of use macros for logging.
-// Please beware that these are not pulled in by any of the RAII classes, so its 100% up to the user of the library to include it
-// if the functionality is desired.
+// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
-#define RAPIDVULKAN_CHECK(X)                  RapidVulkan::CheckError((X), #X, __FILE__, __LINE__)
-#define RAPIDVULKAN_CHECK2(X, mESSAGE)        RapidVulkan::CheckError((X), (mESSAGE), __FILE__, __LINE__)
+#include <vulkan/vulkan.h>
 
-// The Vulkan version this was based on
-#define RAPIDVULKAN_VULKAN_VERSION_MAJOR   1
-#define RAPIDVULKAN_VULKAN_VERSION_MINOR   1
-#define RAPIDVULKAN_VULKAN_VERSION_BUILD   114
-#define RAPIDVULKAN_VULKAN_VERSION_HOTFIX  0
+namespace RapidVulkan
+{
+  namespace Debug
+  {
+    inline const char* TryToString(const VkPerformanceConfigurationTypeINTEL& value)
+    {
+      switch(value)
+      {
+#if VK_HEADER_VERSION >= 114
+      case VK_PERFORMANCE_CONFIGURATION_TYPE_COMMAND_QUEUE_METRICS_DISCOVERY_ACTIVATED_INTEL:
+        return "VK_PERFORMANCE_CONFIGURATION_TYPE_COMMAND_QUEUE_METRICS_DISCOVERY_ACTIVATED_INTEL";
+#endif
+      default:
+        return nullptr;
+      }
+    };
 
+    inline const char* ToString(const VkPerformanceConfigurationTypeINTEL& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
+    };
+  }
+}
+
+#endif
 #endif

@@ -42,6 +42,10 @@ namespace RapidVulkan
         return "VK_QUERY_TYPE_PIPELINE_STATISTICS";
       case VK_QUERY_TYPE_TIMESTAMP:
         return "VK_QUERY_TYPE_TIMESTAMP";
+#if VK_HEADER_VERSION >= 114
+      case VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL:
+        return "VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL";
+#endif
       default:
         return nullptr;
       }

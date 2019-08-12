@@ -73,13 +73,17 @@ namespace RapidVulkan
       case VK_DRIVER_ID_ARM_PROPRIETARY_KHR:
         return "VK_DRIVER_ID_ARM_PROPRIETARY_KHR";
 #endif
-#if VK_HEADER_VERSION >= 97
-      case VK_DRIVER_ID_GOOGLE_PASTEL_KHR:
-        return "VK_DRIVER_ID_GOOGLE_PASTEL_KHR";
+#if VK_HEADER_VERSION >= 114
+      case VK_DRIVER_ID_GOOGLE_SWIFTSHADER_KHR:
+        return "VK_DRIVER_ID_GOOGLE_SWIFTSHADER_KHR";
 #endif
 #if VK_HEADER_VERSION >= 106
       case VK_DRIVER_ID_GGP_PROPRIETARY_KHR:
         return "VK_DRIVER_ID_GGP_PROPRIETARY_KHR";
+#endif
+#if VK_HEADER_VERSION >= 114
+      case VK_DRIVER_ID_BROADCOM_PROPRIETARY_KHR:
+        return "VK_DRIVER_ID_BROADCOM_PROPRIETARY_KHR";
 #endif
       default:
         return nullptr;
