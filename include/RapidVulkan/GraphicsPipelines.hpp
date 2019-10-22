@@ -77,7 +77,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     GraphicsPipelines()
       : m_device(VK_NULL_HANDLE)
-
+      , m_pipelines()
     {
     }
 

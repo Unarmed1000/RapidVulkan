@@ -83,7 +83,7 @@ namespace RapidVulkan
     DescriptorSets()
       : m_device(VK_NULL_HANDLE)
       , m_descriptorPool(VK_NULL_HANDLE)
-
+      , m_descriptorSets()
     {
     }
 

@@ -1,5 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSTENCILFACEFLAGBITS_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKSTENCILFACEFLAGBITS_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKLINERASTERIZATIONMODEEXT_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKLINERASTERIZATIONMODEEXT_HPP
+#if VK_HEADER_VERSION >= 121
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -32,28 +33,32 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkStencilFaceFlagBits& value)
+    inline const char* TryToString(const VkLineRasterizationModeEXT& value)
     {
       switch(value)
       {
-      case VK_STENCIL_FACE_FRONT_BIT:
-        return "VK_STENCIL_FACE_FRONT_BIT";
-      case VK_STENCIL_FACE_BACK_BIT:
-        return "VK_STENCIL_FACE_BACK_BIT";
 #if VK_HEADER_VERSION >= 121
-      case VK_STENCIL_FACE_FRONT_AND_BACK:
-        return "VK_STENCIL_FACE_FRONT_AND_BACK";
-#elif VK_HEADER_VERSION >= 0
-      case VK_STENCIL_FRONT_AND_BACK:
-        return "VK_STENCIL_FRONT_AND_BACK";
+      case VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT:
+        return "VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT";
 #endif
-
+#if VK_HEADER_VERSION >= 121
+      case VK_LINE_RASTERIZATION_MODE_RECTANGULAR_EXT:
+        return "VK_LINE_RASTERIZATION_MODE_RECTANGULAR_EXT";
+#endif
+#if VK_HEADER_VERSION >= 121
+      case VK_LINE_RASTERIZATION_MODE_BRESENHAM_EXT:
+        return "VK_LINE_RASTERIZATION_MODE_BRESENHAM_EXT";
+#endif
+#if VK_HEADER_VERSION >= 121
+      case VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH_EXT:
+        return "VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH_EXT";
+#endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkStencilFaceFlagBits& value)
+    inline const char* ToString(const VkLineRasterizationModeEXT& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");
@@ -61,4 +66,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

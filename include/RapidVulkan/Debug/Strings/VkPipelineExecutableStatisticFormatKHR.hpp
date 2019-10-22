@@ -1,5 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSTENCILFACEFLAGBITS_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKSTENCILFACEFLAGBITS_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKPIPELINEEXECUTABLESTATISTICFORMATKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKPIPELINEEXECUTABLESTATISTICFORMATKHR_HPP
+#if VK_HEADER_VERSION >= 121
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -32,28 +33,32 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkStencilFaceFlagBits& value)
+    inline const char* TryToString(const VkPipelineExecutableStatisticFormatKHR& value)
     {
       switch(value)
       {
-      case VK_STENCIL_FACE_FRONT_BIT:
-        return "VK_STENCIL_FACE_FRONT_BIT";
-      case VK_STENCIL_FACE_BACK_BIT:
-        return "VK_STENCIL_FACE_BACK_BIT";
 #if VK_HEADER_VERSION >= 121
-      case VK_STENCIL_FACE_FRONT_AND_BACK:
-        return "VK_STENCIL_FACE_FRONT_AND_BACK";
-#elif VK_HEADER_VERSION >= 0
-      case VK_STENCIL_FRONT_AND_BACK:
-        return "VK_STENCIL_FRONT_AND_BACK";
+      case VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_BOOL32_KHR:
+        return "VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_BOOL32_KHR";
 #endif
-
+#if VK_HEADER_VERSION >= 121
+      case VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_INT64_KHR:
+        return "VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_INT64_KHR";
+#endif
+#if VK_HEADER_VERSION >= 121
+      case VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_UINT64_KHR:
+        return "VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_UINT64_KHR";
+#endif
+#if VK_HEADER_VERSION >= 121
+      case VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_FLOAT64_KHR:
+        return "VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_FLOAT64_KHR";
+#endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkStencilFaceFlagBits& value)
+    inline const char* ToString(const VkPipelineExecutableStatisticFormatKHR& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");
@@ -61,4 +66,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

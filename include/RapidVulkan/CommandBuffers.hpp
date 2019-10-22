@@ -83,7 +83,7 @@ namespace RapidVulkan
     CommandBuffers()
       : m_device(VK_NULL_HANDLE)
       , m_commandPool(VK_NULL_HANDLE)
-
+      , m_commandBuffers()
     {
     }
 
