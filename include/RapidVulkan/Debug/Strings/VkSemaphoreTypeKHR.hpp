@@ -1,9 +1,10 @@
-#ifndef RAPIDVULKAN_EXCEPTIONS_HPP
-#define RAPIDVULKAN_EXCEPTIONS_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSEMAPHORETYPEKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKSEMAPHORETYPEKHR_HPP
+#if VK_HEADER_VERSION >= 126
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2016, Rene Thrane
+//* Copyright (c) 2017, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -22,82 +23,40 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-#include <RapidVulkan/System/ErrorFormatter.hpp>
-#include <stdexcept>
-#include <string>
+// If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
+
+// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+
 #include <vulkan/vulkan.h>
 
 namespace RapidVulkan
 {
-  class VulkanException : public std::runtime_error
+  namespace Debug
   {
-    std::string m_fileName;
-    int m_lineNumber;
-  public:
-    explicit VulkanException(const std::string& whatArg)
-      : std::runtime_error(whatArg)
-      , m_lineNumber(0)
+    inline const char* TryToString(const VkSemaphoreTypeKHR& value)
     {
-    }
+      switch(value)
+      {
+#if VK_HEADER_VERSION >= 126
+      case VK_SEMAPHORE_TYPE_BINARY_KHR:
+        return "VK_SEMAPHORE_TYPE_BINARY_KHR";
+#endif
+#if VK_HEADER_VERSION >= 126
+      case VK_SEMAPHORE_TYPE_TIMELINE_KHR:
+        return "VK_SEMAPHORE_TYPE_TIMELINE_KHR";
+#endif
+      default:
+        return nullptr;
+      }
+    };
 
-    explicit VulkanException(const std::string& whatArg, const std::string& fileName, const int lineNumber)
-      : std::runtime_error(whatArg)
-      , m_fileName(fileName)
-      , m_lineNumber(lineNumber)
+    inline const char* ToString(const VkSemaphoreTypeKHR& value)
     {
-    }
-
-
-    std::string GetFileName() const
-    {
-      return m_fileName;
-    }
-
-
-    int GetLineNumber() const
-    {
-      return m_lineNumber;
-    }
-  };
-
-
-  class VulkanUsageErrorException : public std::logic_error
-  {
-  public:
-    VulkanUsageErrorException()
-      : std::logic_error("VulkanUsageErrorException")
-    {
-    }
-
-    explicit VulkanUsageErrorException(const std::string& what_arg)
-      : std::logic_error(what_arg)
-    {
-    }
-  };
-
-
-  class VulkanErrorException : public VulkanException
-  {
-    VkResult m_result;
-  public:
-    explicit VulkanErrorException(const std::string& whatArg, const VkResult result)
-      : VulkanException(ErrorFormatter::Format(whatArg, result))
-      , m_result(result)
-    {
-    }
-
-    explicit VulkanErrorException(const std::string& whatArg, const VkResult result, const std::string& fileName, const int lineNumber)
-      : VulkanException(ErrorFormatter::Format(whatArg, result, fileName, lineNumber), fileName, lineNumber)
-      , m_result(result)
-    {
-    }
-
-    VkResult GetResult() const
-    {
-      return m_result;
-    }
-  };
-
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
+    };
+  }
 }
 
+#endif
 #endif
