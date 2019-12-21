@@ -1,5 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKPIPELINECREATEFLAGBITS_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKPIPELINECREATEFLAGBITS_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKPERFORMANCECOUNTERSCOPEKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKPERFORMANCECOUNTERSCOPEKHR_HPP
+#if VK_HEADER_VERSION >= 130
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -32,34 +33,28 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkPipelineCreateFlagBits& value)
+    inline const char* TryToString(const VkPerformanceCounterScopeKHR& value)
     {
       switch(value)
       {
-      case VK_PIPELINE_CREATE_DISABLE_OPTIMIZATION_BIT:
-        return "VK_PIPELINE_CREATE_DISABLE_OPTIMIZATION_BIT";
-      case VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT:
-        return "VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT";
-      case VK_PIPELINE_CREATE_DERIVATIVE_BIT:
-        return "VK_PIPELINE_CREATE_DERIVATIVE_BIT";
-#if VK_HEADER_VERSION >= 70
-      case VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT:
-        return "VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT";
+#if VK_HEADER_VERSION >= 130
+      case VK_QUERY_SCOPE_COMMAND_BUFFER_KHR:
+        return "VK_QUERY_SCOPE_COMMAND_BUFFER_KHR";
 #endif
 #if VK_HEADER_VERSION >= 130
-      case VK_PIPELINE_CREATE_DISPATCH_BASE_BIT:
-        return "VK_PIPELINE_CREATE_DISPATCH_BASE_BIT";
-#elif VK_HEADER_VERSION >= 70
-      case VK_PIPELINE_CREATE_DISPATCH_BASE:
-        return "VK_PIPELINE_CREATE_DISPATCH_BASE";
+      case VK_QUERY_SCOPE_RENDER_PASS_KHR:
+        return "VK_QUERY_SCOPE_RENDER_PASS_KHR";
 #endif
-
+#if VK_HEADER_VERSION >= 130
+      case VK_QUERY_SCOPE_COMMAND_KHR:
+        return "VK_QUERY_SCOPE_COMMAND_KHR";
+#endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkPipelineCreateFlagBits& value)
+    inline const char* ToString(const VkPerformanceCounterScopeKHR& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");
@@ -67,4 +62,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

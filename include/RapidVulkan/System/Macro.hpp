@@ -55,7 +55,7 @@
     #pragma message("WARNING: RAPIDVULKAN_ATTR_DEPRECATED, RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT not implemented for this compiler")
     #define RAPIDVULKAN_ATTR_DEPRECATED
     #define RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
-  
+
   #endif
 
 #endif
