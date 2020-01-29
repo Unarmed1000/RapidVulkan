@@ -35,8 +35,9 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class SwapchainKHR
   {
-    VkDevice m_device;
-    VkSwapchainKHR m_swapchain;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkSwapchainKHR m_swapchain{VK_NULL_HANDLE};
+
   public:
     SwapchainKHR(const SwapchainKHR&) = delete;
     SwapchainKHR& operator=(const SwapchainKHR&) = delete;
@@ -76,10 +77,8 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     SwapchainKHR()
-      : m_device(VK_NULL_HANDLE)
-      , m_swapchain(VK_NULL_HANDLE)
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the SwapchainKHR (this object becomes responsible for releasing it)
     explicit SwapchainKHR(const ClaimMode claimMode, const VkDevice device, const VkSwapchainKHR swapchain)

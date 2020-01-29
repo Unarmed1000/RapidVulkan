@@ -46,6 +46,10 @@ namespace RapidVulkan
       case VK_BUFFER_CREATE_PROTECTED_BIT:
         return "VK_BUFFER_CREATE_PROTECTED_BIT";
 #endif
+#if VK_HEADER_VERSION >= 131
+      case VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT:
+        return "VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT";
+#endif
       default:
         return nullptr;
       }

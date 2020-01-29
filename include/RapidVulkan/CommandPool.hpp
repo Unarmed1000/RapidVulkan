@@ -35,8 +35,9 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class CommandPool
   {
-    VkDevice m_device;
-    VkCommandPool m_commandPool;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkCommandPool m_commandPool{VK_NULL_HANDLE};
+
   public:
     CommandPool(const CommandPool&) = delete;
     CommandPool& operator=(const CommandPool&) = delete;
@@ -76,10 +77,8 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     CommandPool()
-      : m_device(VK_NULL_HANDLE)
-      , m_commandPool(VK_NULL_HANDLE)
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the CommandPool (this object becomes responsible for releasing it)
     explicit CommandPool(const ClaimMode claimMode, const VkDevice device, const VkCommandPool commandPool)

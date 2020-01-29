@@ -35,7 +35,8 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class Device
   {
-    VkDevice m_device;
+    VkDevice m_device{VK_NULL_HANDLE};
+
   public:
     Device(const Device&) = delete;
     Device& operator=(const Device&) = delete;
@@ -71,9 +72,8 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     Device()
-      : m_device(VK_NULL_HANDLE)
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the Device (this object becomes responsible for releasing it)
     explicit Device(const ClaimMode claimMode, const VkDevice device)
@@ -317,6 +317,51 @@ namespace RapidVulkan
     void GetDescriptorSetLayoutSupport(const VkDescriptorSetLayoutCreateInfo * pCreateInfo, VkDescriptorSetLayoutSupport * pSupport)
     {
       vkGetDescriptorSetLayoutSupport(m_device, pCreateInfo, pSupport);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 131
+    //! @note  Function: vkWaitSemaphores
+    void WaitSemaphores(const VkSemaphoreWaitInfo * pWaitInfo, const uint64_t timeout)
+    {
+      CheckError(vkWaitSemaphores(m_device, pWaitInfo, timeout), "vkWaitSemaphores", __FILE__, __LINE__);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 131
+    //! @note  Function: vkSignalSemaphore
+    void SignalSemaphore(const VkSemaphoreSignalInfo * pSignalInfo)
+    {
+      CheckError(vkSignalSemaphore(m_device, pSignalInfo), "vkSignalSemaphore", __FILE__, __LINE__);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 131
+    //! @note  Function: vkGetBufferDeviceAddress
+    VkDeviceAddress GetBufferDeviceAddress(const VkBufferDeviceAddressInfo * pInfo)
+    {
+      return vkGetBufferDeviceAddress(m_device, pInfo);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 131
+    //! @note  Function: vkGetBufferOpaqueCaptureAddress
+    uint64_t GetBufferOpaqueCaptureAddress(const VkBufferDeviceAddressInfo * pInfo)
+    {
+      return vkGetBufferOpaqueCaptureAddress(m_device, pInfo);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 131
+    //! @note  Function: vkGetDeviceMemoryOpaqueCaptureAddress
+    uint64_t GetDeviceMemoryOpaqueCaptureAddress(const VkDeviceMemoryOpaqueCaptureAddressInfo * pInfo)
+    {
+      return vkGetDeviceMemoryOpaqueCaptureAddress(m_device, pInfo);
     }
 #endif
   };

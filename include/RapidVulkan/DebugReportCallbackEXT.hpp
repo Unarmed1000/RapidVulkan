@@ -35,8 +35,9 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class DebugReportCallbackEXT
   {
-    VkInstance m_instance;
-    VkDebugReportCallbackEXT m_callback;
+    VkInstance m_instance{VK_NULL_HANDLE};
+    VkDebugReportCallbackEXT m_callback{VK_NULL_HANDLE};
+
   public:
     DebugReportCallbackEXT(const DebugReportCallbackEXT&) = delete;
     DebugReportCallbackEXT& operator=(const DebugReportCallbackEXT&) = delete;
@@ -76,10 +77,8 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     DebugReportCallbackEXT()
-      : m_instance(VK_NULL_HANDLE)
-      , m_callback(VK_NULL_HANDLE)
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the DebugReportCallbackEXT (this object becomes responsible for releasing it)
     explicit DebugReportCallbackEXT(const ClaimMode claimMode, const VkInstance instance, const VkDebugReportCallbackEXT callback)

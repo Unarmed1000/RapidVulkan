@@ -38,6 +38,10 @@ namespace RapidVulkan
       {
       case VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT:
         return "VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT";
+#if VK_HEADER_VERSION >= 131
+      case VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT:
+        return "VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT";
+#endif
       default:
         return nullptr;
       }

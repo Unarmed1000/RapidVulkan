@@ -35,8 +35,9 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class QueryPool
   {
-    VkDevice m_device;
-    VkQueryPool m_queryPool;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkQueryPool m_queryPool{VK_NULL_HANDLE};
+
   public:
     QueryPool(const QueryPool&) = delete;
     QueryPool& operator=(const QueryPool&) = delete;
@@ -76,10 +77,8 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     QueryPool()
-      : m_device(VK_NULL_HANDLE)
-      , m_queryPool(VK_NULL_HANDLE)
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the QueryPool (this object becomes responsible for releasing it)
     explicit QueryPool(const ClaimMode claimMode, const VkDevice device, const VkQueryPool queryPool)
@@ -223,6 +222,15 @@ namespace RapidVulkan
     {
       CheckError(vkGetQueryPoolResults(m_device, m_queryPool, firstQuery, queryCount, dataSize, pData, stride, flags), "vkGetQueryPoolResults", __FILE__, __LINE__);
     }
+
+
+#if VK_HEADER_VERSION >= 131
+    //! @note  Function: vkResetQueryPool
+    void ResetQueryPool(const uint32_t firstQuery, const uint32_t queryCount)
+    {
+      vkResetQueryPool(m_device, m_queryPool, firstQuery, queryCount);
+    }
+#endif
   };
 }
 

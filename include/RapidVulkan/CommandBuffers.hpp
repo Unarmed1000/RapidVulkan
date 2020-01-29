@@ -37,8 +37,8 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class CommandBuffers
   {
-    VkDevice m_device;
-    VkCommandPool m_commandPool;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkCommandPool m_commandPool{VK_NULL_HANDLE};
     std::vector<VkCommandBuffer> m_commandBuffers;
   public:
     CommandBuffers(const CommandBuffers&) = delete;
@@ -81,11 +81,9 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     CommandBuffers()
-      : m_device(VK_NULL_HANDLE)
-      , m_commandPool(VK_NULL_HANDLE)
 
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the CommandBuffers (this object becomes responsible for releasing it)
     //explicit CommandBuffers(const ClaimMode claimMode, const VkDevice device, const VkCommandPool commandPool, const VkCommandBuffer commandBuffers)

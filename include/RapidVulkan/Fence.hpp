@@ -36,8 +36,9 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class Fence
   {
-    VkDevice m_device;
-    VkFence m_fence;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkFence m_fence{VK_NULL_HANDLE};
+
   public:
     Fence(const Fence&) = delete;
     Fence& operator=(const Fence&) = delete;
@@ -77,10 +78,8 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     Fence()
-      : m_device(VK_NULL_HANDLE)
-      , m_fence(VK_NULL_HANDLE)
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the Fence (this object becomes responsible for releasing it)
     explicit Fence(const ClaimMode claimMode, const VkDevice device, const VkFence fence)

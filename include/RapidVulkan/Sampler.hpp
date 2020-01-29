@@ -35,8 +35,9 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class Sampler
   {
-    VkDevice m_device;
-    VkSampler m_sampler;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkSampler m_sampler{VK_NULL_HANDLE};
+
   public:
     Sampler(const Sampler&) = delete;
     Sampler& operator=(const Sampler&) = delete;
@@ -76,10 +77,8 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     Sampler()
-      : m_device(VK_NULL_HANDLE)
-      , m_sampler(VK_NULL_HANDLE)
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the Sampler (this object becomes responsible for releasing it)
     explicit Sampler(const ClaimMode claimMode, const VkDevice device, const VkSampler sampler)

@@ -35,8 +35,9 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class Memory
   {
-    VkDevice m_device;
-    VkDeviceMemory m_memory;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkDeviceMemory m_memory{VK_NULL_HANDLE};
+
   public:
     Memory(const Memory&) = delete;
     Memory& operator=(const Memory&) = delete;
@@ -76,10 +77,8 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     Memory()
-      : m_device(VK_NULL_HANDLE)
-      , m_memory(VK_NULL_HANDLE)
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the Memory (this object becomes responsible for releasing it)
     explicit Memory(const ClaimMode claimMode, const VkDevice device, const VkDeviceMemory memory)

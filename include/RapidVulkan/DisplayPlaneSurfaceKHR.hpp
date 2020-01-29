@@ -35,8 +35,9 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class DisplayPlaneSurfaceKHR
   {
-    VkInstance m_instance;
-    VkSurfaceKHR m_surface;
+    VkInstance m_instance{VK_NULL_HANDLE};
+    VkSurfaceKHR m_surface{VK_NULL_HANDLE};
+
   public:
     DisplayPlaneSurfaceKHR(const DisplayPlaneSurfaceKHR&) = delete;
     DisplayPlaneSurfaceKHR& operator=(const DisplayPlaneSurfaceKHR&) = delete;
@@ -76,10 +77,8 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     DisplayPlaneSurfaceKHR()
-      : m_instance(VK_NULL_HANDLE)
-      , m_surface(VK_NULL_HANDLE)
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the DisplayPlaneSurfaceKHR (this object becomes responsible for releasing it)
     explicit DisplayPlaneSurfaceKHR(const ClaimMode claimMode, const VkInstance instance, const VkSurfaceKHR surface)

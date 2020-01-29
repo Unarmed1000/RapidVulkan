@@ -35,8 +35,9 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class DescriptorSetLayout
   {
-    VkDevice m_device;
-    VkDescriptorSetLayout m_setLayout;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkDescriptorSetLayout m_setLayout{VK_NULL_HANDLE};
+
   public:
     DescriptorSetLayout(const DescriptorSetLayout&) = delete;
     DescriptorSetLayout& operator=(const DescriptorSetLayout&) = delete;
@@ -76,10 +77,8 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     DescriptorSetLayout()
-      : m_device(VK_NULL_HANDLE)
-      , m_setLayout(VK_NULL_HANDLE)
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the DescriptorSetLayout (this object becomes responsible for releasing it)
     explicit DescriptorSetLayout(const ClaimMode claimMode, const VkDevice device, const VkDescriptorSetLayout setLayout)

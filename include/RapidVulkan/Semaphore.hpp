@@ -35,8 +35,9 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class Semaphore
   {
-    VkDevice m_device;
-    VkSemaphore m_semaphore;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkSemaphore m_semaphore{VK_NULL_HANDLE};
+
   public:
     Semaphore(const Semaphore&) = delete;
     Semaphore& operator=(const Semaphore&) = delete;
@@ -76,10 +77,8 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     Semaphore()
-      : m_device(VK_NULL_HANDLE)
-      , m_semaphore(VK_NULL_HANDLE)
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the Semaphore (this object becomes responsible for releasing it)
     explicit Semaphore(const ClaimMode claimMode, const VkDevice device, const VkSemaphore semaphore)
@@ -214,6 +213,15 @@ namespace RapidVulkan
     {
       return m_semaphore != VK_NULL_HANDLE;
     }
+
+
+#if VK_HEADER_VERSION >= 131
+    //! @note  Function: vkGetSemaphoreCounterValue
+    void GetSemaphoreCounterValue(uint64_t * pValue)
+    {
+      CheckError(vkGetSemaphoreCounterValue(m_device, m_semaphore, pValue), "vkGetSemaphoreCounterValue", __FILE__, __LINE__);
+    }
+#endif
   };
 }
 

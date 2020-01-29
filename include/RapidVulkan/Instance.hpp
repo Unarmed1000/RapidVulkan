@@ -35,7 +35,8 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class Instance
   {
-    VkInstance m_instance;
+    VkInstance m_instance{VK_NULL_HANDLE};
+
   public:
     Instance(const Instance&) = delete;
     Instance& operator=(const Instance&) = delete;
@@ -71,9 +72,8 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     Instance()
-      : m_instance(VK_NULL_HANDLE)
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the Instance (this object becomes responsible for releasing it)
     explicit Instance(const ClaimMode claimMode, const VkInstance instance)

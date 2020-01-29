@@ -35,8 +35,9 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class ComputePipeline
   {
-    VkDevice m_device;
-    VkPipeline m_pipelines;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkPipeline m_pipelines{VK_NULL_HANDLE};
+
   public:
     ComputePipeline(const ComputePipeline&) = delete;
     ComputePipeline& operator=(const ComputePipeline&) = delete;
@@ -76,10 +77,8 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     ComputePipeline()
-      : m_device(VK_NULL_HANDLE)
-      , m_pipelines(VK_NULL_HANDLE)
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the ComputePipeline (this object becomes responsible for releasing it)
     explicit ComputePipeline(const ClaimMode claimMode, const VkDevice device, const VkPipeline pipelines)

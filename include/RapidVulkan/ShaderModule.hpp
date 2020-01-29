@@ -41,8 +41,9 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class ShaderModule
   {
-    VkDevice m_device;
-    VkShaderModule m_shaderModule;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkShaderModule m_shaderModule{VK_NULL_HANDLE};
+
   public:
     ShaderModule(const ShaderModule&) = delete;
     ShaderModule& operator=(const ShaderModule&) = delete;
@@ -82,10 +83,8 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     ShaderModule()
-      : m_device(VK_NULL_HANDLE)
-      , m_shaderModule(VK_NULL_HANDLE)
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the ShaderModule (this object becomes responsible for releasing it)
     explicit ShaderModule(const ClaimMode claimMode, const VkDevice device, const VkShaderModule shaderModule)

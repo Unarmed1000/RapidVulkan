@@ -54,6 +54,10 @@ namespace RapidVulkan
         return "VK_BUFFER_USAGE_VERTEX_BUFFER_BIT";
       case VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT:
         return "VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT";
+#if VK_HEADER_VERSION >= 131
+      case VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT:
+        return "VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT";
+#endif
       default:
         return nullptr;
       }

@@ -35,8 +35,9 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class RenderPass
   {
-    VkDevice m_device;
-    VkRenderPass m_renderPass;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkRenderPass m_renderPass{VK_NULL_HANDLE};
+
   public:
     RenderPass(const RenderPass&) = delete;
     RenderPass& operator=(const RenderPass&) = delete;
@@ -76,10 +77,8 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     RenderPass()
-      : m_device(VK_NULL_HANDLE)
-      , m_renderPass(VK_NULL_HANDLE)
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the RenderPass (this object becomes responsible for releasing it)
     explicit RenderPass(const ClaimMode claimMode, const VkDevice device, const VkRenderPass renderPass)

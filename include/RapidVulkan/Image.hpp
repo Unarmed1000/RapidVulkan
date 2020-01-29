@@ -35,8 +35,9 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class Image
   {
-    VkDevice m_device;
-    VkImage m_image;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkImage m_image{VK_NULL_HANDLE};
+
   public:
     Image(const Image&) = delete;
     Image& operator=(const Image&) = delete;
@@ -76,10 +77,8 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     Image()
-      : m_device(VK_NULL_HANDLE)
-      , m_image(VK_NULL_HANDLE)
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the Image (this object becomes responsible for releasing it)
     explicit Image(const ClaimMode claimMode, const VkDevice device, const VkImage image)

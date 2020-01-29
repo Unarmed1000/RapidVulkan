@@ -35,8 +35,9 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class BufferView
   {
-    VkDevice m_device;
-    VkBufferView m_view;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkBufferView m_view{VK_NULL_HANDLE};
+
   public:
     BufferView(const BufferView&) = delete;
     BufferView& operator=(const BufferView&) = delete;
@@ -76,10 +77,8 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     BufferView()
-      : m_device(VK_NULL_HANDLE)
-      , m_view(VK_NULL_HANDLE)
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the BufferView (this object becomes responsible for releasing it)
     explicit BufferView(const ClaimMode claimMode, const VkDevice device, const VkBufferView view)

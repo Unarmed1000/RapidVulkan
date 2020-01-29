@@ -35,8 +35,9 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class DescriptorPool
   {
-    VkDevice m_device;
-    VkDescriptorPool m_descriptorPool;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkDescriptorPool m_descriptorPool{VK_NULL_HANDLE};
+
   public:
     DescriptorPool(const DescriptorPool&) = delete;
     DescriptorPool& operator=(const DescriptorPool&) = delete;
@@ -76,10 +77,8 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     DescriptorPool()
-      : m_device(VK_NULL_HANDLE)
-      , m_descriptorPool(VK_NULL_HANDLE)
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the DescriptorPool (this object becomes responsible for releasing it)
     explicit DescriptorPool(const ClaimMode claimMode, const VkDevice device, const VkDescriptorPool descriptorPool)

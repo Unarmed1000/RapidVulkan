@@ -72,6 +72,10 @@ namespace RapidVulkan
         return "VK_ERROR_FORMAT_NOT_SUPPORTED";
       case VK_ERROR_FRAGMENTED_POOL:
         return "VK_ERROR_FRAGMENTED_POOL";
+#if VK_HEADER_VERSION >= 131
+      case VK_ERROR_UNKNOWN:
+        return "VK_ERROR_UNKNOWN";
+#endif
 #if VK_HEADER_VERSION >= 70
       case VK_ERROR_OUT_OF_POOL_MEMORY:
         return "VK_ERROR_OUT_OF_POOL_MEMORY";
@@ -79,6 +83,14 @@ namespace RapidVulkan
 #if VK_HEADER_VERSION >= 70
       case VK_ERROR_INVALID_EXTERNAL_HANDLE:
         return "VK_ERROR_INVALID_EXTERNAL_HANDLE";
+#endif
+#if VK_HEADER_VERSION >= 131
+      case VK_ERROR_FRAGMENTATION:
+        return "VK_ERROR_FRAGMENTATION";
+#endif
+#if VK_HEADER_VERSION >= 131
+      case VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS:
+        return "VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS";
 #endif
       default:
         return nullptr;

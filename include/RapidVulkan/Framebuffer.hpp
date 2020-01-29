@@ -35,8 +35,9 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class Framebuffer
   {
-    VkDevice m_device;
-    VkFramebuffer m_framebuffer;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkFramebuffer m_framebuffer{VK_NULL_HANDLE};
+
   public:
     Framebuffer(const Framebuffer&) = delete;
     Framebuffer& operator=(const Framebuffer&) = delete;
@@ -76,10 +77,8 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     Framebuffer()
-      : m_device(VK_NULL_HANDLE)
-      , m_framebuffer(VK_NULL_HANDLE)
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the Framebuffer (this object becomes responsible for releasing it)
     explicit Framebuffer(const ClaimMode claimMode, const VkDevice device, const VkFramebuffer framebuffer)

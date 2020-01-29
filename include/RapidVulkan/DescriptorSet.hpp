@@ -35,9 +35,10 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class DescriptorSet
   {
-    VkDevice m_device;
-    VkDescriptorPool m_descriptorPool;
-    VkDescriptorSet m_descriptorSets;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkDescriptorPool m_descriptorPool{VK_NULL_HANDLE};
+    VkDescriptorSet m_descriptorSets{VK_NULL_HANDLE};
+
   public:
     DescriptorSet(const DescriptorSet&) = delete;
     DescriptorSet& operator=(const DescriptorSet&) = delete;
@@ -81,11 +82,8 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     DescriptorSet()
-      : m_device(VK_NULL_HANDLE)
-      , m_descriptorPool(VK_NULL_HANDLE)
-      , m_descriptorSets(VK_NULL_HANDLE)
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the DescriptorSet (this object becomes responsible for releasing it)
     explicit DescriptorSet(const ClaimMode claimMode, const VkDevice device, const VkDescriptorPool descriptorPool, const VkDescriptorSet descriptorSets)

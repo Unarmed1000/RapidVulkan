@@ -35,8 +35,9 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class Event
   {
-    VkDevice m_device;
-    VkEvent m_event;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkEvent m_event{VK_NULL_HANDLE};
+
   public:
     Event(const Event&) = delete;
     Event& operator=(const Event&) = delete;
@@ -76,10 +77,8 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     Event()
-      : m_device(VK_NULL_HANDLE)
-      , m_event(VK_NULL_HANDLE)
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the Event (this object becomes responsible for releasing it)
     explicit Event(const ClaimMode claimMode, const VkDevice device, const VkEvent event)

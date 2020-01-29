@@ -35,8 +35,9 @@ namespace RapidVulkan
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class Buffer
   {
-    VkDevice m_device;
-    VkBuffer m_buffer;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkBuffer m_buffer{VK_NULL_HANDLE};
+
   public:
     Buffer(const Buffer&) = delete;
     Buffer& operator=(const Buffer&) = delete;
@@ -76,10 +77,8 @@ namespace RapidVulkan
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     Buffer()
-      : m_device(VK_NULL_HANDLE)
-      , m_buffer(VK_NULL_HANDLE)
-    {
-    }
+
+      = default;
 
     //! @brief Assume control of the Buffer (this object becomes responsible for releasing it)
     explicit Buffer(const ClaimMode claimMode, const VkDevice device, const VkBuffer buffer)

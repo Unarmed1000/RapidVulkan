@@ -41,6 +41,14 @@ namespace RapidVulkan
       case VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT:
         return "VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT";
 #endif
+#if VK_HEADER_VERSION >= 131
+      case VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT:
+        return "VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT";
+#endif
+#if VK_HEADER_VERSION >= 131
+      case VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT:
+        return "VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT";
+#endif
       default:
         return nullptr;
       }
