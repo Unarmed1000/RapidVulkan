@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKVALIDATIONFEATUREENABLEEXT_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKVALIDATIONFEATUREENABLEEXT_HPP
-#if VK_HEADER_VERSION >= 97
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSHADERFLOATCONTROLSINDEPENDENCE_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKSHADERFLOATCONTROLSINDEPENDENCE_HPP
+#if VK_HEADER_VERSION >= 131
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,32 +33,28 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkValidationFeatureEnableEXT& value)
+    inline const char* TryToString(const VkShaderFloatControlsIndependence& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 97
-      case VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT";
+#if VK_HEADER_VERSION >= 131
+      case VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_32_BIT_ONLY:
+        return "VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_32_BIT_ONLY";
 #endif
-#if VK_HEADER_VERSION >= 97
-      case VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT";
+#if VK_HEADER_VERSION >= 131
+      case VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_ALL:
+        return "VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_ALL";
 #endif
-#if VK_HEADER_VERSION >= 121
-      case VK_VALIDATION_FEATURE_ENABLE_BEST_PRACTICES_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_BEST_PRACTICES_EXT";
-#endif
-#if VK_HEADER_VERSION >= 135
-      case VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT";
+#if VK_HEADER_VERSION >= 131
+      case VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_NONE:
+        return "VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_NONE";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkValidationFeatureEnableEXT& value)
+    inline const char* ToString(const VkShaderFloatControlsIndependence& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

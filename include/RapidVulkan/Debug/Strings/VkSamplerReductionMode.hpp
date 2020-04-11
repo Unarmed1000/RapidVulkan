@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKVALIDATIONFEATUREENABLEEXT_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKVALIDATIONFEATUREENABLEEXT_HPP
-#if VK_HEADER_VERSION >= 97
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSAMPLERREDUCTIONMODE_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKSAMPLERREDUCTIONMODE_HPP
+#if VK_HEADER_VERSION >= 131
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,32 +33,28 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkValidationFeatureEnableEXT& value)
+    inline const char* TryToString(const VkSamplerReductionMode& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 97
-      case VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT";
+#if VK_HEADER_VERSION >= 131
+      case VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE:
+        return "VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE";
 #endif
-#if VK_HEADER_VERSION >= 97
-      case VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT";
+#if VK_HEADER_VERSION >= 131
+      case VK_SAMPLER_REDUCTION_MODE_MIN:
+        return "VK_SAMPLER_REDUCTION_MODE_MIN";
 #endif
-#if VK_HEADER_VERSION >= 121
-      case VK_VALIDATION_FEATURE_ENABLE_BEST_PRACTICES_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_BEST_PRACTICES_EXT";
-#endif
-#if VK_HEADER_VERSION >= 135
-      case VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT";
+#if VK_HEADER_VERSION >= 131
+      case VK_SAMPLER_REDUCTION_MODE_MAX:
+        return "VK_SAMPLER_REDUCTION_MODE_MAX";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkValidationFeatureEnableEXT& value)
+    inline const char* ToString(const VkSamplerReductionMode& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

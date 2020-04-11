@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKGEOMETRYFLAGBITSNV_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKGEOMETRYFLAGBITSNV_HPP
-#if VK_HEADER_VERSION >= 92
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSEMAPHORETYPE_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKSEMAPHORETYPE_HPP
+#if VK_HEADER_VERSION >= 131
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,24 +33,24 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkGeometryFlagBitsNV& value)
+    inline const char* TryToString(const VkSemaphoreType& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 92
-      case VK_GEOMETRY_OPAQUE_BIT_NV:
-        return "VK_GEOMETRY_OPAQUE_BIT_NV";
+#if VK_HEADER_VERSION >= 131
+      case VK_SEMAPHORE_TYPE_BINARY:
+        return "VK_SEMAPHORE_TYPE_BINARY";
 #endif
-#if VK_HEADER_VERSION >= 92
-      case VK_GEOMETRY_NO_DUPLICATE_ANY_HIT_INVOCATION_BIT_NV:
-        return "VK_GEOMETRY_NO_DUPLICATE_ANY_HIT_INVOCATION_BIT_NV";
+#if VK_HEADER_VERSION >= 131
+      case VK_SEMAPHORE_TYPE_TIMELINE:
+        return "VK_SEMAPHORE_TYPE_TIMELINE";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkGeometryFlagBitsNV& value)
+    inline const char* ToString(const VkSemaphoreType& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

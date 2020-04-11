@@ -77,7 +77,6 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     ComputePipelines()
 
-
       = default;
 
     //! @brief Assume control of the ComputePipelines (this object becomes responsible for releasing it)

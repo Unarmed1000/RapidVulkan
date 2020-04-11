@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKCOPYACCELERATIONSTRUCTUREMODENV_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKCOPYACCELERATIONSTRUCTUREMODENV_HPP
-#if VK_HEADER_VERSION >= 92
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKDRIVERID_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKDRIVERID_HPP
+#if VK_HEADER_VERSION >= 131
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,24 +33,64 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkCopyAccelerationStructureModeNV& value)
+    inline const char* TryToString(const VkDriverId& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 92
-      case VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_NV:
-        return "VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_NV";
+#if VK_HEADER_VERSION >= 131
+      case VK_DRIVER_ID_AMD_PROPRIETARY:
+        return "VK_DRIVER_ID_AMD_PROPRIETARY";
 #endif
-#if VK_HEADER_VERSION >= 92
-      case VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_NV:
-        return "VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_NV";
+#if VK_HEADER_VERSION >= 131
+      case VK_DRIVER_ID_AMD_OPEN_SOURCE:
+        return "VK_DRIVER_ID_AMD_OPEN_SOURCE";
+#endif
+#if VK_HEADER_VERSION >= 131
+      case VK_DRIVER_ID_MESA_RADV:
+        return "VK_DRIVER_ID_MESA_RADV";
+#endif
+#if VK_HEADER_VERSION >= 131
+      case VK_DRIVER_ID_NVIDIA_PROPRIETARY:
+        return "VK_DRIVER_ID_NVIDIA_PROPRIETARY";
+#endif
+#if VK_HEADER_VERSION >= 131
+      case VK_DRIVER_ID_INTEL_PROPRIETARY_WINDOWS:
+        return "VK_DRIVER_ID_INTEL_PROPRIETARY_WINDOWS";
+#endif
+#if VK_HEADER_VERSION >= 131
+      case VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA:
+        return "VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA";
+#endif
+#if VK_HEADER_VERSION >= 131
+      case VK_DRIVER_ID_IMAGINATION_PROPRIETARY:
+        return "VK_DRIVER_ID_IMAGINATION_PROPRIETARY";
+#endif
+#if VK_HEADER_VERSION >= 131
+      case VK_DRIVER_ID_QUALCOMM_PROPRIETARY:
+        return "VK_DRIVER_ID_QUALCOMM_PROPRIETARY";
+#endif
+#if VK_HEADER_VERSION >= 131
+      case VK_DRIVER_ID_ARM_PROPRIETARY:
+        return "VK_DRIVER_ID_ARM_PROPRIETARY";
+#endif
+#if VK_HEADER_VERSION >= 131
+      case VK_DRIVER_ID_GOOGLE_SWIFTSHADER:
+        return "VK_DRIVER_ID_GOOGLE_SWIFTSHADER";
+#endif
+#if VK_HEADER_VERSION >= 131
+      case VK_DRIVER_ID_GGP_PROPRIETARY:
+        return "VK_DRIVER_ID_GGP_PROPRIETARY";
+#endif
+#if VK_HEADER_VERSION >= 131
+      case VK_DRIVER_ID_BROADCOM_PROPRIETARY:
+        return "VK_DRIVER_ID_BROADCOM_PROPRIETARY";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkCopyAccelerationStructureModeNV& value)
+    inline const char* ToString(const VkDriverId& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

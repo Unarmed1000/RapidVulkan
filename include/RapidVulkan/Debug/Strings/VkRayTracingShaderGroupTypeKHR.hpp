@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKVALIDATIONFEATUREENABLEEXT_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKVALIDATIONFEATUREENABLEEXT_HPP
-#if VK_HEADER_VERSION >= 97
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKRAYTRACINGSHADERGROUPTYPEKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKRAYTRACINGSHADERGROUPTYPEKHR_HPP
+#if VK_HEADER_VERSION >= 135
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,32 +33,28 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkValidationFeatureEnableEXT& value)
+    inline const char* TryToString(const VkRayTracingShaderGroupTypeKHR& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 97
-      case VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT";
-#endif
-#if VK_HEADER_VERSION >= 97
-      case VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT";
-#endif
-#if VK_HEADER_VERSION >= 121
-      case VK_VALIDATION_FEATURE_ENABLE_BEST_PRACTICES_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_BEST_PRACTICES_EXT";
+#if VK_HEADER_VERSION >= 135
+      case VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_KHR:
+        return "VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_KHR";
 #endif
 #if VK_HEADER_VERSION >= 135
-      case VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT";
+      case VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR:
+        return "VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR";
+#endif
+#if VK_HEADER_VERSION >= 135
+      case VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR:
+        return "VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_KHR";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkValidationFeatureEnableEXT& value)
+    inline const char* ToString(const VkRayTracingShaderGroupTypeKHR& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

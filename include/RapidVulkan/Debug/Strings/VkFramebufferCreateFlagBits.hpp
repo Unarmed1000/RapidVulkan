@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKOBJECTENTRYUSAGEFLAGBITSNVX_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKOBJECTENTRYUSAGEFLAGBITSNVX_HPP
-#if VK_HEADER_VERSION >= 37
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKFRAMEBUFFERCREATEFLAGBITS_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKFRAMEBUFFERCREATEFLAGBITS_HPP
+#if VK_HEADER_VERSION >= 114
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,24 +33,20 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkObjectEntryUsageFlagBitsNVX& value)
+    inline const char* TryToString(const VkFramebufferCreateFlagBits& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 37
-      case VK_OBJECT_ENTRY_USAGE_GRAPHICS_BIT_NVX:
-        return "VK_OBJECT_ENTRY_USAGE_GRAPHICS_BIT_NVX";
-#endif
-#if VK_HEADER_VERSION >= 37
-      case VK_OBJECT_ENTRY_USAGE_COMPUTE_BIT_NVX:
-        return "VK_OBJECT_ENTRY_USAGE_COMPUTE_BIT_NVX";
+#if VK_HEADER_VERSION >= 131
+      case VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT:
+        return "VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkObjectEntryUsageFlagBitsNVX& value)
+    inline const char* ToString(const VkFramebufferCreateFlagBits& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

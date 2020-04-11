@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKACCELERATIONSTRUCTUREMEMORYREQUIREMENTSTYPENV_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKACCELERATIONSTRUCTUREMEMORYREQUIREMENTSTYPENV_HPP
-#if VK_HEADER_VERSION >= 92
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKDESCRIPTORBINDINGFLAGBITS_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKDESCRIPTORBINDINGFLAGBITS_HPP
+#if VK_HEADER_VERSION >= 131
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,28 +33,32 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkAccelerationStructureMemoryRequirementsTypeNV& value)
+    inline const char* TryToString(const VkDescriptorBindingFlagBits& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 92
-      case VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV:
-        return "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV";
+#if VK_HEADER_VERSION >= 131
+      case VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT:
+        return "VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT";
 #endif
-#if VK_HEADER_VERSION >= 92
-      case VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV:
-        return "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV";
+#if VK_HEADER_VERSION >= 131
+      case VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT:
+        return "VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT";
 #endif
-#if VK_HEADER_VERSION >= 92
-      case VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV:
-        return "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV";
+#if VK_HEADER_VERSION >= 131
+      case VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT:
+        return "VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT";
+#endif
+#if VK_HEADER_VERSION >= 131
+      case VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT:
+        return "VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkAccelerationStructureMemoryRequirementsTypeNV& value)
+    inline const char* ToString(const VkDescriptorBindingFlagBits& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

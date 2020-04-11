@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKVALIDATIONFEATUREENABLEEXT_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKVALIDATIONFEATUREENABLEEXT_HPP
-#if VK_HEADER_VERSION >= 97
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKRESOLVEMODEFLAGBITS_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKRESOLVEMODEFLAGBITS_HPP
+#if VK_HEADER_VERSION >= 131
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,32 +33,36 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkValidationFeatureEnableEXT& value)
+    inline const char* TryToString(const VkResolveModeFlagBits& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 97
-      case VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT";
+#if VK_HEADER_VERSION >= 131
+      case VK_RESOLVE_MODE_NONE:
+        return "VK_RESOLVE_MODE_NONE";
 #endif
-#if VK_HEADER_VERSION >= 97
-      case VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT";
+#if VK_HEADER_VERSION >= 131
+      case VK_RESOLVE_MODE_SAMPLE_ZERO_BIT:
+        return "VK_RESOLVE_MODE_SAMPLE_ZERO_BIT";
 #endif
-#if VK_HEADER_VERSION >= 121
-      case VK_VALIDATION_FEATURE_ENABLE_BEST_PRACTICES_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_BEST_PRACTICES_EXT";
+#if VK_HEADER_VERSION >= 131
+      case VK_RESOLVE_MODE_AVERAGE_BIT:
+        return "VK_RESOLVE_MODE_AVERAGE_BIT";
 #endif
-#if VK_HEADER_VERSION >= 135
-      case VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT";
+#if VK_HEADER_VERSION >= 131
+      case VK_RESOLVE_MODE_MIN_BIT:
+        return "VK_RESOLVE_MODE_MIN_BIT";
+#endif
+#if VK_HEADER_VERSION >= 131
+      case VK_RESOLVE_MODE_MAX_BIT:
+        return "VK_RESOLVE_MODE_MAX_BIT";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkValidationFeatureEnableEXT& value)
+    inline const char* ToString(const VkResolveModeFlagBits& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

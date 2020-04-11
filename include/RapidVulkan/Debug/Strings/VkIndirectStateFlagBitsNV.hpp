@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKGEOMETRYINSTANCEFLAGBITSNV_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKGEOMETRYINSTANCEFLAGBITSNV_HPP
-#if VK_HEADER_VERSION >= 92
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKINDIRECTSTATEFLAGBITSNV_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKINDIRECTSTATEFLAGBITSNV_HPP
+#if VK_HEADER_VERSION >= 135
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,32 +33,20 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkGeometryInstanceFlagBitsNV& value)
+    inline const char* TryToString(const VkIndirectStateFlagBitsNV& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 92
-      case VK_GEOMETRY_INSTANCE_TRIANGLE_CULL_DISABLE_BIT_NV:
-        return "VK_GEOMETRY_INSTANCE_TRIANGLE_CULL_DISABLE_BIT_NV";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_GEOMETRY_INSTANCE_TRIANGLE_FRONT_COUNTERCLOCKWISE_BIT_NV:
-        return "VK_GEOMETRY_INSTANCE_TRIANGLE_FRONT_COUNTERCLOCKWISE_BIT_NV";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_GEOMETRY_INSTANCE_FORCE_OPAQUE_BIT_NV:
-        return "VK_GEOMETRY_INSTANCE_FORCE_OPAQUE_BIT_NV";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_GEOMETRY_INSTANCE_FORCE_NO_OPAQUE_BIT_NV:
-        return "VK_GEOMETRY_INSTANCE_FORCE_NO_OPAQUE_BIT_NV";
+#if VK_HEADER_VERSION >= 135
+      case VK_INDIRECT_STATE_FLAG_FRONTFACE_BIT_NV:
+        return "VK_INDIRECT_STATE_FLAG_FRONTFACE_BIT_NV";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkGeometryInstanceFlagBitsNV& value)
+    inline const char* ToString(const VkIndirectStateFlagBitsNV& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

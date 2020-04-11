@@ -1,5 +1,5 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKBUILDACCELERATIONSTRUCTUREFLAGBITSNV_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKBUILDACCELERATIONSTRUCTUREFLAGBITSNV_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKRENDERPASSCREATEFLAGBITS_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKRENDERPASSCREATEFLAGBITS_HPP
 #if VK_HEADER_VERSION >= 92
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
@@ -33,36 +33,20 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkBuildAccelerationStructureFlagBitsNV& value)
+    inline const char* TryToString(const VkRenderPassCreateFlagBits& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 92
-      case VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_NV:
-        return "VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_NV";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_NV:
-        return "VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_NV";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_NV:
-        return "VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_NV";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_BUILD_BIT_NV:
-        return "VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_BUILD_BIT_NV";
-#endif
-#if VK_HEADER_VERSION >= 92
-      case VK_BUILD_ACCELERATION_STRUCTURE_LOW_MEMORY_BIT_NV:
-        return "VK_BUILD_ACCELERATION_STRUCTURE_LOW_MEMORY_BIT_NV";
+#if VK_HEADER_VERSION >= 135
+      case VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM:
+        return "VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkBuildAccelerationStructureFlagBitsNV& value)
+    inline const char* ToString(const VkRenderPassCreateFlagBits& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

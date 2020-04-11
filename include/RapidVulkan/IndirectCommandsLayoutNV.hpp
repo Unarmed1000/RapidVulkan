@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_INDIRECTCOMMANDSLAYOUTNVX_HPP
-#define RAPIDVULKAN_INDIRECTCOMMANDSLAYOUTNVX_HPP
-#if VK_HEADER_VERSION >= 37
+#ifndef RAPIDVULKAN_INDIRECTCOMMANDSLAYOUTNV_HPP
+#define RAPIDVULKAN_INDIRECTCOMMANDSLAYOUTNV_HPP
+#if VK_HEADER_VERSION >= 135
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -34,16 +34,16 @@
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
-  class IndirectCommandsLayoutNVX
+  class IndirectCommandsLayoutNV
   {
     VkDevice m_device;
-    VkIndirectCommandsLayoutNVX m_indirectCommandsLayout;
+    VkIndirectCommandsLayoutNV m_indirectCommandsLayout;
   public:
-    IndirectCommandsLayoutNVX(const IndirectCommandsLayoutNVX&) = delete;
-    IndirectCommandsLayoutNVX& operator=(const IndirectCommandsLayoutNVX&) = delete;
+    IndirectCommandsLayoutNV(const IndirectCommandsLayoutNV&) = delete;
+    IndirectCommandsLayoutNV& operator=(const IndirectCommandsLayoutNV&) = delete;
 
     //! @brief Move assignment operator
-    IndirectCommandsLayoutNVX& operator=(IndirectCommandsLayoutNVX&& other) noexcept
+    IndirectCommandsLayoutNV& operator=(IndirectCommandsLayoutNV&& other) noexcept
     {
       if (this != &other)
       {
@@ -59,41 +59,41 @@ namespace RapidVulkan
 
         // Remove the data from other
         other.m_device = VK_NULL_HANDLE;
-        other.m_indirectCommandsLayout = VK_NULL_HANDLE;
+        other.m_indirectCommandsLayout = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       }
       return *this;
     }
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    IndirectCommandsLayoutNVX(IndirectCommandsLayoutNVX&& other) noexcept
+    IndirectCommandsLayoutNV(IndirectCommandsLayoutNV&& other) noexcept
       : m_device(other.m_device)
       , m_indirectCommandsLayout(other.m_indirectCommandsLayout)
     {
       // Remove the data from other
       other.m_device = VK_NULL_HANDLE;
-      other.m_indirectCommandsLayout = VK_NULL_HANDLE;
+      other.m_indirectCommandsLayout = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    IndirectCommandsLayoutNVX()
+    IndirectCommandsLayoutNV()
       : m_device(VK_NULL_HANDLE)
-      , m_indirectCommandsLayout(VK_NULL_HANDLE)
+      , m_indirectCommandsLayout(FIX_DEFAULT_FOR_TYPE_NOT_DEFINED)
     {
     }
 
-    //! @brief Assume control of the IndirectCommandsLayoutNVX (this object becomes responsible for releasing it)
-    explicit IndirectCommandsLayoutNVX(const ClaimMode claimMode, const VkDevice device, const VkIndirectCommandsLayoutNVX indirectCommandsLayout)
-      : IndirectCommandsLayoutNVX()
+    //! @brief Assume control of the IndirectCommandsLayoutNV (this object becomes responsible for releasing it)
+    explicit IndirectCommandsLayoutNV(const ClaimMode claimMode, const VkDevice device, const VkIndirectCommandsLayoutNV indirectCommandsLayout)
+      : IndirectCommandsLayoutNV()
     {
       Reset(claimMode, device, indirectCommandsLayout);
     }
 
-#if VK_HEADER_VERSION >= 37
+#if VK_HEADER_VERSION >= 135
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateIndirectCommandsLayoutNVX
-    IndirectCommandsLayoutNVX(const VkDevice device, const VkIndirectCommandsLayoutCreateInfoNVX& createInfo)
-      : IndirectCommandsLayoutNVX()
+    //! @note  Function: vkCreateIndirectCommandsLayoutNV
+    IndirectCommandsLayoutNV(const VkDevice device, const VkIndirectCommandsLayoutCreateInfoNV& createInfo)
+      : IndirectCommandsLayoutNV()
     {
       Reset(device, createInfo);
     }
@@ -101,25 +101,25 @@ namespace RapidVulkan
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateIndirectCommandsLayoutNVX
-    IndirectCommandsLayoutNVX(const VkDevice device, const VkPipelineBindPoint pipelineBindPoint, const VkIndirectCommandsLayoutUsageFlagsNVX flags, const uint32_t tokenCount, VkIndirectCommandsLayoutTokenNVX*const pTokens)
-      : IndirectCommandsLayoutNVX()
+    //! @note  Function: vkCreateIndirectCommandsLayoutNV
+    IndirectCommandsLayoutNV(const VkDevice device, const VkIndirectCommandsLayoutUsageFlagsNV flags, const VkPipelineBindPoint pipelineBindPoint, const uint32_t tokenCount, VkIndirectCommandsLayoutTokenNV*const pTokens, const uint32_t streamCount, const uint32_t * pStreamStrides)
+      : IndirectCommandsLayoutNV()
     {
-      Reset(device, pipelineBindPoint, flags, tokenCount, pTokens);
+      Reset(device, flags, pipelineBindPoint, tokenCount, pTokens, streamCount, pStreamStrides);
     }
 #endif
 
-    ~IndirectCommandsLayoutNVX()
+    ~IndirectCommandsLayoutNV()
     {
       Reset();
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkIndirectCommandsLayoutNVX Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
+    VkIndirectCommandsLayoutNV Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
     {
       const auto resource = m_indirectCommandsLayout;
       m_device = VK_NULL_HANDLE;
-      m_indirectCommandsLayout = VK_NULL_HANDLE;
+      m_indirectCommandsLayout = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       return resource;
     }
 
@@ -132,15 +132,15 @@ namespace RapidVulkan
       }
 
       assert(m_device != VK_NULL_HANDLE);
-      assert(m_indirectCommandsLayout != VK_NULL_HANDLE);
+      assert(m_indirectCommandsLayout != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED);
 
-      vkDestroyIndirectCommandsLayoutNVX(m_device, m_indirectCommandsLayout, nullptr);
+      vkDestroyIndirectCommandsLayoutNV(m_device, m_indirectCommandsLayout, nullptr);
       m_device = VK_NULL_HANDLE;
-      m_indirectCommandsLayout = VK_NULL_HANDLE;
+      m_indirectCommandsLayout = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
-    //! @brief Destroys any owned resources and assume control of the IndirectCommandsLayoutNVX (this object becomes responsible for releasing it)
-    void Reset(const ClaimMode claimMode, const VkDevice device, const VkIndirectCommandsLayoutNVX indirectCommandsLayout)
+    //! @brief Destroys any owned resources and assume control of the IndirectCommandsLayoutNV (this object becomes responsible for releasing it)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkIndirectCommandsLayoutNV indirectCommandsLayout)
     {
       if (IsValid())
       {
@@ -152,10 +152,10 @@ namespace RapidVulkan
       m_indirectCommandsLayout = indirectCommandsLayout;
     }
 
-#if VK_HEADER_VERSION >= 37
+#if VK_HEADER_VERSION >= 135
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateIndirectCommandsLayoutNVX
-    void Reset(const VkDevice device, const VkIndirectCommandsLayoutCreateInfoNVX& createInfo)
+    //! @note  Function: vkCreateIndirectCommandsLayoutNV
+    void Reset(const VkDevice device, const VkIndirectCommandsLayoutCreateInfoNV& createInfo)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
@@ -173,8 +173,8 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkIndirectCommandsLayoutNVX indirectCommandsLayout;
-      CheckError(vkCreateIndirectCommandsLayoutNVX(device, &createInfo, nullptr, &indirectCommandsLayout), "vkCreateIndirectCommandsLayoutNVX", __FILE__, __LINE__);
+      VkIndirectCommandsLayoutNV indirectCommandsLayout;
+      CheckError(vkCreateIndirectCommandsLayoutNV(device, &createInfo, nullptr, &indirectCommandsLayout), "vkCreateIndirectCommandsLayoutNV", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
@@ -184,16 +184,18 @@ namespace RapidVulkan
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateIndirectCommandsLayoutNVX
-    void Reset(const VkDevice device, const VkPipelineBindPoint pipelineBindPoint, const VkIndirectCommandsLayoutUsageFlagsNVX flags, const uint32_t tokenCount, VkIndirectCommandsLayoutTokenNVX*const pTokens)
+    //! @note  Function: vkCreateIndirectCommandsLayoutNV
+    void Reset(const VkDevice device, const VkIndirectCommandsLayoutUsageFlagsNV flags, const VkPipelineBindPoint pipelineBindPoint, const uint32_t tokenCount, VkIndirectCommandsLayoutTokenNV*const pTokens, const uint32_t streamCount, const uint32_t * pStreamStrides)
     {
-      VkIndirectCommandsLayoutCreateInfoNVX createInfo{};
-      createInfo.sType = VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NVX;
+      VkIndirectCommandsLayoutCreateInfoNV createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_NV;
       createInfo.pNext = nullptr;
-      createInfo.pipelineBindPoint = pipelineBindPoint;
       createInfo.flags = flags;
+      createInfo.pipelineBindPoint = pipelineBindPoint;
       createInfo.tokenCount = tokenCount;
       createInfo.pTokens = pTokens;
+      createInfo.streamCount = streamCount;
+      createInfo.pStreamStrides = pStreamStrides;
 
       Reset(device, createInfo);
     }
@@ -206,13 +208,13 @@ namespace RapidVulkan
     }
 
     //! @brief Get the associated resource handle
-    VkIndirectCommandsLayoutNVX Get() const
+    VkIndirectCommandsLayoutNV Get() const
     {
       return m_indirectCommandsLayout;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkIndirectCommandsLayoutNVX* GetPointer() const
+    const VkIndirectCommandsLayoutNV* GetPointer() const
     {
       return &m_indirectCommandsLayout;
     }
@@ -220,7 +222,7 @@ namespace RapidVulkan
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_indirectCommandsLayout != VK_NULL_HANDLE;
+      return m_indirectCommandsLayout != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
   };
 }

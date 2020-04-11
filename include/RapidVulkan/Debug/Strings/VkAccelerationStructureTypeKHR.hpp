@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKVALIDATIONFEATUREENABLEEXT_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKVALIDATIONFEATUREENABLEEXT_HPP
-#if VK_HEADER_VERSION >= 97
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKACCELERATIONSTRUCTURETYPEKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKACCELERATIONSTRUCTURETYPEKHR_HPP
+#if VK_HEADER_VERSION >= 135
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,32 +33,24 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkValidationFeatureEnableEXT& value)
+    inline const char* TryToString(const VkAccelerationStructureTypeKHR& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 97
-      case VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT";
-#endif
-#if VK_HEADER_VERSION >= 97
-      case VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT";
-#endif
-#if VK_HEADER_VERSION >= 121
-      case VK_VALIDATION_FEATURE_ENABLE_BEST_PRACTICES_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_BEST_PRACTICES_EXT";
+#if VK_HEADER_VERSION >= 135
+      case VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR:
+        return "VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR";
 #endif
 #if VK_HEADER_VERSION >= 135
-      case VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT";
+      case VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR:
+        return "VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkValidationFeatureEnableEXT& value)
+    inline const char* ToString(const VkAccelerationStructureTypeKHR& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

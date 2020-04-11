@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKRAYTRACINGSHADERGROUPTYPENV_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKRAYTRACINGSHADERGROUPTYPENV_HPP
-#if VK_HEADER_VERSION >= 92
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKGEOMETRYINSTANCEFLAGBITSKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKGEOMETRYINSTANCEFLAGBITSKHR_HPP
+#if VK_HEADER_VERSION >= 135
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,28 +33,32 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkRayTracingShaderGroupTypeNV& value)
+    inline const char* TryToString(const VkGeometryInstanceFlagBitsKHR& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 92
-      case VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV:
-        return "VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_NV";
+#if VK_HEADER_VERSION >= 135
+      case VK_GEOMETRY_INSTANCE_TRIANGLE_FACING_CULL_DISABLE_BIT_KHR:
+        return "VK_GEOMETRY_INSTANCE_TRIANGLE_FACING_CULL_DISABLE_BIT_KHR";
 #endif
-#if VK_HEADER_VERSION >= 92
-      case VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV:
-        return "VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_NV";
+#if VK_HEADER_VERSION >= 135
+      case VK_GEOMETRY_INSTANCE_TRIANGLE_FRONT_COUNTERCLOCKWISE_BIT_KHR:
+        return "VK_GEOMETRY_INSTANCE_TRIANGLE_FRONT_COUNTERCLOCKWISE_BIT_KHR";
 #endif
-#if VK_HEADER_VERSION >= 92
-      case VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV:
-        return "VK_RAY_TRACING_SHADER_GROUP_TYPE_PROCEDURAL_HIT_GROUP_NV";
+#if VK_HEADER_VERSION >= 135
+      case VK_GEOMETRY_INSTANCE_FORCE_OPAQUE_BIT_KHR:
+        return "VK_GEOMETRY_INSTANCE_FORCE_OPAQUE_BIT_KHR";
+#endif
+#if VK_HEADER_VERSION >= 135
+      case VK_GEOMETRY_INSTANCE_FORCE_NO_OPAQUE_BIT_KHR:
+        return "VK_GEOMETRY_INSTANCE_FORCE_NO_OPAQUE_BIT_KHR";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkRayTracingShaderGroupTypeNV& value)
+    inline const char* ToString(const VkGeometryInstanceFlagBitsKHR& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

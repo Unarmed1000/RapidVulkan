@@ -220,15 +220,6 @@ namespace RapidVulkan
     {
       return m_accelerationStructure != VK_NULL_HANDLE;
     }
-
-
-#if VK_HEADER_VERSION >= 92
-    //! @note  Function: vkGetAccelerationStructureHandleNV
-    void GetAccelerationStructureHandleNV(const size_t dataSize, void * pData)
-    {
-      CheckError(vkGetAccelerationStructureHandleNV(m_device, m_accelerationStructure, dataSize, pData), "vkGetAccelerationStructureHandleNV", __FILE__, __LINE__);
-    }
-#endif
   };
 }
 

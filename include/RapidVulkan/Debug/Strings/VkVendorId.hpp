@@ -49,6 +49,10 @@ namespace RapidVulkan
       case VK_VENDOR_ID_KAZAN:
         return "VK_VENDOR_ID_KAZAN";
 #endif
+#if VK_HEADER_VERSION >= 135
+      case VK_VENDOR_ID_CODEPLAY:
+        return "VK_VENDOR_ID_CODEPLAY";
+#endif
       default:
         return nullptr;
       }

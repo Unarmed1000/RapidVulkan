@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKINDIRECTCOMMANDSTOKENTYPENVX_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKINDIRECTCOMMANDSTOKENTYPENVX_HPP
-#if VK_HEADER_VERSION >= 37
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKCOPYACCELERATIONSTRUCTUREMODEKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKCOPYACCELERATIONSTRUCTUREMODEKHR_HPP
+#if VK_HEADER_VERSION >= 135
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,48 +33,32 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkIndirectCommandsTokenTypeNVX& value)
+    inline const char* TryToString(const VkCopyAccelerationStructureModeKHR& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 51
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NVX:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NVX";
+#if VK_HEADER_VERSION >= 135
+      case VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_KHR:
+        return "VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_KHR";
 #endif
-#if VK_HEADER_VERSION >= 51
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DESCRIPTOR_SET_NVX:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DESCRIPTOR_SET_NVX";
+#if VK_HEADER_VERSION >= 135
+      case VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_KHR:
+        return "VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_KHR";
 #endif
-#if VK_HEADER_VERSION >= 51
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_NVX:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_NVX";
+#if VK_HEADER_VERSION >= 135
+      case VK_COPY_ACCELERATION_STRUCTURE_MODE_SERIALIZE_KHR:
+        return "VK_COPY_ACCELERATION_STRUCTURE_MODE_SERIALIZE_KHR";
 #endif
-#if VK_HEADER_VERSION >= 51
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_NVX:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_NVX";
-#endif
-#if VK_HEADER_VERSION >= 51
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NVX:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NVX";
-#endif
-#if VK_HEADER_VERSION >= 51
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_NVX:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_NVX";
-#endif
-#if VK_HEADER_VERSION >= 51
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_NVX:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_NVX";
-#endif
-#if VK_HEADER_VERSION >= 51
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NVX:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NVX";
+#if VK_HEADER_VERSION >= 135
+      case VK_COPY_ACCELERATION_STRUCTURE_MODE_DESERIALIZE_KHR:
+        return "VK_COPY_ACCELERATION_STRUCTURE_MODE_DESERIALIZE_KHR";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkIndirectCommandsTokenTypeNVX& value)
+    inline const char* ToString(const VkCopyAccelerationStructureModeKHR& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

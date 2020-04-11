@@ -82,7 +82,6 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     CommandBuffers()
 
-
       = default;
 
     //! @brief Assume control of the CommandBuffers (this object becomes responsible for releasing it)

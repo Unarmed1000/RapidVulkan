@@ -84,7 +84,7 @@ namespace RapidVulkan
 
     //! @brief Create the requested resource
     //! @note  Function: vkCreateInstance
-    Instance(const VkInstanceCreateInfo& createInfo)
+    explicit Instance(const VkInstanceCreateInfo& createInfo)
       : Instance()
     {
       Reset(createInfo);

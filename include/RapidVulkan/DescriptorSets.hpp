@@ -82,7 +82,6 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     DescriptorSets()
 
-
       = default;
 
     //! @brief Assume control of the DescriptorSets (this object becomes responsible for releasing it)
