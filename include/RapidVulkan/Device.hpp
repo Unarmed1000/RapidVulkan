@@ -73,7 +73,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     Device()
 
-      = default;
+        = default;
 
     //! @brief Assume control of the Device (this object becomes responsible for releasing it)
     explicit Device(const ClaimMode claimMode, const VkDevice device)
@@ -154,7 +154,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkDevice device;
+      VkDevice device = nullptr;
       CheckError(vkCreateDevice(physicalDevice, &createInfo, nullptr, &device), "vkCreateDevice", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

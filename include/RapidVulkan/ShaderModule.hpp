@@ -84,7 +84,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     ShaderModule()
 
-      = default;
+        = default;
 
     //! @brief Assume control of the ShaderModule (this object becomes responsible for releasing it)
     explicit ShaderModule(const ClaimMode claimMode, const VkDevice device, const VkShaderModule shaderModule)
@@ -174,7 +174,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkShaderModule shaderModule;
+      VkShaderModule shaderModule = nullptr;
       CheckError(vkCreateShaderModule(device, &createInfo, nullptr, &shaderModule), "vkCreateShaderModule", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

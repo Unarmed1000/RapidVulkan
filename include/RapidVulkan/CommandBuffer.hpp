@@ -83,7 +83,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     CommandBuffer()
 
-      = default;
+        = default;
 
     //! @brief Assume control of the CommandBuffer (this object becomes responsible for releasing it)
     explicit CommandBuffer(const ClaimMode claimMode, const VkDevice device, const VkCommandPool commandPool, const VkCommandBuffer commandBuffers)
@@ -183,7 +183,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkCommandBuffer commandBuffers;
+      VkCommandBuffer commandBuffers = nullptr;
       CheckError(vkAllocateCommandBuffers(device, &allocateInfo, &commandBuffers), "vkAllocateCommandBuffers", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

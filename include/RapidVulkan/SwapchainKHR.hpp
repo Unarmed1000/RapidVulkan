@@ -78,7 +78,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     SwapchainKHR()
 
-      = default;
+        = default;
 
     //! @brief Assume control of the SwapchainKHR (this object becomes responsible for releasing it)
     explicit SwapchainKHR(const ClaimMode claimMode, const VkDevice device, const VkSwapchainKHR swapchain)
@@ -172,7 +172,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkSwapchainKHR swapchain;
+      VkSwapchainKHR swapchain = nullptr;
       CheckError(vkCreateSwapchainKHR(device, &createInfo, nullptr, &swapchain), "vkCreateSwapchainKHR", __FILE__, __LINE__);
       if (delayedReset)
       {

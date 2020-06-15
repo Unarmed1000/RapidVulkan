@@ -78,7 +78,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     CommandPool()
 
-      = default;
+        = default;
 
     //! @brief Assume control of the CommandPool (this object becomes responsible for releasing it)
     explicit CommandPool(const ClaimMode claimMode, const VkDevice device, const VkCommandPool commandPool)
@@ -168,7 +168,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkCommandPool commandPool;
+      VkCommandPool commandPool = nullptr;
       CheckError(vkCreateCommandPool(device, &createInfo, nullptr, &commandPool), "vkCreateCommandPool", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

@@ -1,9 +1,10 @@
-#ifndef RAPIDVULKAN_CHECK_HPP
-#define RAPIDVULKAN_CHECK_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSUBPASSDESCRIPTIONFLAGBITS_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKSUBPASSDESCRIPTIONFLAGBITS_HPP
+#if VK_HEADER_VERSION >= 42
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2016, Rene Thrane
+//* Copyright (c) 2017, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -22,19 +23,40 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-#include <RapidVulkan/CheckError.hpp>
+// If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Define some ease of use macros for logging.
-// Please beware that these are not pulled in by any of the RAII classes, so its 100% up to the user of the library to include it
-// if the functionality is desired.
+// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
-#define RAPIDVULKAN_CHECK(X)                  RapidVulkan::CheckError((X), #X, __FILE__, __LINE__)
-#define RAPIDVULKAN_CHECK2(X, mESSAGE)        RapidVulkan::CheckError((X), (mESSAGE), __FILE__, __LINE__)
+#include <vulkan/vulkan.h>
 
-// The Vulkan version this was based on
-#define RAPIDVULKAN_VULKAN_VERSION_MAJOR   1
-#define RAPIDVULKAN_VULKAN_VERSION_MINOR   2
-#define RAPIDVULKAN_VULKAN_VERSION_BUILD   141
-#define RAPIDVULKAN_VULKAN_VERSION_HOTFIX  2
+namespace RapidVulkan
+{
+  namespace Debug
+  {
+    inline const char* TryToString(const VkSubpassDescriptionFlagBits& value)
+    {
+      switch(value)
+      {
+#if VK_HEADER_VERSION >= 141
+      case VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_QCOM:
+        return "VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_QCOM";
+#endif
+#if VK_HEADER_VERSION >= 141
+      case VK_SUBPASS_DESCRIPTION_SHADER_RESOLVE_BIT_QCOM:
+        return "VK_SUBPASS_DESCRIPTION_SHADER_RESOLVE_BIT_QCOM";
+#endif
+      default:
+        return nullptr;
+      }
+    };
 
+    inline const char* ToString(const VkSubpassDescriptionFlagBits& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
+    };
+  }
+}
+
+#endif
 #endif

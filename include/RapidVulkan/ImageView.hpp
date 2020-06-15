@@ -78,7 +78,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     ImageView()
 
-      = default;
+        = default;
 
     //! @brief Assume control of the ImageView (this object becomes responsible for releasing it)
     explicit ImageView(const ClaimMode claimMode, const VkDevice device, const VkImageView view)
@@ -168,7 +168,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkImageView view;
+      VkImageView view = nullptr;
       CheckError(vkCreateImageView(device, &createInfo, nullptr, &view), "vkCreateImageView", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

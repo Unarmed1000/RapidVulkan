@@ -53,6 +53,10 @@ namespace RapidVulkan
       case VK_VENDOR_ID_CODEPLAY:
         return "VK_VENDOR_ID_CODEPLAY";
 #endif
+#if VK_HEADER_VERSION >= 141
+      case VK_VENDOR_ID_MESA:
+        return "VK_VENDOR_ID_MESA";
+#endif
       default:
         return nullptr;
       }

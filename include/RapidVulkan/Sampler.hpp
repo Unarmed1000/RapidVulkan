@@ -78,7 +78,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     Sampler()
 
-      = default;
+        = default;
 
     //! @brief Assume control of the Sampler (this object becomes responsible for releasing it)
     explicit Sampler(const ClaimMode claimMode, const VkDevice device, const VkSampler sampler)
@@ -168,7 +168,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkSampler sampler;
+      VkSampler sampler = nullptr;
       CheckError(vkCreateSampler(device, &createInfo, nullptr, &sampler), "vkCreateSampler", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

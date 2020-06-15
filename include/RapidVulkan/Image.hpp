@@ -78,7 +78,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     Image()
 
-      = default;
+        = default;
 
     //! @brief Assume control of the Image (this object becomes responsible for releasing it)
     explicit Image(const ClaimMode claimMode, const VkDevice device, const VkImage image)
@@ -168,7 +168,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkImage image;
+      VkImage image = nullptr;
       CheckError(vkCreateImage(device, &createInfo, nullptr, &image), "vkCreateImage", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

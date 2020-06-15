@@ -78,7 +78,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     DescriptorPool()
 
-      = default;
+        = default;
 
     //! @brief Assume control of the DescriptorPool (this object becomes responsible for releasing it)
     explicit DescriptorPool(const ClaimMode claimMode, const VkDevice device, const VkDescriptorPool descriptorPool)
@@ -168,7 +168,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkDescriptorPool descriptorPool;
+      VkDescriptorPool descriptorPool = nullptr;
       CheckError(vkCreateDescriptorPool(device, &createInfo, nullptr, &descriptorPool), "vkCreateDescriptorPool", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

@@ -78,7 +78,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     DescriptorSetLayout()
 
-      = default;
+        = default;
 
     //! @brief Assume control of the DescriptorSetLayout (this object becomes responsible for releasing it)
     explicit DescriptorSetLayout(const ClaimMode claimMode, const VkDevice device, const VkDescriptorSetLayout setLayout)
@@ -168,7 +168,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkDescriptorSetLayout setLayout;
+      VkDescriptorSetLayout setLayout = nullptr;
       CheckError(vkCreateDescriptorSetLayout(device, &createInfo, nullptr, &setLayout), "vkCreateDescriptorSetLayout", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

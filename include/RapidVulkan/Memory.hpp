@@ -78,7 +78,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     Memory()
 
-      = default;
+        = default;
 
     //! @brief Assume control of the Memory (this object becomes responsible for releasing it)
     explicit Memory(const ClaimMode claimMode, const VkDevice device, const VkDeviceMemory memory)
@@ -168,7 +168,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkDeviceMemory memory;
+      VkDeviceMemory memory = nullptr;
       CheckError(vkAllocateMemory(device, &allocateInfo, nullptr, &memory), "vkAllocateMemory", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

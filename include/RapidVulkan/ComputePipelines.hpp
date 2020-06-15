@@ -77,7 +77,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     ComputePipelines()
 
-      = default;
+        = default;
 
     //! @brief Assume control of the ComputePipelines (this object becomes responsible for releasing it)
     //explicit ComputePipelines(const ClaimMode claimMode, const VkDevice device, const VkPipeline pipelines)

@@ -26,6 +26,7 @@
 #include <stdexcept>
 #include <string>
 #include <utility>
+
 #include <vulkan/vulkan.h>
 
 namespace RapidVulkan
@@ -35,19 +36,13 @@ namespace RapidVulkan
     std::string m_fileName;
     int m_lineNumber;
   public:
-    explicit VulkanException(const std::string& whatArg)
-      : std::runtime_error(whatArg)
-      , m_lineNumber(0)
-    {
-    }
+    explicit VulkanException(const std::string &whatArg)
+        : std::runtime_error(whatArg), m_lineNumber(0) {}
 
-    explicit VulkanException(const std::string& whatArg, std::string fileName, const int lineNumber)
-      : std::runtime_error(whatArg)
-      , m_fileName(std::move(fileName))
-      , m_lineNumber(lineNumber)
-    {
-    }
-
+    explicit VulkanException(const std::string &whatArg, std::string fileName,
+                             const int lineNumber)
+        : std::runtime_error(whatArg), m_fileName(std::move(fileName)),
+          m_lineNumber(lineNumber) {}
 
     std::string GetFileName() const
     {

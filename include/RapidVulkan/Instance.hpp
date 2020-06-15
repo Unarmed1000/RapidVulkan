@@ -73,7 +73,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     Instance()
 
-      = default;
+        = default;
 
     //! @brief Assume control of the Instance (this object becomes responsible for releasing it)
     explicit Instance(const ClaimMode claimMode, const VkInstance instance)
@@ -84,9 +84,7 @@ namespace RapidVulkan
 
     //! @brief Create the requested resource
     //! @note  Function: vkCreateInstance
-    explicit Instance(const VkInstanceCreateInfo& createInfo)
-      : Instance()
-    {
+    explicit Instance(const VkInstanceCreateInfo &createInfo) : Instance() {
       Reset(createInfo);
     }
 
@@ -154,7 +152,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkInstance instance;
+      VkInstance instance = nullptr;
       CheckError(vkCreateInstance(&createInfo, nullptr, &instance), "vkCreateInstance", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

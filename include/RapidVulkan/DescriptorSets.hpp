@@ -82,7 +82,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     DescriptorSets()
 
-      = default;
+        = default;
 
     //! @brief Assume control of the DescriptorSets (this object becomes responsible for releasing it)
     //explicit DescriptorSets(const ClaimMode claimMode, const VkDevice device, const VkDescriptorPool descriptorPool, const VkDescriptorSet descriptorSets)

@@ -78,7 +78,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     Buffer()
 
-      = default;
+        = default;
 
     //! @brief Assume control of the Buffer (this object becomes responsible for releasing it)
     explicit Buffer(const ClaimMode claimMode, const VkDevice device, const VkBuffer buffer)
@@ -168,7 +168,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkBuffer buffer;
+      VkBuffer buffer = nullptr;
       CheckError(vkCreateBuffer(device, &createInfo, nullptr, &buffer), "vkCreateBuffer", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

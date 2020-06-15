@@ -77,7 +77,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     GraphicsPipelines()
 
-      = default;
+        = default;
 
     //! @brief Assume control of the GraphicsPipelines (this object becomes responsible for releasing it)
     //explicit GraphicsPipelines(const ClaimMode claimMode, const VkDevice device, const VkPipeline pipelines)

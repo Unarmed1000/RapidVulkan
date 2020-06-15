@@ -78,7 +78,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     PipelineLayout()
 
-      = default;
+        = default;
 
     //! @brief Assume control of the PipelineLayout (this object becomes responsible for releasing it)
     explicit PipelineLayout(const ClaimMode claimMode, const VkDevice device, const VkPipelineLayout pipelineLayout)
@@ -168,7 +168,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkPipelineLayout pipelineLayout;
+      VkPipelineLayout pipelineLayout = nullptr;
       CheckError(vkCreatePipelineLayout(device, &createInfo, nullptr, &pipelineLayout), "vkCreatePipelineLayout", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

@@ -78,7 +78,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     Semaphore()
 
-      = default;
+        = default;
 
     //! @brief Assume control of the Semaphore (this object becomes responsible for releasing it)
     explicit Semaphore(const ClaimMode claimMode, const VkDevice device, const VkSemaphore semaphore)
@@ -168,7 +168,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkSemaphore semaphore;
+      VkSemaphore semaphore = nullptr;
       CheckError(vkCreateSemaphore(device, &createInfo, nullptr, &semaphore), "vkCreateSemaphore", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

@@ -40,6 +40,10 @@ namespace RapidVulkan
         return "VK_ATTACHMENT_STORE_OP_STORE";
       case VK_ATTACHMENT_STORE_OP_DONT_CARE:
         return "VK_ATTACHMENT_STORE_OP_DONT_CARE";
+#if VK_HEADER_VERSION >= 141
+      case VK_ATTACHMENT_STORE_OP_NONE_QCOM:
+        return "VK_ATTACHMENT_STORE_OP_NONE_QCOM";
+#endif
       default:
         return nullptr;
       }

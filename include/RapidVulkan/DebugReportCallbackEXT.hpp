@@ -78,7 +78,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     DebugReportCallbackEXT()
 
-      = default;
+        = default;
 
     //! @brief Assume control of the DebugReportCallbackEXT (this object becomes responsible for releasing it)
     explicit DebugReportCallbackEXT(const ClaimMode claimMode, const VkInstance instance, const VkDebugReportCallbackEXT callback)
@@ -168,7 +168,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkDebugReportCallbackEXT callback;
+      VkDebugReportCallbackEXT callback = nullptr;
       CheckError(vkCreateDebugReportCallbackEXT(instance, &createInfo, nullptr, &callback), "vkCreateDebugReportCallbackEXT", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

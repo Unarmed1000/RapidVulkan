@@ -78,7 +78,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     Event()
 
-      = default;
+        = default;
 
     //! @brief Assume control of the Event (this object becomes responsible for releasing it)
     explicit Event(const ClaimMode claimMode, const VkDevice device, const VkEvent event)
@@ -168,7 +168,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkEvent event;
+      VkEvent event = nullptr;
       CheckError(vkCreateEvent(device, &createInfo, nullptr, &event), "vkCreateEvent", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

@@ -1,5 +1,6 @@
-#ifndef RAPIDVULKAN_RENDERPASS_HPP
-#define RAPIDVULKAN_RENDERPASS_HPP
+#ifndef RAPIDVULKAN_RENDERPASS2_HPP
+#define RAPIDVULKAN_RENDERPASS2_HPP
+#if VK_HEADER_VERSION >= 131
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,17 +34,16 @@
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
-  class RenderPass
+  class RenderPass2
   {
-    VkDevice m_device{VK_NULL_HANDLE};
-    VkRenderPass m_renderPass{VK_NULL_HANDLE};
-
+    VkDevice m_device;
+    VkRenderPass m_renderPass;
   public:
-    RenderPass(const RenderPass&) = delete;
-    RenderPass& operator=(const RenderPass&) = delete;
+    RenderPass2(const RenderPass2&) = delete;
+    RenderPass2& operator=(const RenderPass2&) = delete;
 
     //! @brief Move assignment operator
-    RenderPass& operator=(RenderPass&& other) noexcept
+    RenderPass2& operator=(RenderPass2&& other) noexcept
     {
       if (this != &other)
       {
@@ -66,7 +66,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    RenderPass(RenderPass&& other) noexcept
+    RenderPass2(RenderPass2&& other) noexcept
       : m_device(other.m_device)
       , m_renderPass(other.m_renderPass)
     {
@@ -76,36 +76,40 @@ namespace RapidVulkan
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    RenderPass()
+    RenderPass2()
+      : m_device(VK_NULL_HANDLE)
+      , m_renderPass(VK_NULL_HANDLE)
+    {
+    }
 
-        = default;
-
-    //! @brief Assume control of the RenderPass (this object becomes responsible for releasing it)
-    explicit RenderPass(const ClaimMode claimMode, const VkDevice device, const VkRenderPass renderPass)
-      : RenderPass()
+    //! @brief Assume control of the RenderPass2 (this object becomes responsible for releasing it)
+    explicit RenderPass2(const ClaimMode claimMode, const VkDevice device, const VkRenderPass renderPass)
+      : RenderPass2()
     {
       Reset(claimMode, device, renderPass);
     }
 
+#if VK_HEADER_VERSION >= 131
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateRenderPass
-    RenderPass(const VkDevice device, const VkRenderPassCreateInfo& createInfo)
-      : RenderPass()
+    //! @note  Function: vkCreateRenderPass2
+    RenderPass2(const VkDevice device, const VkRenderPassCreateInfo2& createInfo)
+      : RenderPass2()
     {
       Reset(device, createInfo);
     }
+#endif
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateRenderPass
-    RenderPass(const VkDevice device, const VkRenderPassCreateFlags flags, const uint32_t attachmentCount, VkAttachmentDescription*const pAttachments, const uint32_t subpassCount, VkSubpassDescription*const pSubpasses, const uint32_t dependencyCount, VkSubpassDependency*const pDependencies)
-      : RenderPass()
+    //! @note  Function: vkCreateRenderPass2
+    RenderPass2(const VkDevice device, const VkRenderPassCreateFlags flags, const uint32_t attachmentCount, VkAttachmentDescription2*const pAttachments, const uint32_t subpassCount, VkSubpassDescription2*const pSubpasses, const uint32_t dependencyCount, VkSubpassDependency2*const pDependencies, const uint32_t correlatedViewMaskCount, const uint32_t * pCorrelatedViewMasks)
+      : RenderPass2()
     {
-      Reset(device, flags, attachmentCount, pAttachments, subpassCount, pSubpasses, dependencyCount, pDependencies);
+      Reset(device, flags, attachmentCount, pAttachments, subpassCount, pSubpasses, dependencyCount, pDependencies, correlatedViewMaskCount, pCorrelatedViewMasks);
     }
 #endif
 
-    ~RenderPass()
+    ~RenderPass2()
     {
       Reset();
     }
@@ -135,7 +139,7 @@ namespace RapidVulkan
       m_renderPass = VK_NULL_HANDLE;
     }
 
-    //! @brief Destroys any owned resources and assume control of the RenderPass (this object becomes responsible for releasing it)
+    //! @brief Destroys any owned resources and assume control of the RenderPass2 (this object becomes responsible for releasing it)
     void Reset(const ClaimMode claimMode, const VkDevice device, const VkRenderPass renderPass)
     {
       if (IsValid())
@@ -148,9 +152,10 @@ namespace RapidVulkan
       m_renderPass = renderPass;
     }
 
+#if VK_HEADER_VERSION >= 131
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateRenderPass
-    void Reset(const VkDevice device, const VkRenderPassCreateInfo& createInfo)
+    //! @note  Function: vkCreateRenderPass2
+    void Reset(const VkDevice device, const VkRenderPassCreateInfo2& createInfo)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
@@ -168,21 +173,22 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkRenderPass renderPass = nullptr;
-      CheckError(vkCreateRenderPass(device, &createInfo, nullptr, &renderPass), "vkCreateRenderPass", __FILE__, __LINE__);
+      VkRenderPass renderPass;
+      CheckError(vkCreateRenderPass2(device, &createInfo, nullptr, &renderPass), "vkCreateRenderPass2", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
       m_renderPass = renderPass;
     }
+#endif
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateRenderPass
-    void Reset(const VkDevice device, const VkRenderPassCreateFlags flags, const uint32_t attachmentCount, VkAttachmentDescription*const pAttachments, const uint32_t subpassCount, VkSubpassDescription*const pSubpasses, const uint32_t dependencyCount, VkSubpassDependency*const pDependencies)
+    //! @note  Function: vkCreateRenderPass2
+    void Reset(const VkDevice device, const VkRenderPassCreateFlags flags, const uint32_t attachmentCount, VkAttachmentDescription2*const pAttachments, const uint32_t subpassCount, VkSubpassDescription2*const pSubpasses, const uint32_t dependencyCount, VkSubpassDependency2*const pDependencies, const uint32_t correlatedViewMaskCount, const uint32_t * pCorrelatedViewMasks)
     {
-      VkRenderPassCreateInfo createInfo{};
-      createInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO;
+      VkRenderPassCreateInfo2 createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO2;
       createInfo.pNext = nullptr;
       createInfo.flags = flags;
       createInfo.attachmentCount = attachmentCount;
@@ -191,6 +197,8 @@ namespace RapidVulkan
       createInfo.pSubpasses = pSubpasses;
       createInfo.dependencyCount = dependencyCount;
       createInfo.pDependencies = pDependencies;
+      createInfo.correlatedViewMaskCount = correlatedViewMaskCount;
+      createInfo.pCorrelatedViewMasks = pCorrelatedViewMasks;
 
       Reset(device, createInfo);
     }
@@ -228,4 +236,5 @@ namespace RapidVulkan
   };
 }
 
+#endif
 #endif

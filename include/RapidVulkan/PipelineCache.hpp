@@ -78,7 +78,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     PipelineCache()
 
-      = default;
+        = default;
 
     //! @brief Assume control of the PipelineCache (this object becomes responsible for releasing it)
     explicit PipelineCache(const ClaimMode claimMode, const VkDevice device, const VkPipelineCache pipelineCache)
@@ -168,7 +168,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkPipelineCache pipelineCache;
+      VkPipelineCache pipelineCache = nullptr;
       CheckError(vkCreatePipelineCache(device, &createInfo, nullptr, &pipelineCache), "vkCreatePipelineCache", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

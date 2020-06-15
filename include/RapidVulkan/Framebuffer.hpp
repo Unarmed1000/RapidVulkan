@@ -78,7 +78,7 @@ namespace RapidVulkan
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     Framebuffer()
 
-      = default;
+        = default;
 
     //! @brief Assume control of the Framebuffer (this object becomes responsible for releasing it)
     explicit Framebuffer(const ClaimMode claimMode, const VkDevice device, const VkFramebuffer framebuffer)
@@ -168,7 +168,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkFramebuffer framebuffer;
+      VkFramebuffer framebuffer = nullptr;
       CheckError(vkCreateFramebuffer(device, &createInfo, nullptr, &framebuffer), "vkCreateFramebuffer", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

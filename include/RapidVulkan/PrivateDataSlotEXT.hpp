@@ -1,5 +1,6 @@
-#ifndef RAPIDVULKAN_RENDERPASS_HPP
-#define RAPIDVULKAN_RENDERPASS_HPP
+#ifndef RAPIDVULKAN_PRIVATEDATASLOTEXT_HPP
+#define RAPIDVULKAN_PRIVATEDATASLOTEXT_HPP
+#if VK_HEADER_VERSION >= 141
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,17 +34,16 @@
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
-  class RenderPass
+  class PrivateDataSlotEXT
   {
-    VkDevice m_device{VK_NULL_HANDLE};
-    VkRenderPass m_renderPass{VK_NULL_HANDLE};
-
+    VkDevice m_device;
+    VkPrivateDataSlotEXT m_privateDataSlot;
   public:
-    RenderPass(const RenderPass&) = delete;
-    RenderPass& operator=(const RenderPass&) = delete;
+    PrivateDataSlotEXT(const PrivateDataSlotEXT&) = delete;
+    PrivateDataSlotEXT& operator=(const PrivateDataSlotEXT&) = delete;
 
     //! @brief Move assignment operator
-    RenderPass& operator=(RenderPass&& other) noexcept
+    PrivateDataSlotEXT& operator=(PrivateDataSlotEXT&& other) noexcept
     {
       if (this != &other)
       {
@@ -55,67 +55,71 @@ namespace RapidVulkan
 
         // Claim ownership here
         m_device = other.m_device;
-        m_renderPass = other.m_renderPass;
+        m_privateDataSlot = other.m_privateDataSlot;
 
         // Remove the data from other
         other.m_device = VK_NULL_HANDLE;
-        other.m_renderPass = VK_NULL_HANDLE;
+        other.m_privateDataSlot = VK_NULL_HANDLE;
       }
       return *this;
     }
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    RenderPass(RenderPass&& other) noexcept
+    PrivateDataSlotEXT(PrivateDataSlotEXT&& other) noexcept
       : m_device(other.m_device)
-      , m_renderPass(other.m_renderPass)
+      , m_privateDataSlot(other.m_privateDataSlot)
     {
       // Remove the data from other
       other.m_device = VK_NULL_HANDLE;
-      other.m_renderPass = VK_NULL_HANDLE;
+      other.m_privateDataSlot = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    RenderPass()
-
-        = default;
-
-    //! @brief Assume control of the RenderPass (this object becomes responsible for releasing it)
-    explicit RenderPass(const ClaimMode claimMode, const VkDevice device, const VkRenderPass renderPass)
-      : RenderPass()
+    PrivateDataSlotEXT()
+      : m_device(VK_NULL_HANDLE)
+      , m_privateDataSlot(VK_NULL_HANDLE)
     {
-      Reset(claimMode, device, renderPass);
     }
 
+    //! @brief Assume control of the PrivateDataSlotEXT (this object becomes responsible for releasing it)
+    explicit PrivateDataSlotEXT(const ClaimMode claimMode, const VkDevice device, const VkPrivateDataSlotEXT privateDataSlot)
+      : PrivateDataSlotEXT()
+    {
+      Reset(claimMode, device, privateDataSlot);
+    }
+
+#if VK_HEADER_VERSION >= 141
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateRenderPass
-    RenderPass(const VkDevice device, const VkRenderPassCreateInfo& createInfo)
-      : RenderPass()
+    //! @note  Function: vkCreatePrivateDataSlotEXT
+    PrivateDataSlotEXT(const VkDevice device, const VkPrivateDataSlotCreateInfoEXT& createInfo)
+      : PrivateDataSlotEXT()
     {
       Reset(device, createInfo);
     }
+#endif
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateRenderPass
-    RenderPass(const VkDevice device, const VkRenderPassCreateFlags flags, const uint32_t attachmentCount, VkAttachmentDescription*const pAttachments, const uint32_t subpassCount, VkSubpassDescription*const pSubpasses, const uint32_t dependencyCount, VkSubpassDependency*const pDependencies)
-      : RenderPass()
+    //! @note  Function: vkCreatePrivateDataSlotEXT
+    PrivateDataSlotEXT(const VkDevice device, const VkPrivateDataSlotCreateFlagsEXT flags)
+      : PrivateDataSlotEXT()
     {
-      Reset(device, flags, attachmentCount, pAttachments, subpassCount, pSubpasses, dependencyCount, pDependencies);
+      Reset(device, flags);
     }
 #endif
 
-    ~RenderPass()
+    ~PrivateDataSlotEXT()
     {
       Reset();
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkRenderPass Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
+    VkPrivateDataSlotEXT Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
     {
-      const auto resource = m_renderPass;
+      const auto resource = m_privateDataSlot;
       m_device = VK_NULL_HANDLE;
-      m_renderPass = VK_NULL_HANDLE;
+      m_privateDataSlot = VK_NULL_HANDLE;
       return resource;
     }
 
@@ -128,15 +132,15 @@ namespace RapidVulkan
       }
 
       assert(m_device != VK_NULL_HANDLE);
-      assert(m_renderPass != VK_NULL_HANDLE);
+      assert(m_privateDataSlot != VK_NULL_HANDLE);
 
-      vkDestroyRenderPass(m_device, m_renderPass, nullptr);
+      vkDestroyPrivateDataSlotEXT(m_device, m_privateDataSlot, nullptr);
       m_device = VK_NULL_HANDLE;
-      m_renderPass = VK_NULL_HANDLE;
+      m_privateDataSlot = VK_NULL_HANDLE;
     }
 
-    //! @brief Destroys any owned resources and assume control of the RenderPass (this object becomes responsible for releasing it)
-    void Reset(const ClaimMode claimMode, const VkDevice device, const VkRenderPass renderPass)
+    //! @brief Destroys any owned resources and assume control of the PrivateDataSlotEXT (this object becomes responsible for releasing it)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkPrivateDataSlotEXT privateDataSlot)
     {
       if (IsValid())
       {
@@ -145,12 +149,13 @@ namespace RapidVulkan
 
 
       m_device = device;
-      m_renderPass = renderPass;
+      m_privateDataSlot = privateDataSlot;
     }
 
+#if VK_HEADER_VERSION >= 141
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateRenderPass
-    void Reset(const VkDevice device, const VkRenderPassCreateInfo& createInfo)
+    //! @note  Function: vkCreatePrivateDataSlotEXT
+    void Reset(const VkDevice device, const VkPrivateDataSlotCreateInfoEXT& createInfo)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
@@ -168,29 +173,24 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkRenderPass renderPass = nullptr;
-      CheckError(vkCreateRenderPass(device, &createInfo, nullptr, &renderPass), "vkCreateRenderPass", __FILE__, __LINE__);
+      VkPrivateDataSlotEXT privateDataSlot;
+      CheckError(vkCreatePrivateDataSlotEXT(device, &createInfo, nullptr, &privateDataSlot), "vkCreatePrivateDataSlotEXT", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
-      m_renderPass = renderPass;
+      m_privateDataSlot = privateDataSlot;
     }
+#endif
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateRenderPass
-    void Reset(const VkDevice device, const VkRenderPassCreateFlags flags, const uint32_t attachmentCount, VkAttachmentDescription*const pAttachments, const uint32_t subpassCount, VkSubpassDescription*const pSubpasses, const uint32_t dependencyCount, VkSubpassDependency*const pDependencies)
+    //! @note  Function: vkCreatePrivateDataSlotEXT
+    void Reset(const VkDevice device, const VkPrivateDataSlotCreateFlagsEXT flags)
     {
-      VkRenderPassCreateInfo createInfo{};
-      createInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO;
+      VkPrivateDataSlotCreateInfoEXT createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_PRIVATE_DATA_SLOT_CREATE_INFO_EXT;
       createInfo.pNext = nullptr;
       createInfo.flags = flags;
-      createInfo.attachmentCount = attachmentCount;
-      createInfo.pAttachments = pAttachments;
-      createInfo.subpassCount = subpassCount;
-      createInfo.pSubpasses = pSubpasses;
-      createInfo.dependencyCount = dependencyCount;
-      createInfo.pDependencies = pDependencies;
 
       Reset(device, createInfo);
     }
@@ -203,29 +203,24 @@ namespace RapidVulkan
     }
 
     //! @brief Get the associated resource handle
-    VkRenderPass Get() const
+    VkPrivateDataSlotEXT Get() const
     {
-      return m_renderPass;
+      return m_privateDataSlot;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkRenderPass* GetPointer() const
+    const VkPrivateDataSlotEXT* GetPointer() const
     {
-      return &m_renderPass;
+      return &m_privateDataSlot;
     }
 
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_renderPass != VK_NULL_HANDLE;
-    }
-
-    //! @note  Function: vkGetRenderAreaGranularity
-    void GetRenderAreaGranularity(VkExtent2D * pGranularity)
-    {
-      vkGetRenderAreaGranularity(m_device, m_renderPass, pGranularity);
+      return m_privateDataSlot != VK_NULL_HANDLE;
     }
   };
 }
 
+#endif
 #endif
