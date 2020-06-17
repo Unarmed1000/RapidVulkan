@@ -1,0 +1,12 @@
+# Top-most EditorConfig file
+root = true
+
+[*.cpp]
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+#charset = utf-8-bom
+trim_trailing_whitespace = true
+
+[*.md]
+trim_trailing_whitespace = true
