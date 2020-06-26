@@ -169,7 +169,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkFence fence = nullptr;
+      VkFence fence;
       CheckError(vkCreateFence(device, &createInfo, nullptr, &fence), "vkCreateFence", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

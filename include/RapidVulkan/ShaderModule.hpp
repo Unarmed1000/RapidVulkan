@@ -174,7 +174,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkShaderModule shaderModule = nullptr;
+      VkShaderModule shaderModule;
       CheckError(vkCreateShaderModule(device, &createInfo, nullptr, &shaderModule), "vkCreateShaderModule", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

@@ -152,7 +152,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkInstance instance = nullptr;
+      VkInstance instance;
       CheckError(vkCreateInstance(&createInfo, nullptr, &instance), "vkCreateInstance", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

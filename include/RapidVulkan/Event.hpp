@@ -168,7 +168,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkEvent event = nullptr;
+      VkEvent event;
       CheckError(vkCreateEvent(device, &createInfo, nullptr, &event), "vkCreateEvent", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

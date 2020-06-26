@@ -168,7 +168,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkDescriptorSetLayout setLayout = nullptr;
+      VkDescriptorSetLayout setLayout;
       CheckError(vkCreateDescriptorSetLayout(device, &createInfo, nullptr, &setLayout), "vkCreateDescriptorSetLayout", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

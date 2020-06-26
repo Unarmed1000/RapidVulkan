@@ -168,7 +168,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkBufferView view = nullptr;
+      VkBufferView view;
       CheckError(vkCreateBufferView(device, &createInfo, nullptr, &view), "vkCreateBufferView", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

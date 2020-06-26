@@ -168,7 +168,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkPipeline pipelines = nullptr;
+      VkPipeline pipelines;
       CheckError(vkCreateGraphicsPipelines(device, pipelineCache, 1, &createInfos, nullptr, &pipelines), "vkCreateGraphicsPipelines", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

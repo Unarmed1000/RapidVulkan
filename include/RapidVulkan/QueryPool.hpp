@@ -168,7 +168,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkQueryPool queryPool = nullptr;
+      VkQueryPool queryPool;
       CheckError(vkCreateQueryPool(device, &createInfo, nullptr, &queryPool), "vkCreateQueryPool", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members

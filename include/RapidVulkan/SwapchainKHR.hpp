@@ -172,7 +172,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkSwapchainKHR swapchain = nullptr;
+      VkSwapchainKHR swapchain;
       CheckError(vkCreateSwapchainKHR(device, &createInfo, nullptr, &swapchain), "vkCreateSwapchainKHR", __FILE__, __LINE__);
       if (delayedReset)
       {

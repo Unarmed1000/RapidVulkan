@@ -168,7 +168,7 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkSurfaceKHR surface = nullptr;
+      VkSurfaceKHR surface;
       CheckError(vkCreateDisplayPlaneSurfaceKHR(instance, &createInfo, nullptr, &surface), "vkCreateDisplayPlaneSurfaceKHR", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
