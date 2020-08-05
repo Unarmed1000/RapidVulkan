@@ -89,6 +89,10 @@ namespace RapidVulkan
       case VK_DRIVER_ID_MESA_LLVMPIPE:
         return "VK_DRIVER_ID_MESA_LLVMPIPE";
 #endif
+#if VK_HEADER_VERSION >= 148
+      case VK_DRIVER_ID_MOLTENVK:
+        return "VK_DRIVER_ID_MOLTENVK";
+#endif
       default:
         return nullptr;
       }
