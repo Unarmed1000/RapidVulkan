@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKACCELERATIONSTRUCTURETYPEKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKACCELERATIONSTRUCTURETYPEKHR_HPP
-#if VK_HEADER_VERSION >= 135
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKACCELERATIONSTRUCTUREMEMORYREQUIREMENTSTYPENV_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKACCELERATIONSTRUCTUREMEMORYREQUIREMENTSTYPENV_HPP
+#if VK_HEADER_VERSION >= 92
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,28 +33,28 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkAccelerationStructureTypeKHR& value)
+    inline const char* TryToString(const VkAccelerationStructureMemoryRequirementsTypeNV& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 135
-      case VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR:
-        return "VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR";
+#if VK_HEADER_VERSION >= 92
+      case VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV:
+        return "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV";
 #endif
-#if VK_HEADER_VERSION >= 135
-      case VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR:
-        return "VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR";
+#if VK_HEADER_VERSION >= 92
+      case VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV:
+        return "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV";
 #endif
-#if VK_HEADER_VERSION >= 162
-      case VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR:
-        return "VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR";
+#if VK_HEADER_VERSION >= 92
+      case VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV:
+        return "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkAccelerationStructureTypeKHR& value)
+    inline const char* ToString(const VkAccelerationStructureMemoryRequirementsTypeNV& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

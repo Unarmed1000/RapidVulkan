@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKACCELERATIONSTRUCTUREMEMORYREQUIREMENTSTYPEKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKACCELERATIONSTRUCTUREMEMORYREQUIREMENTSTYPEKHR_HPP
-#if VK_HEADER_VERSION >= 135
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKBUILDACCELERATIONSTRUCTUREMODEKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKBUILDACCELERATIONSTRUCTUREMODEKHR_HPP
+#if VK_HEADER_VERSION >= 162
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,28 +33,24 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkAccelerationStructureMemoryRequirementsTypeKHR& value)
+    inline const char* TryToString(const VkBuildAccelerationStructureModeKHR& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 135
-      case VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_KHR:
-        return "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_KHR";
+#if VK_HEADER_VERSION >= 162
+      case VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR:
+        return "VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR";
 #endif
-#if VK_HEADER_VERSION >= 135
-      case VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_KHR:
-        return "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_KHR";
-#endif
-#if VK_HEADER_VERSION >= 135
-      case VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_KHR:
-        return "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_KHR";
+#if VK_HEADER_VERSION >= 162
+      case VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR:
+        return "VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkAccelerationStructureMemoryRequirementsTypeKHR& value)
+    inline const char* ToString(const VkBuildAccelerationStructureModeKHR& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

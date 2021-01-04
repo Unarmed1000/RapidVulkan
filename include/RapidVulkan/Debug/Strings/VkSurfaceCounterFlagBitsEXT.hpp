@@ -37,10 +37,14 @@ namespace RapidVulkan
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 39
+#if VK_HEADER_VERSION >= 162
+      case VK_SURFACE_COUNTER_VBLANK_BIT_EXT:
+        return "VK_SURFACE_COUNTER_VBLANK_BIT_EXT";
+#elif VK_HEADER_VERSION >= 39
       case VK_SURFACE_COUNTER_VBLANK_EXT:
         return "VK_SURFACE_COUNTER_VBLANK_EXT";
 #endif
+
       default:
         return nullptr;
       }

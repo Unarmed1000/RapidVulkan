@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKACCELERATIONSTRUCTURETYPEKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKACCELERATIONSTRUCTURETYPEKHR_HPP
-#if VK_HEADER_VERSION >= 135
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKFRAGMENTSHADINGRATECOMBINEROPKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKFRAGMENTSHADINGRATECOMBINEROPKHR_HPP
+#if VK_HEADER_VERSION >= 162
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,28 +33,36 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkAccelerationStructureTypeKHR& value)
+    inline const char* TryToString(const VkFragmentShadingRateCombinerOpKHR& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 135
-      case VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR:
-        return "VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR";
-#endif
-#if VK_HEADER_VERSION >= 135
-      case VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR:
-        return "VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR";
+#if VK_HEADER_VERSION >= 162
+      case VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR:
+        return "VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR";
 #endif
 #if VK_HEADER_VERSION >= 162
-      case VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR:
-        return "VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR";
+      case VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR:
+        return "VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR";
+#endif
+#if VK_HEADER_VERSION >= 162
+      case VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_KHR:
+        return "VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_KHR";
+#endif
+#if VK_HEADER_VERSION >= 162
+      case VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR:
+        return "VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR";
+#endif
+#if VK_HEADER_VERSION >= 162
+      case VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR:
+        return "VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkAccelerationStructureTypeKHR& value)
+    inline const char* ToString(const VkFragmentShadingRateCombinerOpKHR& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

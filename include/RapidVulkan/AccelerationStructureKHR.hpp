@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_ACCELERATIONSTRUCTURENV_HPP
-#define RAPIDVULKAN_ACCELERATIONSTRUCTURENV_HPP
-#if VK_HEADER_VERSION >= 92
+#ifndef RAPIDVULKAN_ACCELERATIONSTRUCTUREKHR_HPP
+#define RAPIDVULKAN_ACCELERATIONSTRUCTUREKHR_HPP
+#if VK_HEADER_VERSION >= 162
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -34,16 +34,16 @@
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
-  class AccelerationStructureNV
+  class AccelerationStructureKHR
   {
     VkDevice m_device;
-    VkAccelerationStructureNV m_accelerationStructure;
+    VkAccelerationStructureKHR m_accelerationStructure;
   public:
-    AccelerationStructureNV(const AccelerationStructureNV&) = delete;
-    AccelerationStructureNV& operator=(const AccelerationStructureNV&) = delete;
+    AccelerationStructureKHR(const AccelerationStructureKHR&) = delete;
+    AccelerationStructureKHR& operator=(const AccelerationStructureKHR&) = delete;
 
     //! @brief Move assignment operator
-    AccelerationStructureNV& operator=(AccelerationStructureNV&& other) noexcept
+    AccelerationStructureKHR& operator=(AccelerationStructureKHR&& other) noexcept
     {
       if (this != &other)
       {
@@ -59,41 +59,41 @@ namespace RapidVulkan
 
         // Remove the data from other
         other.m_device = VK_NULL_HANDLE;
-        other.m_accelerationStructure = VK_NULL_HANDLE;
+        other.m_accelerationStructure = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       }
       return *this;
     }
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    AccelerationStructureNV(AccelerationStructureNV&& other) noexcept
+    AccelerationStructureKHR(AccelerationStructureKHR&& other) noexcept
       : m_device(other.m_device)
       , m_accelerationStructure(other.m_accelerationStructure)
     {
       // Remove the data from other
       other.m_device = VK_NULL_HANDLE;
-      other.m_accelerationStructure = VK_NULL_HANDLE;
+      other.m_accelerationStructure = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    AccelerationStructureNV()
+    AccelerationStructureKHR()
       : m_device(VK_NULL_HANDLE)
-      , m_accelerationStructure(VK_NULL_HANDLE)
+      , m_accelerationStructure(FIX_DEFAULT_FOR_TYPE_NOT_DEFINED)
     {
     }
 
-    //! @brief Assume control of the AccelerationStructureNV (this object becomes responsible for releasing it)
-    explicit AccelerationStructureNV(const ClaimMode claimMode, const VkDevice device, const VkAccelerationStructureNV accelerationStructure)
-      : AccelerationStructureNV()
+    //! @brief Assume control of the AccelerationStructureKHR (this object becomes responsible for releasing it)
+    explicit AccelerationStructureKHR(const ClaimMode claimMode, const VkDevice device, const VkAccelerationStructureKHR accelerationStructure)
+      : AccelerationStructureKHR()
     {
       Reset(claimMode, device, accelerationStructure);
     }
 
-#if VK_HEADER_VERSION >= 92
+#if VK_HEADER_VERSION >= 162
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateAccelerationStructureNV
-    AccelerationStructureNV(const VkDevice device, const VkAccelerationStructureCreateInfoNV& createInfo)
-      : AccelerationStructureNV()
+    //! @note  Function: vkCreateAccelerationStructureKHR
+    AccelerationStructureKHR(const VkDevice device, const VkAccelerationStructureCreateInfoKHR& createInfo)
+      : AccelerationStructureKHR()
     {
       Reset(device, createInfo);
     }
@@ -101,25 +101,25 @@ namespace RapidVulkan
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateAccelerationStructureNV
-    AccelerationStructureNV(const VkDevice device, const VkDeviceSize compactedSize, const VkAccelerationStructureInfoNV info)
-      : AccelerationStructureNV()
+    //! @note  Function: vkCreateAccelerationStructureKHR
+    AccelerationStructureKHR(const VkDevice device, const VkAccelerationStructureCreateFlagsKHR createFlags, const VkBuffer buffer, const VkDeviceSize offset, const VkDeviceSize size, const VkAccelerationStructureTypeKHR type, const VkDeviceAddress deviceAddress)
+      : AccelerationStructureKHR()
     {
-      Reset(device, compactedSize, info);
+      Reset(device, createFlags, buffer, offset, size, type, deviceAddress);
     }
 #endif
 
-    ~AccelerationStructureNV()
+    ~AccelerationStructureKHR()
     {
       Reset();
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkAccelerationStructureNV Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
+    VkAccelerationStructureKHR Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
     {
       const auto resource = m_accelerationStructure;
       m_device = VK_NULL_HANDLE;
-      m_accelerationStructure = VK_NULL_HANDLE;
+      m_accelerationStructure = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
       return resource;
     }
 
@@ -132,15 +132,15 @@ namespace RapidVulkan
       }
 
       assert(m_device != VK_NULL_HANDLE);
-      assert(m_accelerationStructure != VK_NULL_HANDLE);
+      assert(m_accelerationStructure != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED);
 
-      vkDestroyAccelerationStructureNV(m_device, m_accelerationStructure, nullptr);
+      vkDestroyAccelerationStructureKHR(m_device, m_accelerationStructure, nullptr);
       m_device = VK_NULL_HANDLE;
-      m_accelerationStructure = VK_NULL_HANDLE;
+      m_accelerationStructure = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
 
-    //! @brief Destroys any owned resources and assume control of the AccelerationStructureNV (this object becomes responsible for releasing it)
-    void Reset(const ClaimMode claimMode, const VkDevice device, const VkAccelerationStructureNV accelerationStructure)
+    //! @brief Destroys any owned resources and assume control of the AccelerationStructureKHR (this object becomes responsible for releasing it)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkAccelerationStructureKHR accelerationStructure)
     {
       if (IsValid())
       {
@@ -152,10 +152,10 @@ namespace RapidVulkan
       m_accelerationStructure = accelerationStructure;
     }
 
-#if VK_HEADER_VERSION >= 92
+#if VK_HEADER_VERSION >= 162
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateAccelerationStructureNV
-    void Reset(const VkDevice device, const VkAccelerationStructureCreateInfoNV& createInfo)
+    //! @note  Function: vkCreateAccelerationStructureKHR
+    void Reset(const VkDevice device, const VkAccelerationStructureCreateInfoKHR& createInfo)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
@@ -173,8 +173,8 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkAccelerationStructureNV accelerationStructure;
-      CheckError(vkCreateAccelerationStructureNV(device, &createInfo, nullptr, &accelerationStructure), "vkCreateAccelerationStructureNV", __FILE__, __LINE__);
+      VkAccelerationStructureKHR accelerationStructure;
+      CheckError(vkCreateAccelerationStructureKHR(device, &createInfo, nullptr, &accelerationStructure), "vkCreateAccelerationStructureKHR", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
@@ -184,14 +184,18 @@ namespace RapidVulkan
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateAccelerationStructureNV
-    void Reset(const VkDevice device, const VkDeviceSize compactedSize, const VkAccelerationStructureInfoNV info)
+    //! @note  Function: vkCreateAccelerationStructureKHR
+    void Reset(const VkDevice device, const VkAccelerationStructureCreateFlagsKHR createFlags, const VkBuffer buffer, const VkDeviceSize offset, const VkDeviceSize size, const VkAccelerationStructureTypeKHR type, const VkDeviceAddress deviceAddress)
     {
-      VkAccelerationStructureCreateInfoNV createInfo{};
-      createInfo.sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_NV;
+      VkAccelerationStructureCreateInfoKHR createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_KHR;
       createInfo.pNext = nullptr;
-      createInfo.compactedSize = compactedSize;
-      createInfo.info = info;
+      createInfo.createFlags = createFlags;
+      createInfo.buffer = buffer;
+      createInfo.offset = offset;
+      createInfo.size = size;
+      createInfo.type = type;
+      createInfo.deviceAddress = deviceAddress;
 
       Reset(device, createInfo);
     }
@@ -204,13 +208,13 @@ namespace RapidVulkan
     }
 
     //! @brief Get the associated resource handle
-    VkAccelerationStructureNV Get() const
+    VkAccelerationStructureKHR Get() const
     {
       return m_accelerationStructure;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkAccelerationStructureNV* GetPointer() const
+    const VkAccelerationStructureKHR* GetPointer() const
     {
       return &m_accelerationStructure;
     }
@@ -218,17 +222,8 @@ namespace RapidVulkan
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_accelerationStructure != VK_NULL_HANDLE;
+      return m_accelerationStructure != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
     }
-
-
-#if VK_HEADER_VERSION >= 92
-    //! @note  Function: vkGetAccelerationStructureHandleNV
-    void GetAccelerationStructureHandleNV(const size_t dataSize, void * pData)
-    {
-      CheckError(vkGetAccelerationStructureHandleNV(m_device, m_accelerationStructure, dataSize, pData), "vkGetAccelerationStructureHandleNV", __FILE__, __LINE__);
-    }
-#endif
   };
 }
 

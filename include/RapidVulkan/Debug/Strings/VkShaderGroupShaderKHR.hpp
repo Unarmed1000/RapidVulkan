@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKACCELERATIONSTRUCTURETYPEKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKACCELERATIONSTRUCTURETYPEKHR_HPP
-#if VK_HEADER_VERSION >= 135
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSHADERGROUPSHADERKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKSHADERGROUPSHADERKHR_HPP
+#if VK_HEADER_VERSION >= 162
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,28 +33,32 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkAccelerationStructureTypeKHR& value)
+    inline const char* TryToString(const VkShaderGroupShaderKHR& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 135
-      case VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR:
-        return "VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR";
-#endif
-#if VK_HEADER_VERSION >= 135
-      case VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR:
-        return "VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR";
+#if VK_HEADER_VERSION >= 162
+      case VK_SHADER_GROUP_SHADER_GENERAL_KHR:
+        return "VK_SHADER_GROUP_SHADER_GENERAL_KHR";
 #endif
 #if VK_HEADER_VERSION >= 162
-      case VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR:
-        return "VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR";
+      case VK_SHADER_GROUP_SHADER_CLOSEST_HIT_KHR:
+        return "VK_SHADER_GROUP_SHADER_CLOSEST_HIT_KHR";
+#endif
+#if VK_HEADER_VERSION >= 162
+      case VK_SHADER_GROUP_SHADER_ANY_HIT_KHR:
+        return "VK_SHADER_GROUP_SHADER_ANY_HIT_KHR";
+#endif
+#if VK_HEADER_VERSION >= 162
+      case VK_SHADER_GROUP_SHADER_INTERSECTION_KHR:
+        return "VK_SHADER_GROUP_SHADER_INTERSECTION_KHR";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkAccelerationStructureTypeKHR& value)
+    inline const char* ToString(const VkShaderGroupShaderKHR& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");
