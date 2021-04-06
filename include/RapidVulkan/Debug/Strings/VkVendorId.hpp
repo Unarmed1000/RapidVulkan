@@ -57,6 +57,10 @@ namespace RapidVulkan
       case VK_VENDOR_ID_MESA:
         return "VK_VENDOR_ID_MESA";
 #endif
+#if VK_HEADER_VERSION >= 170
+      case VK_VENDOR_ID_POCL:
+        return "VK_VENDOR_ID_POCL";
+#endif
       default:
         return nullptr;
       }

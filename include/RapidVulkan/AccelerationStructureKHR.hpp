@@ -59,7 +59,7 @@ namespace RapidVulkan
 
         // Remove the data from other
         other.m_device = VK_NULL_HANDLE;
-        other.m_accelerationStructure = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+        other.m_accelerationStructure = VK_NULL_HANDLE;
       }
       return *this;
     }
@@ -72,13 +72,13 @@ namespace RapidVulkan
     {
       // Remove the data from other
       other.m_device = VK_NULL_HANDLE;
-      other.m_accelerationStructure = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      other.m_accelerationStructure = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     AccelerationStructureKHR()
       : m_device(VK_NULL_HANDLE)
-      , m_accelerationStructure(FIX_DEFAULT_FOR_TYPE_NOT_DEFINED)
+      , m_accelerationStructure(VK_NULL_HANDLE)
     {
     }
 
@@ -119,7 +119,7 @@ namespace RapidVulkan
     {
       const auto resource = m_accelerationStructure;
       m_device = VK_NULL_HANDLE;
-      m_accelerationStructure = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      m_accelerationStructure = VK_NULL_HANDLE;
       return resource;
     }
 
@@ -132,11 +132,11 @@ namespace RapidVulkan
       }
 
       assert(m_device != VK_NULL_HANDLE);
-      assert(m_accelerationStructure != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED);
+      assert(m_accelerationStructure != VK_NULL_HANDLE);
 
       vkDestroyAccelerationStructureKHR(m_device, m_accelerationStructure, nullptr);
       m_device = VK_NULL_HANDLE;
-      m_accelerationStructure = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      m_accelerationStructure = VK_NULL_HANDLE;
     }
 
     //! @brief Destroys any owned resources and assume control of the AccelerationStructureKHR (this object becomes responsible for releasing it)
@@ -222,7 +222,7 @@ namespace RapidVulkan
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_accelerationStructure != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      return m_accelerationStructure != VK_NULL_HANDLE;
     }
   };
 }

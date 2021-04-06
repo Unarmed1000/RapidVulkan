@@ -42,6 +42,10 @@ namespace RapidVulkan
       case VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT:
         return "VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT";
 #endif
+#if VK_HEADER_VERSION >= 170
+      case VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_VALVE:
+        return "VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_VALVE";
+#endif
       default:
         return nullptr;
       }

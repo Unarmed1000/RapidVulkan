@@ -59,7 +59,7 @@ namespace RapidVulkan
 
         // Remove the data from other
         other.m_device = VK_NULL_HANDLE;
-        other.m_deferredOperation = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+        other.m_deferredOperation = VK_NULL_HANDLE;
       }
       return *this;
     }
@@ -72,13 +72,13 @@ namespace RapidVulkan
     {
       // Remove the data from other
       other.m_device = VK_NULL_HANDLE;
-      other.m_deferredOperation = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      other.m_deferredOperation = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
     DeferredOperationKHR()
       : m_device(VK_NULL_HANDLE)
-      , m_deferredOperation(FIX_DEFAULT_FOR_TYPE_NOT_DEFINED)
+      , m_deferredOperation(VK_NULL_HANDLE)
     {
     }
 
@@ -109,7 +109,7 @@ namespace RapidVulkan
     {
       const auto resource = m_deferredOperation;
       m_device = VK_NULL_HANDLE;
-      m_deferredOperation = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      m_deferredOperation = VK_NULL_HANDLE;
       return resource;
     }
 
@@ -122,11 +122,11 @@ namespace RapidVulkan
       }
 
       assert(m_device != VK_NULL_HANDLE);
-      assert(m_deferredOperation != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED);
+      assert(m_deferredOperation != VK_NULL_HANDLE);
 
       vkDestroyDeferredOperationKHR(m_device, m_deferredOperation, nullptr);
       m_device = VK_NULL_HANDLE;
-      m_deferredOperation = FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      m_deferredOperation = VK_NULL_HANDLE;
     }
 
     //! @brief Destroys any owned resources and assume control of the DeferredOperationKHR (this object becomes responsible for releasing it)
@@ -193,7 +193,7 @@ namespace RapidVulkan
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_deferredOperation != FIX_DEFAULT_FOR_TYPE_NOT_DEFINED;
+      return m_deferredOperation != VK_NULL_HANDLE;
     }
 
 

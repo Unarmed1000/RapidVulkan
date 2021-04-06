@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKDESCRIPTORSETLAYOUTCREATEFLAGBITS_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKDESCRIPTORSETLAYOUTCREATEFLAGBITS_HPP
-#if VK_HEADER_VERSION >= 42
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSUBMITFLAGBITSKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKSUBMITFLAGBITSKHR_HPP
+#if VK_HEADER_VERSION >= 170
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,24 +33,20 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkDescriptorSetLayoutCreateFlagBits& value)
+    inline const char* TryToString(const VkSubmitFlagBitsKHR& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 131
-      case VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT:
-        return "VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT";
-#endif
 #if VK_HEADER_VERSION >= 170
-      case VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_VALVE:
-        return "VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_VALVE";
+      case VK_SUBMIT_PROTECTED_BIT_KHR:
+        return "VK_SUBMIT_PROTECTED_BIT_KHR";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkDescriptorSetLayoutCreateFlagBits& value)
+    inline const char* ToString(const VkSubmitFlagBitsKHR& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

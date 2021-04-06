@@ -58,6 +58,10 @@ namespace RapidVulkan
         return "VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC";
       case VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT:
         return "VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT";
+#if VK_HEADER_VERSION >= 170
+      case VK_DESCRIPTOR_TYPE_MUTABLE_VALVE:
+        return "VK_DESCRIPTOR_TYPE_MUTABLE_VALVE";
+#endif
       default:
         return nullptr;
       }
