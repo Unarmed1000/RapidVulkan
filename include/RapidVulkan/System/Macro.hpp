@@ -28,46 +28,61 @@
 
 #ifdef FSL_DEMOFRAMEWORK
 
-// Use the FslBase implementation
-#include <FslBase/Attributes.hpp>
-// NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-#define RAPIDVULKAN_ATTR_DEPRECATED                            FSL_ATTR_DEPRECATED
-// NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-#define RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT            FSL_FUNC_POSTFIX_WARN_UNUSED_RESULT
+  // Use the FslBase implementation
+  #include <FslBase/Attributes.hpp>
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
+  #define RAPIDVULKAN_ATTR_DEPRECATED                          FSL_ATTR_DEPRECATED
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
+  #define RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT                  FSL_FUNC_WARN_UNUSED_RESULT
 
 #else
 
-  #ifdef __GNUC__
+  // Check if we can implement the macros via standard functionality
+  #if defined(__STDC_VERSION__)
+    #if __STDC_VERSION__ >= 201710L
+      // C++17 or greater so use the standard methods
 
-    // GCC
-    #if __cplusplus > 201103 // Check if its C++14
       // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
       #define RAPIDVULKAN_ATTR_DEPRECATED                        [[deprecated]]
-    #else
       // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-      #define RAPIDVULKAN_ATTR_DEPRECATED
+      #define RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT                [[nodiscard]]
+
+    #elif __STDC_VERSION__ >= 201402L
+      // C++14 or greater so use the standard methods
+
+      // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
+      #define RAPIDVULKAN_ATTR_DEPRECATED                        [[deprecated]]
     #endif
-    // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-    #define RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT          __attribute__((warn_unused_result))
-
-  #elif defined(_MSC_VER)
-
-    // Visual studio
-    // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-    #define RAPIDVULKAN_ATTR_DEPRECATED                          __declspec(deprecated)
-    // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-    #define RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
-
-  #else
-
-    #pragma message("WARNING: RAPIDVULKAN_ATTR_DEPRECATED, RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT not implemented for this compiler")
-    // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-    #define RAPIDVULKAN_ATTR_DEPRECATED
-    // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-    #define RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
-
   #endif
 
+  // Check if any of the macros are undefined and try to see if we can find a compiler specific implementation
+  #if !defined(RAPIDVULKAN_ATTR_DEPRECATED) || !defined(RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT)
+    #if defined(__clang__)
+      #ifndef RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT
+        // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
+        #define RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT [[nodiscard]]
+      #endif
+    #elif defined(_MSC_VER)
+      // Visual studio
+      #ifndef RAPIDVULKAN_ATTR_DEPRECATED
+        // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
+        #define RAPIDVULKAN_ATTR_DEPRECATED                        __declspec(deprecated)
+      #endif
+    #elif ! defined(__GNUC__)
+        #pragma message("WARNING: RAPIDVULKAN_ATTR_DEPRECATED, RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT are not fully defined for this compiler")
+    #endif
+  #endif
+
+#endif
+
+#ifndef RAPIDVULKAN_ATTR_DEPRECATED
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
+  #define RAPIDVULKAN_ATTR_DEPRECATED
+#endif
+
+#ifndef RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
+  #define RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT
 #endif
 
 #endif

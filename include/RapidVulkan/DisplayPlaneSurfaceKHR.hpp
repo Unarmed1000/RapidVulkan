@@ -111,7 +111,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkSurfaceKHR Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
+    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkSurfaceKHR Release()
     {
       const auto resource = m_surface;
       m_instance = VK_NULL_HANDLE;

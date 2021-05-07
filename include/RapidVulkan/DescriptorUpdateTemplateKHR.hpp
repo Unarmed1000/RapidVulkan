@@ -115,7 +115,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkDescriptorUpdateTemplate Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
+    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkDescriptorUpdateTemplate Release()
     {
       const auto resource = m_descriptorUpdateTemplate;
       m_device = VK_NULL_HANDLE;

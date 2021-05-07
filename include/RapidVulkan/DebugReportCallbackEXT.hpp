@@ -111,7 +111,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkDebugReportCallbackEXT Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
+    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkDebugReportCallbackEXT Release()
     {
       const auto resource = m_callback;
       m_instance = VK_NULL_HANDLE;

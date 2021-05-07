@@ -111,7 +111,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkImage Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
+    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkImage Release()
     {
       const auto resource = m_image;
       m_device = VK_NULL_HANDLE;

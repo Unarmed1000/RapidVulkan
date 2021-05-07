@@ -112,7 +112,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkFence Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
+    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkFence Release()
     {
       const auto resource = m_fence;
       m_device = VK_NULL_HANDLE;

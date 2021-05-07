@@ -111,7 +111,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkPipeline Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
+    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkPipeline Release()
     {
       const auto resource = m_pipelines;
       m_device = VK_NULL_HANDLE;

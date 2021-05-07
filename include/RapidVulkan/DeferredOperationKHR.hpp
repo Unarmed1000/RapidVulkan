@@ -105,7 +105,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkDeferredOperationKHR Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
+    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkDeferredOperationKHR Release()
     {
       const auto resource = m_deferredOperation;
       m_device = VK_NULL_HANDLE;

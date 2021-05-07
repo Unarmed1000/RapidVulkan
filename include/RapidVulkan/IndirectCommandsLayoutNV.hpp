@@ -115,7 +115,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    VkIndirectCommandsLayoutNV Release() RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
+    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkIndirectCommandsLayoutNV Release()
     {
       const auto resource = m_indirectCommandsLayout;
       m_device = VK_NULL_HANDLE;
