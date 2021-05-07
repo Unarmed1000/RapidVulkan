@@ -93,6 +93,10 @@ namespace RapidVulkan
       case VK_DRIVER_ID_MOLTENVK:
         return "VK_DRIVER_ID_MOLTENVK";
 #endif
+#if VK_HEADER_VERSION >= 176
+      case VK_DRIVER_ID_COREAVI_PROPRIETARY:
+        return "VK_DRIVER_ID_COREAVI_PROPRIETARY";
+#endif
       default:
         return nullptr;
       }

@@ -22,6 +22,7 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
+// NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
 #define RAPIDVULKAN_PARAM_NOT_USED(pARAM)    ((void)(pARAM))
 
 
@@ -29,7 +30,9 @@
 
 // Use the FslBase implementation
 #include <FslBase/Attributes.hpp>
+// NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
 #define RAPIDVULKAN_ATTR_DEPRECATED                            FSL_ATTR_DEPRECATED
+// NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
 #define RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT            FSL_FUNC_POSTFIX_WARN_UNUSED_RESULT
 
 #else
@@ -38,22 +41,29 @@
 
     // GCC
     #if __cplusplus > 201103 // Check if its C++14
+      // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
       #define RAPIDVULKAN_ATTR_DEPRECATED                        [[deprecated]]
     #else
+      // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
       #define RAPIDVULKAN_ATTR_DEPRECATED
     #endif
+    // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
     #define RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT          __attribute__((warn_unused_result))
 
   #elif defined(_MSC_VER)
 
     // Visual studio
+    // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
     #define RAPIDVULKAN_ATTR_DEPRECATED                          __declspec(deprecated)
+    // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
     #define RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
 
   #else
 
     #pragma message("WARNING: RAPIDVULKAN_ATTR_DEPRECATED, RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT not implemented for this compiler")
+    // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
     #define RAPIDVULKAN_ATTR_DEPRECATED
+    // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
     #define RAPIDVULKAN_FUNC_POSTFIX_WARN_UNUSED_RESULT
 
   #endif

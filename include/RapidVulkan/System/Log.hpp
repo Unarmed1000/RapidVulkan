@@ -28,53 +28,89 @@
 
 #ifndef FSL_FEATURE_FSLBASE_LOG3
   #include <FslBase/Log/BasicLog.hpp>
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG(X)                               FSLBASICLOG(X)
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_IF(cONDITION, X)                 FSLBASICLOG_IF(cONDITION, X)
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_WARNING(X)                       FSLBASICLOG_WARNING(X)
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_WARNING_IF(cONDITION, X)         FSLBASICLOG_WARNING_IF(cONDITION, X)
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_ERROR(X)                         FSLBASICLOG_ERROR(X)
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_ERROR_IF(cONDITION, X)           FSLBASICLOG_ERROR_IF(cONDITION, X)
 
   // Log statements that are only included in debug builds.
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_DEBUG(X)                         FSLBASICLOG_DEBUG(X)
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_DEBUG_IF(cONDITION, X)           FSLBASICLOG_DEBUG_IF(cONDITION, X)
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_DEBUG_WARNING(X)                 FSLBASICLOG_DEBUG_WARNING(X)
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_DEBUG_WARNING_IF(cONDITION, X)   FSLBASICLOG_DEBUG_WARNING_IF(cONDITION, X)
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_DEBUG_ERROR(X)                   FSLBASICLOG_DEBUG_ERROR(X)
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_DEBUG_ERROR_IF(cONDITION, X)     FSLBASICLOG_DEBUG_ERROR_IF(cONDITION, X)
 #else
   #include <FslBase/Log/Log3Core.hpp>
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG(X)                               FSLLOG3_INFO(X)
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_IF(cONDITION, X)                 FSLLOG3_INFO_IF(cONDITION, X)
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_WARNING(X)                       FSLLOG3_WARNING(X)
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_WARNING_IF(cONDITION, X)         FSLLOG3_WARNING_IF(cONDITION, X)
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_ERROR(X)                         FSLLOG3_ERROR(X)
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_ERROR_IF(cONDITION, X)           FSLLOG3_ERROR_IF(cONDITION, X)
 
   // Log statements that are only included in debug builds.
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_DEBUG(X)                         FSLLOG3_DEBUG_INFO(X)
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_DEBUG_IF(cONDITION, X)           FSLLOG3_DEBUG_IF(cONDITION, X)
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_DEBUG_WARNING(X)                 FSLLOG3_DEBUG_WARNING(X)
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_DEBUG_WARNING_IF(cONDITION, X)   FSLLOG3_DEBUG_WARNING_IF(cONDITION, X)
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_DEBUG_ERROR(X)                   FSLLOG3_DEBUG_ERROR(X)
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_DEBUG_ERROR_IF(cONDITION, X)     FSLLOG3_DEBUG_ERROR_IF(cONDITION, X)
 #endif
 
 #else
 
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG(X)                               {}
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_IF(cONDITION, X)                 {}
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_WARNING(X)                       {}
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_WARNING_IF(cONDITION, X)         {}
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_ERROR(X)                         {}
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_ERROR_IF(cONDITION, X)           {}
 
   // Log statements that are only included in debug builds.
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_DEBUG(X)                         {}
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_DEBUG_IF(cONDITION, X)           {}
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_DEBUG_WARNING(X)                 {}
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_DEBUG_WARNING_IF(cONDITION, X)   {}
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_DEBUG_ERROR(X)                   {}
+  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
   #define RAPIDVULKAN_LOG_DEBUG_ERROR_IF(cONDITION, X)     {}
 
 #endif
