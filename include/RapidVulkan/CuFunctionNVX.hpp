@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_RENDERPASS2_HPP
-#define RAPIDVULKAN_RENDERPASS2_HPP
-#if VK_HEADER_VERSION >= 131
+#ifndef RAPIDVULKAN_CUFUNCTIONNVX_HPP
+#define RAPIDVULKAN_CUFUNCTIONNVX_HPP
+#if VK_HEADER_VERSION >= 189
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -34,16 +34,16 @@
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
-  class RenderPass2
+  class CuFunctionNVX
   {
     VkDevice m_device;
-    VkRenderPass m_renderPass;
+    VkCuFunctionNVX m_function;
   public:
-    RenderPass2(const RenderPass2&) = delete;
-    RenderPass2& operator=(const RenderPass2&) = delete;
+    CuFunctionNVX(const CuFunctionNVX&) = delete;
+    CuFunctionNVX& operator=(const CuFunctionNVX&) = delete;
 
     //! @brief Move assignment operator
-    RenderPass2& operator=(RenderPass2&& other) noexcept
+    CuFunctionNVX& operator=(CuFunctionNVX&& other) noexcept
     {
       if (this != &other)
       {
@@ -55,45 +55,45 @@ namespace RapidVulkan
 
         // Claim ownership here
         m_device = other.m_device;
-        m_renderPass = other.m_renderPass;
+        m_function = other.m_function;
 
         // Remove the data from other
         other.m_device = VK_NULL_HANDLE;
-        other.m_renderPass = VK_NULL_HANDLE;
+        other.m_function = VK_NULL_HANDLE;
       }
       return *this;
     }
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    RenderPass2(RenderPass2&& other) noexcept
+    CuFunctionNVX(CuFunctionNVX&& other) noexcept
       : m_device(other.m_device)
-      , m_renderPass(other.m_renderPass)
+      , m_function(other.m_function)
     {
       // Remove the data from other
       other.m_device = VK_NULL_HANDLE;
-      other.m_renderPass = VK_NULL_HANDLE;
+      other.m_function = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    RenderPass2()
+    CuFunctionNVX()
       : m_device(VK_NULL_HANDLE)
-      , m_renderPass(VK_NULL_HANDLE)
+      , m_function(VK_NULL_HANDLE)
     {
     }
 
-    //! @brief Assume control of the RenderPass2 (this object becomes responsible for releasing it)
-    explicit RenderPass2(const ClaimMode claimMode, const VkDevice device, const VkRenderPass renderPass)
-      : RenderPass2()
+    //! @brief Assume control of the CuFunctionNVX (this object becomes responsible for releasing it)
+    explicit CuFunctionNVX(const ClaimMode claimMode, const VkDevice device, const VkCuFunctionNVX function)
+      : CuFunctionNVX()
     {
-      Reset(claimMode, device, renderPass);
+      Reset(claimMode, device, function);
     }
 
-#if VK_HEADER_VERSION >= 131
+#if VK_HEADER_VERSION >= 189
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateRenderPass2
-    RenderPass2(const VkDevice device, const VkRenderPassCreateInfo2& createInfo)
-      : RenderPass2()
+    //! @note  Function: vkCreateCuFunctionNVX
+    CuFunctionNVX(const VkDevice device, const VkCuFunctionCreateInfoNVX& createInfo)
+      : CuFunctionNVX()
     {
       Reset(device, createInfo);
     }
@@ -101,25 +101,25 @@ namespace RapidVulkan
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
-    //! @note  Function: vkCreateRenderPass2
-    RenderPass2(const VkDevice device, const VkRenderPassCreateFlags flags, const uint32_t attachmentCount, VkAttachmentDescription2*const pAttachments, const uint32_t subpassCount, VkSubpassDescription2*const pSubpasses, const uint32_t dependencyCount, VkSubpassDependency2*const pDependencies, const uint32_t correlatedViewMaskCount, const uint32_t * pCorrelatedViewMasks)
-      : RenderPass2()
+    //! @note  Function: vkCreateCuFunctionNVX
+    CuFunctionNVX(const VkDevice device, const VkCuModuleNVX module, const char * pName)
+      : CuFunctionNVX()
     {
-      Reset(device, flags, attachmentCount, pAttachments, subpassCount, pSubpasses, dependencyCount, pDependencies, correlatedViewMaskCount, pCorrelatedViewMasks);
+      Reset(device, module, pName);
     }
 #endif
 
-    ~RenderPass2()
+    ~CuFunctionNVX()
     {
       Reset();
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkRenderPass Release()
+    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkCuFunctionNVX Release()
     {
-      const auto resource = m_renderPass;
+      const auto resource = m_function;
       m_device = VK_NULL_HANDLE;
-      m_renderPass = VK_NULL_HANDLE;
+      m_function = VK_NULL_HANDLE;
       return resource;
     }
 
@@ -132,15 +132,15 @@ namespace RapidVulkan
       }
 
       assert(m_device != VK_NULL_HANDLE);
-      assert(m_renderPass != VK_NULL_HANDLE);
+      assert(m_function != VK_NULL_HANDLE);
 
-      vkDestroyRenderPass(m_device, m_renderPass, nullptr);
+      vkDestroyCuFunctionNVX(m_device, m_function, nullptr);
       m_device = VK_NULL_HANDLE;
-      m_renderPass = VK_NULL_HANDLE;
+      m_function = VK_NULL_HANDLE;
     }
 
-    //! @brief Destroys any owned resources and assume control of the RenderPass2 (this object becomes responsible for releasing it)
-    void Reset(const ClaimMode claimMode, const VkDevice device, const VkRenderPass renderPass)
+    //! @brief Destroys any owned resources and assume control of the CuFunctionNVX (this object becomes responsible for releasing it)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkCuFunctionNVX function)
     {
       if (IsValid())
       {
@@ -149,13 +149,13 @@ namespace RapidVulkan
 
 
       m_device = device;
-      m_renderPass = renderPass;
+      m_function = function;
     }
 
-#if VK_HEADER_VERSION >= 131
+#if VK_HEADER_VERSION >= 189
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateRenderPass2
-    void Reset(const VkDevice device, const VkRenderPassCreateInfo2& createInfo)
+    //! @note  Function: vkCreateCuFunctionNVX
+    void Reset(const VkDevice device, const VkCuFunctionCreateInfoNVX& createInfo)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
       if (device == VK_NULL_HANDLE)
@@ -173,32 +173,25 @@ namespace RapidVulkan
       }
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
-      VkRenderPass renderPass;
-      CheckError(vkCreateRenderPass2(device, &createInfo, nullptr, &renderPass), "vkCreateRenderPass2", __FILE__, __LINE__);
+      VkCuFunctionNVX function;
+      CheckError(vkCreateCuFunctionNVX(device, &createInfo, nullptr, &function), "vkCreateCuFunctionNVX", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
-      m_renderPass = renderPass;
+      m_function = function;
     }
 #endif
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreateRenderPass2
-    void Reset(const VkDevice device, const VkRenderPassCreateFlags flags, const uint32_t attachmentCount, VkAttachmentDescription2*const pAttachments, const uint32_t subpassCount, VkSubpassDescription2*const pSubpasses, const uint32_t dependencyCount, VkSubpassDependency2*const pDependencies, const uint32_t correlatedViewMaskCount, const uint32_t * pCorrelatedViewMasks)
+    //! @note  Function: vkCreateCuFunctionNVX
+    void Reset(const VkDevice device, const VkCuModuleNVX module, const char * pName)
     {
-      VkRenderPassCreateInfo2 createInfo{};
-      createInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO2;
+      VkCuFunctionCreateInfoNVX createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_CU_FUNCTION_CREATE_INFO_NVX;
       createInfo.pNext = nullptr;
-      createInfo.flags = flags;
-      createInfo.attachmentCount = attachmentCount;
-      createInfo.pAttachments = pAttachments;
-      createInfo.subpassCount = subpassCount;
-      createInfo.pSubpasses = pSubpasses;
-      createInfo.dependencyCount = dependencyCount;
-      createInfo.pDependencies = pDependencies;
-      createInfo.correlatedViewMaskCount = correlatedViewMaskCount;
-      createInfo.pCorrelatedViewMasks = pCorrelatedViewMasks;
+      createInfo.module = module;
+      createInfo.pName = pName;
 
       Reset(device, createInfo);
     }
@@ -211,37 +204,22 @@ namespace RapidVulkan
     }
 
     //! @brief Get the associated resource handle
-    VkRenderPass Get() const
+    VkCuFunctionNVX Get() const
     {
-      return m_renderPass;
+      return m_function;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkRenderPass* GetPointer() const
+    const VkCuFunctionNVX* GetPointer() const
     {
-      return &m_renderPass;
+      return &m_function;
     }
 
     //! @brief Check if this object contains a valid resource
     inline bool IsValid() const
     {
-      return m_renderPass != VK_NULL_HANDLE;
+      return m_function != VK_NULL_HANDLE;
     }
-
-    //! @note  Function: vkGetRenderAreaGranularity
-    void GetRenderAreaGranularity(VkExtent2D * pGranularity)
-    {
-      vkGetRenderAreaGranularity(m_device, m_renderPass, pGranularity);
-    }
-
-
-#if VK_HEADER_VERSION >= 189
-    //! @note  Function: vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI
-    void GetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI(VkExtent2D * pMaxWorkgroupSize)
-    {
-      CheckError(vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI(m_device, m_renderPass, pMaxWorkgroupSize), "vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI", __FILE__, __LINE__);
-    }
-#endif
   };
 }
 

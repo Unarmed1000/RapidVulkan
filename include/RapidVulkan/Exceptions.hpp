@@ -26,7 +26,6 @@
 #include <stdexcept>
 #include <string>
 #include <utility>
-
 #include <vulkan/vulkan.h>
 
 namespace RapidVulkan

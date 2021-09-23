@@ -52,6 +52,10 @@ namespace RapidVulkan
         return "VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT";
       case VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT:
         return "VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT";
+#if VK_HEADER_VERSION >= 189
+      case VK_IMAGE_USAGE_INVOCATION_MASK_BIT_HUAWEI:
+        return "VK_IMAGE_USAGE_INVOCATION_MASK_BIT_HUAWEI";
+#endif
       default:
         return nullptr;
       }

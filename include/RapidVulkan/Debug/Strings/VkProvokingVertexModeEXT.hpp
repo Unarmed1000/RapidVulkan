@@ -1,5 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKATTACHMENTSTOREOP_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKATTACHMENTSTOREOP_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKPROVOKINGVERTEXMODEEXT_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKPROVOKINGVERTEXMODEEXT_HPP
+#if VK_HEADER_VERSION >= 189
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -32,24 +33,24 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkAttachmentStoreOp& value)
+    inline const char* TryToString(const VkProvokingVertexModeEXT& value)
     {
       switch(value)
       {
-      case VK_ATTACHMENT_STORE_OP_STORE:
-        return "VK_ATTACHMENT_STORE_OP_STORE";
-      case VK_ATTACHMENT_STORE_OP_DONT_CARE:
-        return "VK_ATTACHMENT_STORE_OP_DONT_CARE";
 #if VK_HEADER_VERSION >= 189
-      case VK_ATTACHMENT_STORE_OP_NONE_EXT:
-        return "VK_ATTACHMENT_STORE_OP_NONE_EXT";
+      case VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT:
+        return "VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT";
+#endif
+#if VK_HEADER_VERSION >= 189
+      case VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT:
+        return "VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkAttachmentStoreOp& value)
+    inline const char* ToString(const VkProvokingVertexModeEXT& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");
@@ -57,4 +58,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

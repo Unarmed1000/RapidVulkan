@@ -97,6 +97,14 @@ namespace RapidVulkan
       case VK_DRIVER_ID_COREAVI_PROPRIETARY:
         return "VK_DRIVER_ID_COREAVI_PROPRIETARY";
 #endif
+#if VK_HEADER_VERSION >= 189
+      case VK_DRIVER_ID_JUICE_PROPRIETARY:
+        return "VK_DRIVER_ID_JUICE_PROPRIETARY";
+#endif
+#if VK_HEADER_VERSION >= 189
+      case VK_DRIVER_ID_VERISILICON_PROPRIETARY:
+        return "VK_DRIVER_ID_VERISILICON_PROPRIETARY";
+#endif
       default:
         return nullptr;
       }

@@ -52,6 +52,10 @@ namespace RapidVulkan
         return "VK_SHADER_STAGE_ALL_GRAPHICS";
       case VK_SHADER_STAGE_ALL:
         return "VK_SHADER_STAGE_ALL";
+#if VK_HEADER_VERSION >= 189
+      case VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI:
+        return "VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI";
+#endif
       default:
         return nullptr;
       }

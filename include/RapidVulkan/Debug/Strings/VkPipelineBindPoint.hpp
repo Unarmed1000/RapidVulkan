@@ -40,6 +40,10 @@ namespace RapidVulkan
         return "VK_PIPELINE_BIND_POINT_GRAPHICS";
       case VK_PIPELINE_BIND_POINT_COMPUTE:
         return "VK_PIPELINE_BIND_POINT_COMPUTE";
+#if VK_HEADER_VERSION >= 189
+      case VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI:
+        return "VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI";
+#endif
       default:
         return nullptr;
       }

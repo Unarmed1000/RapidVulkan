@@ -225,6 +225,15 @@ namespace RapidVulkan
     {
       vkGetRenderAreaGranularity(m_device, m_renderPass, pGranularity);
     }
+
+
+#if VK_HEADER_VERSION >= 189
+    //! @note  Function: vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI
+    void GetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI(VkExtent2D * pMaxWorkgroupSize)
+    {
+      CheckError(vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI(m_device, m_renderPass, pMaxWorkgroupSize), "vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI", __FILE__, __LINE__);
+    }
+#endif
   };
 }
 
