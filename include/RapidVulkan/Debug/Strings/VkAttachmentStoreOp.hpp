@@ -40,9 +40,9 @@ namespace RapidVulkan
         return "VK_ATTACHMENT_STORE_OP_STORE";
       case VK_ATTACHMENT_STORE_OP_DONT_CARE:
         return "VK_ATTACHMENT_STORE_OP_DONT_CARE";
-#if VK_HEADER_VERSION >= 189
-      case VK_ATTACHMENT_STORE_OP_NONE_EXT:
-        return "VK_ATTACHMENT_STORE_OP_NONE_EXT";
+#if VK_HEADER_VERSION >= 198
+      case VK_ATTACHMENT_STORE_OP_NONE_KHR:
+        return "VK_ATTACHMENT_STORE_OP_NONE_KHR";
 #endif
       default:
         return nullptr;

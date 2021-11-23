@@ -105,6 +105,18 @@ namespace RapidVulkan
       case VK_DRIVER_ID_VERISILICON_PROPRIETARY:
         return "VK_DRIVER_ID_VERISILICON_PROPRIETARY";
 #endif
+#if VK_HEADER_VERSION >= 198
+      case VK_DRIVER_ID_MESA_TURNIP:
+        return "VK_DRIVER_ID_MESA_TURNIP";
+#endif
+#if VK_HEADER_VERSION >= 198
+      case VK_DRIVER_ID_MESA_V3DV:
+        return "VK_DRIVER_ID_MESA_V3DV";
+#endif
+#if VK_HEADER_VERSION >= 198
+      case VK_DRIVER_ID_MESA_PANVK:
+        return "VK_DRIVER_ID_MESA_PANVK";
+#endif
       default:
         return nullptr;
       }

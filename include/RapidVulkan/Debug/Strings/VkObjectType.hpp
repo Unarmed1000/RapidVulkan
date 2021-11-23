@@ -149,6 +149,10 @@ namespace RapidVulkan
       case VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE:
         return "VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE";
 #endif
+#if VK_HEADER_VERSION >= 198
+      case VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA:
+        return "VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA";
+#endif
       default:
         return nullptr;
       }
