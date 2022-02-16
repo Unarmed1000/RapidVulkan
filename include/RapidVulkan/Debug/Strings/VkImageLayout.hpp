@@ -78,6 +78,14 @@ namespace RapidVulkan
       case VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL:
         return "VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL";
 #endif
+#if VK_HEADER_VERSION >= 204
+      case VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL:
+        return "VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL";
+#endif
+#if VK_HEADER_VERSION >= 204
+      case VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL:
+        return "VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL";
+#endif
       default:
         return nullptr;
       }

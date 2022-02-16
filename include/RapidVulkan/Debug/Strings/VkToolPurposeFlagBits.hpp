@@ -1,5 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKATTACHMENTSTOREOP_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKATTACHMENTSTOREOP_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKTOOLPURPOSEFLAGBITS_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKTOOLPURPOSEFLAGBITS_HPP
+#if VK_HEADER_VERSION >= 204
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -32,28 +33,36 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkAttachmentStoreOp& value)
+    inline const char* TryToString(const VkToolPurposeFlagBits& value)
     {
       switch(value)
       {
-      case VK_ATTACHMENT_STORE_OP_STORE:
-        return "VK_ATTACHMENT_STORE_OP_STORE";
-      case VK_ATTACHMENT_STORE_OP_DONT_CARE:
-        return "VK_ATTACHMENT_STORE_OP_DONT_CARE";
 #if VK_HEADER_VERSION >= 204
-      case VK_ATTACHMENT_STORE_OP_NONE:
-        return "VK_ATTACHMENT_STORE_OP_NONE";
-#elif VK_HEADER_VERSION >= 141
-      case VK_ATTACHMENT_STORE_OP_NONE_QCOM:
-        return "VK_ATTACHMENT_STORE_OP_NONE_QCOM";
+      case VK_TOOL_PURPOSE_VALIDATION_BIT:
+        return "VK_TOOL_PURPOSE_VALIDATION_BIT";
 #endif
-
+#if VK_HEADER_VERSION >= 204
+      case VK_TOOL_PURPOSE_PROFILING_BIT:
+        return "VK_TOOL_PURPOSE_PROFILING_BIT";
+#endif
+#if VK_HEADER_VERSION >= 204
+      case VK_TOOL_PURPOSE_TRACING_BIT:
+        return "VK_TOOL_PURPOSE_TRACING_BIT";
+#endif
+#if VK_HEADER_VERSION >= 204
+      case VK_TOOL_PURPOSE_ADDITIONAL_FEATURES_BIT:
+        return "VK_TOOL_PURPOSE_ADDITIONAL_FEATURES_BIT";
+#endif
+#if VK_HEADER_VERSION >= 204
+      case VK_TOOL_PURPOSE_MODIFYING_FEATURES_BIT:
+        return "VK_TOOL_PURPOSE_MODIFYING_FEATURES_BIT";
+#endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkAttachmentStoreOp& value)
+    inline const char* ToString(const VkToolPurposeFlagBits& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");
@@ -61,4 +70,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

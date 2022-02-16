@@ -92,6 +92,10 @@ namespace RapidVulkan
       case VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS:
         return "VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS";
 #endif
+#if VK_HEADER_VERSION >= 204
+      case VK_PIPELINE_COMPILE_REQUIRED:
+        return "VK_PIPELINE_COMPILE_REQUIRED";
+#endif
       default:
         return nullptr;
       }

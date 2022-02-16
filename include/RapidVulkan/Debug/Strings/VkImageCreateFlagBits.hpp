@@ -74,6 +74,10 @@ namespace RapidVulkan
       case VK_IMAGE_CREATE_DISJOINT_BIT:
         return "VK_IMAGE_CREATE_DISJOINT_BIT";
 #endif
+#if VK_HEADER_VERSION >= 204
+      case VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_QCOM:
+        return "VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_QCOM";
+#endif
       default:
         return nullptr;
       }

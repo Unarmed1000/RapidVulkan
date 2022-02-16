@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_PRIVATEDATASLOTEXT_HPP
-#define RAPIDVULKAN_PRIVATEDATASLOTEXT_HPP
-#if VK_HEADER_VERSION >= 141
+#ifndef RAPIDVULKAN_PRIVATEDATASLOT_HPP
+#define RAPIDVULKAN_PRIVATEDATASLOT_HPP
+#if VK_HEADER_VERSION >= 204
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -34,16 +34,16 @@
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
-  class PrivateDataSlotEXT
+  class PrivateDataSlot
   {
     VkDevice m_device;
     VkPrivateDataSlot m_privateDataSlot;
   public:
-    PrivateDataSlotEXT(const PrivateDataSlotEXT&) = delete;
-    PrivateDataSlotEXT& operator=(const PrivateDataSlotEXT&) = delete;
+    PrivateDataSlot(const PrivateDataSlot&) = delete;
+    PrivateDataSlot& operator=(const PrivateDataSlot&) = delete;
 
     //! @brief Move assignment operator
-    PrivateDataSlotEXT& operator=(PrivateDataSlotEXT&& other) noexcept
+    PrivateDataSlot& operator=(PrivateDataSlot&& other) noexcept
     {
       if (this != &other)
       {
@@ -66,7 +66,7 @@ namespace RapidVulkan
 
     //! @brief Move constructor
     //! Transfer ownership from other to this
-    PrivateDataSlotEXT(PrivateDataSlotEXT&& other) noexcept
+    PrivateDataSlot(PrivateDataSlot&& other) noexcept
       : m_device(other.m_device)
       , m_privateDataSlot(other.m_privateDataSlot)
     {
@@ -76,24 +76,24 @@ namespace RapidVulkan
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    PrivateDataSlotEXT()
+    PrivateDataSlot()
       : m_device(VK_NULL_HANDLE)
       , m_privateDataSlot(VK_NULL_HANDLE)
     {
     }
 
-    //! @brief Assume control of the PrivateDataSlotEXT (this object becomes responsible for releasing it)
-    explicit PrivateDataSlotEXT(const ClaimMode claimMode, const VkDevice device, const VkPrivateDataSlot privateDataSlot)
-      : PrivateDataSlotEXT()
+    //! @brief Assume control of the PrivateDataSlot (this object becomes responsible for releasing it)
+    explicit PrivateDataSlot(const ClaimMode claimMode, const VkDevice device, const VkPrivateDataSlot privateDataSlot)
+      : PrivateDataSlot()
     {
       Reset(claimMode, device, privateDataSlot);
     }
 
-#if VK_HEADER_VERSION >= 141
+#if VK_HEADER_VERSION >= 204
     //! @brief Create the requested resource
-    //! @note  Function: vkCreatePrivateDataSlotEXT
-    PrivateDataSlotEXT(const VkDevice device, const VkPrivateDataSlotCreateInfo& createInfo)
-      : PrivateDataSlotEXT()
+    //! @note  Function: vkCreatePrivateDataSlot
+    PrivateDataSlot(const VkDevice device, const VkPrivateDataSlotCreateInfo& createInfo)
+      : PrivateDataSlot()
     {
       Reset(device, createInfo);
     }
@@ -101,15 +101,15 @@ namespace RapidVulkan
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Create the requested resource
-    //! @note  Function: vkCreatePrivateDataSlotEXT
-    PrivateDataSlotEXT(const VkDevice device, const VkPrivateDataSlotCreateFlags flags)
-      : PrivateDataSlotEXT()
+    //! @note  Function: vkCreatePrivateDataSlot
+    PrivateDataSlot(const VkDevice device, const VkPrivateDataSlotCreateFlags flags)
+      : PrivateDataSlot()
     {
       Reset(device, flags);
     }
 #endif
 
-    ~PrivateDataSlotEXT()
+    ~PrivateDataSlot()
     {
       Reset();
     }
@@ -134,12 +134,12 @@ namespace RapidVulkan
       assert(m_device != VK_NULL_HANDLE);
       assert(m_privateDataSlot != VK_NULL_HANDLE);
 
-      vkDestroyPrivateDataSlotEXT(m_device, m_privateDataSlot, nullptr);
+      vkDestroyPrivateDataSlot(m_device, m_privateDataSlot, nullptr);
       m_device = VK_NULL_HANDLE;
       m_privateDataSlot = VK_NULL_HANDLE;
     }
 
-    //! @brief Destroys any owned resources and assume control of the PrivateDataSlotEXT (this object becomes responsible for releasing it)
+    //! @brief Destroys any owned resources and assume control of the PrivateDataSlot (this object becomes responsible for releasing it)
     void Reset(const ClaimMode claimMode, const VkDevice device, const VkPrivateDataSlot privateDataSlot)
     {
       if (IsValid())
@@ -152,9 +152,9 @@ namespace RapidVulkan
       m_privateDataSlot = privateDataSlot;
     }
 
-#if VK_HEADER_VERSION >= 141
+#if VK_HEADER_VERSION >= 204
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreatePrivateDataSlotEXT
+    //! @note  Function: vkCreatePrivateDataSlot
     void Reset(const VkDevice device, const VkPrivateDataSlotCreateInfo& createInfo)
     {
 #ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
@@ -174,7 +174,7 @@ namespace RapidVulkan
 
       // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
       VkPrivateDataSlot privateDataSlot;
-      CheckError(vkCreatePrivateDataSlotEXT(device, &createInfo, nullptr, &privateDataSlot), "vkCreatePrivateDataSlotEXT", __FILE__, __LINE__);
+      CheckError(vkCreatePrivateDataSlot(device, &createInfo, nullptr, &privateDataSlot), "vkCreatePrivateDataSlot", __FILE__, __LINE__);
 
       // Everything is ready, so assign the members
       m_device = device;
@@ -184,7 +184,7 @@ namespace RapidVulkan
 
 #ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
     //! @brief Destroys any owned resources and then creates the requested one
-    //! @note  Function: vkCreatePrivateDataSlotEXT
+    //! @note  Function: vkCreatePrivateDataSlot
     void Reset(const VkDevice device, const VkPrivateDataSlotCreateFlags flags)
     {
       VkPrivateDataSlotCreateInfo createInfo{};

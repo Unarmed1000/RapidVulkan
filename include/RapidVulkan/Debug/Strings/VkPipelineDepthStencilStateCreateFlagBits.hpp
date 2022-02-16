@@ -1,5 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKATTACHMENTSTOREOP_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKATTACHMENTSTOREOP_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKPIPELINEDEPTHSTENCILSTATECREATEFLAGBITS_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKPIPELINEDEPTHSTENCILSTATECREATEFLAGBITS_HPP
+#if VK_HEADER_VERSION >= 204
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -32,28 +33,24 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkAttachmentStoreOp& value)
+    inline const char* TryToString(const VkPipelineDepthStencilStateCreateFlagBits& value)
     {
       switch(value)
       {
-      case VK_ATTACHMENT_STORE_OP_STORE:
-        return "VK_ATTACHMENT_STORE_OP_STORE";
-      case VK_ATTACHMENT_STORE_OP_DONT_CARE:
-        return "VK_ATTACHMENT_STORE_OP_DONT_CARE";
 #if VK_HEADER_VERSION >= 204
-      case VK_ATTACHMENT_STORE_OP_NONE:
-        return "VK_ATTACHMENT_STORE_OP_NONE";
-#elif VK_HEADER_VERSION >= 141
-      case VK_ATTACHMENT_STORE_OP_NONE_QCOM:
-        return "VK_ATTACHMENT_STORE_OP_NONE_QCOM";
+      case VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_ARM:
+        return "VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_ARM";
 #endif
-
+#if VK_HEADER_VERSION >= 204
+      case VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_ARM:
+        return "VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_ARM";
+#endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkAttachmentStoreOp& value)
+    inline const char* ToString(const VkPipelineDepthStencilStateCreateFlagBits& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");
@@ -61,4 +58,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

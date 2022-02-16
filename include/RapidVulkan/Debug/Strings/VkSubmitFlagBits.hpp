@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSUBMITFLAGBITSKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKSUBMITFLAGBITSKHR_HPP
-#if VK_HEADER_VERSION >= 170
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSUBMITFLAGBITS_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKSUBMITFLAGBITS_HPP
+#if VK_HEADER_VERSION >= 204
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,20 +33,20 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkSubmitFlagBitsKHR& value)
+    inline const char* TryToString(const VkSubmitFlagBits& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 170
-      case VK_SUBMIT_PROTECTED_BIT_KHR:
-        return "VK_SUBMIT_PROTECTED_BIT_KHR";
+#if VK_HEADER_VERSION >= 204
+      case VK_SUBMIT_PROTECTED_BIT:
+        return "VK_SUBMIT_PROTECTED_BIT";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkSubmitFlagBitsKHR& value)
+    inline const char* ToString(const VkSubmitFlagBits& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

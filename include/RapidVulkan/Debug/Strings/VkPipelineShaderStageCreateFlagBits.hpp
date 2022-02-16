@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKTOOLPURPOSEFLAGBITSEXT_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKTOOLPURPOSEFLAGBITSEXT_HPP
-#if VK_HEADER_VERSION >= 130
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKPIPELINESHADERSTAGECREATEFLAGBITS_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKPIPELINESHADERSTAGECREATEFLAGBITS_HPP
+#if VK_HEADER_VERSION >= 121
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,44 +33,24 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkToolPurposeFlagBitsEXT& value)
+    inline const char* TryToString(const VkPipelineShaderStageCreateFlagBits& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 130
-      case VK_TOOL_PURPOSE_VALIDATION_BIT_EXT:
-        return "VK_TOOL_PURPOSE_VALIDATION_BIT_EXT";
+#if VK_HEADER_VERSION >= 204
+      case VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT:
+        return "VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT";
 #endif
-#if VK_HEADER_VERSION >= 130
-      case VK_TOOL_PURPOSE_PROFILING_BIT_EXT:
-        return "VK_TOOL_PURPOSE_PROFILING_BIT_EXT";
-#endif
-#if VK_HEADER_VERSION >= 130
-      case VK_TOOL_PURPOSE_TRACING_BIT_EXT:
-        return "VK_TOOL_PURPOSE_TRACING_BIT_EXT";
-#endif
-#if VK_HEADER_VERSION >= 130
-      case VK_TOOL_PURPOSE_ADDITIONAL_FEATURES_BIT_EXT:
-        return "VK_TOOL_PURPOSE_ADDITIONAL_FEATURES_BIT_EXT";
-#endif
-#if VK_HEADER_VERSION >= 130
-      case VK_TOOL_PURPOSE_MODIFYING_FEATURES_BIT_EXT:
-        return "VK_TOOL_PURPOSE_MODIFYING_FEATURES_BIT_EXT";
-#endif
-#if VK_HEADER_VERSION >= 130
-      case VK_TOOL_PURPOSE_DEBUG_REPORTING_BIT_EXT:
-        return "VK_TOOL_PURPOSE_DEBUG_REPORTING_BIT_EXT";
-#endif
-#if VK_HEADER_VERSION >= 130
-      case VK_TOOL_PURPOSE_DEBUG_MARKERS_BIT_EXT:
-        return "VK_TOOL_PURPOSE_DEBUG_MARKERS_BIT_EXT";
+#if VK_HEADER_VERSION >= 204
+      case VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT:
+        return "VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkToolPurposeFlagBitsEXT& value)
+    inline const char* ToString(const VkPipelineShaderStageCreateFlagBits& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

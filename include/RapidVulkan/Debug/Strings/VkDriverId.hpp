@@ -117,6 +117,14 @@ namespace RapidVulkan
       case VK_DRIVER_ID_MESA_PANVK:
         return "VK_DRIVER_ID_MESA_PANVK";
 #endif
+#if VK_HEADER_VERSION >= 204
+      case VK_DRIVER_ID_SAMSUNG_PROPRIETARY:
+        return "VK_DRIVER_ID_SAMSUNG_PROPRIETARY";
+#endif
+#if VK_HEADER_VERSION >= 204
+      case VK_DRIVER_ID_MESA_VENUS:
+        return "VK_DRIVER_ID_MESA_VENUS";
+#endif
       default:
         return nullptr;
       }

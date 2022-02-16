@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKRENDERINGFLAGBITSKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKRENDERINGFLAGBITSKHR_HPP
-#if VK_HEADER_VERSION >= 198
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKPIPELINECREATIONFEEDBACKFLAGBITS_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKPIPELINECREATIONFEEDBACKFLAGBITS_HPP
+#if VK_HEADER_VERSION >= 204
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,28 +33,28 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkRenderingFlagBitsKHR& value)
+    inline const char* TryToString(const VkPipelineCreationFeedbackFlagBits& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 198
-      case VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT_KHR:
-        return "VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT_KHR";
+#if VK_HEADER_VERSION >= 204
+      case VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT:
+        return "VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT";
 #endif
-#if VK_HEADER_VERSION >= 198
-      case VK_RENDERING_SUSPENDING_BIT_KHR:
-        return "VK_RENDERING_SUSPENDING_BIT_KHR";
+#if VK_HEADER_VERSION >= 204
+      case VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT:
+        return "VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT";
 #endif
-#if VK_HEADER_VERSION >= 198
-      case VK_RENDERING_RESUMING_BIT_KHR:
-        return "VK_RENDERING_RESUMING_BIT_KHR";
+#if VK_HEADER_VERSION >= 204
+      case VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT:
+        return "VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkRenderingFlagBitsKHR& value)
+    inline const char* ToString(const VkPipelineCreationFeedbackFlagBits& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

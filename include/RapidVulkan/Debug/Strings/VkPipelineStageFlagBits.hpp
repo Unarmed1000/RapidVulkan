@@ -70,6 +70,10 @@ namespace RapidVulkan
         return "VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT";
       case VK_PIPELINE_STAGE_ALL_COMMANDS_BIT:
         return "VK_PIPELINE_STAGE_ALL_COMMANDS_BIT";
+#if VK_HEADER_VERSION >= 204
+      case VK_PIPELINE_STAGE_NONE:
+        return "VK_PIPELINE_STAGE_NONE";
+#endif
       default:
         return nullptr;
       }

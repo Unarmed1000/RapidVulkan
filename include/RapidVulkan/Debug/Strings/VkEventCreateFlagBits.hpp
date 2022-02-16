@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKPIPELINECREATIONFEEDBACKFLAGBITSEXT_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKPIPELINECREATIONFEEDBACKFLAGBITSEXT_HPP
-#if VK_HEADER_VERSION >= 106
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKEVENTCREATEFLAGBITS_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKEVENTCREATEFLAGBITS_HPP
+#if VK_HEADER_VERSION >= 170
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,28 +33,20 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkPipelineCreationFeedbackFlagBitsEXT& value)
+    inline const char* TryToString(const VkEventCreateFlagBits& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 106
-      case VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT_EXT:
-        return "VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT_EXT";
-#endif
-#if VK_HEADER_VERSION >= 106
-      case VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT_EXT:
-        return "VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT_EXT";
-#endif
-#if VK_HEADER_VERSION >= 106
-      case VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT_EXT:
-        return "VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT_EXT";
+#if VK_HEADER_VERSION >= 204
+      case VK_EVENT_CREATE_DEVICE_ONLY_BIT:
+        return "VK_EVENT_CREATE_DEVICE_ONLY_BIT";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkPipelineCreationFeedbackFlagBitsEXT& value)
+    inline const char* ToString(const VkEventCreateFlagBits& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

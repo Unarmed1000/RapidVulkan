@@ -364,6 +364,51 @@ namespace RapidVulkan
       return vkGetDeviceMemoryOpaqueCaptureAddress(m_device, pInfo);
     }
 #endif
+
+
+#if VK_HEADER_VERSION >= 204
+    //! @note  Function: vkSetPrivateData
+    void SetPrivateData(const VkObjectType objectType, const uint64_t objectHandle, const VkPrivateDataSlot privateDataSlot, const uint64_t data)
+    {
+      CheckError(vkSetPrivateData(m_device, objectType, objectHandle, privateDataSlot, data), "vkSetPrivateData", __FILE__, __LINE__);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 204
+    //! @note  Function: vkGetPrivateData
+    void GetPrivateData(const VkObjectType objectType, const uint64_t objectHandle, const VkPrivateDataSlot privateDataSlot, uint64_t * pData)
+    {
+      vkGetPrivateData(m_device, objectType, objectHandle, privateDataSlot, pData);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 204
+    //! @note  Function: vkGetDeviceBufferMemoryRequirements
+    void GetDeviceBufferMemoryRequirements(const VkDeviceBufferMemoryRequirements * pInfo, VkMemoryRequirements2 * pMemoryRequirements)
+    {
+      vkGetDeviceBufferMemoryRequirements(m_device, pInfo, pMemoryRequirements);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 204
+    //! @note  Function: vkGetDeviceImageMemoryRequirements
+    void GetDeviceImageMemoryRequirements(const VkDeviceImageMemoryRequirements * pInfo, VkMemoryRequirements2 * pMemoryRequirements)
+    {
+      vkGetDeviceImageMemoryRequirements(m_device, pInfo, pMemoryRequirements);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 204
+    //! @note  Function: vkGetDeviceImageSparseMemoryRequirements
+    void GetDeviceImageSparseMemoryRequirements(const VkDeviceImageMemoryRequirements * pInfo, uint32_t * pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2 * pSparseMemoryRequirements)
+    {
+      vkGetDeviceImageSparseMemoryRequirements(m_device, pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements);
+    }
+#endif
   };
 }
 

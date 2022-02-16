@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKQUEUEGLOBALPRIORITYEXT_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKQUEUEGLOBALPRIORITYEXT_HPP
-#if VK_HEADER_VERSION >= 65
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKRENDERINGFLAGBITS_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKRENDERINGFLAGBITS_HPP
+#if VK_HEADER_VERSION >= 204
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,32 +33,28 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkQueueGlobalPriorityEXT& value)
+    inline const char* TryToString(const VkRenderingFlagBits& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 68
-      case VK_QUEUE_GLOBAL_PRIORITY_LOW_EXT:
-        return "VK_QUEUE_GLOBAL_PRIORITY_LOW_EXT";
+#if VK_HEADER_VERSION >= 204
+      case VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT:
+        return "VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT";
 #endif
-#if VK_HEADER_VERSION >= 68
-      case VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT:
-        return "VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT";
+#if VK_HEADER_VERSION >= 204
+      case VK_RENDERING_SUSPENDING_BIT:
+        return "VK_RENDERING_SUSPENDING_BIT";
 #endif
-#if VK_HEADER_VERSION >= 68
-      case VK_QUEUE_GLOBAL_PRIORITY_HIGH_EXT:
-        return "VK_QUEUE_GLOBAL_PRIORITY_HIGH_EXT";
-#endif
-#if VK_HEADER_VERSION >= 68
-      case VK_QUEUE_GLOBAL_PRIORITY_REALTIME_EXT:
-        return "VK_QUEUE_GLOBAL_PRIORITY_REALTIME_EXT";
+#if VK_HEADER_VERSION >= 204
+      case VK_RENDERING_RESUMING_BIT:
+        return "VK_RENDERING_RESUMING_BIT";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkQueueGlobalPriorityEXT& value)
+    inline const char* ToString(const VkRenderingFlagBits& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

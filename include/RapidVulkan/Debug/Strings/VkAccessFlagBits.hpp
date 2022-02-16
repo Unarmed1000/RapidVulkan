@@ -70,6 +70,10 @@ namespace RapidVulkan
         return "VK_ACCESS_MEMORY_READ_BIT";
       case VK_ACCESS_MEMORY_WRITE_BIT:
         return "VK_ACCESS_MEMORY_WRITE_BIT";
+#if VK_HEADER_VERSION >= 204
+      case VK_ACCESS_NONE:
+        return "VK_ACCESS_NONE";
+#endif
       default:
         return nullptr;
       }

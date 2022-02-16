@@ -54,6 +54,14 @@ namespace RapidVulkan
         return "VK_PIPELINE_CREATE_DISPATCH_BASE";
 #endif
 
+#if VK_HEADER_VERSION >= 204
+      case VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT:
+        return "VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT";
+#endif
+#if VK_HEADER_VERSION >= 204
+      case VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT:
+        return "VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT";
+#endif
       default:
         return nullptr;
       }
