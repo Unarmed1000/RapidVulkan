@@ -1,5 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKIMAGEASPECTFLAGBITS_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKIMAGEASPECTFLAGBITS_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKGRAPHICSPIPELINELIBRARYFLAGBITSEXT_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKGRAPHICSPIPELINELIBRARYFLAGBITSEXT_HPP
+#if VK_HEADER_VERSION >= 211
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -32,40 +33,32 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkImageAspectFlagBits& value)
+    inline const char* TryToString(const VkGraphicsPipelineLibraryFlagBitsEXT& value)
     {
       switch(value)
       {
-      case VK_IMAGE_ASPECT_COLOR_BIT:
-        return "VK_IMAGE_ASPECT_COLOR_BIT";
-      case VK_IMAGE_ASPECT_DEPTH_BIT:
-        return "VK_IMAGE_ASPECT_DEPTH_BIT";
-      case VK_IMAGE_ASPECT_STENCIL_BIT:
-        return "VK_IMAGE_ASPECT_STENCIL_BIT";
-      case VK_IMAGE_ASPECT_METADATA_BIT:
-        return "VK_IMAGE_ASPECT_METADATA_BIT";
-#if VK_HEADER_VERSION >= 70
-      case VK_IMAGE_ASPECT_PLANE_0_BIT:
-        return "VK_IMAGE_ASPECT_PLANE_0_BIT";
-#endif
-#if VK_HEADER_VERSION >= 70
-      case VK_IMAGE_ASPECT_PLANE_1_BIT:
-        return "VK_IMAGE_ASPECT_PLANE_1_BIT";
-#endif
-#if VK_HEADER_VERSION >= 70
-      case VK_IMAGE_ASPECT_PLANE_2_BIT:
-        return "VK_IMAGE_ASPECT_PLANE_2_BIT";
+#if VK_HEADER_VERSION >= 211
+      case VK_GRAPHICS_PIPELINE_LIBRARY_VERTEX_INPUT_INTERFACE_BIT_EXT:
+        return "VK_GRAPHICS_PIPELINE_LIBRARY_VERTEX_INPUT_INTERFACE_BIT_EXT";
 #endif
 #if VK_HEADER_VERSION >= 211
-      case VK_IMAGE_ASPECT_NONE:
-        return "VK_IMAGE_ASPECT_NONE";
+      case VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT:
+        return "VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT";
+#endif
+#if VK_HEADER_VERSION >= 211
+      case VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT:
+        return "VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT";
+#endif
+#if VK_HEADER_VERSION >= 211
+      case VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT:
+        return "VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_OUTPUT_INTERFACE_BIT_EXT";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkImageAspectFlagBits& value)
+    inline const char* ToString(const VkGraphicsPipelineLibraryFlagBitsEXT& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");
@@ -73,4 +66,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif
