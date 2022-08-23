@@ -66,6 +66,14 @@ namespace RapidVulkan
       case VK_DESCRIPTOR_TYPE_MUTABLE_VALVE:
         return "VK_DESCRIPTOR_TYPE_MUTABLE_VALVE";
 #endif
+#if VK_HEADER_VERSION >= 224
+      case VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM:
+        return "VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM";
+#endif
+#if VK_HEADER_VERSION >= 224
+      case VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM:
+        return "VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM";
+#endif
       default:
         return nullptr;
       }

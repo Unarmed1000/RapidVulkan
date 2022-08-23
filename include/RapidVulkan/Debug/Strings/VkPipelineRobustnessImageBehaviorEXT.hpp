@@ -1,5 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKIMAGEUSAGEFLAGBITS_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKIMAGEUSAGEFLAGBITS_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKPIPELINEROBUSTNESSIMAGEBEHAVIOREXT_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKPIPELINEROBUSTNESSIMAGEBEHAVIOREXT_HPP
+#if VK_HEADER_VERSION >= 224
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -32,44 +33,32 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkImageUsageFlagBits& value)
+    inline const char* TryToString(const VkPipelineRobustnessImageBehaviorEXT& value)
     {
       switch(value)
       {
-      case VK_IMAGE_USAGE_TRANSFER_SRC_BIT:
-        return "VK_IMAGE_USAGE_TRANSFER_SRC_BIT";
-      case VK_IMAGE_USAGE_TRANSFER_DST_BIT:
-        return "VK_IMAGE_USAGE_TRANSFER_DST_BIT";
-      case VK_IMAGE_USAGE_SAMPLED_BIT:
-        return "VK_IMAGE_USAGE_SAMPLED_BIT";
-      case VK_IMAGE_USAGE_STORAGE_BIT:
-        return "VK_IMAGE_USAGE_STORAGE_BIT";
-      case VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT:
-        return "VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT";
-      case VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT:
-        return "VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT";
-      case VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT:
-        return "VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT";
-      case VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT:
-        return "VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT";
-#if VK_HEADER_VERSION >= 189
-      case VK_IMAGE_USAGE_INVOCATION_MASK_BIT_HUAWEI:
-        return "VK_IMAGE_USAGE_INVOCATION_MASK_BIT_HUAWEI";
+#if VK_HEADER_VERSION >= 224
+      case VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DEVICE_DEFAULT_EXT:
+        return "VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DEVICE_DEFAULT_EXT";
 #endif
 #if VK_HEADER_VERSION >= 224
-      case VK_IMAGE_USAGE_SAMPLE_WEIGHT_BIT_QCOM:
-        return "VK_IMAGE_USAGE_SAMPLE_WEIGHT_BIT_QCOM";
+      case VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DISABLED_EXT:
+        return "VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DISABLED_EXT";
 #endif
 #if VK_HEADER_VERSION >= 224
-      case VK_IMAGE_USAGE_SAMPLE_BLOCK_MATCH_BIT_QCOM:
-        return "VK_IMAGE_USAGE_SAMPLE_BLOCK_MATCH_BIT_QCOM";
+      case VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_EXT:
+        return "VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_EXT";
+#endif
+#if VK_HEADER_VERSION >= 224
+      case VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_2_EXT:
+        return "VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_2_EXT";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkImageUsageFlagBits& value)
+    inline const char* ToString(const VkPipelineRobustnessImageBehaviorEXT& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");
@@ -77,4 +66,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

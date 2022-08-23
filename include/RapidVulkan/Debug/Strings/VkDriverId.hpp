@@ -125,6 +125,10 @@ namespace RapidVulkan
       case VK_DRIVER_ID_MESA_VENUS:
         return "VK_DRIVER_ID_MESA_VENUS";
 #endif
+#if VK_HEADER_VERSION >= 224
+      case VK_DRIVER_ID_MESA_DOZEN:
+        return "VK_DRIVER_ID_MESA_DOZEN";
+#endif
       default:
         return nullptr;
       }

@@ -40,8 +40,10 @@ namespace RapidVulkan
         return "VK_FILTER_NEAREST";
       case VK_FILTER_LINEAR:
         return "VK_FILTER_LINEAR";
-      case VK_FILTER_CUBIC_IMG:
-        return "VK_FILTER_CUBIC_IMG";
+#if VK_HEADER_VERSION >= 101
+      case VK_FILTER_CUBIC_EXT:
+        return "VK_FILTER_CUBIC_EXT";
+#endif
       default:
         return nullptr;
       }
