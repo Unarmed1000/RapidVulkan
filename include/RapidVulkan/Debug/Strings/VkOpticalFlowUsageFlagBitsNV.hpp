@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKINDIRECTCOMMANDSTOKENTYPENV_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKINDIRECTCOMMANDSTOKENTYPENV_HPP
-#if VK_HEADER_VERSION >= 135
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKOPTICALFLOWUSAGEFLAGBITSNV_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKOPTICALFLOWUSAGEFLAGBITSNV_HPP
+#if VK_HEADER_VERSION >= 231
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,52 +33,40 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkIndirectCommandsTokenTypeNV& value)
+    inline const char* TryToString(const VkOpticalFlowUsageFlagBitsNV& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 135
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV";
-#endif
-#if VK_HEADER_VERSION >= 135
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV";
-#endif
-#if VK_HEADER_VERSION >= 135
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_NV:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_NV";
-#endif
-#if VK_HEADER_VERSION >= 135
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_NV:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_NV";
-#endif
-#if VK_HEADER_VERSION >= 135
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV";
-#endif
-#if VK_HEADER_VERSION >= 135
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_NV:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_NV";
-#endif
-#if VK_HEADER_VERSION >= 135
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_NV:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_NV";
-#endif
-#if VK_HEADER_VERSION >= 135
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_TASKS_NV:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_TASKS_NV";
+#if VK_HEADER_VERSION >= 231
+      case VK_OPTICAL_FLOW_USAGE_UNKNOWN_NV:
+        return "VK_OPTICAL_FLOW_USAGE_UNKNOWN_NV";
 #endif
 #if VK_HEADER_VERSION >= 231
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV";
+      case VK_OPTICAL_FLOW_USAGE_INPUT_BIT_NV:
+        return "VK_OPTICAL_FLOW_USAGE_INPUT_BIT_NV";
+#endif
+#if VK_HEADER_VERSION >= 231
+      case VK_OPTICAL_FLOW_USAGE_OUTPUT_BIT_NV:
+        return "VK_OPTICAL_FLOW_USAGE_OUTPUT_BIT_NV";
+#endif
+#if VK_HEADER_VERSION >= 231
+      case VK_OPTICAL_FLOW_USAGE_HINT_BIT_NV:
+        return "VK_OPTICAL_FLOW_USAGE_HINT_BIT_NV";
+#endif
+#if VK_HEADER_VERSION >= 231
+      case VK_OPTICAL_FLOW_USAGE_COST_BIT_NV:
+        return "VK_OPTICAL_FLOW_USAGE_COST_BIT_NV";
+#endif
+#if VK_HEADER_VERSION >= 231
+      case VK_OPTICAL_FLOW_USAGE_GLOBAL_FLOW_BIT_NV:
+        return "VK_OPTICAL_FLOW_USAGE_GLOBAL_FLOW_BIT_NV";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkIndirectCommandsTokenTypeNV& value)
+    inline const char* ToString(const VkOpticalFlowUsageFlagBitsNV& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

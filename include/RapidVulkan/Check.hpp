@@ -39,8 +39,8 @@
 // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
 #define RAPIDVULKAN_VULKAN_VERSION_MINOR   3
 // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-#define RAPIDVULKAN_VULKAN_VERSION_BUILD   224
+#define RAPIDVULKAN_VULKAN_VERSION_BUILD   231
 // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-#define RAPIDVULKAN_VULKAN_VERSION_HOTFIX  0
+#define RAPIDVULKAN_VULKAN_VERSION_HOTFIX  1
 
 #endif
