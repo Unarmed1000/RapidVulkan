@@ -57,6 +57,10 @@ namespace RapidVulkan
       case VK_BUILD_ACCELERATION_STRUCTURE_LOW_MEMORY_BIT_KHR:
         return "VK_BUILD_ACCELERATION_STRUCTURE_LOW_MEMORY_BIT_KHR";
 #endif
+#if VK_HEADER_VERSION >= 250
+      case VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_KHR:
+        return "VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_KHR";
+#endif
       default:
         return nullptr;
       }

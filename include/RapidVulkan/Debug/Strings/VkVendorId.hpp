@@ -61,6 +61,10 @@ namespace RapidVulkan
       case VK_VENDOR_ID_POCL:
         return "VK_VENDOR_ID_POCL";
 #endif
+#if VK_HEADER_VERSION >= 243
+      case VK_VENDOR_ID_MOBILEYE:
+        return "VK_VENDOR_ID_MOBILEYE";
+#endif
       default:
         return nullptr;
       }

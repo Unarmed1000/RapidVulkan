@@ -1,5 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSHADERSTAGEFLAGBITS_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKSHADERSTAGEFLAGBITS_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKVIDEODECODECAPABILITYFLAGBITSKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKVIDEODECODECAPABILITYFLAGBITSKHR_HPP
+#if VK_HEADER_VERSION >= 239
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -32,40 +33,24 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkShaderStageFlagBits& value)
+    inline const char* TryToString(const VkVideoDecodeCapabilityFlagBitsKHR& value)
     {
       switch(value)
       {
-      case VK_SHADER_STAGE_VERTEX_BIT:
-        return "VK_SHADER_STAGE_VERTEX_BIT";
-      case VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT:
-        return "VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT";
-      case VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT:
-        return "VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT";
-      case VK_SHADER_STAGE_GEOMETRY_BIT:
-        return "VK_SHADER_STAGE_GEOMETRY_BIT";
-      case VK_SHADER_STAGE_FRAGMENT_BIT:
-        return "VK_SHADER_STAGE_FRAGMENT_BIT";
-      case VK_SHADER_STAGE_COMPUTE_BIT:
-        return "VK_SHADER_STAGE_COMPUTE_BIT";
-      case VK_SHADER_STAGE_ALL_GRAPHICS:
-        return "VK_SHADER_STAGE_ALL_GRAPHICS";
-      case VK_SHADER_STAGE_ALL:
-        return "VK_SHADER_STAGE_ALL";
-#if VK_HEADER_VERSION >= 189
-      case VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI:
-        return "VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI";
+#if VK_HEADER_VERSION >= 239
+      case VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR:
+        return "VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_COINCIDE_BIT_KHR";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI:
-        return "VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI";
+      case VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_DISTINCT_BIT_KHR:
+        return "VK_VIDEO_DECODE_CAPABILITY_DPB_AND_OUTPUT_DISTINCT_BIT_KHR";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkShaderStageFlagBits& value)
+    inline const char* ToString(const VkVideoDecodeCapabilityFlagBitsKHR& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");
@@ -73,4 +58,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

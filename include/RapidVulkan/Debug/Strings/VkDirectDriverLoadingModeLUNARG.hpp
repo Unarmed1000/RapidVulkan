@@ -1,5 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSHADERSTAGEFLAGBITS_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKSHADERSTAGEFLAGBITS_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKDIRECTDRIVERLOADINGMODELUNARG_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKDIRECTDRIVERLOADINGMODELUNARG_HPP
+#if VK_HEADER_VERSION >= 236
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -32,40 +33,24 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkShaderStageFlagBits& value)
+    inline const char* TryToString(const VkDirectDriverLoadingModeLUNARG& value)
     {
       switch(value)
       {
-      case VK_SHADER_STAGE_VERTEX_BIT:
-        return "VK_SHADER_STAGE_VERTEX_BIT";
-      case VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT:
-        return "VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT";
-      case VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT:
-        return "VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT";
-      case VK_SHADER_STAGE_GEOMETRY_BIT:
-        return "VK_SHADER_STAGE_GEOMETRY_BIT";
-      case VK_SHADER_STAGE_FRAGMENT_BIT:
-        return "VK_SHADER_STAGE_FRAGMENT_BIT";
-      case VK_SHADER_STAGE_COMPUTE_BIT:
-        return "VK_SHADER_STAGE_COMPUTE_BIT";
-      case VK_SHADER_STAGE_ALL_GRAPHICS:
-        return "VK_SHADER_STAGE_ALL_GRAPHICS";
-      case VK_SHADER_STAGE_ALL:
-        return "VK_SHADER_STAGE_ALL";
-#if VK_HEADER_VERSION >= 189
-      case VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI:
-        return "VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI";
+#if VK_HEADER_VERSION >= 236
+      case VK_DIRECT_DRIVER_LOADING_MODE_EXCLUSIVE_LUNARG:
+        return "VK_DIRECT_DRIVER_LOADING_MODE_EXCLUSIVE_LUNARG";
 #endif
-#if VK_HEADER_VERSION >= 239
-      case VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI:
-        return "VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI";
+#if VK_HEADER_VERSION >= 236
+      case VK_DIRECT_DRIVER_LOADING_MODE_INCLUSIVE_LUNARG:
+        return "VK_DIRECT_DRIVER_LOADING_MODE_INCLUSIVE_LUNARG";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkShaderStageFlagBits& value)
+    inline const char* ToString(const VkDirectDriverLoadingModeLUNARG& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");
@@ -73,4 +58,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif
