@@ -57,6 +57,10 @@ namespace RapidVulkan
       case VK_RESOLVE_MODE_MAX_BIT:
         return "VK_RESOLVE_MODE_MAX_BIT";
 #endif
+#if VK_HEADER_VERSION >= 268
+      case VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_ANDROID:
+        return "VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_ANDROID";
+#endif
       default:
         return nullptr;
       }

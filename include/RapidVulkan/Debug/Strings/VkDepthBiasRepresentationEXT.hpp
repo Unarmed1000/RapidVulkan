@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKCOMPONENTTYPENV_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKCOMPONENTTYPENV_HPP
-#if VK_HEADER_VERSION >= 101
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKDEPTHBIASREPRESENTATIONEXT_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKDEPTHBIASREPRESENTATIONEXT_HPP
+#if VK_HEADER_VERSION >= 261
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,60 +33,28 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkComponentTypeNV& value)
+    inline const char* TryToString(const VkDepthBiasRepresentationEXT& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 101
-      case VK_COMPONENT_TYPE_FLOAT16_NV:
-        return "VK_COMPONENT_TYPE_FLOAT16_NV";
+#if VK_HEADER_VERSION >= 261
+      case VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORMAT_EXT:
+        return "VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORMAT_EXT";
 #endif
-#if VK_HEADER_VERSION >= 101
-      case VK_COMPONENT_TYPE_FLOAT32_NV:
-        return "VK_COMPONENT_TYPE_FLOAT32_NV";
+#if VK_HEADER_VERSION >= 261
+      case VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT:
+        return "VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT";
 #endif
-#if VK_HEADER_VERSION >= 101
-      case VK_COMPONENT_TYPE_FLOAT64_NV:
-        return "VK_COMPONENT_TYPE_FLOAT64_NV";
-#endif
-#if VK_HEADER_VERSION >= 101
-      case VK_COMPONENT_TYPE_SINT8_NV:
-        return "VK_COMPONENT_TYPE_SINT8_NV";
-#endif
-#if VK_HEADER_VERSION >= 101
-      case VK_COMPONENT_TYPE_SINT16_NV:
-        return "VK_COMPONENT_TYPE_SINT16_NV";
-#endif
-#if VK_HEADER_VERSION >= 101
-      case VK_COMPONENT_TYPE_SINT32_NV:
-        return "VK_COMPONENT_TYPE_SINT32_NV";
-#endif
-#if VK_HEADER_VERSION >= 101
-      case VK_COMPONENT_TYPE_SINT64_NV:
-        return "VK_COMPONENT_TYPE_SINT64_NV";
-#endif
-#if VK_HEADER_VERSION >= 101
-      case VK_COMPONENT_TYPE_UINT8_NV:
-        return "VK_COMPONENT_TYPE_UINT8_NV";
-#endif
-#if VK_HEADER_VERSION >= 101
-      case VK_COMPONENT_TYPE_UINT16_NV:
-        return "VK_COMPONENT_TYPE_UINT16_NV";
-#endif
-#if VK_HEADER_VERSION >= 101
-      case VK_COMPONENT_TYPE_UINT32_NV:
-        return "VK_COMPONENT_TYPE_UINT32_NV";
-#endif
-#if VK_HEADER_VERSION >= 101
-      case VK_COMPONENT_TYPE_UINT64_NV:
-        return "VK_COMPONENT_TYPE_UINT64_NV";
+#if VK_HEADER_VERSION >= 261
+      case VK_DEPTH_BIAS_REPRESENTATION_FLOAT_EXT:
+        return "VK_DEPTH_BIAS_REPRESENTATION_FLOAT_EXT";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkComponentTypeNV& value)
+    inline const char* ToString(const VkDepthBiasRepresentationEXT& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

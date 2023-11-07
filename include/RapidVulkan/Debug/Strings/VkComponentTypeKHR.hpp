@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSAMPLERREDUCTIONMODE_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKSAMPLERREDUCTIONMODE_HPP
-#if VK_HEADER_VERSION >= 131
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKCOMPONENTTYPEKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKCOMPONENTTYPEKHR_HPP
+#if VK_HEADER_VERSION >= 261
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,32 +33,60 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkSamplerReductionMode& value)
+    inline const char* TryToString(const VkComponentTypeKHR& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 131
-      case VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE:
-        return "VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE";
+#if VK_HEADER_VERSION >= 261
+      case VK_COMPONENT_TYPE_FLOAT16_KHR:
+        return "VK_COMPONENT_TYPE_FLOAT16_KHR";
 #endif
-#if VK_HEADER_VERSION >= 131
-      case VK_SAMPLER_REDUCTION_MODE_MIN:
-        return "VK_SAMPLER_REDUCTION_MODE_MIN";
+#if VK_HEADER_VERSION >= 261
+      case VK_COMPONENT_TYPE_FLOAT32_KHR:
+        return "VK_COMPONENT_TYPE_FLOAT32_KHR";
 #endif
-#if VK_HEADER_VERSION >= 131
-      case VK_SAMPLER_REDUCTION_MODE_MAX:
-        return "VK_SAMPLER_REDUCTION_MODE_MAX";
+#if VK_HEADER_VERSION >= 261
+      case VK_COMPONENT_TYPE_FLOAT64_KHR:
+        return "VK_COMPONENT_TYPE_FLOAT64_KHR";
 #endif
-#if VK_HEADER_VERSION >= 268
-      case VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM:
-        return "VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM";
+#if VK_HEADER_VERSION >= 261
+      case VK_COMPONENT_TYPE_SINT8_KHR:
+        return "VK_COMPONENT_TYPE_SINT8_KHR";
+#endif
+#if VK_HEADER_VERSION >= 261
+      case VK_COMPONENT_TYPE_SINT16_KHR:
+        return "VK_COMPONENT_TYPE_SINT16_KHR";
+#endif
+#if VK_HEADER_VERSION >= 261
+      case VK_COMPONENT_TYPE_SINT32_KHR:
+        return "VK_COMPONENT_TYPE_SINT32_KHR";
+#endif
+#if VK_HEADER_VERSION >= 261
+      case VK_COMPONENT_TYPE_SINT64_KHR:
+        return "VK_COMPONENT_TYPE_SINT64_KHR";
+#endif
+#if VK_HEADER_VERSION >= 261
+      case VK_COMPONENT_TYPE_UINT8_KHR:
+        return "VK_COMPONENT_TYPE_UINT8_KHR";
+#endif
+#if VK_HEADER_VERSION >= 261
+      case VK_COMPONENT_TYPE_UINT16_KHR:
+        return "VK_COMPONENT_TYPE_UINT16_KHR";
+#endif
+#if VK_HEADER_VERSION >= 261
+      case VK_COMPONENT_TYPE_UINT32_KHR:
+        return "VK_COMPONENT_TYPE_UINT32_KHR";
+#endif
+#if VK_HEADER_VERSION >= 261
+      case VK_COMPONENT_TYPE_UINT64_KHR:
+        return "VK_COMPONENT_TYPE_UINT64_KHR";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkSamplerReductionMode& value)
+    inline const char* ToString(const VkComponentTypeKHR& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSCOPENV_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKSCOPENV_HPP
-#if VK_HEADER_VERSION >= 101
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKFRAMEBOUNDARYFLAGBITSEXT_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKFRAMEBOUNDARYFLAGBITSEXT_HPP
+#if VK_HEADER_VERSION >= 268
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,32 +33,20 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkScopeNV& value)
+    inline const char* TryToString(const VkFrameBoundaryFlagBitsEXT& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 101
-      case VK_SCOPE_DEVICE_NV:
-        return "VK_SCOPE_DEVICE_NV";
-#endif
-#if VK_HEADER_VERSION >= 101
-      case VK_SCOPE_WORKGROUP_NV:
-        return "VK_SCOPE_WORKGROUP_NV";
-#endif
-#if VK_HEADER_VERSION >= 101
-      case VK_SCOPE_SUBGROUP_NV:
-        return "VK_SCOPE_SUBGROUP_NV";
-#endif
-#if VK_HEADER_VERSION >= 101
-      case VK_SCOPE_QUEUE_FAMILY_NV:
-        return "VK_SCOPE_QUEUE_FAMILY_NV";
+#if VK_HEADER_VERSION >= 268
+      case VK_FRAME_BOUNDARY_FRAME_END_BIT_EXT:
+        return "VK_FRAME_BOUNDARY_FRAME_END_BIT_EXT";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkScopeNV& value)
+    inline const char* ToString(const VkFrameBoundaryFlagBitsEXT& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSAMPLERREDUCTIONMODE_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKSAMPLERREDUCTIONMODE_HPP
-#if VK_HEADER_VERSION >= 131
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKHOSTIMAGECOPYFLAGBITSEXT_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKHOSTIMAGECOPYFLAGBITSEXT_HPP
+#if VK_HEADER_VERSION >= 261
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,32 +33,20 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkSamplerReductionMode& value)
+    inline const char* TryToString(const VkHostImageCopyFlagBitsEXT& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 131
-      case VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE:
-        return "VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE";
-#endif
-#if VK_HEADER_VERSION >= 131
-      case VK_SAMPLER_REDUCTION_MODE_MIN:
-        return "VK_SAMPLER_REDUCTION_MODE_MIN";
-#endif
-#if VK_HEADER_VERSION >= 131
-      case VK_SAMPLER_REDUCTION_MODE_MAX:
-        return "VK_SAMPLER_REDUCTION_MODE_MAX";
-#endif
-#if VK_HEADER_VERSION >= 268
-      case VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM:
-        return "VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM";
+#if VK_HEADER_VERSION >= 261
+      case VK_HOST_IMAGE_COPY_MEMCPY_EXT:
+        return "VK_HOST_IMAGE_COPY_MEMCPY_EXT";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkSamplerReductionMode& value)
+    inline const char* ToString(const VkHostImageCopyFlagBitsEXT& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSAMPLERREDUCTIONMODE_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKSAMPLERREDUCTIONMODE_HPP
-#if VK_HEADER_VERSION >= 131
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSCOPEKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKSCOPEKHR_HPP
+#if VK_HEADER_VERSION >= 261
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,32 +33,32 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkSamplerReductionMode& value)
+    inline const char* TryToString(const VkScopeKHR& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 131
-      case VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE:
-        return "VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE";
+#if VK_HEADER_VERSION >= 261
+      case VK_SCOPE_DEVICE_KHR:
+        return "VK_SCOPE_DEVICE_KHR";
 #endif
-#if VK_HEADER_VERSION >= 131
-      case VK_SAMPLER_REDUCTION_MODE_MIN:
-        return "VK_SAMPLER_REDUCTION_MODE_MIN";
+#if VK_HEADER_VERSION >= 261
+      case VK_SCOPE_WORKGROUP_KHR:
+        return "VK_SCOPE_WORKGROUP_KHR";
 #endif
-#if VK_HEADER_VERSION >= 131
-      case VK_SAMPLER_REDUCTION_MODE_MAX:
-        return "VK_SAMPLER_REDUCTION_MODE_MAX";
+#if VK_HEADER_VERSION >= 261
+      case VK_SCOPE_SUBGROUP_KHR:
+        return "VK_SCOPE_SUBGROUP_KHR";
 #endif
-#if VK_HEADER_VERSION >= 268
-      case VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM:
-        return "VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM";
+#if VK_HEADER_VERSION >= 261
+      case VK_SCOPE_QUEUE_FAMILY_KHR:
+        return "VK_SCOPE_QUEUE_FAMILY_KHR";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkSamplerReductionMode& value)
+    inline const char* ToString(const VkScopeKHR& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

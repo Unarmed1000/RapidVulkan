@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKSAMPLERREDUCTIONMODE_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKSAMPLERREDUCTIONMODE_HPP
-#if VK_HEADER_VERSION >= 131
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKLATENCYMARKERNV_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKLATENCYMARKERNV_HPP
+#if VK_HEADER_VERSION >= 268
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,32 +33,64 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkSamplerReductionMode& value)
+    inline const char* TryToString(const VkLatencyMarkerNV& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 131
-      case VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE:
-        return "VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE";
-#endif
-#if VK_HEADER_VERSION >= 131
-      case VK_SAMPLER_REDUCTION_MODE_MIN:
-        return "VK_SAMPLER_REDUCTION_MODE_MIN";
-#endif
-#if VK_HEADER_VERSION >= 131
-      case VK_SAMPLER_REDUCTION_MODE_MAX:
-        return "VK_SAMPLER_REDUCTION_MODE_MAX";
+#if VK_HEADER_VERSION >= 268
+      case VK_LATENCY_MARKER_SIMULATION_START_NV:
+        return "VK_LATENCY_MARKER_SIMULATION_START_NV";
 #endif
 #if VK_HEADER_VERSION >= 268
-      case VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM:
-        return "VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM";
+      case VK_LATENCY_MARKER_SIMULATION_END_NV:
+        return "VK_LATENCY_MARKER_SIMULATION_END_NV";
+#endif
+#if VK_HEADER_VERSION >= 268
+      case VK_LATENCY_MARKER_RENDERSUBMIT_START_NV:
+        return "VK_LATENCY_MARKER_RENDERSUBMIT_START_NV";
+#endif
+#if VK_HEADER_VERSION >= 268
+      case VK_LATENCY_MARKER_RENDERSUBMIT_END_NV:
+        return "VK_LATENCY_MARKER_RENDERSUBMIT_END_NV";
+#endif
+#if VK_HEADER_VERSION >= 268
+      case VK_LATENCY_MARKER_PRESENT_START_NV:
+        return "VK_LATENCY_MARKER_PRESENT_START_NV";
+#endif
+#if VK_HEADER_VERSION >= 268
+      case VK_LATENCY_MARKER_PRESENT_END_NV:
+        return "VK_LATENCY_MARKER_PRESENT_END_NV";
+#endif
+#if VK_HEADER_VERSION >= 268
+      case VK_LATENCY_MARKER_INPUT_SAMPLE_NV:
+        return "VK_LATENCY_MARKER_INPUT_SAMPLE_NV";
+#endif
+#if VK_HEADER_VERSION >= 268
+      case VK_LATENCY_MARKER_TRIGGER_FLASH_NV:
+        return "VK_LATENCY_MARKER_TRIGGER_FLASH_NV";
+#endif
+#if VK_HEADER_VERSION >= 268
+      case VK_LATENCY_MARKER_OUT_OF_BAND_RENDERSUBMIT_START_NV:
+        return "VK_LATENCY_MARKER_OUT_OF_BAND_RENDERSUBMIT_START_NV";
+#endif
+#if VK_HEADER_VERSION >= 268
+      case VK_LATENCY_MARKER_OUT_OF_BAND_RENDERSUBMIT_END_NV:
+        return "VK_LATENCY_MARKER_OUT_OF_BAND_RENDERSUBMIT_END_NV";
+#endif
+#if VK_HEADER_VERSION >= 268
+      case VK_LATENCY_MARKER_OUT_OF_BAND_PRESENT_START_NV:
+        return "VK_LATENCY_MARKER_OUT_OF_BAND_PRESENT_START_NV";
+#endif
+#if VK_HEADER_VERSION >= 268
+      case VK_LATENCY_MARKER_OUT_OF_BAND_PRESENT_END_NV:
+        return "VK_LATENCY_MARKER_OUT_OF_BAND_PRESENT_END_NV";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkSamplerReductionMode& value)
+    inline const char* ToString(const VkLatencyMarkerNV& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

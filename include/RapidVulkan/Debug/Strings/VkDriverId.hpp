@@ -137,6 +137,10 @@ namespace RapidVulkan
       case VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA:
         return "VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA";
 #endif
+#if VK_HEADER_VERSION >= 268
+      case VK_DRIVER_ID_MESA_AGXV:
+        return "VK_DRIVER_ID_MESA_AGXV";
+#endif
       default:
         return nullptr;
       }

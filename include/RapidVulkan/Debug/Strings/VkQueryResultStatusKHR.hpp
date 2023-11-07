@@ -49,6 +49,10 @@ namespace RapidVulkan
       case VK_QUERY_RESULT_STATUS_COMPLETE_KHR:
         return "VK_QUERY_RESULT_STATUS_COMPLETE_KHR";
 #endif
+#if VK_HEADER_VERSION >= 268
+      case VK_QUERY_RESULT_STATUS_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_KHR:
+        return "VK_QUERY_RESULT_STATUS_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_KHR";
+#endif
       default:
         return nullptr;
       }
