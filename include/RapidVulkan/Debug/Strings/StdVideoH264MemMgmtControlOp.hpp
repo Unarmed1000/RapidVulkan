@@ -1,5 +1,5 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKVIDEOCODINGCONTROLFLAGBITSKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKVIDEOCODINGCONTROLFLAGBITSKHR_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_STDVIDEOH264MEMMGMTCONTROLOP_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_STDVIDEOH264MEMMGMTCONTROLOP_HPP
 #if VK_HEADER_VERSION >= 239
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
@@ -33,28 +33,48 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkVideoCodingControlFlagBitsKHR& value)
+    inline const char* TryToString(const StdVideoH264MemMgmtControlOp& value)
     {
       switch(value)
       {
 #if VK_HEADER_VERSION >= 239
-      case VK_VIDEO_CODING_CONTROL_RESET_BIT_KHR:
-        return "VK_VIDEO_CODING_CONTROL_RESET_BIT_KHR";
+      case STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_END:
+        return "STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_END";
 #endif
-#if VK_HEADER_VERSION >= 275
-      case VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR:
-        return "VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR";
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_UNMARK_SHORT_TERM:
+        return "STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_UNMARK_SHORT_TERM";
 #endif
-#if VK_HEADER_VERSION >= 275
-      case VK_VIDEO_CODING_CONTROL_ENCODE_QUALITY_LEVEL_BIT_KHR:
-        return "VK_VIDEO_CODING_CONTROL_ENCODE_QUALITY_LEVEL_BIT_KHR";
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_UNMARK_LONG_TERM:
+        return "STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_UNMARK_LONG_TERM";
+#endif
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_MARK_LONG_TERM:
+        return "STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_MARK_LONG_TERM";
+#endif
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_SET_MAX_LONG_TERM_INDEX:
+        return "STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_SET_MAX_LONG_TERM_INDEX";
+#endif
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_UNMARK_ALL:
+        return "STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_UNMARK_ALL";
+#endif
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_MARK_CURRENT_AS_LONG_TERM:
+        return "STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_MARK_CURRENT_AS_LONG_TERM";
+#endif
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_INVALID:
+        return "STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_INVALID";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkVideoCodingControlFlagBitsKHR& value)
+    inline const char* ToString(const StdVideoH264MemMgmtControlOp& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

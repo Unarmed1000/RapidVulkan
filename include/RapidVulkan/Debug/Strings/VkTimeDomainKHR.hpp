@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKTIMEDOMAINEXT_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKTIMEDOMAINEXT_HPP
-#if VK_HEADER_VERSION >= 92
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKTIMEDOMAINKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKTIMEDOMAINKHR_HPP
+#if VK_HEADER_VERSION >= 275
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,32 +33,32 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkTimeDomainEXT& value)
+    inline const char* TryToString(const VkTimeDomainKHR& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 92
-      case VK_TIME_DOMAIN_DEVICE_EXT:
-        return "VK_TIME_DOMAIN_DEVICE_EXT";
+#if VK_HEADER_VERSION >= 275
+      case VK_TIME_DOMAIN_DEVICE_KHR:
+        return "VK_TIME_DOMAIN_DEVICE_KHR";
 #endif
-#if VK_HEADER_VERSION >= 92
-      case VK_TIME_DOMAIN_CLOCK_MONOTONIC_EXT:
-        return "VK_TIME_DOMAIN_CLOCK_MONOTONIC_EXT";
+#if VK_HEADER_VERSION >= 275
+      case VK_TIME_DOMAIN_CLOCK_MONOTONIC_KHR:
+        return "VK_TIME_DOMAIN_CLOCK_MONOTONIC_KHR";
 #endif
-#if VK_HEADER_VERSION >= 92
-      case VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_EXT:
-        return "VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_EXT";
+#if VK_HEADER_VERSION >= 275
+      case VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_KHR:
+        return "VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_KHR";
 #endif
-#if VK_HEADER_VERSION >= 92
-      case VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_EXT:
-        return "VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_EXT";
+#if VK_HEADER_VERSION >= 275
+      case VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_KHR:
+        return "VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_KHR";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkTimeDomainEXT& value)
+    inline const char* ToString(const VkTimeDomainKHR& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

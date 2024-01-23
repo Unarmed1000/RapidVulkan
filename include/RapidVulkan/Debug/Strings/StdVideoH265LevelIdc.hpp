@@ -1,5 +1,5 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKVIDEOCODINGCONTROLFLAGBITSKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKVIDEOCODINGCONTROLFLAGBITSKHR_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_STDVIDEOH265LEVELIDC_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_STDVIDEOH265LEVELIDC_HPP
 #if VK_HEADER_VERSION >= 239
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
@@ -33,28 +33,72 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkVideoCodingControlFlagBitsKHR& value)
+    inline const char* TryToString(const StdVideoH265LevelIdc& value)
     {
       switch(value)
       {
 #if VK_HEADER_VERSION >= 239
-      case VK_VIDEO_CODING_CONTROL_RESET_BIT_KHR:
-        return "VK_VIDEO_CODING_CONTROL_RESET_BIT_KHR";
+      case STD_VIDEO_H265_LEVEL_IDC_1_0:
+        return "STD_VIDEO_H265_LEVEL_IDC_1_0";
 #endif
-#if VK_HEADER_VERSION >= 275
-      case VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR:
-        return "VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR";
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H265_LEVEL_IDC_2_0:
+        return "STD_VIDEO_H265_LEVEL_IDC_2_0";
 #endif
-#if VK_HEADER_VERSION >= 275
-      case VK_VIDEO_CODING_CONTROL_ENCODE_QUALITY_LEVEL_BIT_KHR:
-        return "VK_VIDEO_CODING_CONTROL_ENCODE_QUALITY_LEVEL_BIT_KHR";
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H265_LEVEL_IDC_2_1:
+        return "STD_VIDEO_H265_LEVEL_IDC_2_1";
+#endif
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H265_LEVEL_IDC_3_0:
+        return "STD_VIDEO_H265_LEVEL_IDC_3_0";
+#endif
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H265_LEVEL_IDC_3_1:
+        return "STD_VIDEO_H265_LEVEL_IDC_3_1";
+#endif
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H265_LEVEL_IDC_4_0:
+        return "STD_VIDEO_H265_LEVEL_IDC_4_0";
+#endif
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H265_LEVEL_IDC_4_1:
+        return "STD_VIDEO_H265_LEVEL_IDC_4_1";
+#endif
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H265_LEVEL_IDC_5_0:
+        return "STD_VIDEO_H265_LEVEL_IDC_5_0";
+#endif
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H265_LEVEL_IDC_5_1:
+        return "STD_VIDEO_H265_LEVEL_IDC_5_1";
+#endif
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H265_LEVEL_IDC_5_2:
+        return "STD_VIDEO_H265_LEVEL_IDC_5_2";
+#endif
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H265_LEVEL_IDC_6_0:
+        return "STD_VIDEO_H265_LEVEL_IDC_6_0";
+#endif
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H265_LEVEL_IDC_6_1:
+        return "STD_VIDEO_H265_LEVEL_IDC_6_1";
+#endif
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H265_LEVEL_IDC_6_2:
+        return "STD_VIDEO_H265_LEVEL_IDC_6_2";
+#endif
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H265_LEVEL_IDC_INVALID:
+        return "STD_VIDEO_H265_LEVEL_IDC_INVALID";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkVideoCodingControlFlagBitsKHR& value)
+    inline const char* ToString(const StdVideoH265LevelIdc& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

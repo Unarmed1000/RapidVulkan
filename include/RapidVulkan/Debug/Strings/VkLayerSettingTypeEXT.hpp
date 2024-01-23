@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKVIDEOCODINGCONTROLFLAGBITSKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKVIDEOCODINGCONTROLFLAGBITSKHR_HPP
-#if VK_HEADER_VERSION >= 239
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKLAYERSETTINGTYPEEXT_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKLAYERSETTINGTYPEEXT_HPP
+#if VK_HEADER_VERSION >= 275
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,28 +33,48 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkVideoCodingControlFlagBitsKHR& value)
+    inline const char* TryToString(const VkLayerSettingTypeEXT& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 239
-      case VK_VIDEO_CODING_CONTROL_RESET_BIT_KHR:
-        return "VK_VIDEO_CODING_CONTROL_RESET_BIT_KHR";
+#if VK_HEADER_VERSION >= 275
+      case VK_LAYER_SETTING_TYPE_BOOL32_EXT:
+        return "VK_LAYER_SETTING_TYPE_BOOL32_EXT";
 #endif
 #if VK_HEADER_VERSION >= 275
-      case VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR:
-        return "VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR";
+      case VK_LAYER_SETTING_TYPE_INT32_EXT:
+        return "VK_LAYER_SETTING_TYPE_INT32_EXT";
 #endif
 #if VK_HEADER_VERSION >= 275
-      case VK_VIDEO_CODING_CONTROL_ENCODE_QUALITY_LEVEL_BIT_KHR:
-        return "VK_VIDEO_CODING_CONTROL_ENCODE_QUALITY_LEVEL_BIT_KHR";
+      case VK_LAYER_SETTING_TYPE_INT64_EXT:
+        return "VK_LAYER_SETTING_TYPE_INT64_EXT";
+#endif
+#if VK_HEADER_VERSION >= 275
+      case VK_LAYER_SETTING_TYPE_UINT32_EXT:
+        return "VK_LAYER_SETTING_TYPE_UINT32_EXT";
+#endif
+#if VK_HEADER_VERSION >= 275
+      case VK_LAYER_SETTING_TYPE_UINT64_EXT:
+        return "VK_LAYER_SETTING_TYPE_UINT64_EXT";
+#endif
+#if VK_HEADER_VERSION >= 275
+      case VK_LAYER_SETTING_TYPE_FLOAT32_EXT:
+        return "VK_LAYER_SETTING_TYPE_FLOAT32_EXT";
+#endif
+#if VK_HEADER_VERSION >= 275
+      case VK_LAYER_SETTING_TYPE_FLOAT64_EXT:
+        return "VK_LAYER_SETTING_TYPE_FLOAT64_EXT";
+#endif
+#if VK_HEADER_VERSION >= 275
+      case VK_LAYER_SETTING_TYPE_STRING_EXT:
+        return "VK_LAYER_SETTING_TYPE_STRING_EXT";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkVideoCodingControlFlagBitsKHR& value)
+    inline const char* ToString(const VkLayerSettingTypeEXT& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

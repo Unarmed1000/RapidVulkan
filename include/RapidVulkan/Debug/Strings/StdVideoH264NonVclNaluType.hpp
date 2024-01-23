@@ -1,5 +1,5 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKVIDEOCODINGCONTROLFLAGBITSKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKVIDEOCODINGCONTROLFLAGBITSKHR_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_STDVIDEOH264NONVCLNALUTYPE_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_STDVIDEOH264NONVCLNALUTYPE_HPP
 #if VK_HEADER_VERSION >= 239
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
@@ -33,28 +33,48 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkVideoCodingControlFlagBitsKHR& value)
+    inline const char* TryToString(const StdVideoH264NonVclNaluType& value)
     {
       switch(value)
       {
 #if VK_HEADER_VERSION >= 239
-      case VK_VIDEO_CODING_CONTROL_RESET_BIT_KHR:
-        return "VK_VIDEO_CODING_CONTROL_RESET_BIT_KHR";
+      case STD_VIDEO_H264_NON_VCL_NALU_TYPE_SPS:
+        return "STD_VIDEO_H264_NON_VCL_NALU_TYPE_SPS";
 #endif
-#if VK_HEADER_VERSION >= 275
-      case VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR:
-        return "VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR";
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H264_NON_VCL_NALU_TYPE_PPS:
+        return "STD_VIDEO_H264_NON_VCL_NALU_TYPE_PPS";
 #endif
-#if VK_HEADER_VERSION >= 275
-      case VK_VIDEO_CODING_CONTROL_ENCODE_QUALITY_LEVEL_BIT_KHR:
-        return "VK_VIDEO_CODING_CONTROL_ENCODE_QUALITY_LEVEL_BIT_KHR";
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H264_NON_VCL_NALU_TYPE_AUD:
+        return "STD_VIDEO_H264_NON_VCL_NALU_TYPE_AUD";
+#endif
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H264_NON_VCL_NALU_TYPE_PREFIX:
+        return "STD_VIDEO_H264_NON_VCL_NALU_TYPE_PREFIX";
+#endif
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H264_NON_VCL_NALU_TYPE_END_OF_SEQUENCE:
+        return "STD_VIDEO_H264_NON_VCL_NALU_TYPE_END_OF_SEQUENCE";
+#endif
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H264_NON_VCL_NALU_TYPE_END_OF_STREAM:
+        return "STD_VIDEO_H264_NON_VCL_NALU_TYPE_END_OF_STREAM";
+#endif
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H264_NON_VCL_NALU_TYPE_PRECODED:
+        return "STD_VIDEO_H264_NON_VCL_NALU_TYPE_PRECODED";
+#endif
+#if VK_HEADER_VERSION >= 239
+      case STD_VIDEO_H264_NON_VCL_NALU_TYPE_INVALID:
+        return "STD_VIDEO_H264_NON_VCL_NALU_TYPE_INVALID";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkVideoCodingControlFlagBitsKHR& value)
+    inline const char* ToString(const StdVideoH264NonVclNaluType& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");
