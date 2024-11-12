@@ -4,7 +4,7 @@
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2017, Rene Thrane
+//* Copyright (c) 2017-2024, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -64,6 +64,10 @@ namespace RapidVulkan
 #if VK_HEADER_VERSION >= 250
       case VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT:
         return "VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT";
+#endif
+#if VK_HEADER_VERSION >= 296
+      case VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT:
+        return "VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT";
 #endif
       default:
         return nullptr;

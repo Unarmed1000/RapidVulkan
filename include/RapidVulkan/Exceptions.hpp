@@ -3,7 +3,7 @@
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2016, Rene Thrane
+//* Copyright (c) 2016-2024, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -35,8 +35,16 @@ namespace RapidVulkan
     std::string m_fileName;
     int m_lineNumber;
   public:
+    explicit VulkanException(const char *const pszWhatArg)
+        : std::runtime_error(pszWhatArg), m_lineNumber(0) {}
+
     explicit VulkanException(const std::string &whatArg)
         : std::runtime_error(whatArg), m_lineNumber(0) {}
+
+    explicit VulkanException(const char *const pszWhatArg, std::string fileName,
+                             const int lineNumber)
+        : std::runtime_error(pszWhatArg), m_fileName(std::move(fileName)),
+          m_lineNumber(lineNumber) {}
 
     explicit VulkanException(const std::string &whatArg, std::string fileName,
                              const int lineNumber)
@@ -64,8 +72,13 @@ namespace RapidVulkan
     {
     }
 
-    explicit VulkanUsageErrorException(const std::string& what_arg)
-      : std::logic_error(what_arg)
+    explicit VulkanUsageErrorException(const char*const pszWhatArg)
+      : std::logic_error(pszWhatArg)
+    {
+    }
+
+    explicit VulkanUsageErrorException(const std::string& whatArg)
+      : std::logic_error(whatArg)
     {
     }
   };
@@ -75,8 +88,20 @@ namespace RapidVulkan
   {
     VkResult m_result;
   public:
+    explicit VulkanErrorException(const char*const pszWhatArg, const VkResult result)
+      : VulkanException(ErrorFormatter::Format(pszWhatArg, result))
+      , m_result(result)
+    {
+    }
+
     explicit VulkanErrorException(const std::string& whatArg, const VkResult result)
       : VulkanException(ErrorFormatter::Format(whatArg, result))
+      , m_result(result)
+    {
+    }
+
+    explicit VulkanErrorException(const char*const pszWhatArg, const VkResult result, const std::string& fileName, const int lineNumber)
+      : VulkanException(ErrorFormatter::Format(pszWhatArg, result, fileName, lineNumber), fileName, lineNumber)
       , m_result(result)
     {
     }

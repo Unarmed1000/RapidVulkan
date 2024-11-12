@@ -1,10 +1,10 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKLINERASTERIZATIONMODEEXT_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKLINERASTERIZATIONMODEEXT_HPP
-#if VK_HEADER_VERSION >= 121
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKLINERASTERIZATIONMODEKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKLINERASTERIZATIONMODEKHR_HPP
+#if VK_HEADER_VERSION >= 280
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2017, Rene Thrane
+//* Copyright (c) 2017-2024, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -33,32 +33,32 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkLineRasterizationModeEXT& value)
+    inline const char* TryToString(const VkLineRasterizationModeKHR& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 121
-      case VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT:
-        return "VK_LINE_RASTERIZATION_MODE_DEFAULT_EXT";
+#if VK_HEADER_VERSION >= 280
+      case VK_LINE_RASTERIZATION_MODE_DEFAULT_KHR:
+        return "VK_LINE_RASTERIZATION_MODE_DEFAULT_KHR";
 #endif
-#if VK_HEADER_VERSION >= 121
-      case VK_LINE_RASTERIZATION_MODE_RECTANGULAR_EXT:
-        return "VK_LINE_RASTERIZATION_MODE_RECTANGULAR_EXT";
+#if VK_HEADER_VERSION >= 280
+      case VK_LINE_RASTERIZATION_MODE_RECTANGULAR_KHR:
+        return "VK_LINE_RASTERIZATION_MODE_RECTANGULAR_KHR";
 #endif
-#if VK_HEADER_VERSION >= 121
-      case VK_LINE_RASTERIZATION_MODE_BRESENHAM_EXT:
-        return "VK_LINE_RASTERIZATION_MODE_BRESENHAM_EXT";
+#if VK_HEADER_VERSION >= 280
+      case VK_LINE_RASTERIZATION_MODE_BRESENHAM_KHR:
+        return "VK_LINE_RASTERIZATION_MODE_BRESENHAM_KHR";
 #endif
-#if VK_HEADER_VERSION >= 121
-      case VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH_EXT:
-        return "VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH_EXT";
+#if VK_HEADER_VERSION >= 280
+      case VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH_KHR:
+        return "VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH_KHR";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkLineRasterizationModeEXT& value)
+    inline const char* ToString(const VkLineRasterizationModeKHR& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

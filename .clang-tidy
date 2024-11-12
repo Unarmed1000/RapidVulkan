@@ -87,7 +87,6 @@ readability-static-accessed-through-instance,
 readability-uniqueptr-delete-release'
 WarningsAsErrors: ''
 HeaderFilterRegex: ''
-AnalyzeTemporaryDtors: false
 FormatStyle:     file
 CheckOptions:    
   - key:             google-readability-braces-around-statements.ShortStatementLines

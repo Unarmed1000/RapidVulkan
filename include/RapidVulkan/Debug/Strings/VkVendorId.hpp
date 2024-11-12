@@ -4,7 +4,7 @@
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2017, Rene Thrane
+//* Copyright (c) 2017-2024, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -37,6 +37,10 @@ namespace RapidVulkan
     {
       switch(value)
       {
+#if VK_HEADER_VERSION >= 290
+      case VK_VENDOR_ID_KHRONOS:
+        return "VK_VENDOR_ID_KHRONOS";
+#endif
 #if VK_HEADER_VERSION >= 82
       case VK_VENDOR_ID_VIV:
         return "VK_VENDOR_ID_VIV";
