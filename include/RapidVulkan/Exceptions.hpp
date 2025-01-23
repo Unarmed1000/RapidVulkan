@@ -3,7 +3,7 @@
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2016-2024, Rene Thrane
+//* Copyright (c) 2016-2025, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -35,21 +35,32 @@ namespace RapidVulkan
     std::string m_fileName;
     int m_lineNumber;
   public:
-    explicit VulkanException(const char *const pszWhatArg)
-        : std::runtime_error(pszWhatArg), m_lineNumber(0) {}
+    explicit VulkanException(const char*const pszWhatArg)
+      : std::runtime_error(pszWhatArg)
+      , m_lineNumber(0)
+    {
+    }
 
-    explicit VulkanException(const std::string &whatArg)
-        : std::runtime_error(whatArg), m_lineNumber(0) {}
+    explicit VulkanException(const std::string& whatArg)
+      : std::runtime_error(whatArg)
+      , m_lineNumber(0)
+    {
+    }
 
-    explicit VulkanException(const char *const pszWhatArg, std::string fileName,
-                             const int lineNumber)
-        : std::runtime_error(pszWhatArg), m_fileName(std::move(fileName)),
-          m_lineNumber(lineNumber) {}
+    explicit VulkanException(const char*const pszWhatArg, std::string fileName, const int lineNumber)
+      : std::runtime_error(pszWhatArg)
+      , m_fileName(std::move(fileName))
+      , m_lineNumber(lineNumber)
+    {
+    }
 
-    explicit VulkanException(const std::string &whatArg, std::string fileName,
-                             const int lineNumber)
-        : std::runtime_error(whatArg), m_fileName(std::move(fileName)),
-          m_lineNumber(lineNumber) {}
+    explicit VulkanException(const std::string& whatArg, std::string fileName, const int lineNumber)
+      : std::runtime_error(whatArg)
+      , m_fileName(std::move(fileName))
+      , m_lineNumber(lineNumber)
+    {
+    }
+
 
     std::string GetFileName() const
     {

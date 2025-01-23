@@ -4,7 +4,7 @@
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2017-2024, Rene Thrane
+//* Copyright (c) 2017-2025, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -141,9 +141,9 @@ namespace RapidVulkan
       case VK_DRIVER_ID_MESA_HONEYKRISP:
         return "VK_DRIVER_ID_MESA_HONEYKRISP";
 #endif
-#if VK_HEADER_VERSION >= 290
-      case VK_DRIVER_ID_RESERVED_27:
-        return "VK_DRIVER_ID_RESERVED_27";
+#if VK_HEADER_VERSION >= 304
+      case VK_DRIVER_ID_VULKAN_SC_EMULATION_ON_VULKAN:
+        return "VK_DRIVER_ID_VULKAN_SC_EMULATION_ON_VULKAN";
 #endif
       default:
         return nullptr;

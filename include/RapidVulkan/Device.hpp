@@ -3,7 +3,7 @@
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2016-2024, Rene Thrane
+//* Copyright (c) 2016-2025, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -407,6 +407,78 @@ namespace RapidVulkan
     void GetDeviceImageSparseMemoryRequirements(const VkDeviceImageMemoryRequirements * pInfo, uint32_t * pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2 * pSparseMemoryRequirements)
     {
       vkGetDeviceImageSparseMemoryRequirements(m_device, pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 304
+    //! @note  Function: vkMapMemory2
+    void MapMemory2(const VkMemoryMapInfo * pMemoryMapInfo, void ** ppData)
+    {
+      CheckError(vkMapMemory2(m_device, pMemoryMapInfo, ppData), "vkMapMemory2", __FILE__, __LINE__);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 304
+    //! @note  Function: vkUnmapMemory2
+    void UnmapMemory2(const VkMemoryUnmapInfo * pMemoryUnmapInfo)
+    {
+      CheckError(vkUnmapMemory2(m_device, pMemoryUnmapInfo), "vkUnmapMemory2", __FILE__, __LINE__);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 304
+    //! @note  Function: vkGetRenderingAreaGranularity
+    void GetRenderingAreaGranularity(const VkRenderingAreaInfo * pRenderingAreaInfo, VkExtent2D * pGranularity)
+    {
+      vkGetRenderingAreaGranularity(m_device, pRenderingAreaInfo, pGranularity);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 304
+    //! @note  Function: vkGetDeviceImageSubresourceLayout
+    void GetDeviceImageSubresourceLayout(const VkDeviceImageSubresourceInfo * pInfo, VkSubresourceLayout2 * pLayout)
+    {
+      vkGetDeviceImageSubresourceLayout(m_device, pInfo, pLayout);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 304
+    //! @note  Function: vkCopyMemoryToImage
+    void CopyMemoryToImage(const VkCopyMemoryToImageInfo * pCopyMemoryToImageInfo)
+    {
+      CheckError(vkCopyMemoryToImage(m_device, pCopyMemoryToImageInfo), "vkCopyMemoryToImage", __FILE__, __LINE__);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 304
+    //! @note  Function: vkCopyImageToMemory
+    void CopyImageToMemory(const VkCopyImageToMemoryInfo * pCopyImageToMemoryInfo)
+    {
+      CheckError(vkCopyImageToMemory(m_device, pCopyImageToMemoryInfo), "vkCopyImageToMemory", __FILE__, __LINE__);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 304
+    //! @note  Function: vkCopyImageToImage
+    void CopyImageToImage(const VkCopyImageToImageInfo * pCopyImageToImageInfo)
+    {
+      CheckError(vkCopyImageToImage(m_device, pCopyImageToImageInfo), "vkCopyImageToImage", __FILE__, __LINE__);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 304
+    //! @note  Function: vkTransitionImageLayout
+    void TransitionImageLayout(const uint32_t transitionCount, const VkHostImageLayoutTransitionInfo * pTransitions)
+    {
+      CheckError(vkTransitionImageLayout(m_device, transitionCount, pTransitions), "vkTransitionImageLayout", __FILE__, __LINE__);
     }
 #endif
   };

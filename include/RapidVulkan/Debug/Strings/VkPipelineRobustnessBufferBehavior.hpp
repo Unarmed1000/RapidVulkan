@@ -1,10 +1,10 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKHOSTIMAGECOPYFLAGBITSEXT_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKHOSTIMAGECOPYFLAGBITSEXT_HPP
-#if VK_HEADER_VERSION >= 261
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKPIPELINEROBUSTNESSBUFFERBEHAVIOR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKPIPELINEROBUSTNESSBUFFERBEHAVIOR_HPP
+#if VK_HEADER_VERSION >= 304
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2017-2024, Rene Thrane
+//* Copyright (c) 2017-2025, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -33,20 +33,32 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkHostImageCopyFlagBitsEXT& value)
+    inline const char* TryToString(const VkPipelineRobustnessBufferBehavior& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 261
-      case VK_HOST_IMAGE_COPY_MEMCPY_EXT:
-        return "VK_HOST_IMAGE_COPY_MEMCPY_EXT";
+#if VK_HEADER_VERSION >= 304
+      case VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT:
+        return "VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT";
+#endif
+#if VK_HEADER_VERSION >= 304
+      case VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DISABLED:
+        return "VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DISABLED";
+#endif
+#if VK_HEADER_VERSION >= 304
+      case VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS:
+        return "VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS";
+#endif
+#if VK_HEADER_VERSION >= 304
+      case VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2:
+        return "VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkHostImageCopyFlagBitsEXT& value)
+    inline const char* ToString(const VkPipelineRobustnessBufferBehavior& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

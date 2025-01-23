@@ -3,7 +3,7 @@
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2016-2024, Rene Thrane
+//* Copyright (c) 2016-2025, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -243,6 +243,15 @@ namespace RapidVulkan
     {
       vkGetImageSubresourceLayout(m_device, m_image, pSubresource, pLayout);
     }
+
+
+#if VK_HEADER_VERSION >= 304
+    //! @note  Function: vkGetImageSubresourceLayout2
+    void GetImageSubresourceLayout2(const VkImageSubresource2 * pSubresource, VkSubresourceLayout2 * pLayout)
+    {
+      vkGetImageSubresourceLayout2(m_device, m_image, pSubresource, pLayout);
+    }
+#endif
 
 
     VkMemoryRequirements GetImageMemoryRequirements() const

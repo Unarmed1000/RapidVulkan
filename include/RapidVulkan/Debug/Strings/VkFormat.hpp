@@ -3,7 +3,7 @@
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2017-2024, Rene Thrane
+//* Copyright (c) 2017-2025, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -621,6 +621,14 @@ namespace RapidVulkan
 #if VK_HEADER_VERSION >= 204
       case VK_FORMAT_ASTC_12x12_SFLOAT_BLOCK:
         return "VK_FORMAT_ASTC_12x12_SFLOAT_BLOCK";
+#endif
+#if VK_HEADER_VERSION >= 304
+      case VK_FORMAT_A1B5G5R5_UNORM_PACK16:
+        return "VK_FORMAT_A1B5G5R5_UNORM_PACK16";
+#endif
+#if VK_HEADER_VERSION >= 304
+      case VK_FORMAT_A8_UNORM:
+        return "VK_FORMAT_A8_UNORM";
 #endif
       case VK_FORMAT_PVRTC1_2BPP_UNORM_BLOCK_IMG:
         return "VK_FORMAT_PVRTC1_2BPP_UNORM_BLOCK_IMG";

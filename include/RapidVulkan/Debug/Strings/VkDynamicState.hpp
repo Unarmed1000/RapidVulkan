@@ -3,7 +3,7 @@
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2017-2024, Rene Thrane
+//* Copyright (c) 2017-2025, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -113,6 +113,10 @@ namespace RapidVulkan
 #if VK_HEADER_VERSION >= 204
       case VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE:
         return "VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE";
+#endif
+#if VK_HEADER_VERSION >= 304
+      case VK_DYNAMIC_STATE_LINE_STIPPLE:
+        return "VK_DYNAMIC_STATE_LINE_STIPPLE";
 #endif
       default:
         return nullptr;

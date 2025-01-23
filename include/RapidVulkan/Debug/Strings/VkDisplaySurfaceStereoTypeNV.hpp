@@ -1,10 +1,10 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKLINERASTERIZATIONMODEKHR_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKLINERASTERIZATIONMODEKHR_HPP
-#if VK_HEADER_VERSION >= 280
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKDISPLAYSURFACESTEREOTYPENV_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKDISPLAYSURFACESTEREOTYPENV_HPP
+#if VK_HEADER_VERSION >= 304
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2017-2024, Rene Thrane
+//* Copyright (c) 2017-2025, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -33,32 +33,32 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkLineRasterizationModeKHR& value)
+    inline const char* TryToString(const VkDisplaySurfaceStereoTypeNV& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 280
-      case VK_LINE_RASTERIZATION_MODE_DEFAULT_KHR:
-        return "VK_LINE_RASTERIZATION_MODE_DEFAULT_KHR";
+#if VK_HEADER_VERSION >= 304
+      case VK_DISPLAY_SURFACE_STEREO_TYPE_NONE_NV:
+        return "VK_DISPLAY_SURFACE_STEREO_TYPE_NONE_NV";
 #endif
-#if VK_HEADER_VERSION >= 280
-      case VK_LINE_RASTERIZATION_MODE_RECTANGULAR_KHR:
-        return "VK_LINE_RASTERIZATION_MODE_RECTANGULAR_KHR";
+#if VK_HEADER_VERSION >= 304
+      case VK_DISPLAY_SURFACE_STEREO_TYPE_ONBOARD_DIN_NV:
+        return "VK_DISPLAY_SURFACE_STEREO_TYPE_ONBOARD_DIN_NV";
 #endif
-#if VK_HEADER_VERSION >= 280
-      case VK_LINE_RASTERIZATION_MODE_BRESENHAM_KHR:
-        return "VK_LINE_RASTERIZATION_MODE_BRESENHAM_KHR";
+#if VK_HEADER_VERSION >= 304
+      case VK_DISPLAY_SURFACE_STEREO_TYPE_HDMI_3D_NV:
+        return "VK_DISPLAY_SURFACE_STEREO_TYPE_HDMI_3D_NV";
 #endif
-#if VK_HEADER_VERSION >= 280
-      case VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH_KHR:
-        return "VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH_KHR";
+#if VK_HEADER_VERSION >= 304
+      case VK_DISPLAY_SURFACE_STEREO_TYPE_INBAND_DISPLAYPORT_NV:
+        return "VK_DISPLAY_SURFACE_STEREO_TYPE_INBAND_DISPLAYPORT_NV";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkLineRasterizationModeKHR& value)
+    inline const char* ToString(const VkDisplaySurfaceStereoTypeNV& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

@@ -1,5 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKBUFFERCREATEFLAGBITS_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKBUFFERCREATEFLAGBITS_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKQUEUEGLOBALPRIORITY_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKQUEUEGLOBALPRIORITY_HPP
+#if VK_HEADER_VERSION >= 304
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -32,30 +33,32 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkBufferCreateFlagBits& value)
+    inline const char* TryToString(const VkQueueGlobalPriority& value)
     {
       switch(value)
       {
-      case VK_BUFFER_CREATE_SPARSE_BINDING_BIT:
-        return "VK_BUFFER_CREATE_SPARSE_BINDING_BIT";
-      case VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT:
-        return "VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT";
-      case VK_BUFFER_CREATE_SPARSE_ALIASED_BIT:
-        return "VK_BUFFER_CREATE_SPARSE_ALIASED_BIT";
-#if VK_HEADER_VERSION >= 70
-      case VK_BUFFER_CREATE_PROTECTED_BIT:
-        return "VK_BUFFER_CREATE_PROTECTED_BIT";
+#if VK_HEADER_VERSION >= 304
+      case VK_QUEUE_GLOBAL_PRIORITY_LOW:
+        return "VK_QUEUE_GLOBAL_PRIORITY_LOW";
 #endif
-#if VK_HEADER_VERSION >= 131
-      case VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT:
-        return "VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT";
+#if VK_HEADER_VERSION >= 304
+      case VK_QUEUE_GLOBAL_PRIORITY_MEDIUM:
+        return "VK_QUEUE_GLOBAL_PRIORITY_MEDIUM";
+#endif
+#if VK_HEADER_VERSION >= 304
+      case VK_QUEUE_GLOBAL_PRIORITY_HIGH:
+        return "VK_QUEUE_GLOBAL_PRIORITY_HIGH";
+#endif
+#if VK_HEADER_VERSION >= 304
+      case VK_QUEUE_GLOBAL_PRIORITY_REALTIME:
+        return "VK_QUEUE_GLOBAL_PRIORITY_REALTIME";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkBufferCreateFlagBits& value)
+    inline const char* ToString(const VkQueueGlobalPriority& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");
@@ -63,4 +66,5 @@ namespace RapidVulkan
   }
 }
 
+#endif
 #endif

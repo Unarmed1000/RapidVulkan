@@ -3,7 +3,7 @@
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2017-2024, Rene Thrane
+//* Copyright (c) 2017-2025, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -61,6 +61,14 @@ namespace RapidVulkan
 #if VK_HEADER_VERSION >= 204
       case VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT:
         return "VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT";
+#endif
+#if VK_HEADER_VERSION >= 304
+      case VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT:
+        return "VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT";
+#endif
+#if VK_HEADER_VERSION >= 304
+      case VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT:
+        return "VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT";
 #endif
       default:
         return nullptr;

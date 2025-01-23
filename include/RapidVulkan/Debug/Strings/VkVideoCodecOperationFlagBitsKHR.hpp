@@ -4,7 +4,7 @@
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2017-2024, Rene Thrane
+//* Copyright (c) 2017-2025, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -60,6 +60,10 @@ namespace RapidVulkan
 #if VK_HEADER_VERSION >= 280
       case VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR:
         return "VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR";
+#endif
+#if VK_HEADER_VERSION >= 304
+      case VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR:
+        return "VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR";
 #endif
       default:
         return nullptr;

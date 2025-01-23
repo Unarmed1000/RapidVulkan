@@ -4,7 +4,7 @@
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2017-2024, Rene Thrane
+//* Copyright (c) 2017-2025, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -68,6 +68,14 @@ namespace RapidVulkan
 #if VK_HEADER_VERSION >= 70
       case VK_SUBGROUP_FEATURE_QUAD_BIT:
         return "VK_SUBGROUP_FEATURE_QUAD_BIT";
+#endif
+#if VK_HEADER_VERSION >= 304
+      case VK_SUBGROUP_FEATURE_ROTATE_BIT:
+        return "VK_SUBGROUP_FEATURE_ROTATE_BIT";
+#endif
+#if VK_HEADER_VERSION >= 304
+      case VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT:
+        return "VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT";
 #endif
       default:
         return nullptr;

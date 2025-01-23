@@ -3,7 +3,7 @@
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2016-2024, Rene Thrane
+//* Copyright (c) 2016-2025, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -37,9 +37,9 @@
 // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
 #define RAPIDVULKAN_VULKAN_VERSION_MAJOR   1
 // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-#define RAPIDVULKAN_VULKAN_VERSION_MINOR   3
+#define RAPIDVULKAN_VULKAN_VERSION_MINOR   4
 // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-#define RAPIDVULKAN_VULKAN_VERSION_BUILD   296
+#define RAPIDVULKAN_VULKAN_VERSION_BUILD   304
 // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
 #define RAPIDVULKAN_VULKAN_VERSION_HOTFIX  0
 

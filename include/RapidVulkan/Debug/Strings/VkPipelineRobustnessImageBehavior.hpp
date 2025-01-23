@@ -1,10 +1,10 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKPIPELINEROBUSTNESSBUFFERBEHAVIOREXT_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKPIPELINEROBUSTNESSBUFFERBEHAVIOREXT_HPP
-#if VK_HEADER_VERSION >= 224
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKPIPELINEROBUSTNESSIMAGEBEHAVIOR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKPIPELINEROBUSTNESSIMAGEBEHAVIOR_HPP
+#if VK_HEADER_VERSION >= 304
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2017-2024, Rene Thrane
+//* Copyright (c) 2017-2025, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -33,32 +33,32 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkPipelineRobustnessBufferBehaviorEXT& value)
+    inline const char* TryToString(const VkPipelineRobustnessImageBehavior& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 224
-      case VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT_EXT:
-        return "VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT_EXT";
+#if VK_HEADER_VERSION >= 304
+      case VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DEVICE_DEFAULT:
+        return "VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DEVICE_DEFAULT";
 #endif
-#if VK_HEADER_VERSION >= 224
-      case VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DISABLED_EXT:
-        return "VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DISABLED_EXT";
+#if VK_HEADER_VERSION >= 304
+      case VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DISABLED:
+        return "VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_DISABLED";
 #endif
-#if VK_HEADER_VERSION >= 224
-      case VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_EXT:
-        return "VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_EXT";
+#if VK_HEADER_VERSION >= 304
+      case VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS:
+        return "VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS";
 #endif
-#if VK_HEADER_VERSION >= 224
-      case VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2_EXT:
-        return "VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2_EXT";
+#if VK_HEADER_VERSION >= 304
+      case VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_2:
+        return "VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_2";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkPipelineRobustnessBufferBehaviorEXT& value)
+    inline const char* ToString(const VkPipelineRobustnessImageBehavior& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");
