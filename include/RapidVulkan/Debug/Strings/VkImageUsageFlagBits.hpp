@@ -68,6 +68,14 @@ namespace RapidVulkan
       case VK_IMAGE_USAGE_SAMPLE_BLOCK_MATCH_BIT_QCOM:
         return "VK_IMAGE_USAGE_SAMPLE_BLOCK_MATCH_BIT_QCOM";
 #endif
+#if VK_HEADER_VERSION >= 321
+      case VK_IMAGE_USAGE_TENSOR_ALIASING_BIT_ARM:
+        return "VK_IMAGE_USAGE_TENSOR_ALIASING_BIT_ARM";
+#endif
+#if VK_HEADER_VERSION >= 321
+      case VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM:
+        return "VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM";
+#endif
       default:
         return nullptr;
       }

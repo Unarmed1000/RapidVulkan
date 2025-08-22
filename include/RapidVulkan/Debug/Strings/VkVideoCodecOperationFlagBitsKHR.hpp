@@ -65,6 +65,10 @@ namespace RapidVulkan
       case VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR:
         return "VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR";
 #endif
+#if VK_HEADER_VERSION >= 321
+      case VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR:
+        return "VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR";
+#endif
       default:
         return nullptr;
       }

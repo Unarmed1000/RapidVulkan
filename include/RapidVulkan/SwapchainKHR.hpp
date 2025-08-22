@@ -266,6 +266,15 @@ namespace RapidVulkan
       CheckError(vkWaitForPresentKHR(m_device, m_swapchain, presentId, timeout), "vkWaitForPresentKHR", __FILE__, __LINE__);
     }
 #endif
+
+
+#if VK_HEADER_VERSION >= 321
+    //! @note  Function: vkWaitForPresent2KHR
+    void WaitForPresent2KHR(const VkPresentWait2InfoKHR * pPresentWait2Info)
+    {
+      CheckError(vkWaitForPresent2KHR(m_device, m_swapchain, pPresentWait2Info), "vkWaitForPresent2KHR", __FILE__, __LINE__);
+    }
+#endif
   };
 }
 

@@ -41,6 +41,10 @@ namespace RapidVulkan
       case VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM:
         return "VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM";
 #endif
+#if VK_HEADER_VERSION >= 321
+      case VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE:
+        return "VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE";
+#endif
       default:
         return nullptr;
       }

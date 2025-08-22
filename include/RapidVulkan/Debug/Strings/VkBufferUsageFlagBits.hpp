@@ -58,6 +58,10 @@ namespace RapidVulkan
       case VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT:
         return "VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT";
 #endif
+#if VK_HEADER_VERSION >= 321
+      case VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM:
+        return "VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM";
+#endif
       default:
         return nullptr;
       }

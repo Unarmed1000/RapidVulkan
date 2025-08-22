@@ -48,6 +48,10 @@ namespace RapidVulkan
       case VK_QUEUE_PROTECTED_BIT:
         return "VK_QUEUE_PROTECTED_BIT";
 #endif
+#if VK_HEADER_VERSION >= 321
+      case VK_QUEUE_DATA_GRAPH_BIT_ARM:
+        return "VK_QUEUE_DATA_GRAPH_BIT_ARM";
+#endif
       default:
         return nullptr;
       }

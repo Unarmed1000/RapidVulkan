@@ -81,6 +81,10 @@ namespace RapidVulkan
       case VK_COMPONENT_TYPE_UINT64_KHR:
         return "VK_COMPONENT_TYPE_UINT64_KHR";
 #endif
+#if VK_HEADER_VERSION >= 321
+      case VK_COMPONENT_TYPE_BFLOAT16_KHR:
+        return "VK_COMPONENT_TYPE_BFLOAT16_KHR";
+#endif
       default:
         return nullptr;
       }

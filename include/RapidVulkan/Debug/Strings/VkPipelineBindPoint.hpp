@@ -44,6 +44,10 @@ namespace RapidVulkan
       case VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI:
         return "VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI";
 #endif
+#if VK_HEADER_VERSION >= 321
+      case VK_PIPELINE_BIND_POINT_DATA_GRAPH_ARM:
+        return "VK_PIPELINE_BIND_POINT_DATA_GRAPH_ARM";
+#endif
       default:
         return nullptr;
       }

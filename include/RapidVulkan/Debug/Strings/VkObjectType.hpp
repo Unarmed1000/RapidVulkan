@@ -157,6 +157,18 @@ namespace RapidVulkan
       case VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA:
         return "VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA";
 #endif
+#if VK_HEADER_VERSION >= 321
+      case VK_OBJECT_TYPE_TENSOR_ARM:
+        return "VK_OBJECT_TYPE_TENSOR_ARM";
+#endif
+#if VK_HEADER_VERSION >= 321
+      case VK_OBJECT_TYPE_TENSOR_VIEW_ARM:
+        return "VK_OBJECT_TYPE_TENSOR_VIEW_ARM";
+#endif
+#if VK_HEADER_VERSION >= 321
+      case VK_OBJECT_TYPE_DATA_GRAPH_PIPELINE_SESSION_ARM:
+        return "VK_OBJECT_TYPE_DATA_GRAPH_PIPELINE_SESSION_ARM";
+#endif
       default:
         return nullptr;
       }

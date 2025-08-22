@@ -90,6 +90,10 @@ namespace RapidVulkan
       case VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ:
         return "VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ";
 #endif
+#if VK_HEADER_VERSION >= 321
+      case VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM:
+        return "VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM";
+#endif
       default:
         return nullptr;
       }

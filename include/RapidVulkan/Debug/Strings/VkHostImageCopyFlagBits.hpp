@@ -37,10 +37,14 @@ namespace RapidVulkan
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 304
+#if VK_HEADER_VERSION >= 321
+      case VK_HOST_IMAGE_COPY_MEMCPY_BIT:
+        return "VK_HOST_IMAGE_COPY_MEMCPY_BIT";
+#elif VK_HEADER_VERSION >= 304
       case VK_HOST_IMAGE_COPY_MEMCPY:
         return "VK_HOST_IMAGE_COPY_MEMCPY";
 #endif
+
       default:
         return nullptr;
       }

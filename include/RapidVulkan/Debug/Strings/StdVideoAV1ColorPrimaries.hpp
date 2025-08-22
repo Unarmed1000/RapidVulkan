@@ -1,0 +1,110 @@
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_STDVIDEOAV1COLORPRIMARIES_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_STDVIDEOAV1COLORPRIMARIES_HPP
+#if VK_HEADER_VERSION >= 280
+//***************************************************************************************************************************************************
+//* BSD 3-Clause License
+//*
+//* Copyright (c) 2017-2025, Rene Thrane
+//* All rights reserved.
+//*
+//* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+//*
+//* 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+//* 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the
+//*    documentation and/or other materials provided with the distribution.
+//* 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this
+//*    software without specific prior written permission.
+//*
+//* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+//* THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+//* CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+//* PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+//* LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+//* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//***************************************************************************************************************************************************
+
+// If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
+
+// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+
+#include <vulkan/vulkan.h>
+
+namespace RapidVulkan
+{
+  namespace Debug
+  {
+    inline const char* TryToString(const StdVideoAV1ColorPrimaries& value)
+    {
+      switch(value)
+      {
+#if VK_HEADER_VERSION >= 280
+      case STD_VIDEO_AV1_COLOR_PRIMARIES_BT_709:
+        return "STD_VIDEO_AV1_COLOR_PRIMARIES_BT_709";
+#endif
+#if VK_HEADER_VERSION >= 304
+      case STD_VIDEO_AV1_COLOR_PRIMARIES_UNSPECIFIED:
+        return "STD_VIDEO_AV1_COLOR_PRIMARIES_UNSPECIFIED";
+#elif VK_HEADER_VERSION >= 280
+      case STD_VIDEO_AV1_COLOR_PRIMARIES_BT_UNSPECIFIED:
+        return "STD_VIDEO_AV1_COLOR_PRIMARIES_BT_UNSPECIFIED";
+#endif
+
+#if VK_HEADER_VERSION >= 280
+      case STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_M:
+        return "STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_M";
+#endif
+#if VK_HEADER_VERSION >= 280
+      case STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_B_G:
+        return "STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_B_G";
+#endif
+#if VK_HEADER_VERSION >= 280
+      case STD_VIDEO_AV1_COLOR_PRIMARIES_BT_601:
+        return "STD_VIDEO_AV1_COLOR_PRIMARIES_BT_601";
+#endif
+#if VK_HEADER_VERSION >= 280
+      case STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_240:
+        return "STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_240";
+#endif
+#if VK_HEADER_VERSION >= 280
+      case STD_VIDEO_AV1_COLOR_PRIMARIES_GENERIC_FILM:
+        return "STD_VIDEO_AV1_COLOR_PRIMARIES_GENERIC_FILM";
+#endif
+#if VK_HEADER_VERSION >= 280
+      case STD_VIDEO_AV1_COLOR_PRIMARIES_BT_2020:
+        return "STD_VIDEO_AV1_COLOR_PRIMARIES_BT_2020";
+#endif
+#if VK_HEADER_VERSION >= 280
+      case STD_VIDEO_AV1_COLOR_PRIMARIES_XYZ:
+        return "STD_VIDEO_AV1_COLOR_PRIMARIES_XYZ";
+#endif
+#if VK_HEADER_VERSION >= 280
+      case STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_431:
+        return "STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_431";
+#endif
+#if VK_HEADER_VERSION >= 280
+      case STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_432:
+        return "STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_432";
+#endif
+#if VK_HEADER_VERSION >= 280
+      case STD_VIDEO_AV1_COLOR_PRIMARIES_EBU_3213:
+        return "STD_VIDEO_AV1_COLOR_PRIMARIES_EBU_3213";
+#endif
+#if VK_HEADER_VERSION >= 280
+      case STD_VIDEO_AV1_COLOR_PRIMARIES_INVALID:
+        return "STD_VIDEO_AV1_COLOR_PRIMARIES_INVALID";
+#endif
+      default:
+        return nullptr;
+      }
+    };
+
+    inline const char* ToString(const StdVideoAV1ColorPrimaries& value)
+    {
+      auto result = TryToString(value);
+      return (result != nullptr ? result : "*Unknown*");
+    };
+  }
+}
+
+#endif
+#endif

@@ -49,6 +49,10 @@ namespace RapidVulkan
       case VK_RENDERING_RESUMING_BIT:
         return "VK_RENDERING_RESUMING_BIT";
 #endif
+#if VK_HEADER_VERSION >= 321
+      case VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE:
+        return "VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE";
+#endif
       default:
         return nullptr;
       }

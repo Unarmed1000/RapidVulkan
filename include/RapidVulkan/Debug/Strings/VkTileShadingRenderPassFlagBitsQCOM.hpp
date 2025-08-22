@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKPRESENTGRAVITYFLAGBITSEXT_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKPRESENTGRAVITYFLAGBITSEXT_HPP
-#if VK_HEADER_VERSION >= 239
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKTILESHADINGRENDERPASSFLAGBITSQCOM_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKTILESHADINGRENDERPASSFLAGBITSQCOM_HPP
+#if VK_HEADER_VERSION >= 321
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -33,28 +33,24 @@ namespace RapidVulkan
 {
   namespace Debug
   {
-    inline const char* TryToString(const VkPresentGravityFlagBitsEXT& value)
+    inline const char* TryToString(const VkTileShadingRenderPassFlagBitsQCOM& value)
     {
       switch(value)
       {
-#if VK_HEADER_VERSION >= 239
-      case VK_PRESENT_GRAVITY_MIN_BIT_EXT:
-        return "VK_PRESENT_GRAVITY_MIN_BIT_EXT";
+#if VK_HEADER_VERSION >= 321
+      case VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM:
+        return "VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM";
 #endif
-#if VK_HEADER_VERSION >= 239
-      case VK_PRESENT_GRAVITY_MAX_BIT_EXT:
-        return "VK_PRESENT_GRAVITY_MAX_BIT_EXT";
-#endif
-#if VK_HEADER_VERSION >= 239
-      case VK_PRESENT_GRAVITY_CENTERED_BIT_EXT:
-        return "VK_PRESENT_GRAVITY_CENTERED_BIT_EXT";
+#if VK_HEADER_VERSION >= 321
+      case VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM:
+        return "VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM";
 #endif
       default:
         return nullptr;
       }
     };
 
-    inline const char* ToString(const VkPresentGravityFlagBitsEXT& value)
+    inline const char* ToString(const VkTileShadingRenderPassFlagBitsQCOM& value)
     {
       auto result = TryToString(value);
       return (result != nullptr ? result : "*Unknown*");

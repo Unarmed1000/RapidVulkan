@@ -42,6 +42,10 @@ namespace RapidVulkan
       case VK_MEMORY_HEAP_MULTI_INSTANCE_BIT:
         return "VK_MEMORY_HEAP_MULTI_INSTANCE_BIT";
 #endif
+#if VK_HEADER_VERSION >= 321
+      case VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM:
+        return "VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM";
+#endif
       default:
         return nullptr;
       }
