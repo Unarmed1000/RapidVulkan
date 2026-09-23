@@ -25,44 +25,41 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkTimeDomainKHR value) noexcept
   {
-    inline const char* TryToString(const VkTimeDomainKHR& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 275
-      case VK_TIME_DOMAIN_DEVICE_KHR:
-        return "VK_TIME_DOMAIN_DEVICE_KHR";
+    case VK_TIME_DOMAIN_DEVICE_KHR:
+      return "VK_TIME_DOMAIN_DEVICE_KHR";
 #endif
 #if VK_HEADER_VERSION >= 275
-      case VK_TIME_DOMAIN_CLOCK_MONOTONIC_KHR:
-        return "VK_TIME_DOMAIN_CLOCK_MONOTONIC_KHR";
+    case VK_TIME_DOMAIN_CLOCK_MONOTONIC_KHR:
+      return "VK_TIME_DOMAIN_CLOCK_MONOTONIC_KHR";
 #endif
 #if VK_HEADER_VERSION >= 275
-      case VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_KHR:
-        return "VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_KHR";
+    case VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_KHR:
+      return "VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_KHR";
 #endif
 #if VK_HEADER_VERSION >= 275
-      case VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_KHR:
-        return "VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_KHR";
+    case VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_KHR:
+      return "VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_KHR";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkTimeDomainKHR& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkTimeDomainKHR value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKOPACITYMICROMAPFORMATEXT_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKOPACITYMICROMAPFORMATEXT_HPP
-#if VK_HEADER_VERSION >= 231
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKRESOLVEIMAGEFLAGBITSKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKRESOLVEIMAGEFLAGBITSKHR_HPP
+#if VK_HEADER_VERSION >= 335
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -25,36 +25,33 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkResolveImageFlagBitsKHR value) noexcept
   {
-    inline const char* TryToString(const VkOpacityMicromapFormatEXT& value)
+    switch (value)
     {
-      switch(value)
-      {
-#if VK_HEADER_VERSION >= 231
-      case VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT:
-        return "VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT";
+#if VK_HEADER_VERSION >= 335
+    case VK_RESOLVE_IMAGE_SKIP_TRANSFER_FUNCTION_BIT_KHR:
+      return "VK_RESOLVE_IMAGE_SKIP_TRANSFER_FUNCTION_BIT_KHR";
 #endif
-#if VK_HEADER_VERSION >= 231
-      case VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT:
-        return "VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT";
+#if VK_HEADER_VERSION >= 335
+    case VK_RESOLVE_IMAGE_ENABLE_TRANSFER_FUNCTION_BIT_KHR:
+      return "VK_RESOLVE_IMAGE_ENABLE_TRANSFER_FUNCTION_BIT_KHR";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkOpacityMicromapFormatEXT& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkResolveImageFlagBitsKHR value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

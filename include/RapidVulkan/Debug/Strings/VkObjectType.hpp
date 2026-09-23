@@ -25,160 +25,161 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkObjectType value) noexcept
   {
-    inline const char* TryToString(const VkObjectType& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_UNKNOWN:
-        return "VK_OBJECT_TYPE_UNKNOWN";
+    case VK_OBJECT_TYPE_UNKNOWN:
+      return "VK_OBJECT_TYPE_UNKNOWN";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_INSTANCE:
-        return "VK_OBJECT_TYPE_INSTANCE";
+    case VK_OBJECT_TYPE_INSTANCE:
+      return "VK_OBJECT_TYPE_INSTANCE";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_PHYSICAL_DEVICE:
-        return "VK_OBJECT_TYPE_PHYSICAL_DEVICE";
+    case VK_OBJECT_TYPE_PHYSICAL_DEVICE:
+      return "VK_OBJECT_TYPE_PHYSICAL_DEVICE";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_DEVICE:
-        return "VK_OBJECT_TYPE_DEVICE";
+    case VK_OBJECT_TYPE_DEVICE:
+      return "VK_OBJECT_TYPE_DEVICE";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_QUEUE:
-        return "VK_OBJECT_TYPE_QUEUE";
+    case VK_OBJECT_TYPE_QUEUE:
+      return "VK_OBJECT_TYPE_QUEUE";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_SEMAPHORE:
-        return "VK_OBJECT_TYPE_SEMAPHORE";
+    case VK_OBJECT_TYPE_SEMAPHORE:
+      return "VK_OBJECT_TYPE_SEMAPHORE";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_COMMAND_BUFFER:
-        return "VK_OBJECT_TYPE_COMMAND_BUFFER";
+    case VK_OBJECT_TYPE_COMMAND_BUFFER:
+      return "VK_OBJECT_TYPE_COMMAND_BUFFER";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_FENCE:
-        return "VK_OBJECT_TYPE_FENCE";
+    case VK_OBJECT_TYPE_FENCE:
+      return "VK_OBJECT_TYPE_FENCE";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_DEVICE_MEMORY:
-        return "VK_OBJECT_TYPE_DEVICE_MEMORY";
+    case VK_OBJECT_TYPE_DEVICE_MEMORY:
+      return "VK_OBJECT_TYPE_DEVICE_MEMORY";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_BUFFER:
-        return "VK_OBJECT_TYPE_BUFFER";
+    case VK_OBJECT_TYPE_BUFFER:
+      return "VK_OBJECT_TYPE_BUFFER";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_IMAGE:
-        return "VK_OBJECT_TYPE_IMAGE";
+    case VK_OBJECT_TYPE_IMAGE:
+      return "VK_OBJECT_TYPE_IMAGE";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_EVENT:
-        return "VK_OBJECT_TYPE_EVENT";
+    case VK_OBJECT_TYPE_EVENT:
+      return "VK_OBJECT_TYPE_EVENT";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_QUERY_POOL:
-        return "VK_OBJECT_TYPE_QUERY_POOL";
+    case VK_OBJECT_TYPE_QUERY_POOL:
+      return "VK_OBJECT_TYPE_QUERY_POOL";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_BUFFER_VIEW:
-        return "VK_OBJECT_TYPE_BUFFER_VIEW";
+    case VK_OBJECT_TYPE_BUFFER_VIEW:
+      return "VK_OBJECT_TYPE_BUFFER_VIEW";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_IMAGE_VIEW:
-        return "VK_OBJECT_TYPE_IMAGE_VIEW";
+    case VK_OBJECT_TYPE_IMAGE_VIEW:
+      return "VK_OBJECT_TYPE_IMAGE_VIEW";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_SHADER_MODULE:
-        return "VK_OBJECT_TYPE_SHADER_MODULE";
+    case VK_OBJECT_TYPE_SHADER_MODULE:
+      return "VK_OBJECT_TYPE_SHADER_MODULE";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_PIPELINE_CACHE:
-        return "VK_OBJECT_TYPE_PIPELINE_CACHE";
+    case VK_OBJECT_TYPE_PIPELINE_CACHE:
+      return "VK_OBJECT_TYPE_PIPELINE_CACHE";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_PIPELINE_LAYOUT:
-        return "VK_OBJECT_TYPE_PIPELINE_LAYOUT";
+    case VK_OBJECT_TYPE_PIPELINE_LAYOUT:
+      return "VK_OBJECT_TYPE_PIPELINE_LAYOUT";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_RENDER_PASS:
-        return "VK_OBJECT_TYPE_RENDER_PASS";
+    case VK_OBJECT_TYPE_RENDER_PASS:
+      return "VK_OBJECT_TYPE_RENDER_PASS";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_PIPELINE:
-        return "VK_OBJECT_TYPE_PIPELINE";
+    case VK_OBJECT_TYPE_PIPELINE:
+      return "VK_OBJECT_TYPE_PIPELINE";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT:
-        return "VK_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT";
+    case VK_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT:
+      return "VK_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_SAMPLER:
-        return "VK_OBJECT_TYPE_SAMPLER";
+    case VK_OBJECT_TYPE_SAMPLER:
+      return "VK_OBJECT_TYPE_SAMPLER";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_DESCRIPTOR_POOL:
-        return "VK_OBJECT_TYPE_DESCRIPTOR_POOL";
+    case VK_OBJECT_TYPE_DESCRIPTOR_POOL:
+      return "VK_OBJECT_TYPE_DESCRIPTOR_POOL";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_DESCRIPTOR_SET:
-        return "VK_OBJECT_TYPE_DESCRIPTOR_SET";
+    case VK_OBJECT_TYPE_DESCRIPTOR_SET:
+      return "VK_OBJECT_TYPE_DESCRIPTOR_SET";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_FRAMEBUFFER:
-        return "VK_OBJECT_TYPE_FRAMEBUFFER";
+    case VK_OBJECT_TYPE_FRAMEBUFFER:
+      return "VK_OBJECT_TYPE_FRAMEBUFFER";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_OBJECT_TYPE_COMMAND_POOL:
-        return "VK_OBJECT_TYPE_COMMAND_POOL";
+    case VK_OBJECT_TYPE_COMMAND_POOL:
+      return "VK_OBJECT_TYPE_COMMAND_POOL";
 #endif
 #if VK_HEADER_VERSION >= 70
-      case VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION:
-        return "VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION";
+    case VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE:
+      return "VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE";
 #endif
 #if VK_HEADER_VERSION >= 70
-      case VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE:
-        return "VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE";
+    case VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION:
+      return "VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION";
 #endif
 #if VK_HEADER_VERSION >= 204
-      case VK_OBJECT_TYPE_PRIVATE_DATA_SLOT:
-        return "VK_OBJECT_TYPE_PRIVATE_DATA_SLOT";
+    case VK_OBJECT_TYPE_PRIVATE_DATA_SLOT:
+      return "VK_OBJECT_TYPE_PRIVATE_DATA_SLOT";
 #endif
 #if VK_HEADER_VERSION >= 198
-      case VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA:
-        return "VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA";
+    case VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA:
+      return "VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA";
 #endif
 #if VK_HEADER_VERSION >= 321
-      case VK_OBJECT_TYPE_TENSOR_ARM:
-        return "VK_OBJECT_TYPE_TENSOR_ARM";
+    case VK_OBJECT_TYPE_TENSOR_ARM:
+      return "VK_OBJECT_TYPE_TENSOR_ARM";
 #endif
 #if VK_HEADER_VERSION >= 321
-      case VK_OBJECT_TYPE_TENSOR_VIEW_ARM:
-        return "VK_OBJECT_TYPE_TENSOR_VIEW_ARM";
+    case VK_OBJECT_TYPE_TENSOR_VIEW_ARM:
+      return "VK_OBJECT_TYPE_TENSOR_VIEW_ARM";
 #endif
 #if VK_HEADER_VERSION >= 321
-      case VK_OBJECT_TYPE_DATA_GRAPH_PIPELINE_SESSION_ARM:
-        return "VK_OBJECT_TYPE_DATA_GRAPH_PIPELINE_SESSION_ARM";
+    case VK_OBJECT_TYPE_DATA_GRAPH_PIPELINE_SESSION_ARM:
+      return "VK_OBJECT_TYPE_DATA_GRAPH_PIPELINE_SESSION_ARM";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+#if VK_HEADER_VERSION >= 350
+    case VK_OBJECT_TYPE_SHADER_INSTRUMENTATION_ARM:
+      return "VK_OBJECT_TYPE_SHADER_INSTRUMENTATION_ARM";
+#endif
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkObjectType& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkObjectType value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

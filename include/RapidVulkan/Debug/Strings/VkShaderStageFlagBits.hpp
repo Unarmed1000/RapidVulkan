@@ -24,52 +24,49 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkShaderStageFlagBits value) noexcept
   {
-    inline const char* TryToString(const VkShaderStageFlagBits& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_SHADER_STAGE_VERTEX_BIT:
-        return "VK_SHADER_STAGE_VERTEX_BIT";
-      case VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT:
-        return "VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT";
-      case VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT:
-        return "VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT";
-      case VK_SHADER_STAGE_GEOMETRY_BIT:
-        return "VK_SHADER_STAGE_GEOMETRY_BIT";
-      case VK_SHADER_STAGE_FRAGMENT_BIT:
-        return "VK_SHADER_STAGE_FRAGMENT_BIT";
-      case VK_SHADER_STAGE_COMPUTE_BIT:
-        return "VK_SHADER_STAGE_COMPUTE_BIT";
-      case VK_SHADER_STAGE_ALL_GRAPHICS:
-        return "VK_SHADER_STAGE_ALL_GRAPHICS";
-      case VK_SHADER_STAGE_ALL:
-        return "VK_SHADER_STAGE_ALL";
+    case VK_SHADER_STAGE_VERTEX_BIT:
+      return "VK_SHADER_STAGE_VERTEX_BIT";
+    case VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT:
+      return "VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT";
+    case VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT:
+      return "VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT";
+    case VK_SHADER_STAGE_GEOMETRY_BIT:
+      return "VK_SHADER_STAGE_GEOMETRY_BIT";
+    case VK_SHADER_STAGE_FRAGMENT_BIT:
+      return "VK_SHADER_STAGE_FRAGMENT_BIT";
+    case VK_SHADER_STAGE_COMPUTE_BIT:
+      return "VK_SHADER_STAGE_COMPUTE_BIT";
+    case VK_SHADER_STAGE_ALL_GRAPHICS:
+      return "VK_SHADER_STAGE_ALL_GRAPHICS";
+    case VK_SHADER_STAGE_ALL:
+      return "VK_SHADER_STAGE_ALL";
 #if VK_HEADER_VERSION >= 189
-      case VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI:
-        return "VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI";
+    case VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI:
+      return "VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI:
-        return "VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI";
+    case VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI:
+      return "VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkShaderStageFlagBits& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkShaderStageFlagBits value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

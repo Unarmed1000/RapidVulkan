@@ -24,38 +24,35 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkPhysicalDeviceType value) noexcept
   {
-    inline const char* TryToString(const VkPhysicalDeviceType& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_PHYSICAL_DEVICE_TYPE_OTHER:
-        return "VK_PHYSICAL_DEVICE_TYPE_OTHER";
-      case VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU:
-        return "VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU";
-      case VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU:
-        return "VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU";
-      case VK_PHYSICAL_DEVICE_TYPE_VIRTUAL_GPU:
-        return "VK_PHYSICAL_DEVICE_TYPE_VIRTUAL_GPU";
-      case VK_PHYSICAL_DEVICE_TYPE_CPU:
-        return "VK_PHYSICAL_DEVICE_TYPE_CPU";
-      default:
-        return nullptr;
-      }
-    };
+    case VK_PHYSICAL_DEVICE_TYPE_OTHER:
+      return "VK_PHYSICAL_DEVICE_TYPE_OTHER";
+    case VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU:
+      return "VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU";
+    case VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU:
+      return "VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU";
+    case VK_PHYSICAL_DEVICE_TYPE_VIRTUAL_GPU:
+      return "VK_PHYSICAL_DEVICE_TYPE_VIRTUAL_GPU";
+    case VK_PHYSICAL_DEVICE_TYPE_CPU:
+      return "VK_PHYSICAL_DEVICE_TYPE_CPU";
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkPhysicalDeviceType& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkPhysicalDeviceType value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

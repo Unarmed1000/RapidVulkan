@@ -24,110 +24,107 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkDynamicState value) noexcept
   {
-    inline const char* TryToString(const VkDynamicState& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_DYNAMIC_STATE_VIEWPORT:
-        return "VK_DYNAMIC_STATE_VIEWPORT";
-      case VK_DYNAMIC_STATE_SCISSOR:
-        return "VK_DYNAMIC_STATE_SCISSOR";
-      case VK_DYNAMIC_STATE_LINE_WIDTH:
-        return "VK_DYNAMIC_STATE_LINE_WIDTH";
-      case VK_DYNAMIC_STATE_DEPTH_BIAS:
-        return "VK_DYNAMIC_STATE_DEPTH_BIAS";
-      case VK_DYNAMIC_STATE_BLEND_CONSTANTS:
-        return "VK_DYNAMIC_STATE_BLEND_CONSTANTS";
-      case VK_DYNAMIC_STATE_DEPTH_BOUNDS:
-        return "VK_DYNAMIC_STATE_DEPTH_BOUNDS";
-      case VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK:
-        return "VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK";
-      case VK_DYNAMIC_STATE_STENCIL_WRITE_MASK:
-        return "VK_DYNAMIC_STATE_STENCIL_WRITE_MASK";
-      case VK_DYNAMIC_STATE_STENCIL_REFERENCE:
-        return "VK_DYNAMIC_STATE_STENCIL_REFERENCE";
+    case VK_DYNAMIC_STATE_VIEWPORT:
+      return "VK_DYNAMIC_STATE_VIEWPORT";
+    case VK_DYNAMIC_STATE_SCISSOR:
+      return "VK_DYNAMIC_STATE_SCISSOR";
+    case VK_DYNAMIC_STATE_LINE_WIDTH:
+      return "VK_DYNAMIC_STATE_LINE_WIDTH";
+    case VK_DYNAMIC_STATE_DEPTH_BIAS:
+      return "VK_DYNAMIC_STATE_DEPTH_BIAS";
+    case VK_DYNAMIC_STATE_BLEND_CONSTANTS:
+      return "VK_DYNAMIC_STATE_BLEND_CONSTANTS";
+    case VK_DYNAMIC_STATE_DEPTH_BOUNDS:
+      return "VK_DYNAMIC_STATE_DEPTH_BOUNDS";
+    case VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK:
+      return "VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK";
+    case VK_DYNAMIC_STATE_STENCIL_WRITE_MASK:
+      return "VK_DYNAMIC_STATE_STENCIL_WRITE_MASK";
+    case VK_DYNAMIC_STATE_STENCIL_REFERENCE:
+      return "VK_DYNAMIC_STATE_STENCIL_REFERENCE";
 #if VK_HEADER_VERSION >= 204
-      case VK_DYNAMIC_STATE_CULL_MODE:
-        return "VK_DYNAMIC_STATE_CULL_MODE";
+    case VK_DYNAMIC_STATE_CULL_MODE:
+      return "VK_DYNAMIC_STATE_CULL_MODE";
 #endif
 #if VK_HEADER_VERSION >= 204
-      case VK_DYNAMIC_STATE_FRONT_FACE:
-        return "VK_DYNAMIC_STATE_FRONT_FACE";
+    case VK_DYNAMIC_STATE_FRONT_FACE:
+      return "VK_DYNAMIC_STATE_FRONT_FACE";
 #endif
 #if VK_HEADER_VERSION >= 204
-      case VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY:
-        return "VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY";
+    case VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY:
+      return "VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY";
 #endif
 #if VK_HEADER_VERSION >= 204
-      case VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT:
-        return "VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT";
+    case VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT:
+      return "VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT";
 #endif
 #if VK_HEADER_VERSION >= 204
-      case VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT:
-        return "VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT";
+    case VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT:
+      return "VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT";
 #endif
 #if VK_HEADER_VERSION >= 204
-      case VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE:
-        return "VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE";
+    case VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE:
+      return "VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE";
 #endif
 #if VK_HEADER_VERSION >= 204
-      case VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE:
-        return "VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE";
+    case VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE:
+      return "VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE";
 #endif
 #if VK_HEADER_VERSION >= 204
-      case VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE:
-        return "VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE";
+    case VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE:
+      return "VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE";
 #endif
 #if VK_HEADER_VERSION >= 204
-      case VK_DYNAMIC_STATE_DEPTH_COMPARE_OP:
-        return "VK_DYNAMIC_STATE_DEPTH_COMPARE_OP";
+    case VK_DYNAMIC_STATE_DEPTH_COMPARE_OP:
+      return "VK_DYNAMIC_STATE_DEPTH_COMPARE_OP";
 #endif
 #if VK_HEADER_VERSION >= 204
-      case VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE:
-        return "VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE";
+    case VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE:
+      return "VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE";
 #endif
 #if VK_HEADER_VERSION >= 204
-      case VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE:
-        return "VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE";
+    case VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE:
+      return "VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE";
 #endif
 #if VK_HEADER_VERSION >= 204
-      case VK_DYNAMIC_STATE_STENCIL_OP:
-        return "VK_DYNAMIC_STATE_STENCIL_OP";
+    case VK_DYNAMIC_STATE_STENCIL_OP:
+      return "VK_DYNAMIC_STATE_STENCIL_OP";
 #endif
 #if VK_HEADER_VERSION >= 204
-      case VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE:
-        return "VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE";
+    case VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE:
+      return "VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE";
 #endif
 #if VK_HEADER_VERSION >= 204
-      case VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE:
-        return "VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE";
+    case VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE:
+      return "VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE";
 #endif
 #if VK_HEADER_VERSION >= 204
-      case VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE:
-        return "VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE";
+    case VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE:
+      return "VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE";
 #endif
 #if VK_HEADER_VERSION >= 304
-      case VK_DYNAMIC_STATE_LINE_STIPPLE:
-        return "VK_DYNAMIC_STATE_LINE_STIPPLE";
+    case VK_DYNAMIC_STATE_LINE_STIPPLE:
+      return "VK_DYNAMIC_STATE_LINE_STIPPLE";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkDynamicState& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkDynamicState value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

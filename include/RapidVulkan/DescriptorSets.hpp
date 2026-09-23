@@ -22,7 +22,7 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/CheckError.hpp>
@@ -40,6 +40,7 @@ namespace RapidVulkan
     VkDevice m_device{VK_NULL_HANDLE};
     VkDescriptorPool m_descriptorPool{VK_NULL_HANDLE};
     std::vector<VkDescriptorSet> m_descriptorSets;
+
   public:
     DescriptorSets(const DescriptorSets&) = delete;
     DescriptorSets& operator=(const DescriptorSets&) = delete;
@@ -55,34 +56,25 @@ namespace RapidVulkan
           Reset();
         }
 
-        // Claim ownership here
-        m_device = other.m_device;
-        m_descriptorPool = other.m_descriptorPool;
+        // Claim ownership here and leave other in its default state
+        m_device = std::exchange(other.m_device, VK_NULL_HANDLE);
+        m_descriptorPool = std::exchange(other.m_descriptorPool, VK_NULL_HANDLE);
         m_descriptorSets = std::move(other.m_descriptorSets);
-
-        // Remove the data from other
-        other.m_device = VK_NULL_HANDLE;
-        other.m_descriptorPool = VK_NULL_HANDLE;
       }
       return *this;
     }
 
     //! @brief Move constructor
-    //! Transfer ownership from other to this
+    //! Transfer ownership from other to this and leave other in its default state
     DescriptorSets(DescriptorSets&& other) noexcept
-      : m_device(other.m_device)
-      , m_descriptorPool(other.m_descriptorPool)
+      : m_device(std::exchange(other.m_device, VK_NULL_HANDLE))
+      , m_descriptorPool(std::exchange(other.m_descriptorPool, VK_NULL_HANDLE))
       , m_descriptorSets(std::move(other.m_descriptorSets))
     {
-      // Remove the data from other
-      other.m_device = VK_NULL_HANDLE;
-      other.m_descriptorPool = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    DescriptorSets()
-
-        = default;
+    DescriptorSets() = default;
 
     //! @brief Assume control of the DescriptorSets (this object becomes responsible for releasing it)
     //explicit DescriptorSets(const ClaimMode claimMode, const VkDevice device, const VkDescriptorPool descriptorPool, const VkDescriptorSet descriptorSets)
@@ -115,7 +107,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT std::vector<VkDescriptorSet> Release()
+    [[nodiscard]] std::vector<VkDescriptorSet> Release() noexcept
     {
       auto resource = std::move(m_descriptorSets);
       m_device = VK_NULL_HANDLE;
@@ -207,39 +199,39 @@ namespace RapidVulkan
 #endif
 
     //! @brief Get the associated 'Device'
-    VkDevice GetDevice() const
+    [[nodiscard]] VkDevice GetDevice() const noexcept
     {
       return m_device;
     }
 
     //! @brief Get the associated 'DescriptorPool'
-    VkDescriptorPool GetDescriptorPool() const
+    [[nodiscard]] VkDescriptorPool GetDescriptorPool() const noexcept
     {
       return m_descriptorPool;
     }
 
     //! @brief Get size of the vector
-    std::size_t Size() const
+    [[nodiscard]] std::size_t Size() const noexcept
     {
       return m_descriptorSets.size();
     }
 
 
     //! @brief Get direct access to the vector content
-    const VkDescriptorSet* Data() const
+    [[nodiscard]] const VkDescriptorSet* Data() const noexcept
     {
       return m_descriptorSets.data();
     }
 
 
     //! @brief Get the associated resource handles
-    const std::vector<VkDescriptorSet>& Get() const
+    [[nodiscard]] const std::vector<VkDescriptorSet>& Get() const noexcept
     {
       return m_descriptorSets;
     }
 
 
-    VkDescriptorSet Get(const std::size_t arrayIndex) const
+    [[nodiscard]] VkDescriptorSet Get(const std::size_t arrayIndex) const noexcept
     {
       assert(arrayIndex < m_descriptorSets.size());
       return m_descriptorSets[arrayIndex];
@@ -247,21 +239,21 @@ namespace RapidVulkan
 
 
     //! @brief Access the resource at a given index
-    VkDescriptorSet operator[] (const std::size_t arrayIndex) const
+    [[nodiscard]] VkDescriptorSet operator[](const std::size_t arrayIndex) const noexcept
     {
       assert(arrayIndex < m_descriptorSets.size());
       return m_descriptorSets[arrayIndex];
     }
 
     //! @brief get a pointer to the resource at the given index
-    const VkDescriptorSet* GetPointer(const std::size_t arrayIndex) const
+    [[nodiscard]] const VkDescriptorSet* GetPointer(const std::size_t arrayIndex) const noexcept
     {
       assert(arrayIndex < m_descriptorSets.size());
       return &m_descriptorSets[arrayIndex];
     }
 
     //! @brief Check if this object contains a valid resource
-    inline bool IsValid() const
+    [[nodiscard]] bool IsValid() const noexcept
     {
       return ! m_descriptorSets.empty();
     }

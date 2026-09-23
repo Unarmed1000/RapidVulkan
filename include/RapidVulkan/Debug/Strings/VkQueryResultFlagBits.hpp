@@ -24,36 +24,33 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkQueryResultFlagBits value) noexcept
   {
-    inline const char* TryToString(const VkQueryResultFlagBits& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_QUERY_RESULT_64_BIT:
-        return "VK_QUERY_RESULT_64_BIT";
-      case VK_QUERY_RESULT_WAIT_BIT:
-        return "VK_QUERY_RESULT_WAIT_BIT";
-      case VK_QUERY_RESULT_WITH_AVAILABILITY_BIT:
-        return "VK_QUERY_RESULT_WITH_AVAILABILITY_BIT";
-      case VK_QUERY_RESULT_PARTIAL_BIT:
-        return "VK_QUERY_RESULT_PARTIAL_BIT";
-      default:
-        return nullptr;
-      }
-    };
+    case VK_QUERY_RESULT_64_BIT:
+      return "VK_QUERY_RESULT_64_BIT";
+    case VK_QUERY_RESULT_WAIT_BIT:
+      return "VK_QUERY_RESULT_WAIT_BIT";
+    case VK_QUERY_RESULT_WITH_AVAILABILITY_BIT:
+      return "VK_QUERY_RESULT_WITH_AVAILABILITY_BIT";
+    case VK_QUERY_RESULT_PARTIAL_BIT:
+      return "VK_QUERY_RESULT_PARTIAL_BIT";
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkQueryResultFlagBits& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkQueryResultFlagBits value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

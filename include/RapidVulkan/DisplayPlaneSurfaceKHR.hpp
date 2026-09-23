@@ -22,13 +22,14 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/CheckError.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
+#include <utility>
 
 namespace RapidVulkan
 {
@@ -53,32 +54,23 @@ namespace RapidVulkan
           Reset();
         }
 
-        // Claim ownership here
-        m_instance = other.m_instance;
-        m_surface = other.m_surface;
-
-        // Remove the data from other
-        other.m_instance = VK_NULL_HANDLE;
-        other.m_surface = VK_NULL_HANDLE;
+        // Claim ownership here and leave other in its default state
+        m_instance = std::exchange(other.m_instance, VK_NULL_HANDLE);
+        m_surface = std::exchange(other.m_surface, VK_NULL_HANDLE);
       }
       return *this;
     }
 
     //! @brief Move constructor
-    //! Transfer ownership from other to this
+    //! Transfer ownership from other to this and leave other in its default state
     DisplayPlaneSurfaceKHR(DisplayPlaneSurfaceKHR&& other) noexcept
-      : m_instance(other.m_instance)
-      , m_surface(other.m_surface)
+      : m_instance(std::exchange(other.m_instance, VK_NULL_HANDLE))
+      , m_surface(std::exchange(other.m_surface, VK_NULL_HANDLE))
     {
-      // Remove the data from other
-      other.m_instance = VK_NULL_HANDLE;
-      other.m_surface = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    DisplayPlaneSurfaceKHR()
-
-        = default;
+    DisplayPlaneSurfaceKHR() = default;
 
     //! @brief Assume control of the DisplayPlaneSurfaceKHR (this object becomes responsible for releasing it)
     explicit DisplayPlaneSurfaceKHR(const ClaimMode claimMode, const VkInstance instance, const VkSurfaceKHR surface)
@@ -111,7 +103,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkSurfaceKHR Release()
+    [[nodiscard]] VkSurfaceKHR Release() noexcept
     {
       const auto resource = m_surface;
       m_instance = VK_NULL_HANDLE;
@@ -138,6 +130,8 @@ namespace RapidVulkan
     //! @brief Destroys any owned resources and assume control of the DisplayPlaneSurfaceKHR (this object becomes responsible for releasing it)
     void Reset(const ClaimMode claimMode, const VkInstance instance, const VkSurfaceKHR surface)
     {
+      // The claim mode only exists to select this overload
+      RAPIDVULKAN_PARAM_NOT_USED(claimMode);
       if (IsValid())
       {
         Reset();
@@ -198,25 +192,25 @@ namespace RapidVulkan
 #endif
 
     //! @brief Get the associated 'Instance'
-    VkInstance GetInstance() const
+    [[nodiscard]] VkInstance GetInstance() const noexcept
     {
       return m_instance;
     }
 
     //! @brief Get the associated resource handle
-    VkSurfaceKHR Get() const
+    [[nodiscard]] VkSurfaceKHR Get() const noexcept
     {
       return m_surface;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkSurfaceKHR* GetPointer() const
+    [[nodiscard]] const VkSurfaceKHR* GetPointer() const noexcept
     {
       return &m_surface;
     }
 
     //! @brief Check if this object contains a valid resource
-    inline bool IsValid() const
+    [[nodiscard]] bool IsValid() const noexcept
     {
       return m_surface != VK_NULL_HANDLE;
     }

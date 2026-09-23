@@ -25,48 +25,45 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkValidationFeatureEnableEXT value) noexcept
   {
-    inline const char* TryToString(const VkValidationFeatureEnableEXT& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 97
-      case VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT";
+    case VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT:
+      return "VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT";
 #endif
 #if VK_HEADER_VERSION >= 97
-      case VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT";
+    case VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT:
+      return "VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT";
 #endif
 #if VK_HEADER_VERSION >= 121
-      case VK_VALIDATION_FEATURE_ENABLE_BEST_PRACTICES_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_BEST_PRACTICES_EXT";
+    case VK_VALIDATION_FEATURE_ENABLE_BEST_PRACTICES_EXT:
+      return "VK_VALIDATION_FEATURE_ENABLE_BEST_PRACTICES_EXT";
 #endif
 #if VK_HEADER_VERSION >= 135
-      case VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT";
+    case VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT:
+      return "VK_VALIDATION_FEATURE_ENABLE_DEBUG_PRINTF_EXT";
 #endif
 #if VK_HEADER_VERSION >= 154
-      case VK_VALIDATION_FEATURE_ENABLE_SYNCHRONIZATION_VALIDATION_EXT:
-        return "VK_VALIDATION_FEATURE_ENABLE_SYNCHRONIZATION_VALIDATION_EXT";
+    case VK_VALIDATION_FEATURE_ENABLE_SYNCHRONIZATION_VALIDATION_EXT:
+      return "VK_VALIDATION_FEATURE_ENABLE_SYNCHRONIZATION_VALIDATION_EXT";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkValidationFeatureEnableEXT& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkValidationFeatureEnableEXT value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

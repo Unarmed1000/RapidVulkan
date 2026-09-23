@@ -24,62 +24,59 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkPipelineCreateFlagBits value) noexcept
   {
-    inline const char* TryToString(const VkPipelineCreateFlagBits& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_PIPELINE_CREATE_DISABLE_OPTIMIZATION_BIT:
-        return "VK_PIPELINE_CREATE_DISABLE_OPTIMIZATION_BIT";
-      case VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT:
-        return "VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT";
-      case VK_PIPELINE_CREATE_DERIVATIVE_BIT:
-        return "VK_PIPELINE_CREATE_DERIVATIVE_BIT";
-#if VK_HEADER_VERSION >= 70
-      case VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT:
-        return "VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT";
-#endif
+    case VK_PIPELINE_CREATE_DISABLE_OPTIMIZATION_BIT:
+      return "VK_PIPELINE_CREATE_DISABLE_OPTIMIZATION_BIT";
+    case VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT:
+      return "VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT";
+    case VK_PIPELINE_CREATE_DERIVATIVE_BIT:
+      return "VK_PIPELINE_CREATE_DERIVATIVE_BIT";
 #if VK_HEADER_VERSION >= 130
-      case VK_PIPELINE_CREATE_DISPATCH_BASE_BIT:
-        return "VK_PIPELINE_CREATE_DISPATCH_BASE_BIT";
+    case VK_PIPELINE_CREATE_DISPATCH_BASE_BIT:
+      return "VK_PIPELINE_CREATE_DISPATCH_BASE_BIT";
 #elif VK_HEADER_VERSION >= 70
-      case VK_PIPELINE_CREATE_DISPATCH_BASE:
-        return "VK_PIPELINE_CREATE_DISPATCH_BASE";
+    case VK_PIPELINE_CREATE_DISPATCH_BASE:
+      return "VK_PIPELINE_CREATE_DISPATCH_BASE";
 #endif
 
-#if VK_HEADER_VERSION >= 204
-      case VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT:
-        return "VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT";
+#if VK_HEADER_VERSION >= 70
+    case VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT:
+      return "VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT";
 #endif
 #if VK_HEADER_VERSION >= 204
-      case VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT:
-        return "VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT";
+    case VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT:
+      return "VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT";
+#endif
+#if VK_HEADER_VERSION >= 204
+    case VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT:
+      return "VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT";
 #endif
 #if VK_HEADER_VERSION >= 304
-      case VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT:
-        return "VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT";
+    case VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT:
+      return "VK_PIPELINE_CREATE_NO_PROTECTED_ACCESS_BIT";
 #endif
 #if VK_HEADER_VERSION >= 304
-      case VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT:
-        return "VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT";
+    case VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT:
+      return "VK_PIPELINE_CREATE_PROTECTED_ACCESS_ONLY_BIT";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkPipelineCreateFlagBits& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkPipelineCreateFlagBits value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

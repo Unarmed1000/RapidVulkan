@@ -25,64 +25,61 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkOpticalFlowSessionBindingPointNV value) noexcept
   {
-    inline const char* TryToString(const VkOpticalFlowSessionBindingPointNV& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 231
-      case VK_OPTICAL_FLOW_SESSION_BINDING_POINT_UNKNOWN_NV:
-        return "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_UNKNOWN_NV";
+    case VK_OPTICAL_FLOW_SESSION_BINDING_POINT_UNKNOWN_NV:
+      return "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_UNKNOWN_NV";
 #endif
 #if VK_HEADER_VERSION >= 231
-      case VK_OPTICAL_FLOW_SESSION_BINDING_POINT_INPUT_NV:
-        return "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_INPUT_NV";
+    case VK_OPTICAL_FLOW_SESSION_BINDING_POINT_INPUT_NV:
+      return "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_INPUT_NV";
 #endif
 #if VK_HEADER_VERSION >= 231
-      case VK_OPTICAL_FLOW_SESSION_BINDING_POINT_REFERENCE_NV:
-        return "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_REFERENCE_NV";
+    case VK_OPTICAL_FLOW_SESSION_BINDING_POINT_REFERENCE_NV:
+      return "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_REFERENCE_NV";
 #endif
 #if VK_HEADER_VERSION >= 231
-      case VK_OPTICAL_FLOW_SESSION_BINDING_POINT_HINT_NV:
-        return "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_HINT_NV";
+    case VK_OPTICAL_FLOW_SESSION_BINDING_POINT_HINT_NV:
+      return "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_HINT_NV";
 #endif
 #if VK_HEADER_VERSION >= 231
-      case VK_OPTICAL_FLOW_SESSION_BINDING_POINT_FLOW_VECTOR_NV:
-        return "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_FLOW_VECTOR_NV";
+    case VK_OPTICAL_FLOW_SESSION_BINDING_POINT_FLOW_VECTOR_NV:
+      return "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_FLOW_VECTOR_NV";
 #endif
 #if VK_HEADER_VERSION >= 231
-      case VK_OPTICAL_FLOW_SESSION_BINDING_POINT_BACKWARD_FLOW_VECTOR_NV:
-        return "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_BACKWARD_FLOW_VECTOR_NV";
+    case VK_OPTICAL_FLOW_SESSION_BINDING_POINT_BACKWARD_FLOW_VECTOR_NV:
+      return "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_BACKWARD_FLOW_VECTOR_NV";
 #endif
 #if VK_HEADER_VERSION >= 231
-      case VK_OPTICAL_FLOW_SESSION_BINDING_POINT_COST_NV:
-        return "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_COST_NV";
+    case VK_OPTICAL_FLOW_SESSION_BINDING_POINT_COST_NV:
+      return "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_COST_NV";
 #endif
 #if VK_HEADER_VERSION >= 231
-      case VK_OPTICAL_FLOW_SESSION_BINDING_POINT_BACKWARD_COST_NV:
-        return "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_BACKWARD_COST_NV";
+    case VK_OPTICAL_FLOW_SESSION_BINDING_POINT_BACKWARD_COST_NV:
+      return "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_BACKWARD_COST_NV";
 #endif
 #if VK_HEADER_VERSION >= 231
-      case VK_OPTICAL_FLOW_SESSION_BINDING_POINT_GLOBAL_FLOW_NV:
-        return "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_GLOBAL_FLOW_NV";
+    case VK_OPTICAL_FLOW_SESSION_BINDING_POINT_GLOBAL_FLOW_NV:
+      return "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_GLOBAL_FLOW_NV";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkOpticalFlowSessionBindingPointNV& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkOpticalFlowSessionBindingPointNV value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

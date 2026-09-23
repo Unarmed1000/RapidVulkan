@@ -25,84 +25,81 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const StdVideoH265LevelIdc value) noexcept
   {
-    inline const char* TryToString(const StdVideoH265LevelIdc& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_LEVEL_IDC_1_0:
-        return "STD_VIDEO_H265_LEVEL_IDC_1_0";
+    case STD_VIDEO_H265_LEVEL_IDC_1_0:
+      return "STD_VIDEO_H265_LEVEL_IDC_1_0";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_LEVEL_IDC_2_0:
-        return "STD_VIDEO_H265_LEVEL_IDC_2_0";
+    case STD_VIDEO_H265_LEVEL_IDC_2_0:
+      return "STD_VIDEO_H265_LEVEL_IDC_2_0";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_LEVEL_IDC_2_1:
-        return "STD_VIDEO_H265_LEVEL_IDC_2_1";
+    case STD_VIDEO_H265_LEVEL_IDC_2_1:
+      return "STD_VIDEO_H265_LEVEL_IDC_2_1";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_LEVEL_IDC_3_0:
-        return "STD_VIDEO_H265_LEVEL_IDC_3_0";
+    case STD_VIDEO_H265_LEVEL_IDC_3_0:
+      return "STD_VIDEO_H265_LEVEL_IDC_3_0";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_LEVEL_IDC_3_1:
-        return "STD_VIDEO_H265_LEVEL_IDC_3_1";
+    case STD_VIDEO_H265_LEVEL_IDC_3_1:
+      return "STD_VIDEO_H265_LEVEL_IDC_3_1";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_LEVEL_IDC_4_0:
-        return "STD_VIDEO_H265_LEVEL_IDC_4_0";
+    case STD_VIDEO_H265_LEVEL_IDC_4_0:
+      return "STD_VIDEO_H265_LEVEL_IDC_4_0";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_LEVEL_IDC_4_1:
-        return "STD_VIDEO_H265_LEVEL_IDC_4_1";
+    case STD_VIDEO_H265_LEVEL_IDC_4_1:
+      return "STD_VIDEO_H265_LEVEL_IDC_4_1";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_LEVEL_IDC_5_0:
-        return "STD_VIDEO_H265_LEVEL_IDC_5_0";
+    case STD_VIDEO_H265_LEVEL_IDC_5_0:
+      return "STD_VIDEO_H265_LEVEL_IDC_5_0";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_LEVEL_IDC_5_1:
-        return "STD_VIDEO_H265_LEVEL_IDC_5_1";
+    case STD_VIDEO_H265_LEVEL_IDC_5_1:
+      return "STD_VIDEO_H265_LEVEL_IDC_5_1";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_LEVEL_IDC_5_2:
-        return "STD_VIDEO_H265_LEVEL_IDC_5_2";
+    case STD_VIDEO_H265_LEVEL_IDC_5_2:
+      return "STD_VIDEO_H265_LEVEL_IDC_5_2";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_LEVEL_IDC_6_0:
-        return "STD_VIDEO_H265_LEVEL_IDC_6_0";
+    case STD_VIDEO_H265_LEVEL_IDC_6_0:
+      return "STD_VIDEO_H265_LEVEL_IDC_6_0";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_LEVEL_IDC_6_1:
-        return "STD_VIDEO_H265_LEVEL_IDC_6_1";
+    case STD_VIDEO_H265_LEVEL_IDC_6_1:
+      return "STD_VIDEO_H265_LEVEL_IDC_6_1";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_LEVEL_IDC_6_2:
-        return "STD_VIDEO_H265_LEVEL_IDC_6_2";
+    case STD_VIDEO_H265_LEVEL_IDC_6_2:
+      return "STD_VIDEO_H265_LEVEL_IDC_6_2";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_LEVEL_IDC_INVALID:
-        return "STD_VIDEO_H265_LEVEL_IDC_INVALID";
+    case STD_VIDEO_H265_LEVEL_IDC_INVALID:
+      return "STD_VIDEO_H265_LEVEL_IDC_INVALID";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const StdVideoH265LevelIdc& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const StdVideoH265LevelIdc value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

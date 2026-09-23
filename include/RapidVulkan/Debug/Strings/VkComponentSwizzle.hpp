@@ -24,42 +24,39 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkComponentSwizzle value) noexcept
   {
-    inline const char* TryToString(const VkComponentSwizzle& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_COMPONENT_SWIZZLE_IDENTITY:
-        return "VK_COMPONENT_SWIZZLE_IDENTITY";
-      case VK_COMPONENT_SWIZZLE_ZERO:
-        return "VK_COMPONENT_SWIZZLE_ZERO";
-      case VK_COMPONENT_SWIZZLE_ONE:
-        return "VK_COMPONENT_SWIZZLE_ONE";
-      case VK_COMPONENT_SWIZZLE_R:
-        return "VK_COMPONENT_SWIZZLE_R";
-      case VK_COMPONENT_SWIZZLE_G:
-        return "VK_COMPONENT_SWIZZLE_G";
-      case VK_COMPONENT_SWIZZLE_B:
-        return "VK_COMPONENT_SWIZZLE_B";
-      case VK_COMPONENT_SWIZZLE_A:
-        return "VK_COMPONENT_SWIZZLE_A";
-      default:
-        return nullptr;
-      }
-    };
+    case VK_COMPONENT_SWIZZLE_IDENTITY:
+      return "VK_COMPONENT_SWIZZLE_IDENTITY";
+    case VK_COMPONENT_SWIZZLE_ZERO:
+      return "VK_COMPONENT_SWIZZLE_ZERO";
+    case VK_COMPONENT_SWIZZLE_ONE:
+      return "VK_COMPONENT_SWIZZLE_ONE";
+    case VK_COMPONENT_SWIZZLE_R:
+      return "VK_COMPONENT_SWIZZLE_R";
+    case VK_COMPONENT_SWIZZLE_G:
+      return "VK_COMPONENT_SWIZZLE_G";
+    case VK_COMPONENT_SWIZZLE_B:
+      return "VK_COMPONENT_SWIZZLE_B";
+    case VK_COMPONENT_SWIZZLE_A:
+      return "VK_COMPONENT_SWIZZLE_A";
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkComponentSwizzle& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkComponentSwizzle value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

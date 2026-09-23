@@ -24,44 +24,41 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkCompareOp value) noexcept
   {
-    inline const char* TryToString(const VkCompareOp& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_COMPARE_OP_NEVER:
-        return "VK_COMPARE_OP_NEVER";
-      case VK_COMPARE_OP_LESS:
-        return "VK_COMPARE_OP_LESS";
-      case VK_COMPARE_OP_EQUAL:
-        return "VK_COMPARE_OP_EQUAL";
-      case VK_COMPARE_OP_LESS_OR_EQUAL:
-        return "VK_COMPARE_OP_LESS_OR_EQUAL";
-      case VK_COMPARE_OP_GREATER:
-        return "VK_COMPARE_OP_GREATER";
-      case VK_COMPARE_OP_NOT_EQUAL:
-        return "VK_COMPARE_OP_NOT_EQUAL";
-      case VK_COMPARE_OP_GREATER_OR_EQUAL:
-        return "VK_COMPARE_OP_GREATER_OR_EQUAL";
-      case VK_COMPARE_OP_ALWAYS:
-        return "VK_COMPARE_OP_ALWAYS";
-      default:
-        return nullptr;
-      }
-    };
+    case VK_COMPARE_OP_NEVER:
+      return "VK_COMPARE_OP_NEVER";
+    case VK_COMPARE_OP_LESS:
+      return "VK_COMPARE_OP_LESS";
+    case VK_COMPARE_OP_EQUAL:
+      return "VK_COMPARE_OP_EQUAL";
+    case VK_COMPARE_OP_LESS_OR_EQUAL:
+      return "VK_COMPARE_OP_LESS_OR_EQUAL";
+    case VK_COMPARE_OP_GREATER:
+      return "VK_COMPARE_OP_GREATER";
+    case VK_COMPARE_OP_NOT_EQUAL:
+      return "VK_COMPARE_OP_NOT_EQUAL";
+    case VK_COMPARE_OP_GREATER_OR_EQUAL:
+      return "VK_COMPARE_OP_GREATER_OR_EQUAL";
+    case VK_COMPARE_OP_ALWAYS:
+      return "VK_COMPARE_OP_ALWAYS";
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkCompareOp& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkCompareOp value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

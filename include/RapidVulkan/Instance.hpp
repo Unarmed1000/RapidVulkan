@@ -22,13 +22,14 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/CheckError.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
+#include <utility>
 
 namespace RapidVulkan
 {
@@ -52,28 +53,21 @@ namespace RapidVulkan
           Reset();
         }
 
-        // Claim ownership here
-        m_instance = other.m_instance;
-
-        // Remove the data from other
-        other.m_instance = VK_NULL_HANDLE;
+        // Claim ownership here and leave other in its default state
+        m_instance = std::exchange(other.m_instance, VK_NULL_HANDLE);
       }
       return *this;
     }
 
     //! @brief Move constructor
-    //! Transfer ownership from other to this
+    //! Transfer ownership from other to this and leave other in its default state
     Instance(Instance&& other) noexcept
-      : m_instance(other.m_instance)
+      : m_instance(std::exchange(other.m_instance, VK_NULL_HANDLE))
     {
-      // Remove the data from other
-      other.m_instance = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    Instance()
-
-        = default;
+    Instance() = default;
 
     //! @brief Assume control of the Instance (this object becomes responsible for releasing it)
     explicit Instance(const ClaimMode claimMode, const VkInstance instance)
@@ -84,7 +78,9 @@ namespace RapidVulkan
 
     //! @brief Create the requested resource
     //! @note  Function: vkCreateInstance
-    explicit Instance(const VkInstanceCreateInfo &createInfo) : Instance() {
+    explicit Instance(const VkInstanceCreateInfo& createInfo)
+      : Instance()
+    {
       Reset(createInfo);
     }
 
@@ -104,7 +100,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkInstance Release()
+    [[nodiscard]] VkInstance Release() noexcept
     {
       const auto resource = m_instance;
       m_instance = VK_NULL_HANDLE;
@@ -128,6 +124,8 @@ namespace RapidVulkan
     //! @brief Destroys any owned resources and assume control of the Instance (this object becomes responsible for releasing it)
     void Reset(const ClaimMode claimMode, const VkInstance instance)
     {
+      // The claim mode only exists to select this overload
+      RAPIDVULKAN_PARAM_NOT_USED(claimMode);
       if (IsValid())
       {
         Reset();
@@ -179,19 +177,19 @@ namespace RapidVulkan
 #endif
 
     //! @brief Get the associated resource handle
-    VkInstance Get() const
+    [[nodiscard]] VkInstance Get() const noexcept
     {
       return m_instance;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkInstance* GetPointer() const
+    [[nodiscard]] const VkInstance* GetPointer() const noexcept
     {
       return &m_instance;
     }
 
     //! @brief Check if this object contains a valid resource
-    inline bool IsValid() const
+    [[nodiscard]] bool IsValid() const noexcept
     {
       return m_instance != VK_NULL_HANDLE;
     }

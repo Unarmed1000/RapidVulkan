@@ -25,48 +25,45 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkFragmentShadingRateCombinerOpKHR value) noexcept
   {
-    inline const char* TryToString(const VkFragmentShadingRateCombinerOpKHR& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 162
-      case VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR:
-        return "VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR";
+    case VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR:
+      return "VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR";
 #endif
 #if VK_HEADER_VERSION >= 162
-      case VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR:
-        return "VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR";
+    case VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR:
+      return "VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR";
 #endif
 #if VK_HEADER_VERSION >= 162
-      case VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_KHR:
-        return "VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_KHR";
+    case VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_KHR:
+      return "VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MIN_KHR";
 #endif
 #if VK_HEADER_VERSION >= 162
-      case VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR:
-        return "VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR";
+    case VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR:
+      return "VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MAX_KHR";
 #endif
 #if VK_HEADER_VERSION >= 162
-      case VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR:
-        return "VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR";
+    case VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR:
+      return "VK_FRAGMENT_SHADING_RATE_COMBINER_OP_MUL_KHR";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkFragmentShadingRateCombinerOpKHR& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkFragmentShadingRateCombinerOpKHR value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

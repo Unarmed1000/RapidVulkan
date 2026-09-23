@@ -25,44 +25,41 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkRenderingFlagBits value) noexcept
   {
-    inline const char* TryToString(const VkRenderingFlagBits& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 204
-      case VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT:
-        return "VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT";
+    case VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT:
+      return "VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT";
 #endif
 #if VK_HEADER_VERSION >= 204
-      case VK_RENDERING_SUSPENDING_BIT:
-        return "VK_RENDERING_SUSPENDING_BIT";
+    case VK_RENDERING_SUSPENDING_BIT:
+      return "VK_RENDERING_SUSPENDING_BIT";
 #endif
 #if VK_HEADER_VERSION >= 204
-      case VK_RENDERING_RESUMING_BIT:
-        return "VK_RENDERING_RESUMING_BIT";
+    case VK_RENDERING_RESUMING_BIT:
+      return "VK_RENDERING_RESUMING_BIT";
 #endif
 #if VK_HEADER_VERSION >= 321
-      case VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE:
-        return "VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE";
+    case VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE:
+      return "VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkRenderingFlagBits& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkRenderingFlagBits value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

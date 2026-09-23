@@ -24,66 +24,63 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkBlendFactor value) noexcept
   {
-    inline const char* TryToString(const VkBlendFactor& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_BLEND_FACTOR_ZERO:
-        return "VK_BLEND_FACTOR_ZERO";
-      case VK_BLEND_FACTOR_ONE:
-        return "VK_BLEND_FACTOR_ONE";
-      case VK_BLEND_FACTOR_SRC_COLOR:
-        return "VK_BLEND_FACTOR_SRC_COLOR";
-      case VK_BLEND_FACTOR_ONE_MINUS_SRC_COLOR:
-        return "VK_BLEND_FACTOR_ONE_MINUS_SRC_COLOR";
-      case VK_BLEND_FACTOR_DST_COLOR:
-        return "VK_BLEND_FACTOR_DST_COLOR";
-      case VK_BLEND_FACTOR_ONE_MINUS_DST_COLOR:
-        return "VK_BLEND_FACTOR_ONE_MINUS_DST_COLOR";
-      case VK_BLEND_FACTOR_SRC_ALPHA:
-        return "VK_BLEND_FACTOR_SRC_ALPHA";
-      case VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA:
-        return "VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA";
-      case VK_BLEND_FACTOR_DST_ALPHA:
-        return "VK_BLEND_FACTOR_DST_ALPHA";
-      case VK_BLEND_FACTOR_ONE_MINUS_DST_ALPHA:
-        return "VK_BLEND_FACTOR_ONE_MINUS_DST_ALPHA";
-      case VK_BLEND_FACTOR_CONSTANT_COLOR:
-        return "VK_BLEND_FACTOR_CONSTANT_COLOR";
-      case VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR:
-        return "VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR";
-      case VK_BLEND_FACTOR_CONSTANT_ALPHA:
-        return "VK_BLEND_FACTOR_CONSTANT_ALPHA";
-      case VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA:
-        return "VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA";
-      case VK_BLEND_FACTOR_SRC_ALPHA_SATURATE:
-        return "VK_BLEND_FACTOR_SRC_ALPHA_SATURATE";
-      case VK_BLEND_FACTOR_SRC1_COLOR:
-        return "VK_BLEND_FACTOR_SRC1_COLOR";
-      case VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR:
-        return "VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR";
-      case VK_BLEND_FACTOR_SRC1_ALPHA:
-        return "VK_BLEND_FACTOR_SRC1_ALPHA";
-      case VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA:
-        return "VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA";
-      default:
-        return nullptr;
-      }
-    };
+    case VK_BLEND_FACTOR_ZERO:
+      return "VK_BLEND_FACTOR_ZERO";
+    case VK_BLEND_FACTOR_ONE:
+      return "VK_BLEND_FACTOR_ONE";
+    case VK_BLEND_FACTOR_SRC_COLOR:
+      return "VK_BLEND_FACTOR_SRC_COLOR";
+    case VK_BLEND_FACTOR_ONE_MINUS_SRC_COLOR:
+      return "VK_BLEND_FACTOR_ONE_MINUS_SRC_COLOR";
+    case VK_BLEND_FACTOR_DST_COLOR:
+      return "VK_BLEND_FACTOR_DST_COLOR";
+    case VK_BLEND_FACTOR_ONE_MINUS_DST_COLOR:
+      return "VK_BLEND_FACTOR_ONE_MINUS_DST_COLOR";
+    case VK_BLEND_FACTOR_SRC_ALPHA:
+      return "VK_BLEND_FACTOR_SRC_ALPHA";
+    case VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA:
+      return "VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA";
+    case VK_BLEND_FACTOR_DST_ALPHA:
+      return "VK_BLEND_FACTOR_DST_ALPHA";
+    case VK_BLEND_FACTOR_ONE_MINUS_DST_ALPHA:
+      return "VK_BLEND_FACTOR_ONE_MINUS_DST_ALPHA";
+    case VK_BLEND_FACTOR_CONSTANT_COLOR:
+      return "VK_BLEND_FACTOR_CONSTANT_COLOR";
+    case VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR:
+      return "VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR";
+    case VK_BLEND_FACTOR_CONSTANT_ALPHA:
+      return "VK_BLEND_FACTOR_CONSTANT_ALPHA";
+    case VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA:
+      return "VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA";
+    case VK_BLEND_FACTOR_SRC_ALPHA_SATURATE:
+      return "VK_BLEND_FACTOR_SRC_ALPHA_SATURATE";
+    case VK_BLEND_FACTOR_SRC1_COLOR:
+      return "VK_BLEND_FACTOR_SRC1_COLOR";
+    case VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR:
+      return "VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR";
+    case VK_BLEND_FACTOR_SRC1_ALPHA:
+      return "VK_BLEND_FACTOR_SRC1_ALPHA";
+    case VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA:
+      return "VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA";
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkBlendFactor& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkBlendFactor value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

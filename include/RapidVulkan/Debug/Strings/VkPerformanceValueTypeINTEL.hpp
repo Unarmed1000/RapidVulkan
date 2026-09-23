@@ -25,48 +25,45 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkPerformanceValueTypeINTEL value) noexcept
   {
-    inline const char* TryToString(const VkPerformanceValueTypeINTEL& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 114
-      case VK_PERFORMANCE_VALUE_TYPE_UINT32_INTEL:
-        return "VK_PERFORMANCE_VALUE_TYPE_UINT32_INTEL";
+    case VK_PERFORMANCE_VALUE_TYPE_UINT32_INTEL:
+      return "VK_PERFORMANCE_VALUE_TYPE_UINT32_INTEL";
 #endif
 #if VK_HEADER_VERSION >= 114
-      case VK_PERFORMANCE_VALUE_TYPE_UINT64_INTEL:
-        return "VK_PERFORMANCE_VALUE_TYPE_UINT64_INTEL";
+    case VK_PERFORMANCE_VALUE_TYPE_UINT64_INTEL:
+      return "VK_PERFORMANCE_VALUE_TYPE_UINT64_INTEL";
 #endif
 #if VK_HEADER_VERSION >= 114
-      case VK_PERFORMANCE_VALUE_TYPE_FLOAT_INTEL:
-        return "VK_PERFORMANCE_VALUE_TYPE_FLOAT_INTEL";
+    case VK_PERFORMANCE_VALUE_TYPE_FLOAT_INTEL:
+      return "VK_PERFORMANCE_VALUE_TYPE_FLOAT_INTEL";
 #endif
 #if VK_HEADER_VERSION >= 114
-      case VK_PERFORMANCE_VALUE_TYPE_BOOL_INTEL:
-        return "VK_PERFORMANCE_VALUE_TYPE_BOOL_INTEL";
+    case VK_PERFORMANCE_VALUE_TYPE_BOOL_INTEL:
+      return "VK_PERFORMANCE_VALUE_TYPE_BOOL_INTEL";
 #endif
 #if VK_HEADER_VERSION >= 114
-      case VK_PERFORMANCE_VALUE_TYPE_STRING_INTEL:
-        return "VK_PERFORMANCE_VALUE_TYPE_STRING_INTEL";
+    case VK_PERFORMANCE_VALUE_TYPE_STRING_INTEL:
+      return "VK_PERFORMANCE_VALUE_TYPE_STRING_INTEL";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkPerformanceValueTypeINTEL& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkPerformanceValueTypeINTEL value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

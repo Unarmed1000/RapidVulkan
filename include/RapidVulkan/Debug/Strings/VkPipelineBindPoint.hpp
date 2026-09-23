@@ -24,40 +24,37 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkPipelineBindPoint value) noexcept
   {
-    inline const char* TryToString(const VkPipelineBindPoint& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_PIPELINE_BIND_POINT_GRAPHICS:
-        return "VK_PIPELINE_BIND_POINT_GRAPHICS";
-      case VK_PIPELINE_BIND_POINT_COMPUTE:
-        return "VK_PIPELINE_BIND_POINT_COMPUTE";
+    case VK_PIPELINE_BIND_POINT_GRAPHICS:
+      return "VK_PIPELINE_BIND_POINT_GRAPHICS";
+    case VK_PIPELINE_BIND_POINT_COMPUTE:
+      return "VK_PIPELINE_BIND_POINT_COMPUTE";
 #if VK_HEADER_VERSION >= 189
-      case VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI:
-        return "VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI";
+    case VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI:
+      return "VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI";
 #endif
 #if VK_HEADER_VERSION >= 321
-      case VK_PIPELINE_BIND_POINT_DATA_GRAPH_ARM:
-        return "VK_PIPELINE_BIND_POINT_DATA_GRAPH_ARM";
+    case VK_PIPELINE_BIND_POINT_DATA_GRAPH_ARM:
+      return "VK_PIPELINE_BIND_POINT_DATA_GRAPH_ARM";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkPipelineBindPoint& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkPipelineBindPoint value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

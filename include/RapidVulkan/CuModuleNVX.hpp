@@ -23,21 +23,23 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/CheckError.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
+#include <utility>
 
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class CuModuleNVX
   {
-    VkDevice m_device;
-    VkCuModuleNVX m_module;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkCuModuleNVX m_module{VK_NULL_HANDLE};
+
   public:
     CuModuleNVX(const CuModuleNVX&) = delete;
     CuModuleNVX& operator=(const CuModuleNVX&) = delete;
@@ -53,34 +55,23 @@ namespace RapidVulkan
           Reset();
         }
 
-        // Claim ownership here
-        m_device = other.m_device;
-        m_module = other.m_module;
-
-        // Remove the data from other
-        other.m_device = VK_NULL_HANDLE;
-        other.m_module = VK_NULL_HANDLE;
+        // Claim ownership here and leave other in its default state
+        m_device = std::exchange(other.m_device, VK_NULL_HANDLE);
+        m_module = std::exchange(other.m_module, VK_NULL_HANDLE);
       }
       return *this;
     }
 
     //! @brief Move constructor
-    //! Transfer ownership from other to this
+    //! Transfer ownership from other to this and leave other in its default state
     CuModuleNVX(CuModuleNVX&& other) noexcept
-      : m_device(other.m_device)
-      , m_module(other.m_module)
+      : m_device(std::exchange(other.m_device, VK_NULL_HANDLE))
+      , m_module(std::exchange(other.m_module, VK_NULL_HANDLE))
     {
-      // Remove the data from other
-      other.m_device = VK_NULL_HANDLE;
-      other.m_module = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    CuModuleNVX()
-      : m_device(VK_NULL_HANDLE)
-      , m_module(VK_NULL_HANDLE)
-    {
-    }
+    CuModuleNVX() = default;
 
     //! @brief Assume control of the CuModuleNVX (this object becomes responsible for releasing it)
     explicit CuModuleNVX(const ClaimMode claimMode, const VkDevice device, const VkCuModuleNVX module)
@@ -115,7 +106,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkCuModuleNVX Release()
+    [[nodiscard]] VkCuModuleNVX Release() noexcept
     {
       const auto resource = m_module;
       m_device = VK_NULL_HANDLE;
@@ -142,6 +133,8 @@ namespace RapidVulkan
     //! @brief Destroys any owned resources and assume control of the CuModuleNVX (this object becomes responsible for releasing it)
     void Reset(const ClaimMode claimMode, const VkDevice device, const VkCuModuleNVX module)
     {
+      // The claim mode only exists to select this overload
+      RAPIDVULKAN_PARAM_NOT_USED(claimMode);
       if (IsValid())
       {
         Reset();
@@ -198,25 +191,25 @@ namespace RapidVulkan
 #endif
 
     //! @brief Get the associated 'Device'
-    VkDevice GetDevice() const
+    [[nodiscard]] VkDevice GetDevice() const noexcept
     {
       return m_device;
     }
 
     //! @brief Get the associated resource handle
-    VkCuModuleNVX Get() const
+    [[nodiscard]] VkCuModuleNVX Get() const noexcept
     {
       return m_module;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkCuModuleNVX* GetPointer() const
+    [[nodiscard]] const VkCuModuleNVX* GetPointer() const noexcept
     {
       return &m_module;
     }
 
     //! @brief Check if this object contains a valid resource
-    inline bool IsValid() const
+    [[nodiscard]] bool IsValid() const noexcept
     {
       return m_module != VK_NULL_HANDLE;
     }

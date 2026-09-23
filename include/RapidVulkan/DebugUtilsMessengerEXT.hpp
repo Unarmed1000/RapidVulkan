@@ -23,21 +23,23 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/CheckError.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
+#include <utility>
 
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class DebugUtilsMessengerEXT
   {
-    VkInstance m_instance;
-    VkDebugUtilsMessengerEXT m_messenger;
+    VkInstance m_instance{VK_NULL_HANDLE};
+    VkDebugUtilsMessengerEXT m_messenger{VK_NULL_HANDLE};
+
   public:
     DebugUtilsMessengerEXT(const DebugUtilsMessengerEXT&) = delete;
     DebugUtilsMessengerEXT& operator=(const DebugUtilsMessengerEXT&) = delete;
@@ -53,34 +55,23 @@ namespace RapidVulkan
           Reset();
         }
 
-        // Claim ownership here
-        m_instance = other.m_instance;
-        m_messenger = other.m_messenger;
-
-        // Remove the data from other
-        other.m_instance = VK_NULL_HANDLE;
-        other.m_messenger = VK_NULL_HANDLE;
+        // Claim ownership here and leave other in its default state
+        m_instance = std::exchange(other.m_instance, VK_NULL_HANDLE);
+        m_messenger = std::exchange(other.m_messenger, VK_NULL_HANDLE);
       }
       return *this;
     }
 
     //! @brief Move constructor
-    //! Transfer ownership from other to this
+    //! Transfer ownership from other to this and leave other in its default state
     DebugUtilsMessengerEXT(DebugUtilsMessengerEXT&& other) noexcept
-      : m_instance(other.m_instance)
-      , m_messenger(other.m_messenger)
+      : m_instance(std::exchange(other.m_instance, VK_NULL_HANDLE))
+      , m_messenger(std::exchange(other.m_messenger, VK_NULL_HANDLE))
     {
-      // Remove the data from other
-      other.m_instance = VK_NULL_HANDLE;
-      other.m_messenger = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    DebugUtilsMessengerEXT()
-      : m_instance(VK_NULL_HANDLE)
-      , m_messenger(VK_NULL_HANDLE)
-    {
-    }
+    DebugUtilsMessengerEXT() = default;
 
     //! @brief Assume control of the DebugUtilsMessengerEXT (this object becomes responsible for releasing it)
     explicit DebugUtilsMessengerEXT(const ClaimMode claimMode, const VkInstance instance, const VkDebugUtilsMessengerEXT messenger)
@@ -115,7 +106,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkDebugUtilsMessengerEXT Release()
+    [[nodiscard]] VkDebugUtilsMessengerEXT Release() noexcept
     {
       const auto resource = m_messenger;
       m_instance = VK_NULL_HANDLE;
@@ -142,6 +133,8 @@ namespace RapidVulkan
     //! @brief Destroys any owned resources and assume control of the DebugUtilsMessengerEXT (this object becomes responsible for releasing it)
     void Reset(const ClaimMode claimMode, const VkInstance instance, const VkDebugUtilsMessengerEXT messenger)
     {
+      // The claim mode only exists to select this overload
+      RAPIDVULKAN_PARAM_NOT_USED(claimMode);
       if (IsValid())
       {
         Reset();
@@ -201,25 +194,25 @@ namespace RapidVulkan
 #endif
 
     //! @brief Get the associated 'Instance'
-    VkInstance GetInstance() const
+    [[nodiscard]] VkInstance GetInstance() const noexcept
     {
       return m_instance;
     }
 
     //! @brief Get the associated resource handle
-    VkDebugUtilsMessengerEXT Get() const
+    [[nodiscard]] VkDebugUtilsMessengerEXT Get() const noexcept
     {
       return m_messenger;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkDebugUtilsMessengerEXT* GetPointer() const
+    [[nodiscard]] const VkDebugUtilsMessengerEXT* GetPointer() const noexcept
     {
       return &m_messenger;
     }
 
     //! @brief Check if this object contains a valid resource
-    inline bool IsValid() const
+    [[nodiscard]] bool IsValid() const noexcept
     {
       return m_messenger != VK_NULL_HANDLE;
     }

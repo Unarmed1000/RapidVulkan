@@ -24,42 +24,39 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkMemoryPropertyFlagBits value) noexcept
   {
-    inline const char* TryToString(const VkMemoryPropertyFlagBits& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT:
-        return "VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT";
-      case VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT:
-        return "VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT";
-      case VK_MEMORY_PROPERTY_HOST_COHERENT_BIT:
-        return "VK_MEMORY_PROPERTY_HOST_COHERENT_BIT";
-      case VK_MEMORY_PROPERTY_HOST_CACHED_BIT:
-        return "VK_MEMORY_PROPERTY_HOST_CACHED_BIT";
-      case VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT:
-        return "VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT";
+    case VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT:
+      return "VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT";
+    case VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT:
+      return "VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT";
+    case VK_MEMORY_PROPERTY_HOST_COHERENT_BIT:
+      return "VK_MEMORY_PROPERTY_HOST_COHERENT_BIT";
+    case VK_MEMORY_PROPERTY_HOST_CACHED_BIT:
+      return "VK_MEMORY_PROPERTY_HOST_CACHED_BIT";
+    case VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT:
+      return "VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT";
 #if VK_HEADER_VERSION >= 70
-      case VK_MEMORY_PROPERTY_PROTECTED_BIT:
-        return "VK_MEMORY_PROPERTY_PROTECTED_BIT";
+    case VK_MEMORY_PROPERTY_PROTECTED_BIT:
+      return "VK_MEMORY_PROPERTY_PROTECTED_BIT";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkMemoryPropertyFlagBits& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkMemoryPropertyFlagBits value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

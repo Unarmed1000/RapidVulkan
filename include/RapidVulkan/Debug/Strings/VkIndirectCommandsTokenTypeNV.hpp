@@ -25,72 +25,73 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkIndirectCommandsTokenTypeNV value) noexcept
   {
-    inline const char* TryToString(const VkIndirectCommandsTokenTypeNV& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 135
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV";
+    case VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV:
+      return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV";
 #endif
 #if VK_HEADER_VERSION >= 135
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV";
+    case VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV:
+      return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_STATE_FLAGS_NV";
 #endif
 #if VK_HEADER_VERSION >= 135
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_NV:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_NV";
+    case VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_NV:
+      return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_NV";
 #endif
 #if VK_HEADER_VERSION >= 135
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_NV:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_NV";
+    case VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_NV:
+      return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_NV";
 #endif
 #if VK_HEADER_VERSION >= 135
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV";
+    case VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV:
+      return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_NV";
 #endif
 #if VK_HEADER_VERSION >= 135
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_NV:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_NV";
+    case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_NV:
+      return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_NV";
 #endif
 #if VK_HEADER_VERSION >= 135
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_NV:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_NV";
+    case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_NV:
+      return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_NV";
 #endif
 #if VK_HEADER_VERSION >= 135
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_TASKS_NV:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_TASKS_NV";
+    case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_TASKS_NV:
+      return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_TASKS_NV";
+#endif
+#if VK_HEADER_VERSION >= 341
+    case VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_NV:
+      return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_NV";
 #endif
 #if VK_HEADER_VERSION >= 231
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV";
+    case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV:
+      return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV";
 #endif
 #if VK_HEADER_VERSION >= 261
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV";
+    case VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV:
+      return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_PIPELINE_NV";
 #endif
 #if VK_HEADER_VERSION >= 261
-      case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NV:
-        return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NV";
+    case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NV:
+      return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_NV";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkIndirectCommandsTokenTypeNV& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkIndirectCommandsTokenTypeNV value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

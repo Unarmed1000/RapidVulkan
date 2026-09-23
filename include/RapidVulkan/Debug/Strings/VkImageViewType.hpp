@@ -24,42 +24,39 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkImageViewType value) noexcept
   {
-    inline const char* TryToString(const VkImageViewType& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_IMAGE_VIEW_TYPE_1D:
-        return "VK_IMAGE_VIEW_TYPE_1D";
-      case VK_IMAGE_VIEW_TYPE_2D:
-        return "VK_IMAGE_VIEW_TYPE_2D";
-      case VK_IMAGE_VIEW_TYPE_3D:
-        return "VK_IMAGE_VIEW_TYPE_3D";
-      case VK_IMAGE_VIEW_TYPE_CUBE:
-        return "VK_IMAGE_VIEW_TYPE_CUBE";
-      case VK_IMAGE_VIEW_TYPE_1D_ARRAY:
-        return "VK_IMAGE_VIEW_TYPE_1D_ARRAY";
-      case VK_IMAGE_VIEW_TYPE_2D_ARRAY:
-        return "VK_IMAGE_VIEW_TYPE_2D_ARRAY";
-      case VK_IMAGE_VIEW_TYPE_CUBE_ARRAY:
-        return "VK_IMAGE_VIEW_TYPE_CUBE_ARRAY";
-      default:
-        return nullptr;
-      }
-    };
+    case VK_IMAGE_VIEW_TYPE_1D:
+      return "VK_IMAGE_VIEW_TYPE_1D";
+    case VK_IMAGE_VIEW_TYPE_2D:
+      return "VK_IMAGE_VIEW_TYPE_2D";
+    case VK_IMAGE_VIEW_TYPE_3D:
+      return "VK_IMAGE_VIEW_TYPE_3D";
+    case VK_IMAGE_VIEW_TYPE_CUBE:
+      return "VK_IMAGE_VIEW_TYPE_CUBE";
+    case VK_IMAGE_VIEW_TYPE_1D_ARRAY:
+      return "VK_IMAGE_VIEW_TYPE_1D_ARRAY";
+    case VK_IMAGE_VIEW_TYPE_2D_ARRAY:
+      return "VK_IMAGE_VIEW_TYPE_2D_ARRAY";
+    case VK_IMAGE_VIEW_TYPE_CUBE_ARRAY:
+      return "VK_IMAGE_VIEW_TYPE_CUBE_ARRAY";
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkImageViewType& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkImageViewType value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

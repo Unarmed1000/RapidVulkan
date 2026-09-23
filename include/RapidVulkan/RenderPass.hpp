@@ -22,13 +22,14 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/CheckError.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
+#include <utility>
 
 namespace RapidVulkan
 {
@@ -53,32 +54,23 @@ namespace RapidVulkan
           Reset();
         }
 
-        // Claim ownership here
-        m_device = other.m_device;
-        m_renderPass = other.m_renderPass;
-
-        // Remove the data from other
-        other.m_device = VK_NULL_HANDLE;
-        other.m_renderPass = VK_NULL_HANDLE;
+        // Claim ownership here and leave other in its default state
+        m_device = std::exchange(other.m_device, VK_NULL_HANDLE);
+        m_renderPass = std::exchange(other.m_renderPass, VK_NULL_HANDLE);
       }
       return *this;
     }
 
     //! @brief Move constructor
-    //! Transfer ownership from other to this
+    //! Transfer ownership from other to this and leave other in its default state
     RenderPass(RenderPass&& other) noexcept
-      : m_device(other.m_device)
-      , m_renderPass(other.m_renderPass)
+      : m_device(std::exchange(other.m_device, VK_NULL_HANDLE))
+      , m_renderPass(std::exchange(other.m_renderPass, VK_NULL_HANDLE))
     {
-      // Remove the data from other
-      other.m_device = VK_NULL_HANDLE;
-      other.m_renderPass = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    RenderPass()
-
-        = default;
+    RenderPass() = default;
 
     //! @brief Assume control of the RenderPass (this object becomes responsible for releasing it)
     explicit RenderPass(const ClaimMode claimMode, const VkDevice device, const VkRenderPass renderPass)
@@ -111,7 +103,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkRenderPass Release()
+    [[nodiscard]] VkRenderPass Release() noexcept
     {
       const auto resource = m_renderPass;
       m_device = VK_NULL_HANDLE;
@@ -138,6 +130,8 @@ namespace RapidVulkan
     //! @brief Destroys any owned resources and assume control of the RenderPass (this object becomes responsible for releasing it)
     void Reset(const ClaimMode claimMode, const VkDevice device, const VkRenderPass renderPass)
     {
+      // The claim mode only exists to select this overload
+      RAPIDVULKAN_PARAM_NOT_USED(claimMode);
       if (IsValid())
       {
         Reset();
@@ -197,25 +191,25 @@ namespace RapidVulkan
 #endif
 
     //! @brief Get the associated 'Device'
-    VkDevice GetDevice() const
+    [[nodiscard]] VkDevice GetDevice() const noexcept
     {
       return m_device;
     }
 
     //! @brief Get the associated resource handle
-    VkRenderPass Get() const
+    [[nodiscard]] VkRenderPass Get() const noexcept
     {
       return m_renderPass;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkRenderPass* GetPointer() const
+    [[nodiscard]] const VkRenderPass* GetPointer() const noexcept
     {
       return &m_renderPass;
     }
 
     //! @brief Check if this object contains a valid resource
-    inline bool IsValid() const
+    [[nodiscard]] bool IsValid() const noexcept
     {
       return m_renderPass != VK_NULL_HANDLE;
     }

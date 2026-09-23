@@ -22,7 +22,7 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/CheckError.hpp>
@@ -39,6 +39,7 @@ namespace RapidVulkan
   {
     VkDevice m_device{VK_NULL_HANDLE};
     std::vector<VkPipeline> m_pipelines;
+
   public:
     GraphicsPipelines(const GraphicsPipelines&) = delete;
     GraphicsPipelines& operator=(const GraphicsPipelines&) = delete;
@@ -54,30 +55,23 @@ namespace RapidVulkan
           Reset();
         }
 
-        // Claim ownership here
-        m_device = other.m_device;
+        // Claim ownership here and leave other in its default state
+        m_device = std::exchange(other.m_device, VK_NULL_HANDLE);
         m_pipelines = std::move(other.m_pipelines);
-
-        // Remove the data from other
-        other.m_device = VK_NULL_HANDLE;
       }
       return *this;
     }
 
     //! @brief Move constructor
-    //! Transfer ownership from other to this
+    //! Transfer ownership from other to this and leave other in its default state
     GraphicsPipelines(GraphicsPipelines&& other) noexcept
-      : m_device(other.m_device)
+      : m_device(std::exchange(other.m_device, VK_NULL_HANDLE))
       , m_pipelines(std::move(other.m_pipelines))
     {
-      // Remove the data from other
-      other.m_device = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    GraphicsPipelines()
-
-        = default;
+    GraphicsPipelines() = default;
 
     //! @brief Assume control of the GraphicsPipelines (this object becomes responsible for releasing it)
     //explicit GraphicsPipelines(const ClaimMode claimMode, const VkDevice device, const VkPipeline pipelines)
@@ -100,7 +94,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT std::vector<VkPipeline> Release()
+    [[nodiscard]] std::vector<VkPipeline> Release() noexcept
     {
       auto resource = std::move(m_pipelines);
       m_device = VK_NULL_HANDLE;
@@ -169,33 +163,33 @@ namespace RapidVulkan
     }
 
     //! @brief Get the associated 'Device'
-    VkDevice GetDevice() const
+    [[nodiscard]] VkDevice GetDevice() const noexcept
     {
       return m_device;
     }
 
     //! @brief Get size of the vector
-    std::size_t Size() const
+    [[nodiscard]] std::size_t Size() const noexcept
     {
       return m_pipelines.size();
     }
 
 
     //! @brief Get direct access to the vector content
-    const VkPipeline* Data() const
+    [[nodiscard]] const VkPipeline* Data() const noexcept
     {
       return m_pipelines.data();
     }
 
 
     //! @brief Get the associated resource handles
-    const std::vector<VkPipeline>& Get() const
+    [[nodiscard]] const std::vector<VkPipeline>& Get() const noexcept
     {
       return m_pipelines;
     }
 
 
-    VkPipeline Get(const std::size_t arrayIndex) const
+    [[nodiscard]] VkPipeline Get(const std::size_t arrayIndex) const noexcept
     {
       assert(arrayIndex < m_pipelines.size());
       return m_pipelines[arrayIndex];
@@ -203,21 +197,21 @@ namespace RapidVulkan
 
 
     //! @brief Access the resource at a given index
-    VkPipeline operator[] (const std::size_t arrayIndex) const
+    [[nodiscard]] VkPipeline operator[](const std::size_t arrayIndex) const noexcept
     {
       assert(arrayIndex < m_pipelines.size());
       return m_pipelines[arrayIndex];
     }
 
     //! @brief get a pointer to the resource at the given index
-    const VkPipeline* GetPointer(const std::size_t arrayIndex) const
+    [[nodiscard]] const VkPipeline* GetPointer(const std::size_t arrayIndex) const noexcept
     {
       assert(arrayIndex < m_pipelines.size());
       return &m_pipelines[arrayIndex];
     }
 
     //! @brief Check if this object contains a valid resource
-    inline bool IsValid() const
+    [[nodiscard]] bool IsValid() const noexcept
     {
       return ! m_pipelines.empty();
     }

@@ -24,34 +24,31 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkExternalMemoryFeatureFlagBitsNV value) noexcept
   {
-    inline const char* TryToString(const VkExternalMemoryFeatureFlagBitsNV& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT_NV:
-        return "VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT_NV";
-      case VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT_NV:
-        return "VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT_NV";
-      case VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT_NV:
-        return "VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT_NV";
-      default:
-        return nullptr;
-      }
-    };
+    case VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT_NV:
+      return "VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT_NV";
+    case VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT_NV:
+      return "VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT_NV";
+    case VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT_NV:
+      return "VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT_NV";
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkExternalMemoryFeatureFlagBitsNV& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkExternalMemoryFeatureFlagBitsNV value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

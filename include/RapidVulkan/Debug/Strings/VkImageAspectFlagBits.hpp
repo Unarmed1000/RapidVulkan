@@ -24,52 +24,49 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkImageAspectFlagBits value) noexcept
   {
-    inline const char* TryToString(const VkImageAspectFlagBits& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_IMAGE_ASPECT_COLOR_BIT:
-        return "VK_IMAGE_ASPECT_COLOR_BIT";
-      case VK_IMAGE_ASPECT_DEPTH_BIT:
-        return "VK_IMAGE_ASPECT_DEPTH_BIT";
-      case VK_IMAGE_ASPECT_STENCIL_BIT:
-        return "VK_IMAGE_ASPECT_STENCIL_BIT";
-      case VK_IMAGE_ASPECT_METADATA_BIT:
-        return "VK_IMAGE_ASPECT_METADATA_BIT";
+    case VK_IMAGE_ASPECT_COLOR_BIT:
+      return "VK_IMAGE_ASPECT_COLOR_BIT";
+    case VK_IMAGE_ASPECT_DEPTH_BIT:
+      return "VK_IMAGE_ASPECT_DEPTH_BIT";
+    case VK_IMAGE_ASPECT_STENCIL_BIT:
+      return "VK_IMAGE_ASPECT_STENCIL_BIT";
+    case VK_IMAGE_ASPECT_METADATA_BIT:
+      return "VK_IMAGE_ASPECT_METADATA_BIT";
 #if VK_HEADER_VERSION >= 70
-      case VK_IMAGE_ASPECT_PLANE_0_BIT:
-        return "VK_IMAGE_ASPECT_PLANE_0_BIT";
+    case VK_IMAGE_ASPECT_PLANE_0_BIT:
+      return "VK_IMAGE_ASPECT_PLANE_0_BIT";
 #endif
 #if VK_HEADER_VERSION >= 70
-      case VK_IMAGE_ASPECT_PLANE_1_BIT:
-        return "VK_IMAGE_ASPECT_PLANE_1_BIT";
+    case VK_IMAGE_ASPECT_PLANE_1_BIT:
+      return "VK_IMAGE_ASPECT_PLANE_1_BIT";
 #endif
 #if VK_HEADER_VERSION >= 70
-      case VK_IMAGE_ASPECT_PLANE_2_BIT:
-        return "VK_IMAGE_ASPECT_PLANE_2_BIT";
+    case VK_IMAGE_ASPECT_PLANE_2_BIT:
+      return "VK_IMAGE_ASPECT_PLANE_2_BIT";
 #endif
 #if VK_HEADER_VERSION >= 211
-      case VK_IMAGE_ASPECT_NONE:
-        return "VK_IMAGE_ASPECT_NONE";
+    case VK_IMAGE_ASPECT_NONE:
+      return "VK_IMAGE_ASPECT_NONE";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkImageAspectFlagBits& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkImageAspectFlagBits value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

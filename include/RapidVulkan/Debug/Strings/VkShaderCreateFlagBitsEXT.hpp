@@ -25,60 +25,73 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkShaderCreateFlagBitsEXT value) noexcept
   {
-    inline const char* TryToString(const VkShaderCreateFlagBitsEXT& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 250
-      case VK_SHADER_CREATE_LINK_STAGE_BIT_EXT:
-        return "VK_SHADER_CREATE_LINK_STAGE_BIT_EXT";
+    case VK_SHADER_CREATE_LINK_STAGE_BIT_EXT:
+      return "VK_SHADER_CREATE_LINK_STAGE_BIT_EXT";
+#endif
+#if VK_HEADER_VERSION >= 341
+    case VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT:
+      return "VK_SHADER_CREATE_DESCRIPTOR_HEAP_BIT_EXT";
+#endif
+#if VK_HEADER_VERSION >= 350
+    case VK_SHADER_CREATE_INSTRUMENT_SHADER_BIT_ARM:
+      return "VK_SHADER_CREATE_INSTRUMENT_SHADER_BIT_ARM";
 #endif
 #if VK_HEADER_VERSION >= 250
-      case VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT:
-        return "VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT";
+    case VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT:
+      return "VK_SHADER_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT";
 #endif
 #if VK_HEADER_VERSION >= 250
-      case VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT:
-        return "VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT";
+    case VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT:
+      return "VK_SHADER_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT";
 #endif
 #if VK_HEADER_VERSION >= 250
-      case VK_SHADER_CREATE_NO_TASK_SHADER_BIT_EXT:
-        return "VK_SHADER_CREATE_NO_TASK_SHADER_BIT_EXT";
+    case VK_SHADER_CREATE_NO_TASK_SHADER_BIT_EXT:
+      return "VK_SHADER_CREATE_NO_TASK_SHADER_BIT_EXT";
 #endif
 #if VK_HEADER_VERSION >= 250
-      case VK_SHADER_CREATE_DISPATCH_BASE_BIT_EXT:
-        return "VK_SHADER_CREATE_DISPATCH_BASE_BIT_EXT";
+    case VK_SHADER_CREATE_DISPATCH_BASE_BIT_EXT:
+      return "VK_SHADER_CREATE_DISPATCH_BASE_BIT_EXT";
 #endif
 #if VK_HEADER_VERSION >= 250
-      case VK_SHADER_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_EXT:
-        return "VK_SHADER_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_EXT";
+    case VK_SHADER_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_EXT:
+      return "VK_SHADER_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_EXT";
 #endif
 #if VK_HEADER_VERSION >= 250
-      case VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT:
-        return "VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT";
+    case VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT:
+      return "VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT";
 #endif
 #if VK_HEADER_VERSION >= 296
-      case VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT:
-        return "VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT";
+    case VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT:
+      return "VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+#if VK_HEADER_VERSION >= 357
+    case VK_SHADER_CREATE_OPACITY_MICROMAP_DISALLOW_MIXED_SPECIAL_INDEX_BIT_EXT:
+      return "VK_SHADER_CREATE_OPACITY_MICROMAP_DISALLOW_MIXED_SPECIAL_INDEX_BIT_EXT";
+#endif
+#if VK_HEADER_VERSION >= 335
+    case VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT:
+      return "VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT";
+#endif
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkShaderCreateFlagBitsEXT& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkShaderCreateFlagBitsEXT value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

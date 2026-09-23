@@ -24,66 +24,63 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkPipelineStageFlagBits value) noexcept
   {
-    inline const char* TryToString(const VkPipelineStageFlagBits& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT:
-        return "VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT";
-      case VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT:
-        return "VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT";
-      case VK_PIPELINE_STAGE_VERTEX_INPUT_BIT:
-        return "VK_PIPELINE_STAGE_VERTEX_INPUT_BIT";
-      case VK_PIPELINE_STAGE_VERTEX_SHADER_BIT:
-        return "VK_PIPELINE_STAGE_VERTEX_SHADER_BIT";
-      case VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT:
-        return "VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT";
-      case VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT:
-        return "VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT";
-      case VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT:
-        return "VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT";
-      case VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT:
-        return "VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT";
-      case VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT:
-        return "VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT";
-      case VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT:
-        return "VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT";
-      case VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT:
-        return "VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT";
-      case VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT:
-        return "VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT";
-      case VK_PIPELINE_STAGE_TRANSFER_BIT:
-        return "VK_PIPELINE_STAGE_TRANSFER_BIT";
-      case VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT:
-        return "VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT";
-      case VK_PIPELINE_STAGE_HOST_BIT:
-        return "VK_PIPELINE_STAGE_HOST_BIT";
-      case VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT:
-        return "VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT";
-      case VK_PIPELINE_STAGE_ALL_COMMANDS_BIT:
-        return "VK_PIPELINE_STAGE_ALL_COMMANDS_BIT";
+    case VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT:
+      return "VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT";
+    case VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT:
+      return "VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT";
+    case VK_PIPELINE_STAGE_VERTEX_INPUT_BIT:
+      return "VK_PIPELINE_STAGE_VERTEX_INPUT_BIT";
+    case VK_PIPELINE_STAGE_VERTEX_SHADER_BIT:
+      return "VK_PIPELINE_STAGE_VERTEX_SHADER_BIT";
+    case VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT:
+      return "VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT";
+    case VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT:
+      return "VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT";
+    case VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT:
+      return "VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT";
+    case VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT:
+      return "VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT";
+    case VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT:
+      return "VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT";
+    case VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT:
+      return "VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT";
+    case VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT:
+      return "VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT";
+    case VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT:
+      return "VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT";
+    case VK_PIPELINE_STAGE_TRANSFER_BIT:
+      return "VK_PIPELINE_STAGE_TRANSFER_BIT";
+    case VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT:
+      return "VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT";
+    case VK_PIPELINE_STAGE_HOST_BIT:
+      return "VK_PIPELINE_STAGE_HOST_BIT";
+    case VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT:
+      return "VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT";
+    case VK_PIPELINE_STAGE_ALL_COMMANDS_BIT:
+      return "VK_PIPELINE_STAGE_ALL_COMMANDS_BIT";
 #if VK_HEADER_VERSION >= 204
-      case VK_PIPELINE_STAGE_NONE:
-        return "VK_PIPELINE_STAGE_NONE";
+    case VK_PIPELINE_STAGE_NONE:
+      return "VK_PIPELINE_STAGE_NONE";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkPipelineStageFlagBits& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkPipelineStageFlagBits value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

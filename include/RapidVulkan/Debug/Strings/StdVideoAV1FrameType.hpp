@@ -25,48 +25,45 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const StdVideoAV1FrameType value) noexcept
   {
-    inline const char* TryToString(const StdVideoAV1FrameType& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_FRAME_TYPE_KEY:
-        return "STD_VIDEO_AV1_FRAME_TYPE_KEY";
+    case STD_VIDEO_AV1_FRAME_TYPE_KEY:
+      return "STD_VIDEO_AV1_FRAME_TYPE_KEY";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_FRAME_TYPE_INTER:
-        return "STD_VIDEO_AV1_FRAME_TYPE_INTER";
+    case STD_VIDEO_AV1_FRAME_TYPE_INTER:
+      return "STD_VIDEO_AV1_FRAME_TYPE_INTER";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_FRAME_TYPE_INTRA_ONLY:
-        return "STD_VIDEO_AV1_FRAME_TYPE_INTRA_ONLY";
+    case STD_VIDEO_AV1_FRAME_TYPE_INTRA_ONLY:
+      return "STD_VIDEO_AV1_FRAME_TYPE_INTRA_ONLY";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_FRAME_TYPE_SWITCH:
-        return "STD_VIDEO_AV1_FRAME_TYPE_SWITCH";
+    case STD_VIDEO_AV1_FRAME_TYPE_SWITCH:
+      return "STD_VIDEO_AV1_FRAME_TYPE_SWITCH";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_FRAME_TYPE_INVALID:
-        return "STD_VIDEO_AV1_FRAME_TYPE_INVALID";
+    case STD_VIDEO_AV1_FRAME_TYPE_INVALID:
+      return "STD_VIDEO_AV1_FRAME_TYPE_INVALID";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const StdVideoAV1FrameType& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const StdVideoAV1FrameType value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

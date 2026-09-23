@@ -25,68 +25,65 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkSubgroupFeatureFlagBits value) noexcept
   {
-    inline const char* TryToString(const VkSubgroupFeatureFlagBits& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 70
-      case VK_SUBGROUP_FEATURE_BASIC_BIT:
-        return "VK_SUBGROUP_FEATURE_BASIC_BIT";
+    case VK_SUBGROUP_FEATURE_BASIC_BIT:
+      return "VK_SUBGROUP_FEATURE_BASIC_BIT";
 #endif
 #if VK_HEADER_VERSION >= 70
-      case VK_SUBGROUP_FEATURE_VOTE_BIT:
-        return "VK_SUBGROUP_FEATURE_VOTE_BIT";
+    case VK_SUBGROUP_FEATURE_VOTE_BIT:
+      return "VK_SUBGROUP_FEATURE_VOTE_BIT";
 #endif
 #if VK_HEADER_VERSION >= 70
-      case VK_SUBGROUP_FEATURE_ARITHMETIC_BIT:
-        return "VK_SUBGROUP_FEATURE_ARITHMETIC_BIT";
+    case VK_SUBGROUP_FEATURE_ARITHMETIC_BIT:
+      return "VK_SUBGROUP_FEATURE_ARITHMETIC_BIT";
 #endif
 #if VK_HEADER_VERSION >= 70
-      case VK_SUBGROUP_FEATURE_BALLOT_BIT:
-        return "VK_SUBGROUP_FEATURE_BALLOT_BIT";
+    case VK_SUBGROUP_FEATURE_BALLOT_BIT:
+      return "VK_SUBGROUP_FEATURE_BALLOT_BIT";
 #endif
 #if VK_HEADER_VERSION >= 70
-      case VK_SUBGROUP_FEATURE_SHUFFLE_BIT:
-        return "VK_SUBGROUP_FEATURE_SHUFFLE_BIT";
+    case VK_SUBGROUP_FEATURE_SHUFFLE_BIT:
+      return "VK_SUBGROUP_FEATURE_SHUFFLE_BIT";
 #endif
 #if VK_HEADER_VERSION >= 70
-      case VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT:
-        return "VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT";
+    case VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT:
+      return "VK_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT";
 #endif
 #if VK_HEADER_VERSION >= 70
-      case VK_SUBGROUP_FEATURE_CLUSTERED_BIT:
-        return "VK_SUBGROUP_FEATURE_CLUSTERED_BIT";
+    case VK_SUBGROUP_FEATURE_CLUSTERED_BIT:
+      return "VK_SUBGROUP_FEATURE_CLUSTERED_BIT";
 #endif
 #if VK_HEADER_VERSION >= 70
-      case VK_SUBGROUP_FEATURE_QUAD_BIT:
-        return "VK_SUBGROUP_FEATURE_QUAD_BIT";
+    case VK_SUBGROUP_FEATURE_QUAD_BIT:
+      return "VK_SUBGROUP_FEATURE_QUAD_BIT";
 #endif
 #if VK_HEADER_VERSION >= 304
-      case VK_SUBGROUP_FEATURE_ROTATE_BIT:
-        return "VK_SUBGROUP_FEATURE_ROTATE_BIT";
+    case VK_SUBGROUP_FEATURE_ROTATE_BIT:
+      return "VK_SUBGROUP_FEATURE_ROTATE_BIT";
 #endif
 #if VK_HEADER_VERSION >= 304
-      case VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT:
-        return "VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT";
+    case VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT:
+      return "VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkSubgroupFeatureFlagBits& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkSubgroupFeatureFlagBits value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

@@ -24,32 +24,29 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkVertexInputRate value) noexcept
   {
-    inline const char* TryToString(const VkVertexInputRate& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_VERTEX_INPUT_RATE_VERTEX:
-        return "VK_VERTEX_INPUT_RATE_VERTEX";
-      case VK_VERTEX_INPUT_RATE_INSTANCE:
-        return "VK_VERTEX_INPUT_RATE_INSTANCE";
-      default:
-        return nullptr;
-      }
-    };
+    case VK_VERTEX_INPUT_RATE_VERTEX:
+      return "VK_VERTEX_INPUT_RATE_VERTEX";
+    case VK_VERTEX_INPUT_RATE_INSTANCE:
+      return "VK_VERTEX_INPUT_RATE_INSTANCE";
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkVertexInputRate& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkVertexInputRate value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

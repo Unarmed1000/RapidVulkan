@@ -25,32 +25,29 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkBuildMicromapModeEXT value) noexcept
   {
-    inline const char* TryToString(const VkBuildMicromapModeEXT& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 231
-      case VK_BUILD_MICROMAP_MODE_BUILD_EXT:
-        return "VK_BUILD_MICROMAP_MODE_BUILD_EXT";
+    case VK_BUILD_MICROMAP_MODE_BUILD_EXT:
+      return "VK_BUILD_MICROMAP_MODE_BUILD_EXT";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkBuildMicromapModeEXT& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkBuildMicromapModeEXT value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

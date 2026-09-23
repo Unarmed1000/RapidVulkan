@@ -25,76 +25,73 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkLatencyMarkerNV value) noexcept
   {
-    inline const char* TryToString(const VkLatencyMarkerNV& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 268
-      case VK_LATENCY_MARKER_SIMULATION_START_NV:
-        return "VK_LATENCY_MARKER_SIMULATION_START_NV";
+    case VK_LATENCY_MARKER_SIMULATION_START_NV:
+      return "VK_LATENCY_MARKER_SIMULATION_START_NV";
 #endif
 #if VK_HEADER_VERSION >= 268
-      case VK_LATENCY_MARKER_SIMULATION_END_NV:
-        return "VK_LATENCY_MARKER_SIMULATION_END_NV";
+    case VK_LATENCY_MARKER_SIMULATION_END_NV:
+      return "VK_LATENCY_MARKER_SIMULATION_END_NV";
 #endif
 #if VK_HEADER_VERSION >= 268
-      case VK_LATENCY_MARKER_RENDERSUBMIT_START_NV:
-        return "VK_LATENCY_MARKER_RENDERSUBMIT_START_NV";
+    case VK_LATENCY_MARKER_RENDERSUBMIT_START_NV:
+      return "VK_LATENCY_MARKER_RENDERSUBMIT_START_NV";
 #endif
 #if VK_HEADER_VERSION >= 268
-      case VK_LATENCY_MARKER_RENDERSUBMIT_END_NV:
-        return "VK_LATENCY_MARKER_RENDERSUBMIT_END_NV";
+    case VK_LATENCY_MARKER_RENDERSUBMIT_END_NV:
+      return "VK_LATENCY_MARKER_RENDERSUBMIT_END_NV";
 #endif
 #if VK_HEADER_VERSION >= 268
-      case VK_LATENCY_MARKER_PRESENT_START_NV:
-        return "VK_LATENCY_MARKER_PRESENT_START_NV";
+    case VK_LATENCY_MARKER_PRESENT_START_NV:
+      return "VK_LATENCY_MARKER_PRESENT_START_NV";
 #endif
 #if VK_HEADER_VERSION >= 268
-      case VK_LATENCY_MARKER_PRESENT_END_NV:
-        return "VK_LATENCY_MARKER_PRESENT_END_NV";
+    case VK_LATENCY_MARKER_PRESENT_END_NV:
+      return "VK_LATENCY_MARKER_PRESENT_END_NV";
 #endif
 #if VK_HEADER_VERSION >= 268
-      case VK_LATENCY_MARKER_INPUT_SAMPLE_NV:
-        return "VK_LATENCY_MARKER_INPUT_SAMPLE_NV";
+    case VK_LATENCY_MARKER_INPUT_SAMPLE_NV:
+      return "VK_LATENCY_MARKER_INPUT_SAMPLE_NV";
 #endif
 #if VK_HEADER_VERSION >= 268
-      case VK_LATENCY_MARKER_TRIGGER_FLASH_NV:
-        return "VK_LATENCY_MARKER_TRIGGER_FLASH_NV";
+    case VK_LATENCY_MARKER_TRIGGER_FLASH_NV:
+      return "VK_LATENCY_MARKER_TRIGGER_FLASH_NV";
 #endif
 #if VK_HEADER_VERSION >= 268
-      case VK_LATENCY_MARKER_OUT_OF_BAND_RENDERSUBMIT_START_NV:
-        return "VK_LATENCY_MARKER_OUT_OF_BAND_RENDERSUBMIT_START_NV";
+    case VK_LATENCY_MARKER_OUT_OF_BAND_RENDERSUBMIT_START_NV:
+      return "VK_LATENCY_MARKER_OUT_OF_BAND_RENDERSUBMIT_START_NV";
 #endif
 #if VK_HEADER_VERSION >= 268
-      case VK_LATENCY_MARKER_OUT_OF_BAND_RENDERSUBMIT_END_NV:
-        return "VK_LATENCY_MARKER_OUT_OF_BAND_RENDERSUBMIT_END_NV";
+    case VK_LATENCY_MARKER_OUT_OF_BAND_RENDERSUBMIT_END_NV:
+      return "VK_LATENCY_MARKER_OUT_OF_BAND_RENDERSUBMIT_END_NV";
 #endif
 #if VK_HEADER_VERSION >= 268
-      case VK_LATENCY_MARKER_OUT_OF_BAND_PRESENT_START_NV:
-        return "VK_LATENCY_MARKER_OUT_OF_BAND_PRESENT_START_NV";
+    case VK_LATENCY_MARKER_OUT_OF_BAND_PRESENT_START_NV:
+      return "VK_LATENCY_MARKER_OUT_OF_BAND_PRESENT_START_NV";
 #endif
 #if VK_HEADER_VERSION >= 268
-      case VK_LATENCY_MARKER_OUT_OF_BAND_PRESENT_END_NV:
-        return "VK_LATENCY_MARKER_OUT_OF_BAND_PRESENT_END_NV";
+    case VK_LATENCY_MARKER_OUT_OF_BAND_PRESENT_END_NV:
+      return "VK_LATENCY_MARKER_OUT_OF_BAND_PRESENT_END_NV";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkLatencyMarkerNV& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkLatencyMarkerNV value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

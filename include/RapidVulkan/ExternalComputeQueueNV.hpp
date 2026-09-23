@@ -1,0 +1,219 @@
+#ifndef RAPIDVULKAN_EXTERNALCOMPUTEQUEUENV_HPP
+#define RAPIDVULKAN_EXTERNALCOMPUTEQUEUENV_HPP
+#if VK_HEADER_VERSION >= 313
+//***************************************************************************************************************************************************
+//* BSD 3-Clause License
+//*
+//* Copyright (c) 2016-2025, Rene Thrane
+//* All rights reserved.
+//*
+//* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+//*
+//* 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+//* 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the
+//*    documentation and/or other materials provided with the distribution.
+//* 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this
+//*    software without specific prior written permission.
+//*
+//* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+//* THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+//* CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+//* PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+//* LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+//* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//***************************************************************************************************************************************************
+
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+
+#include <RapidVulkan/ClaimMode.hpp>
+#include <RapidVulkan/CheckError.hpp>
+#include <RapidVulkan/System/Macro.hpp>
+#include <vulkan/vulkan.h>
+#include <cassert>
+#include <utility>
+
+namespace RapidVulkan
+{
+  //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
+  class ExternalComputeQueueNV
+  {
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkExternalComputeQueueNV m_externalQueue{VK_NULL_HANDLE};
+
+  public:
+    ExternalComputeQueueNV(const ExternalComputeQueueNV&) = delete;
+    ExternalComputeQueueNV& operator=(const ExternalComputeQueueNV&) = delete;
+
+    //! @brief Move assignment operator
+    ExternalComputeQueueNV& operator=(ExternalComputeQueueNV&& other) noexcept
+    {
+      if (this != &other)
+      {
+        // Free existing resources then transfer the content of other to this one and fill other with default values
+        if (IsValid())
+        {
+          Reset();
+        }
+
+        // Claim ownership here and leave other in its default state
+        m_device = std::exchange(other.m_device, VK_NULL_HANDLE);
+        m_externalQueue = std::exchange(other.m_externalQueue, VK_NULL_HANDLE);
+      }
+      return *this;
+    }
+
+    //! @brief Move constructor
+    //! Transfer ownership from other to this and leave other in its default state
+    ExternalComputeQueueNV(ExternalComputeQueueNV&& other) noexcept
+      : m_device(std::exchange(other.m_device, VK_NULL_HANDLE))
+      , m_externalQueue(std::exchange(other.m_externalQueue, VK_NULL_HANDLE))
+    {
+    }
+
+    //! @brief Create a 'invalid' instance (use Reset to populate it)
+    ExternalComputeQueueNV() = default;
+
+    //! @brief Assume control of the ExternalComputeQueueNV (this object becomes responsible for releasing it)
+    explicit ExternalComputeQueueNV(const ClaimMode claimMode, const VkDevice device, const VkExternalComputeQueueNV externalQueue)
+      : ExternalComputeQueueNV()
+    {
+      Reset(claimMode, device, externalQueue);
+    }
+
+#if VK_HEADER_VERSION >= 313
+    //! @brief Create the requested resource
+    //! @note  Function: vkCreateExternalComputeQueueNV
+    ExternalComputeQueueNV(const VkDevice device, const VkExternalComputeQueueCreateInfoNV& createInfo)
+      : ExternalComputeQueueNV()
+    {
+      Reset(device, createInfo);
+    }
+#endif
+
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Create the requested resource
+    //! @note  Function: vkCreateExternalComputeQueueNV
+    ExternalComputeQueueNV(const VkDevice device, const VkQueue preferredQueue)
+      : ExternalComputeQueueNV()
+    {
+      Reset(device, preferredQueue);
+    }
+#endif
+
+    ~ExternalComputeQueueNV()
+    {
+      Reset();
+    }
+
+    //! @brief returns the managed handle and releases the ownership.
+    [[nodiscard]] VkExternalComputeQueueNV Release() noexcept
+    {
+      const auto resource = m_externalQueue;
+      m_device = VK_NULL_HANDLE;
+      m_externalQueue = VK_NULL_HANDLE;
+      return resource;
+    }
+
+    //! @brief Destroys any owned resources and resets the object to its default state.
+    void Reset() noexcept
+    {
+      if (! IsValid())
+      {
+        return;
+      }
+
+      assert(m_device != VK_NULL_HANDLE);
+      assert(m_externalQueue != VK_NULL_HANDLE);
+
+      vkDestroyExternalComputeQueueNV(m_device, m_externalQueue, nullptr);
+      m_device = VK_NULL_HANDLE;
+      m_externalQueue = VK_NULL_HANDLE;
+    }
+
+    //! @brief Destroys any owned resources and assume control of the ExternalComputeQueueNV (this object becomes responsible for releasing it)
+    void Reset(const ClaimMode claimMode, const VkDevice device, const VkExternalComputeQueueNV externalQueue)
+    {
+      // The claim mode only exists to select this overload
+      RAPIDVULKAN_PARAM_NOT_USED(claimMode);
+      if (IsValid())
+      {
+        Reset();
+      }
+
+
+      m_device = device;
+      m_externalQueue = externalQueue;
+    }
+
+#if VK_HEADER_VERSION >= 313
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkCreateExternalComputeQueueNV
+    void Reset(const VkDevice device, const VkExternalComputeQueueCreateInfoNV& createInfo)
+    {
+#ifndef RAPIDVULKAN_DISABLE_PARAM_VALIDATION
+      if (device == VK_NULL_HANDLE)
+      {
+        throw std::invalid_argument("device can not be VK_NULL_HANDLE");
+      }
+#else
+      assert(device != VK_NULL_HANDLE);
+#endif
+
+      // Free any currently allocated resource
+      if (IsValid())
+      {
+        Reset();
+      }
+
+      // Since we want to ensure that the resource is left untouched on error we use a local variable as a intermediary
+      VkExternalComputeQueueNV externalQueue;
+      CheckError(vkCreateExternalComputeQueueNV(device, &createInfo, nullptr, &externalQueue), "vkCreateExternalComputeQueueNV", __FILE__, __LINE__);
+
+      // Everything is ready, so assign the members
+      m_device = device;
+      m_externalQueue = externalQueue;
+    }
+#endif
+
+#ifndef RAPIDVULKAN_DISABLE_UNROLLED_STRUCT_METHODS
+    //! @brief Destroys any owned resources and then creates the requested one
+    //! @note  Function: vkCreateExternalComputeQueueNV
+    void Reset(const VkDevice device, const VkQueue preferredQueue)
+    {
+      VkExternalComputeQueueCreateInfoNV createInfo{};
+      createInfo.sType = VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_CREATE_INFO_NV;
+      createInfo.pNext = nullptr;
+      createInfo.preferredQueue = preferredQueue;
+
+      Reset(device, createInfo);
+    }
+#endif
+
+    //! @brief Get the associated 'Device'
+    [[nodiscard]] VkDevice GetDevice() const noexcept
+    {
+      return m_device;
+    }
+
+    //! @brief Get the associated resource handle
+    [[nodiscard]] VkExternalComputeQueueNV Get() const noexcept
+    {
+      return m_externalQueue;
+    }
+
+    //! @brief Get a pointer to the associated resource handle
+    [[nodiscard]] const VkExternalComputeQueueNV* GetPointer() const noexcept
+    {
+      return &m_externalQueue;
+    }
+
+    //! @brief Check if this object contains a valid resource
+    [[nodiscard]] bool IsValid() const noexcept
+    {
+      return m_externalQueue != VK_NULL_HANDLE;
+    }
+  };
+}
+
+#endif
+#endif

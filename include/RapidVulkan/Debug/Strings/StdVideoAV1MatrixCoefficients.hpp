@@ -25,92 +25,89 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const StdVideoAV1MatrixCoefficients value) noexcept
   {
-    inline const char* TryToString(const StdVideoAV1MatrixCoefficients& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_IDENTITY:
-        return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_IDENTITY";
+    case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_IDENTITY:
+      return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_IDENTITY";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_709:
-        return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_709";
+    case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_709:
+      return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_709";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_UNSPECIFIED:
-        return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_UNSPECIFIED";
+    case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_UNSPECIFIED:
+      return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_UNSPECIFIED";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_RESERVED_3:
-        return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_RESERVED_3";
+    case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_RESERVED_3:
+      return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_RESERVED_3";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_FCC:
-        return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_FCC";
+    case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_FCC:
+      return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_FCC";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_470_B_G:
-        return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_470_B_G";
+    case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_470_B_G:
+      return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_470_B_G";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_601:
-        return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_601";
+    case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_601:
+      return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_601";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_240:
-        return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_240";
+    case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_240:
+      return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_240";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_YCGCO:
-        return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_YCGCO";
+    case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_YCGCO:
+      return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_YCGCO";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_2020_NCL:
-        return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_2020_NCL";
+    case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_2020_NCL:
+      return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_2020_NCL";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_2020_CL:
-        return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_2020_CL";
+    case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_2020_CL:
+      return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_2020_CL";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_2085:
-        return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_2085";
+    case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_2085:
+      return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_SMPTE_2085";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_CHROMAT_NCL:
-        return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_CHROMAT_NCL";
+    case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_CHROMAT_NCL:
+      return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_CHROMAT_NCL";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_CHROMAT_CL:
-        return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_CHROMAT_CL";
+    case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_CHROMAT_CL:
+      return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_CHROMAT_CL";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_ICTCP:
-        return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_ICTCP";
+    case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_ICTCP:
+      return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_ICTCP";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_INVALID:
-        return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_INVALID";
+    case STD_VIDEO_AV1_MATRIX_COEFFICIENTS_INVALID:
+      return "STD_VIDEO_AV1_MATRIX_COEFFICIENTS_INVALID";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const StdVideoAV1MatrixCoefficients& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const StdVideoAV1MatrixCoefficients value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

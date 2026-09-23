@@ -25,60 +25,57 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkVideoCodecOperationFlagBitsKHR value) noexcept
   {
-    inline const char* TryToString(const VkVideoCodecOperationFlagBitsKHR& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 239
-      case VK_VIDEO_CODEC_OPERATION_NONE_KHR:
-        return "VK_VIDEO_CODEC_OPERATION_NONE_KHR";
+    case VK_VIDEO_CODEC_OPERATION_NONE_KHR:
+      return "VK_VIDEO_CODEC_OPERATION_NONE_KHR";
 #endif
 #if VK_HEADER_VERSION >= 275
-      case VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR:
-        return "VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR";
+    case VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR:
+      return "VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR";
 #endif
 #if VK_HEADER_VERSION >= 275
-      case VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR:
-        return "VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR";
+    case VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR:
+      return "VK_VIDEO_CODEC_OPERATION_ENCODE_H265_BIT_KHR";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR:
-        return "VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR";
+    case VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR:
+      return "VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR:
-        return "VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR";
+    case VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR:
+      return "VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR:
-        return "VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR";
+    case VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR:
+      return "VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR";
 #endif
 #if VK_HEADER_VERSION >= 304
-      case VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR:
-        return "VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR";
+    case VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR:
+      return "VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR";
 #endif
 #if VK_HEADER_VERSION >= 321
-      case VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR:
-        return "VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR";
+    case VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR:
+      return "VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkVideoCodecOperationFlagBitsKHR& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkVideoCodecOperationFlagBitsKHR value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

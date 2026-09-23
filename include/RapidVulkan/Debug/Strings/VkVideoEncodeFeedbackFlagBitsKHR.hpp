@@ -25,40 +25,65 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkVideoEncodeFeedbackFlagBitsKHR value) noexcept
   {
-    inline const char* TryToString(const VkVideoEncodeFeedbackFlagBitsKHR& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 275
-      case VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR:
-        return "VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR";
+    case VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR:
+      return "VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR";
 #endif
 #if VK_HEADER_VERSION >= 275
-      case VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR:
-        return "VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR";
+    case VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR:
+      return "VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR";
 #endif
 #if VK_HEADER_VERSION >= 275
-      case VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR:
-        return "VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR";
+    case VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR:
+      return "VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+#if VK_HEADER_VERSION >= 357
+    case VK_VIDEO_ENCODE_FEEDBACK_AVERAGE_QUANTIZATION_BIT_KHR:
+      return "VK_VIDEO_ENCODE_FEEDBACK_AVERAGE_QUANTIZATION_BIT_KHR";
+#endif
+#if VK_HEADER_VERSION >= 357
+    case VK_VIDEO_ENCODE_FEEDBACK_MIN_QUANTIZATION_BIT_KHR:
+      return "VK_VIDEO_ENCODE_FEEDBACK_MIN_QUANTIZATION_BIT_KHR";
+#endif
+#if VK_HEADER_VERSION >= 357
+    case VK_VIDEO_ENCODE_FEEDBACK_MAX_QUANTIZATION_BIT_KHR:
+      return "VK_VIDEO_ENCODE_FEEDBACK_MAX_QUANTIZATION_BIT_KHR";
+#endif
+#if VK_HEADER_VERSION >= 357
+    case VK_VIDEO_ENCODE_FEEDBACK_INTRA_PIXELS_BIT_KHR:
+      return "VK_VIDEO_ENCODE_FEEDBACK_INTRA_PIXELS_BIT_KHR";
+#endif
+#if VK_HEADER_VERSION >= 357
+    case VK_VIDEO_ENCODE_FEEDBACK_INTER_PIXELS_BIT_KHR:
+      return "VK_VIDEO_ENCODE_FEEDBACK_INTER_PIXELS_BIT_KHR";
+#endif
+#if VK_HEADER_VERSION >= 357
+    case VK_VIDEO_ENCODE_FEEDBACK_SKIPPED_PIXELS_BIT_KHR:
+      return "VK_VIDEO_ENCODE_FEEDBACK_SKIPPED_PIXELS_BIT_KHR";
+#endif
+#if VK_HEADER_VERSION >= 357
+    case VK_VIDEO_ENCODE_FEEDBACK_PICTURE_PARTITION_COUNT_BIT_KHR:
+      return "VK_VIDEO_ENCODE_FEEDBACK_PICTURE_PARTITION_COUNT_BIT_KHR";
+#endif
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkVideoEncodeFeedbackFlagBitsKHR& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkVideoEncodeFeedbackFlagBitsKHR value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

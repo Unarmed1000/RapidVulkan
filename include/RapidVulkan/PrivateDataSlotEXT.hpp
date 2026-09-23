@@ -23,21 +23,23 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/CheckError.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
+#include <utility>
 
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class PrivateDataSlotEXT
   {
-    VkDevice m_device;
-    VkPrivateDataSlot m_privateDataSlot;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkPrivateDataSlot m_privateDataSlot{VK_NULL_HANDLE};
+
   public:
     PrivateDataSlotEXT(const PrivateDataSlotEXT&) = delete;
     PrivateDataSlotEXT& operator=(const PrivateDataSlotEXT&) = delete;
@@ -53,34 +55,23 @@ namespace RapidVulkan
           Reset();
         }
 
-        // Claim ownership here
-        m_device = other.m_device;
-        m_privateDataSlot = other.m_privateDataSlot;
-
-        // Remove the data from other
-        other.m_device = VK_NULL_HANDLE;
-        other.m_privateDataSlot = VK_NULL_HANDLE;
+        // Claim ownership here and leave other in its default state
+        m_device = std::exchange(other.m_device, VK_NULL_HANDLE);
+        m_privateDataSlot = std::exchange(other.m_privateDataSlot, VK_NULL_HANDLE);
       }
       return *this;
     }
 
     //! @brief Move constructor
-    //! Transfer ownership from other to this
+    //! Transfer ownership from other to this and leave other in its default state
     PrivateDataSlotEXT(PrivateDataSlotEXT&& other) noexcept
-      : m_device(other.m_device)
-      , m_privateDataSlot(other.m_privateDataSlot)
+      : m_device(std::exchange(other.m_device, VK_NULL_HANDLE))
+      , m_privateDataSlot(std::exchange(other.m_privateDataSlot, VK_NULL_HANDLE))
     {
-      // Remove the data from other
-      other.m_device = VK_NULL_HANDLE;
-      other.m_privateDataSlot = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    PrivateDataSlotEXT()
-      : m_device(VK_NULL_HANDLE)
-      , m_privateDataSlot(VK_NULL_HANDLE)
-    {
-    }
+    PrivateDataSlotEXT() = default;
 
     //! @brief Assume control of the PrivateDataSlotEXT (this object becomes responsible for releasing it)
     explicit PrivateDataSlotEXT(const ClaimMode claimMode, const VkDevice device, const VkPrivateDataSlot privateDataSlot)
@@ -115,7 +106,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkPrivateDataSlot Release()
+    [[nodiscard]] VkPrivateDataSlot Release() noexcept
     {
       const auto resource = m_privateDataSlot;
       m_device = VK_NULL_HANDLE;
@@ -142,6 +133,8 @@ namespace RapidVulkan
     //! @brief Destroys any owned resources and assume control of the PrivateDataSlotEXT (this object becomes responsible for releasing it)
     void Reset(const ClaimMode claimMode, const VkDevice device, const VkPrivateDataSlot privateDataSlot)
     {
+      // The claim mode only exists to select this overload
+      RAPIDVULKAN_PARAM_NOT_USED(claimMode);
       if (IsValid())
       {
         Reset();
@@ -197,25 +190,25 @@ namespace RapidVulkan
 #endif
 
     //! @brief Get the associated 'Device'
-    VkDevice GetDevice() const
+    [[nodiscard]] VkDevice GetDevice() const noexcept
     {
       return m_device;
     }
 
     //! @brief Get the associated resource handle
-    VkPrivateDataSlot Get() const
+    [[nodiscard]] VkPrivateDataSlot Get() const noexcept
     {
       return m_privateDataSlot;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkPrivateDataSlot* GetPointer() const
+    [[nodiscard]] const VkPrivateDataSlot* GetPointer() const noexcept
     {
       return &m_privateDataSlot;
     }
 
     //! @brief Check if this object contains a valid resource
-    inline bool IsValid() const
+    [[nodiscard]] bool IsValid() const noexcept
     {
       return m_privateDataSlot != VK_NULL_HANDLE;
     }

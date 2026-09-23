@@ -24,34 +24,31 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkImageType value) noexcept
   {
-    inline const char* TryToString(const VkImageType& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_IMAGE_TYPE_1D:
-        return "VK_IMAGE_TYPE_1D";
-      case VK_IMAGE_TYPE_2D:
-        return "VK_IMAGE_TYPE_2D";
-      case VK_IMAGE_TYPE_3D:
-        return "VK_IMAGE_TYPE_3D";
-      default:
-        return nullptr;
-      }
-    };
+    case VK_IMAGE_TYPE_1D:
+      return "VK_IMAGE_TYPE_1D";
+    case VK_IMAGE_TYPE_2D:
+      return "VK_IMAGE_TYPE_2D";
+    case VK_IMAGE_TYPE_3D:
+      return "VK_IMAGE_TYPE_3D";
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkImageType& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkImageType value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

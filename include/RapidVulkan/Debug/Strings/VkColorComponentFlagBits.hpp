@@ -24,36 +24,33 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkColorComponentFlagBits value) noexcept
   {
-    inline const char* TryToString(const VkColorComponentFlagBits& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_COLOR_COMPONENT_R_BIT:
-        return "VK_COLOR_COMPONENT_R_BIT";
-      case VK_COLOR_COMPONENT_G_BIT:
-        return "VK_COLOR_COMPONENT_G_BIT";
-      case VK_COLOR_COMPONENT_B_BIT:
-        return "VK_COLOR_COMPONENT_B_BIT";
-      case VK_COLOR_COMPONENT_A_BIT:
-        return "VK_COLOR_COMPONENT_A_BIT";
-      default:
-        return nullptr;
-      }
-    };
+    case VK_COLOR_COMPONENT_R_BIT:
+      return "VK_COLOR_COMPONENT_R_BIT";
+    case VK_COLOR_COMPONENT_G_BIT:
+      return "VK_COLOR_COMPONENT_G_BIT";
+    case VK_COLOR_COMPONENT_B_BIT:
+      return "VK_COLOR_COMPONENT_B_BIT";
+    case VK_COLOR_COMPONENT_A_BIT:
+      return "VK_COLOR_COMPONENT_A_BIT";
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkColorComponentFlagBits& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkColorComponentFlagBits value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

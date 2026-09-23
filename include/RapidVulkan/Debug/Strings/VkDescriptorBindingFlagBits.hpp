@@ -25,44 +25,41 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkDescriptorBindingFlagBits value) noexcept
   {
-    inline const char* TryToString(const VkDescriptorBindingFlagBits& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 131
-      case VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT:
-        return "VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT";
+    case VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT:
+      return "VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT";
 #endif
 #if VK_HEADER_VERSION >= 131
-      case VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT:
-        return "VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT";
+    case VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT:
+      return "VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT";
 #endif
 #if VK_HEADER_VERSION >= 131
-      case VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT:
-        return "VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT";
+    case VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT:
+      return "VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT";
 #endif
 #if VK_HEADER_VERSION >= 131
-      case VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT:
-        return "VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT";
+    case VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT:
+      return "VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkDescriptorBindingFlagBits& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkDescriptorBindingFlagBits value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

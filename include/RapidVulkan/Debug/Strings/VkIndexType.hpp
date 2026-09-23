@@ -24,36 +24,33 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkIndexType value) noexcept
   {
-    inline const char* TryToString(const VkIndexType& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_INDEX_TYPE_UINT16:
-        return "VK_INDEX_TYPE_UINT16";
-      case VK_INDEX_TYPE_UINT32:
-        return "VK_INDEX_TYPE_UINT32";
+    case VK_INDEX_TYPE_UINT16:
+      return "VK_INDEX_TYPE_UINT16";
+    case VK_INDEX_TYPE_UINT32:
+      return "VK_INDEX_TYPE_UINT32";
 #if VK_HEADER_VERSION >= 304
-      case VK_INDEX_TYPE_UINT8:
-        return "VK_INDEX_TYPE_UINT8";
+    case VK_INDEX_TYPE_UINT8:
+      return "VK_INDEX_TYPE_UINT8";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkIndexType& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkIndexType value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

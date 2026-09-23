@@ -24,38 +24,35 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkSystemAllocationScope value) noexcept
   {
-    inline const char* TryToString(const VkSystemAllocationScope& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_SYSTEM_ALLOCATION_SCOPE_COMMAND:
-        return "VK_SYSTEM_ALLOCATION_SCOPE_COMMAND";
-      case VK_SYSTEM_ALLOCATION_SCOPE_OBJECT:
-        return "VK_SYSTEM_ALLOCATION_SCOPE_OBJECT";
-      case VK_SYSTEM_ALLOCATION_SCOPE_CACHE:
-        return "VK_SYSTEM_ALLOCATION_SCOPE_CACHE";
-      case VK_SYSTEM_ALLOCATION_SCOPE_DEVICE:
-        return "VK_SYSTEM_ALLOCATION_SCOPE_DEVICE";
-      case VK_SYSTEM_ALLOCATION_SCOPE_INSTANCE:
-        return "VK_SYSTEM_ALLOCATION_SCOPE_INSTANCE";
-      default:
-        return nullptr;
-      }
-    };
+    case VK_SYSTEM_ALLOCATION_SCOPE_COMMAND:
+      return "VK_SYSTEM_ALLOCATION_SCOPE_COMMAND";
+    case VK_SYSTEM_ALLOCATION_SCOPE_OBJECT:
+      return "VK_SYSTEM_ALLOCATION_SCOPE_OBJECT";
+    case VK_SYSTEM_ALLOCATION_SCOPE_CACHE:
+      return "VK_SYSTEM_ALLOCATION_SCOPE_CACHE";
+    case VK_SYSTEM_ALLOCATION_SCOPE_DEVICE:
+      return "VK_SYSTEM_ALLOCATION_SCOPE_DEVICE";
+    case VK_SYSTEM_ALLOCATION_SCOPE_INSTANCE:
+      return "VK_SYSTEM_ALLOCATION_SCOPE_INSTANCE";
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkSystemAllocationScope& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkSystemAllocationScope value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

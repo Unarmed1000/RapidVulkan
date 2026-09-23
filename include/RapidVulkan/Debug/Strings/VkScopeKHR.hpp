@@ -25,44 +25,41 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkScopeKHR value) noexcept
   {
-    inline const char* TryToString(const VkScopeKHR& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 261
-      case VK_SCOPE_DEVICE_KHR:
-        return "VK_SCOPE_DEVICE_KHR";
+    case VK_SCOPE_DEVICE_KHR:
+      return "VK_SCOPE_DEVICE_KHR";
 #endif
 #if VK_HEADER_VERSION >= 261
-      case VK_SCOPE_WORKGROUP_KHR:
-        return "VK_SCOPE_WORKGROUP_KHR";
+    case VK_SCOPE_WORKGROUP_KHR:
+      return "VK_SCOPE_WORKGROUP_KHR";
 #endif
 #if VK_HEADER_VERSION >= 261
-      case VK_SCOPE_SUBGROUP_KHR:
-        return "VK_SCOPE_SUBGROUP_KHR";
+    case VK_SCOPE_SUBGROUP_KHR:
+      return "VK_SCOPE_SUBGROUP_KHR";
 #endif
 #if VK_HEADER_VERSION >= 261
-      case VK_SCOPE_QUEUE_FAMILY_KHR:
-        return "VK_SCOPE_QUEUE_FAMILY_KHR";
+    case VK_SCOPE_QUEUE_FAMILY_KHR:
+      return "VK_SCOPE_QUEUE_FAMILY_KHR";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkScopeKHR& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkScopeKHR value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

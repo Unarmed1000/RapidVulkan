@@ -24,38 +24,35 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkMemoryHeapFlagBits value) noexcept
   {
-    inline const char* TryToString(const VkMemoryHeapFlagBits& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_MEMORY_HEAP_DEVICE_LOCAL_BIT:
-        return "VK_MEMORY_HEAP_DEVICE_LOCAL_BIT";
+    case VK_MEMORY_HEAP_DEVICE_LOCAL_BIT:
+      return "VK_MEMORY_HEAP_DEVICE_LOCAL_BIT";
 #if VK_HEADER_VERSION >= 70
-      case VK_MEMORY_HEAP_MULTI_INSTANCE_BIT:
-        return "VK_MEMORY_HEAP_MULTI_INSTANCE_BIT";
+    case VK_MEMORY_HEAP_MULTI_INSTANCE_BIT:
+      return "VK_MEMORY_HEAP_MULTI_INSTANCE_BIT";
 #endif
-#if VK_HEADER_VERSION >= 321
-      case VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM:
-        return "VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM";
+#if VK_HEADER_VERSION >= 313
+    case VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM:
+      return "VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkMemoryHeapFlagBits& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkMemoryHeapFlagBits value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKDEVICEFAULTVENDORBINARYHEADERVERSIONEXT_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKDEVICEFAULTVENDORBINARYHEADERVERSIONEXT_HPP
-#if VK_HEADER_VERSION >= 231
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKVIDEOENCODERGBCHROMAOFFSETFLAGBITSVALVE_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKVIDEOENCODERGBCHROMAOFFSETFLAGBITSVALVE_HPP
+#if VK_HEADER_VERSION >= 328
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -25,32 +25,33 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkVideoEncodeRgbChromaOffsetFlagBitsVALVE value) noexcept
   {
-    inline const char* TryToString(const VkDeviceFaultVendorBinaryHeaderVersionEXT& value)
+    switch (value)
     {
-      switch(value)
-      {
-#if VK_HEADER_VERSION >= 231
-      case VK_DEVICE_FAULT_VENDOR_BINARY_HEADER_VERSION_ONE_EXT:
-        return "VK_DEVICE_FAULT_VENDOR_BINARY_HEADER_VERSION_ONE_EXT";
+#if VK_HEADER_VERSION >= 328
+    case VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_COSITED_EVEN_BIT_VALVE:
+      return "VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_COSITED_EVEN_BIT_VALVE";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+#if VK_HEADER_VERSION >= 328
+    case VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_MIDPOINT_BIT_VALVE:
+      return "VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_MIDPOINT_BIT_VALVE";
+#endif
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkDeviceFaultVendorBinaryHeaderVersionEXT& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkVideoEncodeRgbChromaOffsetFlagBitsVALVE value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

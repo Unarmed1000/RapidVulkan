@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKDEVICEFAULTADDRESSTYPEEXT_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKDEVICEFAULTADDRESSTYPEEXT_HPP
-#if VK_HEADER_VERSION >= 231
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKADDRESSCOMMANDFLAGBITSKHR_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKADDRESSCOMMANDFLAGBITSKHR_HPP
+#if VK_HEADER_VERSION >= 350
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -25,56 +25,49 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkAddressCommandFlagBitsKHR value) noexcept
   {
-    inline const char* TryToString(const VkDeviceFaultAddressTypeEXT& value)
+    switch (value)
     {
-      switch(value)
-      {
-#if VK_HEADER_VERSION >= 231
-      case VK_DEVICE_FAULT_ADDRESS_TYPE_NONE_EXT:
-        return "VK_DEVICE_FAULT_ADDRESS_TYPE_NONE_EXT";
+#if VK_HEADER_VERSION >= 350
+    case VK_ADDRESS_COMMAND_PROTECTED_BIT_KHR:
+      return "VK_ADDRESS_COMMAND_PROTECTED_BIT_KHR";
 #endif
-#if VK_HEADER_VERSION >= 231
-      case VK_DEVICE_FAULT_ADDRESS_TYPE_READ_INVALID_EXT:
-        return "VK_DEVICE_FAULT_ADDRESS_TYPE_READ_INVALID_EXT";
+#if VK_HEADER_VERSION >= 350
+    case VK_ADDRESS_COMMAND_FULLY_BOUND_BIT_KHR:
+      return "VK_ADDRESS_COMMAND_FULLY_BOUND_BIT_KHR";
 #endif
-#if VK_HEADER_VERSION >= 231
-      case VK_DEVICE_FAULT_ADDRESS_TYPE_WRITE_INVALID_EXT:
-        return "VK_DEVICE_FAULT_ADDRESS_TYPE_WRITE_INVALID_EXT";
+#if VK_HEADER_VERSION >= 350
+    case VK_ADDRESS_COMMAND_STORAGE_BUFFER_USAGE_BIT_KHR:
+      return "VK_ADDRESS_COMMAND_STORAGE_BUFFER_USAGE_BIT_KHR";
 #endif
-#if VK_HEADER_VERSION >= 231
-      case VK_DEVICE_FAULT_ADDRESS_TYPE_EXECUTE_INVALID_EXT:
-        return "VK_DEVICE_FAULT_ADDRESS_TYPE_EXECUTE_INVALID_EXT";
+#if VK_HEADER_VERSION >= 350
+    case VK_ADDRESS_COMMAND_UNKNOWN_STORAGE_BUFFER_USAGE_BIT_KHR:
+      return "VK_ADDRESS_COMMAND_UNKNOWN_STORAGE_BUFFER_USAGE_BIT_KHR";
 #endif
-#if VK_HEADER_VERSION >= 231
-      case VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_UNKNOWN_EXT:
-        return "VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_UNKNOWN_EXT";
+#if VK_HEADER_VERSION >= 350
+    case VK_ADDRESS_COMMAND_TRANSFORM_FEEDBACK_BUFFER_USAGE_BIT_KHR:
+      return "VK_ADDRESS_COMMAND_TRANSFORM_FEEDBACK_BUFFER_USAGE_BIT_KHR";
 #endif
-#if VK_HEADER_VERSION >= 231
-      case VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_INVALID_EXT:
-        return "VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_INVALID_EXT";
+#if VK_HEADER_VERSION >= 350
+    case VK_ADDRESS_COMMAND_UNKNOWN_TRANSFORM_FEEDBACK_BUFFER_USAGE_BIT_KHR:
+      return "VK_ADDRESS_COMMAND_UNKNOWN_TRANSFORM_FEEDBACK_BUFFER_USAGE_BIT_KHR";
 #endif
-#if VK_HEADER_VERSION >= 231
-      case VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_FAULT_EXT:
-        return "VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_FAULT_EXT";
-#endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkDeviceFaultAddressTypeEXT& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkAddressCommandFlagBitsKHR value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

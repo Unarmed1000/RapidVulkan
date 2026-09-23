@@ -24,40 +24,37 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkBorderColor value) noexcept
   {
-    inline const char* TryToString(const VkBorderColor& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK:
-        return "VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK";
-      case VK_BORDER_COLOR_INT_TRANSPARENT_BLACK:
-        return "VK_BORDER_COLOR_INT_TRANSPARENT_BLACK";
-      case VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK:
-        return "VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK";
-      case VK_BORDER_COLOR_INT_OPAQUE_BLACK:
-        return "VK_BORDER_COLOR_INT_OPAQUE_BLACK";
-      case VK_BORDER_COLOR_FLOAT_OPAQUE_WHITE:
-        return "VK_BORDER_COLOR_FLOAT_OPAQUE_WHITE";
-      case VK_BORDER_COLOR_INT_OPAQUE_WHITE:
-        return "VK_BORDER_COLOR_INT_OPAQUE_WHITE";
-      default:
-        return nullptr;
-      }
-    };
+    case VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK:
+      return "VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK";
+    case VK_BORDER_COLOR_INT_TRANSPARENT_BLACK:
+      return "VK_BORDER_COLOR_INT_TRANSPARENT_BLACK";
+    case VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK:
+      return "VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK";
+    case VK_BORDER_COLOR_INT_OPAQUE_BLACK:
+      return "VK_BORDER_COLOR_INT_OPAQUE_BLACK";
+    case VK_BORDER_COLOR_FLOAT_OPAQUE_WHITE:
+      return "VK_BORDER_COLOR_FLOAT_OPAQUE_WHITE";
+    case VK_BORDER_COLOR_INT_OPAQUE_WHITE:
+      return "VK_BORDER_COLOR_INT_OPAQUE_WHITE";
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkBorderColor& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkBorderColor value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

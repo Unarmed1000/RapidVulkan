@@ -24,38 +24,35 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkAttachmentLoadOp value) noexcept
   {
-    inline const char* TryToString(const VkAttachmentLoadOp& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_ATTACHMENT_LOAD_OP_LOAD:
-        return "VK_ATTACHMENT_LOAD_OP_LOAD";
-      case VK_ATTACHMENT_LOAD_OP_CLEAR:
-        return "VK_ATTACHMENT_LOAD_OP_CLEAR";
-      case VK_ATTACHMENT_LOAD_OP_DONT_CARE:
-        return "VK_ATTACHMENT_LOAD_OP_DONT_CARE";
+    case VK_ATTACHMENT_LOAD_OP_LOAD:
+      return "VK_ATTACHMENT_LOAD_OP_LOAD";
+    case VK_ATTACHMENT_LOAD_OP_CLEAR:
+      return "VK_ATTACHMENT_LOAD_OP_CLEAR";
+    case VK_ATTACHMENT_LOAD_OP_DONT_CARE:
+      return "VK_ATTACHMENT_LOAD_OP_DONT_CARE";
 #if VK_HEADER_VERSION >= 304
-      case VK_ATTACHMENT_LOAD_OP_NONE:
-        return "VK_ATTACHMENT_LOAD_OP_NONE";
+    case VK_ATTACHMENT_LOAD_OP_NONE:
+      return "VK_ATTACHMENT_LOAD_OP_NONE";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkAttachmentLoadOp& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkAttachmentLoadOp value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

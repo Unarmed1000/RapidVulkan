@@ -23,21 +23,23 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/CheckError.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
+#include <utility>
 
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class VideoSessionKHR
   {
-    VkDevice m_device;
-    VkVideoSessionKHR m_videoSession;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkVideoSessionKHR m_videoSession{VK_NULL_HANDLE};
+
   public:
     VideoSessionKHR(const VideoSessionKHR&) = delete;
     VideoSessionKHR& operator=(const VideoSessionKHR&) = delete;
@@ -53,34 +55,23 @@ namespace RapidVulkan
           Reset();
         }
 
-        // Claim ownership here
-        m_device = other.m_device;
-        m_videoSession = other.m_videoSession;
-
-        // Remove the data from other
-        other.m_device = VK_NULL_HANDLE;
-        other.m_videoSession = VK_NULL_HANDLE;
+        // Claim ownership here and leave other in its default state
+        m_device = std::exchange(other.m_device, VK_NULL_HANDLE);
+        m_videoSession = std::exchange(other.m_videoSession, VK_NULL_HANDLE);
       }
       return *this;
     }
 
     //! @brief Move constructor
-    //! Transfer ownership from other to this
+    //! Transfer ownership from other to this and leave other in its default state
     VideoSessionKHR(VideoSessionKHR&& other) noexcept
-      : m_device(other.m_device)
-      , m_videoSession(other.m_videoSession)
+      : m_device(std::exchange(other.m_device, VK_NULL_HANDLE))
+      , m_videoSession(std::exchange(other.m_videoSession, VK_NULL_HANDLE))
     {
-      // Remove the data from other
-      other.m_device = VK_NULL_HANDLE;
-      other.m_videoSession = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    VideoSessionKHR()
-      : m_device(VK_NULL_HANDLE)
-      , m_videoSession(VK_NULL_HANDLE)
-    {
-    }
+    VideoSessionKHR() = default;
 
     //! @brief Assume control of the VideoSessionKHR (this object becomes responsible for releasing it)
     explicit VideoSessionKHR(const ClaimMode claimMode, const VkDevice device, const VkVideoSessionKHR videoSession)
@@ -115,7 +106,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkVideoSessionKHR Release()
+    [[nodiscard]] VkVideoSessionKHR Release() noexcept
     {
       const auto resource = m_videoSession;
       m_device = VK_NULL_HANDLE;
@@ -142,6 +133,8 @@ namespace RapidVulkan
     //! @brief Destroys any owned resources and assume control of the VideoSessionKHR (this object becomes responsible for releasing it)
     void Reset(const ClaimMode claimMode, const VkDevice device, const VkVideoSessionKHR videoSession)
     {
+      // The claim mode only exists to select this overload
+      RAPIDVULKAN_PARAM_NOT_USED(claimMode);
       if (IsValid())
       {
         Reset();
@@ -205,25 +198,25 @@ namespace RapidVulkan
 #endif
 
     //! @brief Get the associated 'Device'
-    VkDevice GetDevice() const
+    [[nodiscard]] VkDevice GetDevice() const noexcept
     {
       return m_device;
     }
 
     //! @brief Get the associated resource handle
-    VkVideoSessionKHR Get() const
+    [[nodiscard]] VkVideoSessionKHR Get() const noexcept
     {
       return m_videoSession;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkVideoSessionKHR* GetPointer() const
+    [[nodiscard]] const VkVideoSessionKHR* GetPointer() const noexcept
     {
       return &m_videoSession;
     }
 
     //! @brief Check if this object contains a valid resource
-    inline bool IsValid() const
+    [[nodiscard]] bool IsValid() const noexcept
     {
       return m_videoSession != VK_NULL_HANDLE;
     }

@@ -25,76 +25,73 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkComponentTypeKHR value) noexcept
   {
-    inline const char* TryToString(const VkComponentTypeKHR& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 261
-      case VK_COMPONENT_TYPE_FLOAT16_KHR:
-        return "VK_COMPONENT_TYPE_FLOAT16_KHR";
+    case VK_COMPONENT_TYPE_FLOAT16_KHR:
+      return "VK_COMPONENT_TYPE_FLOAT16_KHR";
 #endif
 #if VK_HEADER_VERSION >= 261
-      case VK_COMPONENT_TYPE_FLOAT32_KHR:
-        return "VK_COMPONENT_TYPE_FLOAT32_KHR";
+    case VK_COMPONENT_TYPE_FLOAT32_KHR:
+      return "VK_COMPONENT_TYPE_FLOAT32_KHR";
 #endif
 #if VK_HEADER_VERSION >= 261
-      case VK_COMPONENT_TYPE_FLOAT64_KHR:
-        return "VK_COMPONENT_TYPE_FLOAT64_KHR";
+    case VK_COMPONENT_TYPE_FLOAT64_KHR:
+      return "VK_COMPONENT_TYPE_FLOAT64_KHR";
 #endif
 #if VK_HEADER_VERSION >= 261
-      case VK_COMPONENT_TYPE_SINT8_KHR:
-        return "VK_COMPONENT_TYPE_SINT8_KHR";
+    case VK_COMPONENT_TYPE_SINT8_KHR:
+      return "VK_COMPONENT_TYPE_SINT8_KHR";
 #endif
 #if VK_HEADER_VERSION >= 261
-      case VK_COMPONENT_TYPE_SINT16_KHR:
-        return "VK_COMPONENT_TYPE_SINT16_KHR";
+    case VK_COMPONENT_TYPE_SINT16_KHR:
+      return "VK_COMPONENT_TYPE_SINT16_KHR";
 #endif
 #if VK_HEADER_VERSION >= 261
-      case VK_COMPONENT_TYPE_SINT32_KHR:
-        return "VK_COMPONENT_TYPE_SINT32_KHR";
+    case VK_COMPONENT_TYPE_SINT32_KHR:
+      return "VK_COMPONENT_TYPE_SINT32_KHR";
 #endif
 #if VK_HEADER_VERSION >= 261
-      case VK_COMPONENT_TYPE_SINT64_KHR:
-        return "VK_COMPONENT_TYPE_SINT64_KHR";
+    case VK_COMPONENT_TYPE_SINT64_KHR:
+      return "VK_COMPONENT_TYPE_SINT64_KHR";
 #endif
 #if VK_HEADER_VERSION >= 261
-      case VK_COMPONENT_TYPE_UINT8_KHR:
-        return "VK_COMPONENT_TYPE_UINT8_KHR";
+    case VK_COMPONENT_TYPE_UINT8_KHR:
+      return "VK_COMPONENT_TYPE_UINT8_KHR";
 #endif
 #if VK_HEADER_VERSION >= 261
-      case VK_COMPONENT_TYPE_UINT16_KHR:
-        return "VK_COMPONENT_TYPE_UINT16_KHR";
+    case VK_COMPONENT_TYPE_UINT16_KHR:
+      return "VK_COMPONENT_TYPE_UINT16_KHR";
 #endif
 #if VK_HEADER_VERSION >= 261
-      case VK_COMPONENT_TYPE_UINT32_KHR:
-        return "VK_COMPONENT_TYPE_UINT32_KHR";
+    case VK_COMPONENT_TYPE_UINT32_KHR:
+      return "VK_COMPONENT_TYPE_UINT32_KHR";
 #endif
 #if VK_HEADER_VERSION >= 261
-      case VK_COMPONENT_TYPE_UINT64_KHR:
-        return "VK_COMPONENT_TYPE_UINT64_KHR";
+    case VK_COMPONENT_TYPE_UINT64_KHR:
+      return "VK_COMPONENT_TYPE_UINT64_KHR";
 #endif
-#if VK_HEADER_VERSION >= 321
-      case VK_COMPONENT_TYPE_BFLOAT16_KHR:
-        return "VK_COMPONENT_TYPE_BFLOAT16_KHR";
+#if VK_HEADER_VERSION >= 313
+    case VK_COMPONENT_TYPE_BFLOAT16_KHR:
+      return "VK_COMPONENT_TYPE_BFLOAT16_KHR";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkComponentTypeKHR& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkComponentTypeKHR value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

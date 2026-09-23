@@ -24,70 +24,67 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkImageCreateFlagBits value) noexcept
   {
-    inline const char* TryToString(const VkImageCreateFlagBits& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_IMAGE_CREATE_SPARSE_BINDING_BIT:
-        return "VK_IMAGE_CREATE_SPARSE_BINDING_BIT";
-      case VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT:
-        return "VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT";
-      case VK_IMAGE_CREATE_SPARSE_ALIASED_BIT:
-        return "VK_IMAGE_CREATE_SPARSE_ALIASED_BIT";
-      case VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT:
-        return "VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT";
-      case VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT:
-        return "VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT";
+    case VK_IMAGE_CREATE_SPARSE_BINDING_BIT:
+      return "VK_IMAGE_CREATE_SPARSE_BINDING_BIT";
+    case VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT:
+      return "VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT";
+    case VK_IMAGE_CREATE_SPARSE_ALIASED_BIT:
+      return "VK_IMAGE_CREATE_SPARSE_ALIASED_BIT";
+    case VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT:
+      return "VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT";
+    case VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT:
+      return "VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT";
 #if VK_HEADER_VERSION >= 70
-      case VK_IMAGE_CREATE_ALIAS_BIT:
-        return "VK_IMAGE_CREATE_ALIAS_BIT";
+    case VK_IMAGE_CREATE_ALIAS_BIT:
+      return "VK_IMAGE_CREATE_ALIAS_BIT";
 #endif
 #if VK_HEADER_VERSION >= 70
-      case VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT:
-        return "VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT";
+    case VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT:
+      return "VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT";
 #endif
 #if VK_HEADER_VERSION >= 70
-      case VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT:
-        return "VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT";
+    case VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT:
+      return "VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT";
 #endif
 #if VK_HEADER_VERSION >= 70
-      case VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT:
-        return "VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT";
+    case VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT:
+      return "VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT";
 #endif
 #if VK_HEADER_VERSION >= 70
-      case VK_IMAGE_CREATE_EXTENDED_USAGE_BIT:
-        return "VK_IMAGE_CREATE_EXTENDED_USAGE_BIT";
+    case VK_IMAGE_CREATE_EXTENDED_USAGE_BIT:
+      return "VK_IMAGE_CREATE_EXTENDED_USAGE_BIT";
 #endif
 #if VK_HEADER_VERSION >= 70
-      case VK_IMAGE_CREATE_PROTECTED_BIT:
-        return "VK_IMAGE_CREATE_PROTECTED_BIT";
+    case VK_IMAGE_CREATE_PROTECTED_BIT:
+      return "VK_IMAGE_CREATE_PROTECTED_BIT";
 #endif
 #if VK_HEADER_VERSION >= 70
-      case VK_IMAGE_CREATE_DISJOINT_BIT:
-        return "VK_IMAGE_CREATE_DISJOINT_BIT";
+    case VK_IMAGE_CREATE_DISJOINT_BIT:
+      return "VK_IMAGE_CREATE_DISJOINT_BIT";
 #endif
-#if VK_HEADER_VERSION >= 321
-      case VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT:
-        return "VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT";
+#if VK_HEADER_VERSION >= 313
+    case VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT:
+      return "VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkImageCreateFlagBits& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkImageCreateFlagBits value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

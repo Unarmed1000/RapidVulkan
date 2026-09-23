@@ -23,21 +23,23 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/CheckError.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
+#include <utility>
 
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class AccelerationStructureNV
   {
-    VkDevice m_device;
-    VkAccelerationStructureNV m_accelerationStructure;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkAccelerationStructureNV m_accelerationStructure{VK_NULL_HANDLE};
+
   public:
     AccelerationStructureNV(const AccelerationStructureNV&) = delete;
     AccelerationStructureNV& operator=(const AccelerationStructureNV&) = delete;
@@ -53,34 +55,23 @@ namespace RapidVulkan
           Reset();
         }
 
-        // Claim ownership here
-        m_device = other.m_device;
-        m_accelerationStructure = other.m_accelerationStructure;
-
-        // Remove the data from other
-        other.m_device = VK_NULL_HANDLE;
-        other.m_accelerationStructure = VK_NULL_HANDLE;
+        // Claim ownership here and leave other in its default state
+        m_device = std::exchange(other.m_device, VK_NULL_HANDLE);
+        m_accelerationStructure = std::exchange(other.m_accelerationStructure, VK_NULL_HANDLE);
       }
       return *this;
     }
 
     //! @brief Move constructor
-    //! Transfer ownership from other to this
+    //! Transfer ownership from other to this and leave other in its default state
     AccelerationStructureNV(AccelerationStructureNV&& other) noexcept
-      : m_device(other.m_device)
-      , m_accelerationStructure(other.m_accelerationStructure)
+      : m_device(std::exchange(other.m_device, VK_NULL_HANDLE))
+      , m_accelerationStructure(std::exchange(other.m_accelerationStructure, VK_NULL_HANDLE))
     {
-      // Remove the data from other
-      other.m_device = VK_NULL_HANDLE;
-      other.m_accelerationStructure = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    AccelerationStructureNV()
-      : m_device(VK_NULL_HANDLE)
-      , m_accelerationStructure(VK_NULL_HANDLE)
-    {
-    }
+    AccelerationStructureNV() = default;
 
     //! @brief Assume control of the AccelerationStructureNV (this object becomes responsible for releasing it)
     explicit AccelerationStructureNV(const ClaimMode claimMode, const VkDevice device, const VkAccelerationStructureNV accelerationStructure)
@@ -115,7 +106,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkAccelerationStructureNV Release()
+    [[nodiscard]] VkAccelerationStructureNV Release() noexcept
     {
       const auto resource = m_accelerationStructure;
       m_device = VK_NULL_HANDLE;
@@ -142,6 +133,8 @@ namespace RapidVulkan
     //! @brief Destroys any owned resources and assume control of the AccelerationStructureNV (this object becomes responsible for releasing it)
     void Reset(const ClaimMode claimMode, const VkDevice device, const VkAccelerationStructureNV accelerationStructure)
     {
+      // The claim mode only exists to select this overload
+      RAPIDVULKAN_PARAM_NOT_USED(claimMode);
       if (IsValid())
       {
         Reset();
@@ -198,25 +191,25 @@ namespace RapidVulkan
 #endif
 
     //! @brief Get the associated 'Device'
-    VkDevice GetDevice() const
+    [[nodiscard]] VkDevice GetDevice() const noexcept
     {
       return m_device;
     }
 
     //! @brief Get the associated resource handle
-    VkAccelerationStructureNV Get() const
+    [[nodiscard]] VkAccelerationStructureNV Get() const noexcept
     {
       return m_accelerationStructure;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkAccelerationStructureNV* GetPointer() const
+    [[nodiscard]] const VkAccelerationStructureNV* GetPointer() const noexcept
     {
       return &m_accelerationStructure;
     }
 
     //! @brief Check if this object contains a valid resource
-    inline bool IsValid() const
+    [[nodiscard]] bool IsValid() const noexcept
     {
       return m_accelerationStructure != VK_NULL_HANDLE;
     }

@@ -19,13 +19,13 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 #   tweak %1000 = this libraries tweak version.
 
 # Description is 3.9  
-#  DESCRIPTION "Low level header only C++11 RAII wrapper classes for the Vulkan API. The RAII class design is heavily inspired by std::unique_ptr and is compatible with STL containers."
+#  DESCRIPTION "Low level header only C++17 RAII wrapper classes for the Vulkan API. The RAII class design is heavily inspired by std::unique_ptr and is compatible with STL containers."
 # URL is 12
 #  HOMEPAGE_URL https://github.com/Unarmed1000/RapidVulkan
 
 project(
   RapidVulkan
-  VERSION 1.4.321.1
+  VERSION 1.4.357.0
   LANGUAGES CXX
 )
 # Disable project in-source buils
@@ -65,7 +65,7 @@ target_link_libraries(RapidVulkan
 
 target_compile_features(RapidVulkan
   INTERFACE
-    cxx_std_11 # Enable C++11
+    cxx_std_17 # Enable C++17
 )
 
 #############################

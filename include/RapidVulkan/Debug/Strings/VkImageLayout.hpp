@@ -24,86 +24,83 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkImageLayout value) noexcept
   {
-    inline const char* TryToString(const VkImageLayout& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_IMAGE_LAYOUT_UNDEFINED:
-        return "VK_IMAGE_LAYOUT_UNDEFINED";
-      case VK_IMAGE_LAYOUT_GENERAL:
-        return "VK_IMAGE_LAYOUT_GENERAL";
-      case VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL:
-        return "VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL";
-      case VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL:
-        return "VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL";
-      case VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL:
-        return "VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL";
-      case VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL:
-        return "VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL";
-      case VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL:
-        return "VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL";
-      case VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL:
-        return "VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL";
-      case VK_IMAGE_LAYOUT_PREINITIALIZED:
-        return "VK_IMAGE_LAYOUT_PREINITIALIZED";
+    case VK_IMAGE_LAYOUT_UNDEFINED:
+      return "VK_IMAGE_LAYOUT_UNDEFINED";
+    case VK_IMAGE_LAYOUT_GENERAL:
+      return "VK_IMAGE_LAYOUT_GENERAL";
+    case VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL:
+      return "VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL";
+    case VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL:
+      return "VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL";
+    case VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL:
+      return "VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL";
+    case VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL:
+      return "VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL";
+    case VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL:
+      return "VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL";
+    case VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL:
+      return "VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL";
+    case VK_IMAGE_LAYOUT_PREINITIALIZED:
+      return "VK_IMAGE_LAYOUT_PREINITIALIZED";
 #if VK_HEADER_VERSION >= 70
-      case VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL:
-        return "VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL";
+    case VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL:
+      return "VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL";
 #endif
 #if VK_HEADER_VERSION >= 70
-      case VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL:
-        return "VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL";
+    case VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL:
+      return "VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL";
 #endif
 #if VK_HEADER_VERSION >= 131
-      case VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL:
-        return "VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL";
+    case VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL:
+      return "VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL";
 #endif
 #if VK_HEADER_VERSION >= 131
-      case VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL:
-        return "VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL";
+    case VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL:
+      return "VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL";
 #endif
 #if VK_HEADER_VERSION >= 131
-      case VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL:
-        return "VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL";
+    case VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL:
+      return "VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL";
 #endif
 #if VK_HEADER_VERSION >= 131
-      case VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL:
-        return "VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL";
+    case VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL:
+      return "VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL";
 #endif
 #if VK_HEADER_VERSION >= 204
-      case VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL:
-        return "VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL";
+    case VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL:
+      return "VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL";
 #endif
 #if VK_HEADER_VERSION >= 204
-      case VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL:
-        return "VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL";
+    case VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL:
+      return "VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL";
 #endif
 #if VK_HEADER_VERSION >= 304
-      case VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ:
-        return "VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ";
+    case VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ:
+      return "VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ";
 #endif
 #if VK_HEADER_VERSION >= 321
-      case VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM:
-        return "VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM";
+    case VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM:
+      return "VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkImageLayout& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkImageLayout value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

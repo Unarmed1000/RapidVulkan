@@ -25,64 +25,61 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const StdVideoAV1ReferenceName value) noexcept
   {
-    inline const char* TryToString(const StdVideoAV1ReferenceName& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_REFERENCE_NAME_INTRA_FRAME:
-        return "STD_VIDEO_AV1_REFERENCE_NAME_INTRA_FRAME";
+    case STD_VIDEO_AV1_REFERENCE_NAME_INTRA_FRAME:
+      return "STD_VIDEO_AV1_REFERENCE_NAME_INTRA_FRAME";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_REFERENCE_NAME_LAST_FRAME:
-        return "STD_VIDEO_AV1_REFERENCE_NAME_LAST_FRAME";
+    case STD_VIDEO_AV1_REFERENCE_NAME_LAST_FRAME:
+      return "STD_VIDEO_AV1_REFERENCE_NAME_LAST_FRAME";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_REFERENCE_NAME_LAST2_FRAME:
-        return "STD_VIDEO_AV1_REFERENCE_NAME_LAST2_FRAME";
+    case STD_VIDEO_AV1_REFERENCE_NAME_LAST2_FRAME:
+      return "STD_VIDEO_AV1_REFERENCE_NAME_LAST2_FRAME";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_REFERENCE_NAME_LAST3_FRAME:
-        return "STD_VIDEO_AV1_REFERENCE_NAME_LAST3_FRAME";
+    case STD_VIDEO_AV1_REFERENCE_NAME_LAST3_FRAME:
+      return "STD_VIDEO_AV1_REFERENCE_NAME_LAST3_FRAME";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_REFERENCE_NAME_GOLDEN_FRAME:
-        return "STD_VIDEO_AV1_REFERENCE_NAME_GOLDEN_FRAME";
+    case STD_VIDEO_AV1_REFERENCE_NAME_GOLDEN_FRAME:
+      return "STD_VIDEO_AV1_REFERENCE_NAME_GOLDEN_FRAME";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_REFERENCE_NAME_BWDREF_FRAME:
-        return "STD_VIDEO_AV1_REFERENCE_NAME_BWDREF_FRAME";
+    case STD_VIDEO_AV1_REFERENCE_NAME_BWDREF_FRAME:
+      return "STD_VIDEO_AV1_REFERENCE_NAME_BWDREF_FRAME";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_REFERENCE_NAME_ALTREF2_FRAME:
-        return "STD_VIDEO_AV1_REFERENCE_NAME_ALTREF2_FRAME";
+    case STD_VIDEO_AV1_REFERENCE_NAME_ALTREF2_FRAME:
+      return "STD_VIDEO_AV1_REFERENCE_NAME_ALTREF2_FRAME";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_REFERENCE_NAME_ALTREF_FRAME:
-        return "STD_VIDEO_AV1_REFERENCE_NAME_ALTREF_FRAME";
+    case STD_VIDEO_AV1_REFERENCE_NAME_ALTREF_FRAME:
+      return "STD_VIDEO_AV1_REFERENCE_NAME_ALTREF_FRAME";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_REFERENCE_NAME_INVALID:
-        return "STD_VIDEO_AV1_REFERENCE_NAME_INVALID";
+    case STD_VIDEO_AV1_REFERENCE_NAME_INVALID:
+      return "STD_VIDEO_AV1_REFERENCE_NAME_INVALID";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const StdVideoAV1ReferenceName& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const StdVideoAV1ReferenceName value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

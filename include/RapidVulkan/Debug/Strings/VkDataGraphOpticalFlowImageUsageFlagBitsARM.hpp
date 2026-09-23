@@ -1,6 +1,6 @@
-#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKRAYTRACINGINVOCATIONREORDERMODENV_HPP
-#define RAPIDVULKAN_DEBUG_STRINGS_VKRAYTRACINGINVOCATIONREORDERMODENV_HPP
-#if VK_HEADER_VERSION >= 236
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKDATAGRAPHOPTICALFLOWIMAGEUSAGEFLAGBITSARM_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKDATAGRAPHOPTICALFLOWIMAGEUSAGEFLAGBITSARM_HPP
+#if VK_HEADER_VERSION >= 350
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
@@ -25,36 +25,45 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkDataGraphOpticalFlowImageUsageFlagBitsARM value) noexcept
   {
-    inline const char* TryToString(const VkRayTracingInvocationReorderModeNV& value)
+    switch (value)
     {
-      switch(value)
-      {
-#if VK_HEADER_VERSION >= 236
-      case VK_RAY_TRACING_INVOCATION_REORDER_MODE_NONE_NV:
-        return "VK_RAY_TRACING_INVOCATION_REORDER_MODE_NONE_NV";
+#if VK_HEADER_VERSION >= 350
+    case VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_UNKNOWN_ARM:
+      return "VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_UNKNOWN_ARM";
 #endif
-#if VK_HEADER_VERSION >= 236
-      case VK_RAY_TRACING_INVOCATION_REORDER_MODE_REORDER_NV:
-        return "VK_RAY_TRACING_INVOCATION_REORDER_MODE_REORDER_NV";
+#if VK_HEADER_VERSION >= 350
+    case VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_INPUT_BIT_ARM:
+      return "VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_INPUT_BIT_ARM";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+#if VK_HEADER_VERSION >= 350
+    case VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_OUTPUT_BIT_ARM:
+      return "VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_OUTPUT_BIT_ARM";
+#endif
+#if VK_HEADER_VERSION >= 350
+    case VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_HINT_BIT_ARM:
+      return "VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_HINT_BIT_ARM";
+#endif
+#if VK_HEADER_VERSION >= 350
+    case VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_COST_BIT_ARM:
+      return "VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_COST_BIT_ARM";
+#endif
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkRayTracingInvocationReorderModeNV& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkDataGraphOpticalFlowImageUsageFlagBitsARM value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

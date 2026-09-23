@@ -24,66 +24,63 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkAccessFlagBits value) noexcept
   {
-    inline const char* TryToString(const VkAccessFlagBits& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_ACCESS_INDIRECT_COMMAND_READ_BIT:
-        return "VK_ACCESS_INDIRECT_COMMAND_READ_BIT";
-      case VK_ACCESS_INDEX_READ_BIT:
-        return "VK_ACCESS_INDEX_READ_BIT";
-      case VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT:
-        return "VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT";
-      case VK_ACCESS_UNIFORM_READ_BIT:
-        return "VK_ACCESS_UNIFORM_READ_BIT";
-      case VK_ACCESS_INPUT_ATTACHMENT_READ_BIT:
-        return "VK_ACCESS_INPUT_ATTACHMENT_READ_BIT";
-      case VK_ACCESS_SHADER_READ_BIT:
-        return "VK_ACCESS_SHADER_READ_BIT";
-      case VK_ACCESS_SHADER_WRITE_BIT:
-        return "VK_ACCESS_SHADER_WRITE_BIT";
-      case VK_ACCESS_COLOR_ATTACHMENT_READ_BIT:
-        return "VK_ACCESS_COLOR_ATTACHMENT_READ_BIT";
-      case VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT:
-        return "VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT";
-      case VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT:
-        return "VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT";
-      case VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT:
-        return "VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT";
-      case VK_ACCESS_TRANSFER_READ_BIT:
-        return "VK_ACCESS_TRANSFER_READ_BIT";
-      case VK_ACCESS_TRANSFER_WRITE_BIT:
-        return "VK_ACCESS_TRANSFER_WRITE_BIT";
-      case VK_ACCESS_HOST_READ_BIT:
-        return "VK_ACCESS_HOST_READ_BIT";
-      case VK_ACCESS_HOST_WRITE_BIT:
-        return "VK_ACCESS_HOST_WRITE_BIT";
-      case VK_ACCESS_MEMORY_READ_BIT:
-        return "VK_ACCESS_MEMORY_READ_BIT";
-      case VK_ACCESS_MEMORY_WRITE_BIT:
-        return "VK_ACCESS_MEMORY_WRITE_BIT";
+    case VK_ACCESS_INDIRECT_COMMAND_READ_BIT:
+      return "VK_ACCESS_INDIRECT_COMMAND_READ_BIT";
+    case VK_ACCESS_INDEX_READ_BIT:
+      return "VK_ACCESS_INDEX_READ_BIT";
+    case VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT:
+      return "VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT";
+    case VK_ACCESS_UNIFORM_READ_BIT:
+      return "VK_ACCESS_UNIFORM_READ_BIT";
+    case VK_ACCESS_INPUT_ATTACHMENT_READ_BIT:
+      return "VK_ACCESS_INPUT_ATTACHMENT_READ_BIT";
+    case VK_ACCESS_SHADER_READ_BIT:
+      return "VK_ACCESS_SHADER_READ_BIT";
+    case VK_ACCESS_SHADER_WRITE_BIT:
+      return "VK_ACCESS_SHADER_WRITE_BIT";
+    case VK_ACCESS_COLOR_ATTACHMENT_READ_BIT:
+      return "VK_ACCESS_COLOR_ATTACHMENT_READ_BIT";
+    case VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT:
+      return "VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT";
+    case VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT:
+      return "VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT";
+    case VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT:
+      return "VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT";
+    case VK_ACCESS_TRANSFER_READ_BIT:
+      return "VK_ACCESS_TRANSFER_READ_BIT";
+    case VK_ACCESS_TRANSFER_WRITE_BIT:
+      return "VK_ACCESS_TRANSFER_WRITE_BIT";
+    case VK_ACCESS_HOST_READ_BIT:
+      return "VK_ACCESS_HOST_READ_BIT";
+    case VK_ACCESS_HOST_WRITE_BIT:
+      return "VK_ACCESS_HOST_WRITE_BIT";
+    case VK_ACCESS_MEMORY_READ_BIT:
+      return "VK_ACCESS_MEMORY_READ_BIT";
+    case VK_ACCESS_MEMORY_WRITE_BIT:
+      return "VK_ACCESS_MEMORY_WRITE_BIT";
 #if VK_HEADER_VERSION >= 204
-      case VK_ACCESS_NONE:
-        return "VK_ACCESS_NONE";
+    case VK_ACCESS_NONE:
+      return "VK_ACCESS_NONE";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkAccessFlagBits& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkAccessFlagBits value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

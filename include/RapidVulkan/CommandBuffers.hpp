@@ -22,7 +22,7 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/CheckError.hpp>
@@ -40,6 +40,7 @@ namespace RapidVulkan
     VkDevice m_device{VK_NULL_HANDLE};
     VkCommandPool m_commandPool{VK_NULL_HANDLE};
     std::vector<VkCommandBuffer> m_commandBuffers;
+
   public:
     CommandBuffers(const CommandBuffers&) = delete;
     CommandBuffers& operator=(const CommandBuffers&) = delete;
@@ -55,34 +56,25 @@ namespace RapidVulkan
           Reset();
         }
 
-        // Claim ownership here
-        m_device = other.m_device;
-        m_commandPool = other.m_commandPool;
+        // Claim ownership here and leave other in its default state
+        m_device = std::exchange(other.m_device, VK_NULL_HANDLE);
+        m_commandPool = std::exchange(other.m_commandPool, VK_NULL_HANDLE);
         m_commandBuffers = std::move(other.m_commandBuffers);
-
-        // Remove the data from other
-        other.m_device = VK_NULL_HANDLE;
-        other.m_commandPool = VK_NULL_HANDLE;
       }
       return *this;
     }
 
     //! @brief Move constructor
-    //! Transfer ownership from other to this
+    //! Transfer ownership from other to this and leave other in its default state
     CommandBuffers(CommandBuffers&& other) noexcept
-      : m_device(other.m_device)
-      , m_commandPool(other.m_commandPool)
+      : m_device(std::exchange(other.m_device, VK_NULL_HANDLE))
+      , m_commandPool(std::exchange(other.m_commandPool, VK_NULL_HANDLE))
       , m_commandBuffers(std::move(other.m_commandBuffers))
     {
-      // Remove the data from other
-      other.m_device = VK_NULL_HANDLE;
-      other.m_commandPool = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    CommandBuffers()
-
-        = default;
+    CommandBuffers() = default;
 
     //! @brief Assume control of the CommandBuffers (this object becomes responsible for releasing it)
     //explicit CommandBuffers(const ClaimMode claimMode, const VkDevice device, const VkCommandPool commandPool, const VkCommandBuffer commandBuffers)
@@ -115,7 +107,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT std::vector<VkCommandBuffer> Release()
+    [[nodiscard]] std::vector<VkCommandBuffer> Release() noexcept
     {
       auto resource = std::move(m_commandBuffers);
       m_device = VK_NULL_HANDLE;
@@ -207,39 +199,39 @@ namespace RapidVulkan
 #endif
 
     //! @brief Get the associated 'Device'
-    VkDevice GetDevice() const
+    [[nodiscard]] VkDevice GetDevice() const noexcept
     {
       return m_device;
     }
 
     //! @brief Get the associated 'CommandPool'
-    VkCommandPool GetCommandPool() const
+    [[nodiscard]] VkCommandPool GetCommandPool() const noexcept
     {
       return m_commandPool;
     }
 
     //! @brief Get size of the vector
-    std::size_t Size() const
+    [[nodiscard]] std::size_t Size() const noexcept
     {
       return m_commandBuffers.size();
     }
 
 
     //! @brief Get direct access to the vector content
-    const VkCommandBuffer* Data() const
+    [[nodiscard]] const VkCommandBuffer* Data() const noexcept
     {
       return m_commandBuffers.data();
     }
 
 
     //! @brief Get the associated resource handles
-    const std::vector<VkCommandBuffer>& Get() const
+    [[nodiscard]] const std::vector<VkCommandBuffer>& Get() const noexcept
     {
       return m_commandBuffers;
     }
 
 
-    VkCommandBuffer Get(const std::size_t arrayIndex) const
+    [[nodiscard]] VkCommandBuffer Get(const std::size_t arrayIndex) const noexcept
     {
       assert(arrayIndex < m_commandBuffers.size());
       return m_commandBuffers[arrayIndex];
@@ -247,21 +239,21 @@ namespace RapidVulkan
 
 
     //! @brief Access the resource at a given index
-    VkCommandBuffer operator[] (const std::size_t arrayIndex) const
+    [[nodiscard]] VkCommandBuffer operator[](const std::size_t arrayIndex) const noexcept
     {
       assert(arrayIndex < m_commandBuffers.size());
       return m_commandBuffers[arrayIndex];
     }
 
     //! @brief get a pointer to the resource at the given index
-    const VkCommandBuffer* GetPointer(const std::size_t arrayIndex) const
+    [[nodiscard]] const VkCommandBuffer* GetPointer(const std::size_t arrayIndex) const noexcept
     {
       assert(arrayIndex < m_commandBuffers.size());
       return &m_commandBuffers[arrayIndex];
     }
 
     //! @brief Check if this object contains a valid resource
-    inline bool IsValid() const
+    [[nodiscard]] bool IsValid() const noexcept
     {
       return ! m_commandBuffers.empty();
     }

@@ -22,13 +22,14 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/CheckError.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
+#include <utility>
 
 namespace RapidVulkan
 {
@@ -52,28 +53,21 @@ namespace RapidVulkan
           Reset();
         }
 
-        // Claim ownership here
-        m_device = other.m_device;
-
-        // Remove the data from other
-        other.m_device = VK_NULL_HANDLE;
+        // Claim ownership here and leave other in its default state
+        m_device = std::exchange(other.m_device, VK_NULL_HANDLE);
       }
       return *this;
     }
 
     //! @brief Move constructor
-    //! Transfer ownership from other to this
+    //! Transfer ownership from other to this and leave other in its default state
     Device(Device&& other) noexcept
-      : m_device(other.m_device)
+      : m_device(std::exchange(other.m_device, VK_NULL_HANDLE))
     {
-      // Remove the data from other
-      other.m_device = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    Device()
-
-        = default;
+    Device() = default;
 
     //! @brief Assume control of the Device (this object becomes responsible for releasing it)
     explicit Device(const ClaimMode claimMode, const VkDevice device)
@@ -106,7 +100,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkDevice Release()
+    [[nodiscard]] VkDevice Release() noexcept
     {
       const auto resource = m_device;
       m_device = VK_NULL_HANDLE;
@@ -130,6 +124,8 @@ namespace RapidVulkan
     //! @brief Destroys any owned resources and assume control of the Device (this object becomes responsible for releasing it)
     void Reset(const ClaimMode claimMode, const VkDevice device)
     {
+      // The claim mode only exists to select this overload
+      RAPIDVULKAN_PARAM_NOT_USED(claimMode);
       if (IsValid())
       {
         Reset();
@@ -183,19 +179,19 @@ namespace RapidVulkan
 #endif
 
     //! @brief Get the associated resource handle
-    VkDevice Get() const
+    [[nodiscard]] VkDevice Get() const noexcept
     {
       return m_device;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkDevice* GetPointer() const
+    [[nodiscard]] const VkDevice* GetPointer() const noexcept
     {
       return &m_device;
     }
 
     //! @brief Check if this object contains a valid resource
-    inline bool IsValid() const
+    [[nodiscard]] bool IsValid() const noexcept
     {
       return m_device != VK_NULL_HANDLE;
     }
@@ -430,15 +426,6 @@ namespace RapidVulkan
 
 
 #if VK_HEADER_VERSION >= 304
-    //! @note  Function: vkGetRenderingAreaGranularity
-    void GetRenderingAreaGranularity(const VkRenderingAreaInfo * pRenderingAreaInfo, VkExtent2D * pGranularity)
-    {
-      vkGetRenderingAreaGranularity(m_device, pRenderingAreaInfo, pGranularity);
-    }
-#endif
-
-
-#if VK_HEADER_VERSION >= 304
     //! @note  Function: vkGetDeviceImageSubresourceLayout
     void GetDeviceImageSubresourceLayout(const VkDeviceImageSubresourceInfo * pInfo, VkSubresourceLayout2 * pLayout)
     {
@@ -479,6 +466,114 @@ namespace RapidVulkan
     void TransitionImageLayout(const uint32_t transitionCount, const VkHostImageLayoutTransitionInfo * pTransitions)
     {
       CheckError(vkTransitionImageLayout(m_device, transitionCount, pTransitions), "vkTransitionImageLayout", __FILE__, __LINE__);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 304
+    //! @note  Function: vkGetRenderingAreaGranularity
+    void GetRenderingAreaGranularity(const VkRenderingAreaInfo * pRenderingAreaInfo, VkExtent2D * pGranularity)
+    {
+      vkGetRenderingAreaGranularity(m_device, pRenderingAreaInfo, pGranularity);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 341
+    //! @note  Function: vkGetTensorOpaqueCaptureDataARM
+    void GetTensorOpaqueCaptureDataARM(const uint32_t tensorCount, const VkTensorARM * pTensors, VkHostAddressRangeEXT * pDatas)
+    {
+      CheckError(vkGetTensorOpaqueCaptureDataARM(m_device, tensorCount, pTensors, pDatas), "vkGetTensorOpaqueCaptureDataARM", __FILE__, __LINE__);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 321
+    //! @note  Function: vkGetTensorMemoryRequirementsARM
+    void GetTensorMemoryRequirementsARM(const VkTensorMemoryRequirementsInfoARM * pInfo, VkMemoryRequirements2 * pMemoryRequirements)
+    {
+      vkGetTensorMemoryRequirementsARM(m_device, pInfo, pMemoryRequirements);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 321
+    //! @note  Function: vkBindTensorMemoryARM
+    void BindTensorMemoryARM(const uint32_t bindInfoCount, const VkBindTensorMemoryInfoARM * pBindInfos)
+    {
+      CheckError(vkBindTensorMemoryARM(m_device, bindInfoCount, pBindInfos), "vkBindTensorMemoryARM", __FILE__, __LINE__);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 321
+    //! @note  Function: vkGetDeviceTensorMemoryRequirementsARM
+    void GetDeviceTensorMemoryRequirementsARM(const VkDeviceTensorMemoryRequirementsARM * pInfo, VkMemoryRequirements2 * pMemoryRequirements)
+    {
+      vkGetDeviceTensorMemoryRequirementsARM(m_device, pInfo, pMemoryRequirements);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 321
+    //! @note  Function: vkGetTensorOpaqueCaptureDescriptorDataARM
+    void GetTensorOpaqueCaptureDescriptorDataARM(const VkTensorCaptureDescriptorDataInfoARM * pInfo, void * pData)
+    {
+      CheckError(vkGetTensorOpaqueCaptureDescriptorDataARM(m_device, pInfo, pData), "vkGetTensorOpaqueCaptureDescriptorDataARM", __FILE__, __LINE__);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 321
+    //! @note  Function: vkGetTensorViewOpaqueCaptureDescriptorDataARM
+    void GetTensorViewOpaqueCaptureDescriptorDataARM(const VkTensorViewCaptureDescriptorDataInfoARM * pInfo, void * pData)
+    {
+      CheckError(vkGetTensorViewOpaqueCaptureDescriptorDataARM(m_device, pInfo, pData), "vkGetTensorViewOpaqueCaptureDescriptorDataARM", __FILE__, __LINE__);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 321
+    //! @note  Function: vkGetDataGraphPipelineSessionBindPointRequirementsARM
+    void GetDataGraphPipelineSessionBindPointRequirementsARM(const VkDataGraphPipelineSessionBindPointRequirementsInfoARM * pInfo, uint32_t * pBindPointRequirementCount, VkDataGraphPipelineSessionBindPointRequirementARM * pBindPointRequirements)
+    {
+      CheckError(vkGetDataGraphPipelineSessionBindPointRequirementsARM(m_device, pInfo, pBindPointRequirementCount, pBindPointRequirements), "vkGetDataGraphPipelineSessionBindPointRequirementsARM", __FILE__, __LINE__);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 321
+    //! @note  Function: vkGetDataGraphPipelineSessionMemoryRequirementsARM
+    void GetDataGraphPipelineSessionMemoryRequirementsARM(const VkDataGraphPipelineSessionMemoryRequirementsInfoARM * pInfo, VkMemoryRequirements2 * pMemoryRequirements)
+    {
+      vkGetDataGraphPipelineSessionMemoryRequirementsARM(m_device, pInfo, pMemoryRequirements);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 321
+    //! @note  Function: vkBindDataGraphPipelineSessionMemoryARM
+    void BindDataGraphPipelineSessionMemoryARM(const uint32_t bindInfoCount, const VkBindDataGraphPipelineSessionMemoryInfoARM * pBindInfos)
+    {
+      CheckError(vkBindDataGraphPipelineSessionMemoryARM(m_device, bindInfoCount, pBindInfos), "vkBindDataGraphPipelineSessionMemoryARM", __FILE__, __LINE__);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 321
+    //! @note  Function: vkGetDataGraphPipelineAvailablePropertiesARM
+    void GetDataGraphPipelineAvailablePropertiesARM(const VkDataGraphPipelineInfoARM * pPipelineInfo, uint32_t * pPropertiesCount, VkDataGraphPipelinePropertyARM * pProperties)
+    {
+      CheckError(vkGetDataGraphPipelineAvailablePropertiesARM(m_device, pPipelineInfo, pPropertiesCount, pProperties), "vkGetDataGraphPipelineAvailablePropertiesARM", __FILE__, __LINE__);
+    }
+#endif
+
+
+#if VK_HEADER_VERSION >= 321
+    //! @note  Function: vkGetDataGraphPipelinePropertiesARM
+    void GetDataGraphPipelinePropertiesARM(const VkDataGraphPipelineInfoARM * pPipelineInfo, const uint32_t propertiesCount, VkDataGraphPipelinePropertyQueryResultARM * pProperties)
+    {
+      CheckError(vkGetDataGraphPipelinePropertiesARM(m_device, pPipelineInfo, propertiesCount, pProperties), "vkGetDataGraphPipelinePropertiesARM", __FILE__, __LINE__);
     }
 #endif
   };

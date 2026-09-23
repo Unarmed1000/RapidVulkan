@@ -24,36 +24,33 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkFilter value) noexcept
   {
-    inline const char* TryToString(const VkFilter& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_FILTER_NEAREST:
-        return "VK_FILTER_NEAREST";
-      case VK_FILTER_LINEAR:
-        return "VK_FILTER_LINEAR";
+    case VK_FILTER_NEAREST:
+      return "VK_FILTER_NEAREST";
+    case VK_FILTER_LINEAR:
+      return "VK_FILTER_LINEAR";
 #if VK_HEADER_VERSION >= 101
-      case VK_FILTER_CUBIC_EXT:
-        return "VK_FILTER_CUBIC_EXT";
+    case VK_FILTER_CUBIC_EXT:
+      return "VK_FILTER_CUBIC_EXT";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkFilter& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkFilter value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

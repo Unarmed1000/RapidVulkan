@@ -33,17 +33,16 @@ namespace RapidVulkan
   class VulkanException : public std::runtime_error
   {
     std::string m_fileName;
-    int m_lineNumber;
+    int m_lineNumber{0};
+
   public:
     explicit VulkanException(const char*const pszWhatArg)
       : std::runtime_error(pszWhatArg)
-      , m_lineNumber(0)
     {
     }
 
     explicit VulkanException(const std::string& whatArg)
       : std::runtime_error(whatArg)
-      , m_lineNumber(0)
     {
     }
 
@@ -62,13 +61,13 @@ namespace RapidVulkan
     }
 
 
-    std::string GetFileName() const
+    [[nodiscard]] std::string GetFileName() const
     {
       return m_fileName;
     }
 
 
-    int GetLineNumber() const
+    [[nodiscard]] int GetLineNumber() const noexcept
     {
       return m_lineNumber;
     }
@@ -98,6 +97,7 @@ namespace RapidVulkan
   class VulkanErrorException : public VulkanException
   {
     VkResult m_result;
+
   public:
     explicit VulkanErrorException(const char*const pszWhatArg, const VkResult result)
       : VulkanException(ErrorFormatter::Format(pszWhatArg, result))
@@ -123,7 +123,7 @@ namespace RapidVulkan
     {
     }
 
-    VkResult GetResult() const
+    [[nodiscard]] VkResult GetResult() const noexcept
     {
       return m_result;
     }

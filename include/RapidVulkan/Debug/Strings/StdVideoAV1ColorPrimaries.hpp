@@ -25,84 +25,81 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const StdVideoAV1ColorPrimaries value) noexcept
   {
-    inline const char* TryToString(const StdVideoAV1ColorPrimaries& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_COLOR_PRIMARIES_BT_709:
-        return "STD_VIDEO_AV1_COLOR_PRIMARIES_BT_709";
+    case STD_VIDEO_AV1_COLOR_PRIMARIES_BT_709:
+      return "STD_VIDEO_AV1_COLOR_PRIMARIES_BT_709";
 #endif
 #if VK_HEADER_VERSION >= 304
-      case STD_VIDEO_AV1_COLOR_PRIMARIES_UNSPECIFIED:
-        return "STD_VIDEO_AV1_COLOR_PRIMARIES_UNSPECIFIED";
+    case STD_VIDEO_AV1_COLOR_PRIMARIES_UNSPECIFIED:
+      return "STD_VIDEO_AV1_COLOR_PRIMARIES_UNSPECIFIED";
 #elif VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_COLOR_PRIMARIES_BT_UNSPECIFIED:
-        return "STD_VIDEO_AV1_COLOR_PRIMARIES_BT_UNSPECIFIED";
+    case STD_VIDEO_AV1_COLOR_PRIMARIES_BT_UNSPECIFIED:
+      return "STD_VIDEO_AV1_COLOR_PRIMARIES_BT_UNSPECIFIED";
 #endif
 
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_M:
-        return "STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_M";
+    case STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_M:
+      return "STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_M";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_B_G:
-        return "STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_B_G";
+    case STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_B_G:
+      return "STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_B_G";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_COLOR_PRIMARIES_BT_601:
-        return "STD_VIDEO_AV1_COLOR_PRIMARIES_BT_601";
+    case STD_VIDEO_AV1_COLOR_PRIMARIES_BT_601:
+      return "STD_VIDEO_AV1_COLOR_PRIMARIES_BT_601";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_240:
-        return "STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_240";
+    case STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_240:
+      return "STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_240";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_COLOR_PRIMARIES_GENERIC_FILM:
-        return "STD_VIDEO_AV1_COLOR_PRIMARIES_GENERIC_FILM";
+    case STD_VIDEO_AV1_COLOR_PRIMARIES_GENERIC_FILM:
+      return "STD_VIDEO_AV1_COLOR_PRIMARIES_GENERIC_FILM";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_COLOR_PRIMARIES_BT_2020:
-        return "STD_VIDEO_AV1_COLOR_PRIMARIES_BT_2020";
+    case STD_VIDEO_AV1_COLOR_PRIMARIES_BT_2020:
+      return "STD_VIDEO_AV1_COLOR_PRIMARIES_BT_2020";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_COLOR_PRIMARIES_XYZ:
-        return "STD_VIDEO_AV1_COLOR_PRIMARIES_XYZ";
+    case STD_VIDEO_AV1_COLOR_PRIMARIES_XYZ:
+      return "STD_VIDEO_AV1_COLOR_PRIMARIES_XYZ";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_431:
-        return "STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_431";
+    case STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_431:
+      return "STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_431";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_432:
-        return "STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_432";
+    case STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_432:
+      return "STD_VIDEO_AV1_COLOR_PRIMARIES_SMPTE_432";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_COLOR_PRIMARIES_EBU_3213:
-        return "STD_VIDEO_AV1_COLOR_PRIMARIES_EBU_3213";
+    case STD_VIDEO_AV1_COLOR_PRIMARIES_EBU_3213:
+      return "STD_VIDEO_AV1_COLOR_PRIMARIES_EBU_3213";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_COLOR_PRIMARIES_INVALID:
-        return "STD_VIDEO_AV1_COLOR_PRIMARIES_INVALID";
+    case STD_VIDEO_AV1_COLOR_PRIMARIES_INVALID:
+      return "STD_VIDEO_AV1_COLOR_PRIMARIES_INVALID";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const StdVideoAV1ColorPrimaries& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const StdVideoAV1ColorPrimaries value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

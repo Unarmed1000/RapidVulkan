@@ -25,60 +25,57 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkLayerSettingTypeEXT value) noexcept
   {
-    inline const char* TryToString(const VkLayerSettingTypeEXT& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 275
-      case VK_LAYER_SETTING_TYPE_BOOL32_EXT:
-        return "VK_LAYER_SETTING_TYPE_BOOL32_EXT";
+    case VK_LAYER_SETTING_TYPE_BOOL32_EXT:
+      return "VK_LAYER_SETTING_TYPE_BOOL32_EXT";
 #endif
 #if VK_HEADER_VERSION >= 275
-      case VK_LAYER_SETTING_TYPE_INT32_EXT:
-        return "VK_LAYER_SETTING_TYPE_INT32_EXT";
+    case VK_LAYER_SETTING_TYPE_INT32_EXT:
+      return "VK_LAYER_SETTING_TYPE_INT32_EXT";
 #endif
 #if VK_HEADER_VERSION >= 275
-      case VK_LAYER_SETTING_TYPE_INT64_EXT:
-        return "VK_LAYER_SETTING_TYPE_INT64_EXT";
+    case VK_LAYER_SETTING_TYPE_INT64_EXT:
+      return "VK_LAYER_SETTING_TYPE_INT64_EXT";
 #endif
 #if VK_HEADER_VERSION >= 275
-      case VK_LAYER_SETTING_TYPE_UINT32_EXT:
-        return "VK_LAYER_SETTING_TYPE_UINT32_EXT";
+    case VK_LAYER_SETTING_TYPE_UINT32_EXT:
+      return "VK_LAYER_SETTING_TYPE_UINT32_EXT";
 #endif
 #if VK_HEADER_VERSION >= 275
-      case VK_LAYER_SETTING_TYPE_UINT64_EXT:
-        return "VK_LAYER_SETTING_TYPE_UINT64_EXT";
+    case VK_LAYER_SETTING_TYPE_UINT64_EXT:
+      return "VK_LAYER_SETTING_TYPE_UINT64_EXT";
 #endif
 #if VK_HEADER_VERSION >= 275
-      case VK_LAYER_SETTING_TYPE_FLOAT32_EXT:
-        return "VK_LAYER_SETTING_TYPE_FLOAT32_EXT";
+    case VK_LAYER_SETTING_TYPE_FLOAT32_EXT:
+      return "VK_LAYER_SETTING_TYPE_FLOAT32_EXT";
 #endif
 #if VK_HEADER_VERSION >= 275
-      case VK_LAYER_SETTING_TYPE_FLOAT64_EXT:
-        return "VK_LAYER_SETTING_TYPE_FLOAT64_EXT";
+    case VK_LAYER_SETTING_TYPE_FLOAT64_EXT:
+      return "VK_LAYER_SETTING_TYPE_FLOAT64_EXT";
 #endif
 #if VK_HEADER_VERSION >= 275
-      case VK_LAYER_SETTING_TYPE_STRING_EXT:
-        return "VK_LAYER_SETTING_TYPE_STRING_EXT";
+    case VK_LAYER_SETTING_TYPE_STRING_EXT:
+      return "VK_LAYER_SETTING_TYPE_STRING_EXT";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkLayerSettingTypeEXT& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkLayerSettingTypeEXT value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

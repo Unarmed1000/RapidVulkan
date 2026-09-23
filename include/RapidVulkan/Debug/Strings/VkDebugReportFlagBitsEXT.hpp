@@ -24,38 +24,35 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkDebugReportFlagBitsEXT value) noexcept
   {
-    inline const char* TryToString(const VkDebugReportFlagBitsEXT& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_DEBUG_REPORT_INFORMATION_BIT_EXT:
-        return "VK_DEBUG_REPORT_INFORMATION_BIT_EXT";
-      case VK_DEBUG_REPORT_WARNING_BIT_EXT:
-        return "VK_DEBUG_REPORT_WARNING_BIT_EXT";
-      case VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT:
-        return "VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT";
-      case VK_DEBUG_REPORT_ERROR_BIT_EXT:
-        return "VK_DEBUG_REPORT_ERROR_BIT_EXT";
-      case VK_DEBUG_REPORT_DEBUG_BIT_EXT:
-        return "VK_DEBUG_REPORT_DEBUG_BIT_EXT";
-      default:
-        return nullptr;
-      }
-    };
+    case VK_DEBUG_REPORT_INFORMATION_BIT_EXT:
+      return "VK_DEBUG_REPORT_INFORMATION_BIT_EXT";
+    case VK_DEBUG_REPORT_WARNING_BIT_EXT:
+      return "VK_DEBUG_REPORT_WARNING_BIT_EXT";
+    case VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT:
+      return "VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT";
+    case VK_DEBUG_REPORT_ERROR_BIT_EXT:
+      return "VK_DEBUG_REPORT_ERROR_BIT_EXT";
+    case VK_DEBUG_REPORT_DEBUG_BIT_EXT:
+      return "VK_DEBUG_REPORT_DEBUG_BIT_EXT";
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkDebugReportFlagBitsEXT& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkDebugReportFlagBitsEXT value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

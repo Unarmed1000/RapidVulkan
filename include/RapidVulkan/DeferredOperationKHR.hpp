@@ -23,21 +23,23 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/CheckError.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
+#include <utility>
 
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class DeferredOperationKHR
   {
-    VkDevice m_device;
-    VkDeferredOperationKHR m_deferredOperation;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkDeferredOperationKHR m_deferredOperation{VK_NULL_HANDLE};
+
   public:
     DeferredOperationKHR(const DeferredOperationKHR&) = delete;
     DeferredOperationKHR& operator=(const DeferredOperationKHR&) = delete;
@@ -53,34 +55,23 @@ namespace RapidVulkan
           Reset();
         }
 
-        // Claim ownership here
-        m_device = other.m_device;
-        m_deferredOperation = other.m_deferredOperation;
-
-        // Remove the data from other
-        other.m_device = VK_NULL_HANDLE;
-        other.m_deferredOperation = VK_NULL_HANDLE;
+        // Claim ownership here and leave other in its default state
+        m_device = std::exchange(other.m_device, VK_NULL_HANDLE);
+        m_deferredOperation = std::exchange(other.m_deferredOperation, VK_NULL_HANDLE);
       }
       return *this;
     }
 
     //! @brief Move constructor
-    //! Transfer ownership from other to this
+    //! Transfer ownership from other to this and leave other in its default state
     DeferredOperationKHR(DeferredOperationKHR&& other) noexcept
-      : m_device(other.m_device)
-      , m_deferredOperation(other.m_deferredOperation)
+      : m_device(std::exchange(other.m_device, VK_NULL_HANDLE))
+      , m_deferredOperation(std::exchange(other.m_deferredOperation, VK_NULL_HANDLE))
     {
-      // Remove the data from other
-      other.m_device = VK_NULL_HANDLE;
-      other.m_deferredOperation = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    DeferredOperationKHR()
-      : m_device(VK_NULL_HANDLE)
-      , m_deferredOperation(VK_NULL_HANDLE)
-    {
-    }
+    DeferredOperationKHR() = default;
 
     //! @brief Assume control of the DeferredOperationKHR (this object becomes responsible for releasing it)
     explicit DeferredOperationKHR(const ClaimMode claimMode, const VkDevice device, const VkDeferredOperationKHR deferredOperation)
@@ -92,7 +83,7 @@ namespace RapidVulkan
 #if VK_HEADER_VERSION >= 162
     //! @brief Create the requested resource
     //! @note  Function: vkCreateDeferredOperationKHR
-    DeferredOperationKHR(const VkDevice device)
+    explicit DeferredOperationKHR(const VkDevice device)
       : DeferredOperationKHR()
     {
       Reset(device);
@@ -105,7 +96,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkDeferredOperationKHR Release()
+    [[nodiscard]] VkDeferredOperationKHR Release() noexcept
     {
       const auto resource = m_deferredOperation;
       m_device = VK_NULL_HANDLE;
@@ -132,6 +123,8 @@ namespace RapidVulkan
     //! @brief Destroys any owned resources and assume control of the DeferredOperationKHR (this object becomes responsible for releasing it)
     void Reset(const ClaimMode claimMode, const VkDevice device, const VkDeferredOperationKHR deferredOperation)
     {
+      // The claim mode only exists to select this overload
+      RAPIDVULKAN_PARAM_NOT_USED(claimMode);
       if (IsValid())
       {
         Reset();
@@ -173,25 +166,25 @@ namespace RapidVulkan
 #endif
 
     //! @brief Get the associated 'Device'
-    VkDevice GetDevice() const
+    [[nodiscard]] VkDevice GetDevice() const noexcept
     {
       return m_device;
     }
 
     //! @brief Get the associated resource handle
-    VkDeferredOperationKHR Get() const
+    [[nodiscard]] VkDeferredOperationKHR Get() const noexcept
     {
       return m_deferredOperation;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkDeferredOperationKHR* GetPointer() const
+    [[nodiscard]] const VkDeferredOperationKHR* GetPointer() const noexcept
     {
       return &m_deferredOperation;
     }
 
     //! @brief Check if this object contains a valid resource
-    inline bool IsValid() const
+    [[nodiscard]] bool IsValid() const noexcept
     {
       return m_deferredOperation != VK_NULL_HANDLE;
     }

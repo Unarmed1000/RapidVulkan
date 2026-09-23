@@ -25,52 +25,49 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const StdVideoAV1InterpolationFilter value) noexcept
   {
-    inline const char* TryToString(const StdVideoAV1InterpolationFilter& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP:
-        return "STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP";
+    case STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP:
+      return "STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP_SMOOTH:
-        return "STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP_SMOOTH";
+    case STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP_SMOOTH:
+      return "STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP_SMOOTH";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP_SHARP:
-        return "STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP_SHARP";
+    case STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP_SHARP:
+      return "STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP_SHARP";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_INTERPOLATION_FILTER_BILINEAR:
-        return "STD_VIDEO_AV1_INTERPOLATION_FILTER_BILINEAR";
+    case STD_VIDEO_AV1_INTERPOLATION_FILTER_BILINEAR:
+      return "STD_VIDEO_AV1_INTERPOLATION_FILTER_BILINEAR";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_INTERPOLATION_FILTER_SWITCHABLE:
-        return "STD_VIDEO_AV1_INTERPOLATION_FILTER_SWITCHABLE";
+    case STD_VIDEO_AV1_INTERPOLATION_FILTER_SWITCHABLE:
+      return "STD_VIDEO_AV1_INTERPOLATION_FILTER_SWITCHABLE";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_INTERPOLATION_FILTER_INVALID:
-        return "STD_VIDEO_AV1_INTERPOLATION_FILTER_INVALID";
+    case STD_VIDEO_AV1_INTERPOLATION_FILTER_INVALID:
+      return "STD_VIDEO_AV1_INTERPOLATION_FILTER_INVALID";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const StdVideoAV1InterpolationFilter& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const StdVideoAV1InterpolationFilter value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

@@ -49,7 +49,7 @@ namespace RapidVulkan
       return message;
     }
 
-    #endif
+#endif
   }
 }
 

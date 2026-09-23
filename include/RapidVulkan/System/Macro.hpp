@@ -25,64 +25,19 @@
 // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
 #define RAPIDVULKAN_PARAM_NOT_USED(pARAM)    ((void)(pARAM))
 
-
-#ifdef FSL_DEMOFRAMEWORK
-
-  // Use the FslBase implementation
-  #include <FslBase/Attributes.hpp>
-  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-  #define RAPIDVULKAN_ATTR_DEPRECATED                          FSL_ATTR_DEPRECATED
-  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-  #define RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT                  FSL_FUNC_WARN_UNUSED_RESULT
-
-#else
-
-  // Check if we can implement the macros via standard functionality
-  #if defined(__STDC_VERSION__)
-    #if __STDC_VERSION__ >= 201710L
-      // C++17 or greater so use the standard methods
-
-      // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-      #define RAPIDVULKAN_ATTR_DEPRECATED                        [[deprecated]]
-      // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-      #define RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT                [[nodiscard]]
-
-    #elif __STDC_VERSION__ >= 201402L
-      // C++14 or greater so use the standard methods
-
-      // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-      #define RAPIDVULKAN_ATTR_DEPRECATED                        [[deprecated]]
-    #endif
+// RapidVulkan requires C++17 (MSVC only reports the real language version in __cplusplus when /Zc:__cplusplus is used)
+#if defined(_MSVC_LANG)
+  #if _MSVC_LANG < 201703L
+    #error "RapidVulkan requires C++17 or newer"
   #endif
-
-  // Check if any of the macros are undefined and try to see if we can find a compiler specific implementation
-  #if !defined(RAPIDVULKAN_ATTR_DEPRECATED) || !defined(RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT)
-    #if defined(__clang__)
-      #ifndef RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT
-        // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-        #define RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT [[nodiscard]]
-      #endif
-    #elif defined(_MSC_VER)
-      // Visual studio
-      #ifndef RAPIDVULKAN_ATTR_DEPRECATED
-        // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-        #define RAPIDVULKAN_ATTR_DEPRECATED                        __declspec(deprecated)
-      #endif
-    #elif ! defined(__GNUC__)
-        #pragma message("WARNING: RAPIDVULKAN_ATTR_DEPRECATED, RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT are not fully defined for this compiler")
-    #endif
-  #endif
-
+#elif __cplusplus < 201703L
+  #error "RapidVulkan requires C++17 or newer"
 #endif
 
-#ifndef RAPIDVULKAN_ATTR_DEPRECATED
-  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-  #define RAPIDVULKAN_ATTR_DEPRECATED
-#endif
-
-#ifndef RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT
-  // NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-  #define RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT
-#endif
+// These are kept for backwards compatibility, new code should use the standard attributes directly
+// NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
+#define RAPIDVULKAN_ATTR_DEPRECATED           [[deprecated]]
+// NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
+#define RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT   [[nodiscard]]
 
 #endif

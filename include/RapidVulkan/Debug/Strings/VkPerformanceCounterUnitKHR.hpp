@@ -25,72 +25,69 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkPerformanceCounterUnitKHR value) noexcept
   {
-    inline const char* TryToString(const VkPerformanceCounterUnitKHR& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 130
-      case VK_PERFORMANCE_COUNTER_UNIT_GENERIC_KHR:
-        return "VK_PERFORMANCE_COUNTER_UNIT_GENERIC_KHR";
+    case VK_PERFORMANCE_COUNTER_UNIT_GENERIC_KHR:
+      return "VK_PERFORMANCE_COUNTER_UNIT_GENERIC_KHR";
 #endif
 #if VK_HEADER_VERSION >= 130
-      case VK_PERFORMANCE_COUNTER_UNIT_PERCENTAGE_KHR:
-        return "VK_PERFORMANCE_COUNTER_UNIT_PERCENTAGE_KHR";
+    case VK_PERFORMANCE_COUNTER_UNIT_PERCENTAGE_KHR:
+      return "VK_PERFORMANCE_COUNTER_UNIT_PERCENTAGE_KHR";
 #endif
 #if VK_HEADER_VERSION >= 130
-      case VK_PERFORMANCE_COUNTER_UNIT_NANOSECONDS_KHR:
-        return "VK_PERFORMANCE_COUNTER_UNIT_NANOSECONDS_KHR";
+    case VK_PERFORMANCE_COUNTER_UNIT_NANOSECONDS_KHR:
+      return "VK_PERFORMANCE_COUNTER_UNIT_NANOSECONDS_KHR";
 #endif
 #if VK_HEADER_VERSION >= 130
-      case VK_PERFORMANCE_COUNTER_UNIT_BYTES_KHR:
-        return "VK_PERFORMANCE_COUNTER_UNIT_BYTES_KHR";
+    case VK_PERFORMANCE_COUNTER_UNIT_BYTES_KHR:
+      return "VK_PERFORMANCE_COUNTER_UNIT_BYTES_KHR";
 #endif
 #if VK_HEADER_VERSION >= 130
-      case VK_PERFORMANCE_COUNTER_UNIT_BYTES_PER_SECOND_KHR:
-        return "VK_PERFORMANCE_COUNTER_UNIT_BYTES_PER_SECOND_KHR";
+    case VK_PERFORMANCE_COUNTER_UNIT_BYTES_PER_SECOND_KHR:
+      return "VK_PERFORMANCE_COUNTER_UNIT_BYTES_PER_SECOND_KHR";
 #endif
 #if VK_HEADER_VERSION >= 130
-      case VK_PERFORMANCE_COUNTER_UNIT_KELVIN_KHR:
-        return "VK_PERFORMANCE_COUNTER_UNIT_KELVIN_KHR";
+    case VK_PERFORMANCE_COUNTER_UNIT_KELVIN_KHR:
+      return "VK_PERFORMANCE_COUNTER_UNIT_KELVIN_KHR";
 #endif
 #if VK_HEADER_VERSION >= 130
-      case VK_PERFORMANCE_COUNTER_UNIT_WATTS_KHR:
-        return "VK_PERFORMANCE_COUNTER_UNIT_WATTS_KHR";
+    case VK_PERFORMANCE_COUNTER_UNIT_WATTS_KHR:
+      return "VK_PERFORMANCE_COUNTER_UNIT_WATTS_KHR";
 #endif
 #if VK_HEADER_VERSION >= 130
-      case VK_PERFORMANCE_COUNTER_UNIT_VOLTS_KHR:
-        return "VK_PERFORMANCE_COUNTER_UNIT_VOLTS_KHR";
+    case VK_PERFORMANCE_COUNTER_UNIT_VOLTS_KHR:
+      return "VK_PERFORMANCE_COUNTER_UNIT_VOLTS_KHR";
 #endif
 #if VK_HEADER_VERSION >= 130
-      case VK_PERFORMANCE_COUNTER_UNIT_AMPS_KHR:
-        return "VK_PERFORMANCE_COUNTER_UNIT_AMPS_KHR";
+    case VK_PERFORMANCE_COUNTER_UNIT_AMPS_KHR:
+      return "VK_PERFORMANCE_COUNTER_UNIT_AMPS_KHR";
 #endif
 #if VK_HEADER_VERSION >= 130
-      case VK_PERFORMANCE_COUNTER_UNIT_HERTZ_KHR:
-        return "VK_PERFORMANCE_COUNTER_UNIT_HERTZ_KHR";
+    case VK_PERFORMANCE_COUNTER_UNIT_HERTZ_KHR:
+      return "VK_PERFORMANCE_COUNTER_UNIT_HERTZ_KHR";
 #endif
 #if VK_HEADER_VERSION >= 130
-      case VK_PERFORMANCE_COUNTER_UNIT_CYCLES_KHR:
-        return "VK_PERFORMANCE_COUNTER_UNIT_CYCLES_KHR";
+    case VK_PERFORMANCE_COUNTER_UNIT_CYCLES_KHR:
+      return "VK_PERFORMANCE_COUNTER_UNIT_CYCLES_KHR";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkPerformanceCounterUnitKHR& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkPerformanceCounterUnitKHR value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

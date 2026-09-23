@@ -25,104 +25,101 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const StdVideoH265AspectRatioIdc value) noexcept
   {
-    inline const char* TryToString(const StdVideoH265AspectRatioIdc& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_ASPECT_RATIO_IDC_UNSPECIFIED:
-        return "STD_VIDEO_H265_ASPECT_RATIO_IDC_UNSPECIFIED";
+    case STD_VIDEO_H265_ASPECT_RATIO_IDC_UNSPECIFIED:
+      return "STD_VIDEO_H265_ASPECT_RATIO_IDC_UNSPECIFIED";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_ASPECT_RATIO_IDC_SQUARE:
-        return "STD_VIDEO_H265_ASPECT_RATIO_IDC_SQUARE";
+    case STD_VIDEO_H265_ASPECT_RATIO_IDC_SQUARE:
+      return "STD_VIDEO_H265_ASPECT_RATIO_IDC_SQUARE";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_ASPECT_RATIO_IDC_12_11:
-        return "STD_VIDEO_H265_ASPECT_RATIO_IDC_12_11";
+    case STD_VIDEO_H265_ASPECT_RATIO_IDC_12_11:
+      return "STD_VIDEO_H265_ASPECT_RATIO_IDC_12_11";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_ASPECT_RATIO_IDC_10_11:
-        return "STD_VIDEO_H265_ASPECT_RATIO_IDC_10_11";
+    case STD_VIDEO_H265_ASPECT_RATIO_IDC_10_11:
+      return "STD_VIDEO_H265_ASPECT_RATIO_IDC_10_11";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_ASPECT_RATIO_IDC_16_11:
-        return "STD_VIDEO_H265_ASPECT_RATIO_IDC_16_11";
+    case STD_VIDEO_H265_ASPECT_RATIO_IDC_16_11:
+      return "STD_VIDEO_H265_ASPECT_RATIO_IDC_16_11";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_ASPECT_RATIO_IDC_40_33:
-        return "STD_VIDEO_H265_ASPECT_RATIO_IDC_40_33";
+    case STD_VIDEO_H265_ASPECT_RATIO_IDC_40_33:
+      return "STD_VIDEO_H265_ASPECT_RATIO_IDC_40_33";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_ASPECT_RATIO_IDC_24_11:
-        return "STD_VIDEO_H265_ASPECT_RATIO_IDC_24_11";
+    case STD_VIDEO_H265_ASPECT_RATIO_IDC_24_11:
+      return "STD_VIDEO_H265_ASPECT_RATIO_IDC_24_11";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_ASPECT_RATIO_IDC_20_11:
-        return "STD_VIDEO_H265_ASPECT_RATIO_IDC_20_11";
+    case STD_VIDEO_H265_ASPECT_RATIO_IDC_20_11:
+      return "STD_VIDEO_H265_ASPECT_RATIO_IDC_20_11";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_ASPECT_RATIO_IDC_32_11:
-        return "STD_VIDEO_H265_ASPECT_RATIO_IDC_32_11";
+    case STD_VIDEO_H265_ASPECT_RATIO_IDC_32_11:
+      return "STD_VIDEO_H265_ASPECT_RATIO_IDC_32_11";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_ASPECT_RATIO_IDC_80_33:
-        return "STD_VIDEO_H265_ASPECT_RATIO_IDC_80_33";
+    case STD_VIDEO_H265_ASPECT_RATIO_IDC_80_33:
+      return "STD_VIDEO_H265_ASPECT_RATIO_IDC_80_33";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_ASPECT_RATIO_IDC_18_11:
-        return "STD_VIDEO_H265_ASPECT_RATIO_IDC_18_11";
+    case STD_VIDEO_H265_ASPECT_RATIO_IDC_18_11:
+      return "STD_VIDEO_H265_ASPECT_RATIO_IDC_18_11";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_ASPECT_RATIO_IDC_15_11:
-        return "STD_VIDEO_H265_ASPECT_RATIO_IDC_15_11";
+    case STD_VIDEO_H265_ASPECT_RATIO_IDC_15_11:
+      return "STD_VIDEO_H265_ASPECT_RATIO_IDC_15_11";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_ASPECT_RATIO_IDC_64_33:
-        return "STD_VIDEO_H265_ASPECT_RATIO_IDC_64_33";
+    case STD_VIDEO_H265_ASPECT_RATIO_IDC_64_33:
+      return "STD_VIDEO_H265_ASPECT_RATIO_IDC_64_33";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_ASPECT_RATIO_IDC_160_99:
-        return "STD_VIDEO_H265_ASPECT_RATIO_IDC_160_99";
+    case STD_VIDEO_H265_ASPECT_RATIO_IDC_160_99:
+      return "STD_VIDEO_H265_ASPECT_RATIO_IDC_160_99";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_ASPECT_RATIO_IDC_4_3:
-        return "STD_VIDEO_H265_ASPECT_RATIO_IDC_4_3";
+    case STD_VIDEO_H265_ASPECT_RATIO_IDC_4_3:
+      return "STD_VIDEO_H265_ASPECT_RATIO_IDC_4_3";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_ASPECT_RATIO_IDC_3_2:
-        return "STD_VIDEO_H265_ASPECT_RATIO_IDC_3_2";
+    case STD_VIDEO_H265_ASPECT_RATIO_IDC_3_2:
+      return "STD_VIDEO_H265_ASPECT_RATIO_IDC_3_2";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_ASPECT_RATIO_IDC_2_1:
-        return "STD_VIDEO_H265_ASPECT_RATIO_IDC_2_1";
+    case STD_VIDEO_H265_ASPECT_RATIO_IDC_2_1:
+      return "STD_VIDEO_H265_ASPECT_RATIO_IDC_2_1";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_ASPECT_RATIO_IDC_EXTENDED_SAR:
-        return "STD_VIDEO_H265_ASPECT_RATIO_IDC_EXTENDED_SAR";
+    case STD_VIDEO_H265_ASPECT_RATIO_IDC_EXTENDED_SAR:
+      return "STD_VIDEO_H265_ASPECT_RATIO_IDC_EXTENDED_SAR";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H265_ASPECT_RATIO_IDC_INVALID:
-        return "STD_VIDEO_H265_ASPECT_RATIO_IDC_INVALID";
+    case STD_VIDEO_H265_ASPECT_RATIO_IDC_INVALID:
+      return "STD_VIDEO_H265_ASPECT_RATIO_IDC_INVALID";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const StdVideoH265AspectRatioIdc& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const StdVideoH265AspectRatioIdc value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

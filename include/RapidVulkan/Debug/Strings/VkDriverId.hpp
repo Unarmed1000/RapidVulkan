@@ -25,136 +25,145 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkDriverId value) noexcept
   {
-    inline const char* TryToString(const VkDriverId& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 131
-      case VK_DRIVER_ID_AMD_PROPRIETARY:
-        return "VK_DRIVER_ID_AMD_PROPRIETARY";
+    case VK_DRIVER_ID_AMD_PROPRIETARY:
+      return "VK_DRIVER_ID_AMD_PROPRIETARY";
 #endif
 #if VK_HEADER_VERSION >= 131
-      case VK_DRIVER_ID_AMD_OPEN_SOURCE:
-        return "VK_DRIVER_ID_AMD_OPEN_SOURCE";
+    case VK_DRIVER_ID_AMD_OPEN_SOURCE:
+      return "VK_DRIVER_ID_AMD_OPEN_SOURCE";
 #endif
 #if VK_HEADER_VERSION >= 131
-      case VK_DRIVER_ID_MESA_RADV:
-        return "VK_DRIVER_ID_MESA_RADV";
+    case VK_DRIVER_ID_MESA_RADV:
+      return "VK_DRIVER_ID_MESA_RADV";
 #endif
 #if VK_HEADER_VERSION >= 131
-      case VK_DRIVER_ID_NVIDIA_PROPRIETARY:
-        return "VK_DRIVER_ID_NVIDIA_PROPRIETARY";
+    case VK_DRIVER_ID_NVIDIA_PROPRIETARY:
+      return "VK_DRIVER_ID_NVIDIA_PROPRIETARY";
 #endif
 #if VK_HEADER_VERSION >= 131
-      case VK_DRIVER_ID_INTEL_PROPRIETARY_WINDOWS:
-        return "VK_DRIVER_ID_INTEL_PROPRIETARY_WINDOWS";
+    case VK_DRIVER_ID_INTEL_PROPRIETARY_WINDOWS:
+      return "VK_DRIVER_ID_INTEL_PROPRIETARY_WINDOWS";
 #endif
 #if VK_HEADER_VERSION >= 131
-      case VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA:
-        return "VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA";
+    case VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA:
+      return "VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA";
 #endif
 #if VK_HEADER_VERSION >= 131
-      case VK_DRIVER_ID_IMAGINATION_PROPRIETARY:
-        return "VK_DRIVER_ID_IMAGINATION_PROPRIETARY";
+    case VK_DRIVER_ID_IMAGINATION_PROPRIETARY:
+      return "VK_DRIVER_ID_IMAGINATION_PROPRIETARY";
 #endif
 #if VK_HEADER_VERSION >= 131
-      case VK_DRIVER_ID_QUALCOMM_PROPRIETARY:
-        return "VK_DRIVER_ID_QUALCOMM_PROPRIETARY";
+    case VK_DRIVER_ID_QUALCOMM_PROPRIETARY:
+      return "VK_DRIVER_ID_QUALCOMM_PROPRIETARY";
 #endif
 #if VK_HEADER_VERSION >= 131
-      case VK_DRIVER_ID_ARM_PROPRIETARY:
-        return "VK_DRIVER_ID_ARM_PROPRIETARY";
+    case VK_DRIVER_ID_ARM_PROPRIETARY:
+      return "VK_DRIVER_ID_ARM_PROPRIETARY";
 #endif
 #if VK_HEADER_VERSION >= 131
-      case VK_DRIVER_ID_GOOGLE_SWIFTSHADER:
-        return "VK_DRIVER_ID_GOOGLE_SWIFTSHADER";
+    case VK_DRIVER_ID_GOOGLE_SWIFTSHADER:
+      return "VK_DRIVER_ID_GOOGLE_SWIFTSHADER";
 #endif
 #if VK_HEADER_VERSION >= 131
-      case VK_DRIVER_ID_GGP_PROPRIETARY:
-        return "VK_DRIVER_ID_GGP_PROPRIETARY";
+    case VK_DRIVER_ID_GGP_PROPRIETARY:
+      return "VK_DRIVER_ID_GGP_PROPRIETARY";
 #endif
 #if VK_HEADER_VERSION >= 131
-      case VK_DRIVER_ID_BROADCOM_PROPRIETARY:
-        return "VK_DRIVER_ID_BROADCOM_PROPRIETARY";
+    case VK_DRIVER_ID_BROADCOM_PROPRIETARY:
+      return "VK_DRIVER_ID_BROADCOM_PROPRIETARY";
 #endif
 #if VK_HEADER_VERSION >= 141
-      case VK_DRIVER_ID_MESA_LLVMPIPE:
-        return "VK_DRIVER_ID_MESA_LLVMPIPE";
+    case VK_DRIVER_ID_MESA_LLVMPIPE:
+      return "VK_DRIVER_ID_MESA_LLVMPIPE";
 #endif
 #if VK_HEADER_VERSION >= 148
-      case VK_DRIVER_ID_MOLTENVK:
-        return "VK_DRIVER_ID_MOLTENVK";
+    case VK_DRIVER_ID_MOLTENVK:
+      return "VK_DRIVER_ID_MOLTENVK";
 #endif
 #if VK_HEADER_VERSION >= 176
-      case VK_DRIVER_ID_COREAVI_PROPRIETARY:
-        return "VK_DRIVER_ID_COREAVI_PROPRIETARY";
+    case VK_DRIVER_ID_COREAVI_PROPRIETARY:
+      return "VK_DRIVER_ID_COREAVI_PROPRIETARY";
 #endif
 #if VK_HEADER_VERSION >= 189
-      case VK_DRIVER_ID_JUICE_PROPRIETARY:
-        return "VK_DRIVER_ID_JUICE_PROPRIETARY";
+    case VK_DRIVER_ID_JUICE_PROPRIETARY:
+      return "VK_DRIVER_ID_JUICE_PROPRIETARY";
 #endif
 #if VK_HEADER_VERSION >= 189
-      case VK_DRIVER_ID_VERISILICON_PROPRIETARY:
-        return "VK_DRIVER_ID_VERISILICON_PROPRIETARY";
+    case VK_DRIVER_ID_VERISILICON_PROPRIETARY:
+      return "VK_DRIVER_ID_VERISILICON_PROPRIETARY";
 #endif
 #if VK_HEADER_VERSION >= 198
-      case VK_DRIVER_ID_MESA_TURNIP:
-        return "VK_DRIVER_ID_MESA_TURNIP";
+    case VK_DRIVER_ID_MESA_TURNIP:
+      return "VK_DRIVER_ID_MESA_TURNIP";
 #endif
 #if VK_HEADER_VERSION >= 198
-      case VK_DRIVER_ID_MESA_V3DV:
-        return "VK_DRIVER_ID_MESA_V3DV";
+    case VK_DRIVER_ID_MESA_V3DV:
+      return "VK_DRIVER_ID_MESA_V3DV";
 #endif
 #if VK_HEADER_VERSION >= 198
-      case VK_DRIVER_ID_MESA_PANVK:
-        return "VK_DRIVER_ID_MESA_PANVK";
+    case VK_DRIVER_ID_MESA_PANVK:
+      return "VK_DRIVER_ID_MESA_PANVK";
 #endif
 #if VK_HEADER_VERSION >= 204
-      case VK_DRIVER_ID_SAMSUNG_PROPRIETARY:
-        return "VK_DRIVER_ID_SAMSUNG_PROPRIETARY";
+    case VK_DRIVER_ID_SAMSUNG_PROPRIETARY:
+      return "VK_DRIVER_ID_SAMSUNG_PROPRIETARY";
 #endif
 #if VK_HEADER_VERSION >= 204
-      case VK_DRIVER_ID_MESA_VENUS:
-        return "VK_DRIVER_ID_MESA_VENUS";
+    case VK_DRIVER_ID_MESA_VENUS:
+      return "VK_DRIVER_ID_MESA_VENUS";
 #endif
 #if VK_HEADER_VERSION >= 224
-      case VK_DRIVER_ID_MESA_DOZEN:
-        return "VK_DRIVER_ID_MESA_DOZEN";
+    case VK_DRIVER_ID_MESA_DOZEN:
+      return "VK_DRIVER_ID_MESA_DOZEN";
 #endif
 #if VK_HEADER_VERSION >= 236
-      case VK_DRIVER_ID_MESA_NVK:
-        return "VK_DRIVER_ID_MESA_NVK";
+    case VK_DRIVER_ID_MESA_NVK:
+      return "VK_DRIVER_ID_MESA_NVK";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA:
-        return "VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA";
+    case VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA:
+      return "VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA";
 #endif
 #if VK_HEADER_VERSION >= 290
-      case VK_DRIVER_ID_MESA_HONEYKRISP:
-        return "VK_DRIVER_ID_MESA_HONEYKRISP";
+    case VK_DRIVER_ID_MESA_HONEYKRISP:
+      return "VK_DRIVER_ID_MESA_HONEYKRISP";
 #endif
 #if VK_HEADER_VERSION >= 304
-      case VK_DRIVER_ID_VULKAN_SC_EMULATION_ON_VULKAN:
-        return "VK_DRIVER_ID_VULKAN_SC_EMULATION_ON_VULKAN";
+    case VK_DRIVER_ID_VULKAN_SC_EMULATION_ON_VULKAN:
+      return "VK_DRIVER_ID_VULKAN_SC_EMULATION_ON_VULKAN";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+#if VK_HEADER_VERSION >= 335
+    case VK_DRIVER_ID_MESA_KOSMICKRISP:
+      return "VK_DRIVER_ID_MESA_KOSMICKRISP";
+#endif
+#if VK_HEADER_VERSION >= 357
+    case VK_DRIVER_ID_MESA_GFXSTREAM:
+      return "VK_DRIVER_ID_MESA_GFXSTREAM";
+#endif
+#if VK_HEADER_VERSION >= 357
+    case VK_DRIVER_ID_APE_SOFT:
+      return "VK_DRIVER_ID_APE_SOFT";
+#endif
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkDriverId& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkDriverId value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

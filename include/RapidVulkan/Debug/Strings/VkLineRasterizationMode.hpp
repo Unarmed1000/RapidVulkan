@@ -25,44 +25,41 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkLineRasterizationMode value) noexcept
   {
-    inline const char* TryToString(const VkLineRasterizationMode& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 304
-      case VK_LINE_RASTERIZATION_MODE_DEFAULT:
-        return "VK_LINE_RASTERIZATION_MODE_DEFAULT";
+    case VK_LINE_RASTERIZATION_MODE_DEFAULT:
+      return "VK_LINE_RASTERIZATION_MODE_DEFAULT";
 #endif
 #if VK_HEADER_VERSION >= 304
-      case VK_LINE_RASTERIZATION_MODE_RECTANGULAR:
-        return "VK_LINE_RASTERIZATION_MODE_RECTANGULAR";
+    case VK_LINE_RASTERIZATION_MODE_RECTANGULAR:
+      return "VK_LINE_RASTERIZATION_MODE_RECTANGULAR";
 #endif
 #if VK_HEADER_VERSION >= 304
-      case VK_LINE_RASTERIZATION_MODE_BRESENHAM:
-        return "VK_LINE_RASTERIZATION_MODE_BRESENHAM";
+    case VK_LINE_RASTERIZATION_MODE_BRESENHAM:
+      return "VK_LINE_RASTERIZATION_MODE_BRESENHAM";
 #endif
 #if VK_HEADER_VERSION >= 304
-      case VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH:
-        return "VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH";
+    case VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH:
+      return "VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkLineRasterizationMode& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkLineRasterizationMode value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

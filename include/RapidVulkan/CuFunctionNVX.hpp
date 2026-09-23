@@ -23,21 +23,23 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/CheckError.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
+#include <utility>
 
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class CuFunctionNVX
   {
-    VkDevice m_device;
-    VkCuFunctionNVX m_function;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkCuFunctionNVX m_function{VK_NULL_HANDLE};
+
   public:
     CuFunctionNVX(const CuFunctionNVX&) = delete;
     CuFunctionNVX& operator=(const CuFunctionNVX&) = delete;
@@ -53,34 +55,23 @@ namespace RapidVulkan
           Reset();
         }
 
-        // Claim ownership here
-        m_device = other.m_device;
-        m_function = other.m_function;
-
-        // Remove the data from other
-        other.m_device = VK_NULL_HANDLE;
-        other.m_function = VK_NULL_HANDLE;
+        // Claim ownership here and leave other in its default state
+        m_device = std::exchange(other.m_device, VK_NULL_HANDLE);
+        m_function = std::exchange(other.m_function, VK_NULL_HANDLE);
       }
       return *this;
     }
 
     //! @brief Move constructor
-    //! Transfer ownership from other to this
+    //! Transfer ownership from other to this and leave other in its default state
     CuFunctionNVX(CuFunctionNVX&& other) noexcept
-      : m_device(other.m_device)
-      , m_function(other.m_function)
+      : m_device(std::exchange(other.m_device, VK_NULL_HANDLE))
+      , m_function(std::exchange(other.m_function, VK_NULL_HANDLE))
     {
-      // Remove the data from other
-      other.m_device = VK_NULL_HANDLE;
-      other.m_function = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    CuFunctionNVX()
-      : m_device(VK_NULL_HANDLE)
-      , m_function(VK_NULL_HANDLE)
-    {
-    }
+    CuFunctionNVX() = default;
 
     //! @brief Assume control of the CuFunctionNVX (this object becomes responsible for releasing it)
     explicit CuFunctionNVX(const ClaimMode claimMode, const VkDevice device, const VkCuFunctionNVX function)
@@ -115,7 +106,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkCuFunctionNVX Release()
+    [[nodiscard]] VkCuFunctionNVX Release() noexcept
     {
       const auto resource = m_function;
       m_device = VK_NULL_HANDLE;
@@ -142,6 +133,8 @@ namespace RapidVulkan
     //! @brief Destroys any owned resources and assume control of the CuFunctionNVX (this object becomes responsible for releasing it)
     void Reset(const ClaimMode claimMode, const VkDevice device, const VkCuFunctionNVX function)
     {
+      // The claim mode only exists to select this overload
+      RAPIDVULKAN_PARAM_NOT_USED(claimMode);
       if (IsValid())
       {
         Reset();
@@ -198,25 +191,25 @@ namespace RapidVulkan
 #endif
 
     //! @brief Get the associated 'Device'
-    VkDevice GetDevice() const
+    [[nodiscard]] VkDevice GetDevice() const noexcept
     {
       return m_device;
     }
 
     //! @brief Get the associated resource handle
-    VkCuFunctionNVX Get() const
+    [[nodiscard]] VkCuFunctionNVX Get() const noexcept
     {
       return m_function;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkCuFunctionNVX* GetPointer() const
+    [[nodiscard]] const VkCuFunctionNVX* GetPointer() const noexcept
     {
       return &m_function;
     }
 
     //! @brief Check if this object contains a valid resource
-    inline bool IsValid() const
+    [[nodiscard]] bool IsValid() const noexcept
     {
       return m_function != VK_NULL_HANDLE;
     }

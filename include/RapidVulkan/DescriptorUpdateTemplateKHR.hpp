@@ -23,21 +23,23 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/CheckError.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
+#include <utility>
 
 namespace RapidVulkan
 {
   //! This object is movable so it can be thought of as behaving in the same was as a unique_ptr and is compatible with std containers
   class DescriptorUpdateTemplateKHR
   {
-    VkDevice m_device;
-    VkDescriptorUpdateTemplate m_descriptorUpdateTemplate;
+    VkDevice m_device{VK_NULL_HANDLE};
+    VkDescriptorUpdateTemplate m_descriptorUpdateTemplate{VK_NULL_HANDLE};
+
   public:
     DescriptorUpdateTemplateKHR(const DescriptorUpdateTemplateKHR&) = delete;
     DescriptorUpdateTemplateKHR& operator=(const DescriptorUpdateTemplateKHR&) = delete;
@@ -53,34 +55,23 @@ namespace RapidVulkan
           Reset();
         }
 
-        // Claim ownership here
-        m_device = other.m_device;
-        m_descriptorUpdateTemplate = other.m_descriptorUpdateTemplate;
-
-        // Remove the data from other
-        other.m_device = VK_NULL_HANDLE;
-        other.m_descriptorUpdateTemplate = VK_NULL_HANDLE;
+        // Claim ownership here and leave other in its default state
+        m_device = std::exchange(other.m_device, VK_NULL_HANDLE);
+        m_descriptorUpdateTemplate = std::exchange(other.m_descriptorUpdateTemplate, VK_NULL_HANDLE);
       }
       return *this;
     }
 
     //! @brief Move constructor
-    //! Transfer ownership from other to this
+    //! Transfer ownership from other to this and leave other in its default state
     DescriptorUpdateTemplateKHR(DescriptorUpdateTemplateKHR&& other) noexcept
-      : m_device(other.m_device)
-      , m_descriptorUpdateTemplate(other.m_descriptorUpdateTemplate)
+      : m_device(std::exchange(other.m_device, VK_NULL_HANDLE))
+      , m_descriptorUpdateTemplate(std::exchange(other.m_descriptorUpdateTemplate, VK_NULL_HANDLE))
     {
-      // Remove the data from other
-      other.m_device = VK_NULL_HANDLE;
-      other.m_descriptorUpdateTemplate = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    DescriptorUpdateTemplateKHR()
-      : m_device(VK_NULL_HANDLE)
-      , m_descriptorUpdateTemplate(VK_NULL_HANDLE)
-    {
-    }
+    DescriptorUpdateTemplateKHR() = default;
 
     //! @brief Assume control of the DescriptorUpdateTemplateKHR (this object becomes responsible for releasing it)
     explicit DescriptorUpdateTemplateKHR(const ClaimMode claimMode, const VkDevice device, const VkDescriptorUpdateTemplate descriptorUpdateTemplate)
@@ -115,7 +106,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkDescriptorUpdateTemplate Release()
+    [[nodiscard]] VkDescriptorUpdateTemplate Release() noexcept
     {
       const auto resource = m_descriptorUpdateTemplate;
       m_device = VK_NULL_HANDLE;
@@ -142,6 +133,8 @@ namespace RapidVulkan
     //! @brief Destroys any owned resources and assume control of the DescriptorUpdateTemplateKHR (this object becomes responsible for releasing it)
     void Reset(const ClaimMode claimMode, const VkDevice device, const VkDescriptorUpdateTemplate descriptorUpdateTemplate)
     {
+      // The claim mode only exists to select this overload
+      RAPIDVULKAN_PARAM_NOT_USED(claimMode);
       if (IsValid())
       {
         Reset();
@@ -204,25 +197,25 @@ namespace RapidVulkan
 #endif
 
     //! @brief Get the associated 'Device'
-    VkDevice GetDevice() const
+    [[nodiscard]] VkDevice GetDevice() const noexcept
     {
       return m_device;
     }
 
     //! @brief Get the associated resource handle
-    VkDescriptorUpdateTemplate Get() const
+    [[nodiscard]] VkDescriptorUpdateTemplate Get() const noexcept
     {
       return m_descriptorUpdateTemplate;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkDescriptorUpdateTemplate* GetPointer() const
+    [[nodiscard]] const VkDescriptorUpdateTemplate* GetPointer() const noexcept
     {
       return &m_descriptorUpdateTemplate;
     }
 
     //! @brief Check if this object contains a valid resource
-    inline bool IsValid() const
+    [[nodiscard]] bool IsValid() const noexcept
     {
       return m_descriptorUpdateTemplate != VK_NULL_HANDLE;
     }

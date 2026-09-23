@@ -25,48 +25,53 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const StdVideoH264ProfileIdc value) noexcept
   {
-    inline const char* TryToString(const StdVideoH264ProfileIdc& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H264_PROFILE_IDC_BASELINE:
-        return "STD_VIDEO_H264_PROFILE_IDC_BASELINE";
+    case STD_VIDEO_H264_PROFILE_IDC_BASELINE:
+      return "STD_VIDEO_H264_PROFILE_IDC_BASELINE";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H264_PROFILE_IDC_MAIN:
-        return "STD_VIDEO_H264_PROFILE_IDC_MAIN";
+    case STD_VIDEO_H264_PROFILE_IDC_MAIN:
+      return "STD_VIDEO_H264_PROFILE_IDC_MAIN";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H264_PROFILE_IDC_HIGH:
-        return "STD_VIDEO_H264_PROFILE_IDC_HIGH";
+    case STD_VIDEO_H264_PROFILE_IDC_HIGH:
+      return "STD_VIDEO_H264_PROFILE_IDC_HIGH";
+#endif
+#if VK_HEADER_VERSION >= 357
+    case STD_VIDEO_H264_PROFILE_IDC_HIGH_10:
+      return "STD_VIDEO_H264_PROFILE_IDC_HIGH_10";
+#endif
+#if VK_HEADER_VERSION >= 357
+    case STD_VIDEO_H264_PROFILE_IDC_HIGH_422:
+      return "STD_VIDEO_H264_PROFILE_IDC_HIGH_422";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H264_PROFILE_IDC_HIGH_444_PREDICTIVE:
-        return "STD_VIDEO_H264_PROFILE_IDC_HIGH_444_PREDICTIVE";
+    case STD_VIDEO_H264_PROFILE_IDC_HIGH_444_PREDICTIVE:
+      return "STD_VIDEO_H264_PROFILE_IDC_HIGH_444_PREDICTIVE";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H264_PROFILE_IDC_INVALID:
-        return "STD_VIDEO_H264_PROFILE_IDC_INVALID";
+    case STD_VIDEO_H264_PROFILE_IDC_INVALID:
+      return "STD_VIDEO_H264_PROFILE_IDC_INVALID";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const StdVideoH264ProfileIdc& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const StdVideoH264ProfileIdc value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

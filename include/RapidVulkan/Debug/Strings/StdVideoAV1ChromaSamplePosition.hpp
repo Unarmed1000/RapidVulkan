@@ -25,48 +25,45 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const StdVideoAV1ChromaSamplePosition value) noexcept
   {
-    inline const char* TryToString(const StdVideoAV1ChromaSamplePosition& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_UNKNOWN:
-        return "STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_UNKNOWN";
+    case STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_UNKNOWN:
+      return "STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_UNKNOWN";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_VERTICAL:
-        return "STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_VERTICAL";
+    case STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_VERTICAL:
+      return "STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_VERTICAL";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_COLOCATED:
-        return "STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_COLOCATED";
+    case STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_COLOCATED:
+      return "STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_COLOCATED";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_RESERVED:
-        return "STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_RESERVED";
+    case STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_RESERVED:
+      return "STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_RESERVED";
 #endif
 #if VK_HEADER_VERSION >= 280
-      case STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_INVALID:
-        return "STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_INVALID";
+    case STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_INVALID:
+      return "STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_INVALID";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const StdVideoAV1ChromaSamplePosition& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const StdVideoAV1ChromaSamplePosition value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

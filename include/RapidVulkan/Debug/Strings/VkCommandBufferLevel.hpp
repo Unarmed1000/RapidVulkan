@@ -24,32 +24,29 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkCommandBufferLevel value) noexcept
   {
-    inline const char* TryToString(const VkCommandBufferLevel& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_COMMAND_BUFFER_LEVEL_PRIMARY:
-        return "VK_COMMAND_BUFFER_LEVEL_PRIMARY";
-      case VK_COMMAND_BUFFER_LEVEL_SECONDARY:
-        return "VK_COMMAND_BUFFER_LEVEL_SECONDARY";
-      default:
-        return nullptr;
-      }
-    };
+    case VK_COMMAND_BUFFER_LEVEL_PRIMARY:
+      return "VK_COMMAND_BUFFER_LEVEL_PRIMARY";
+    case VK_COMMAND_BUFFER_LEVEL_SECONDARY:
+      return "VK_COMMAND_BUFFER_LEVEL_SECONDARY";
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkCommandBufferLevel& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkCommandBufferLevel value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

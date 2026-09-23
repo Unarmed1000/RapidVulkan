@@ -24,42 +24,39 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkSampleCountFlagBits value) noexcept
   {
-    inline const char* TryToString(const VkSampleCountFlagBits& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_SAMPLE_COUNT_1_BIT:
-        return "VK_SAMPLE_COUNT_1_BIT";
-      case VK_SAMPLE_COUNT_2_BIT:
-        return "VK_SAMPLE_COUNT_2_BIT";
-      case VK_SAMPLE_COUNT_4_BIT:
-        return "VK_SAMPLE_COUNT_4_BIT";
-      case VK_SAMPLE_COUNT_8_BIT:
-        return "VK_SAMPLE_COUNT_8_BIT";
-      case VK_SAMPLE_COUNT_16_BIT:
-        return "VK_SAMPLE_COUNT_16_BIT";
-      case VK_SAMPLE_COUNT_32_BIT:
-        return "VK_SAMPLE_COUNT_32_BIT";
-      case VK_SAMPLE_COUNT_64_BIT:
-        return "VK_SAMPLE_COUNT_64_BIT";
-      default:
-        return nullptr;
-      }
-    };
+    case VK_SAMPLE_COUNT_1_BIT:
+      return "VK_SAMPLE_COUNT_1_BIT";
+    case VK_SAMPLE_COUNT_2_BIT:
+      return "VK_SAMPLE_COUNT_2_BIT";
+    case VK_SAMPLE_COUNT_4_BIT:
+      return "VK_SAMPLE_COUNT_4_BIT";
+    case VK_SAMPLE_COUNT_8_BIT:
+      return "VK_SAMPLE_COUNT_8_BIT";
+    case VK_SAMPLE_COUNT_16_BIT:
+      return "VK_SAMPLE_COUNT_16_BIT";
+    case VK_SAMPLE_COUNT_32_BIT:
+      return "VK_SAMPLE_COUNT_32_BIT";
+    case VK_SAMPLE_COUNT_64_BIT:
+      return "VK_SAMPLE_COUNT_64_BIT";
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkSampleCountFlagBits& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkSampleCountFlagBits value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

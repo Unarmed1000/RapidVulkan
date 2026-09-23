@@ -25,44 +25,41 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const StdVideoH264DisableDeblockingFilterIdc value) noexcept
   {
-    inline const char* TryToString(const StdVideoH264DisableDeblockingFilterIdc& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_DISABLED:
-        return "STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_DISABLED";
+    case STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_DISABLED:
+      return "STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_DISABLED";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_ENABLED:
-        return "STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_ENABLED";
+    case STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_ENABLED:
+      return "STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_ENABLED";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_PARTIAL:
-        return "STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_PARTIAL";
+    case STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_PARTIAL:
+      return "STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_PARTIAL";
 #endif
 #if VK_HEADER_VERSION >= 239
-      case STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_INVALID:
-        return "STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_INVALID";
+    case STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_INVALID:
+      return "STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_INVALID";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const StdVideoH264DisableDeblockingFilterIdc& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const StdVideoH264DisableDeblockingFilterIdc value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

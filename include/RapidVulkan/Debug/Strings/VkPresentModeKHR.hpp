@@ -24,48 +24,45 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkPresentModeKHR value) noexcept
   {
-    inline const char* TryToString(const VkPresentModeKHR& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_PRESENT_MODE_IMMEDIATE_KHR:
-        return "VK_PRESENT_MODE_IMMEDIATE_KHR";
-      case VK_PRESENT_MODE_MAILBOX_KHR:
-        return "VK_PRESENT_MODE_MAILBOX_KHR";
-      case VK_PRESENT_MODE_FIFO_KHR:
-        return "VK_PRESENT_MODE_FIFO_KHR";
-      case VK_PRESENT_MODE_FIFO_RELAXED_KHR:
-        return "VK_PRESENT_MODE_FIFO_RELAXED_KHR";
+    case VK_PRESENT_MODE_IMMEDIATE_KHR:
+      return "VK_PRESENT_MODE_IMMEDIATE_KHR";
+    case VK_PRESENT_MODE_MAILBOX_KHR:
+      return "VK_PRESENT_MODE_MAILBOX_KHR";
+    case VK_PRESENT_MODE_FIFO_KHR:
+      return "VK_PRESENT_MODE_FIFO_KHR";
+    case VK_PRESENT_MODE_FIFO_RELAXED_KHR:
+      return "VK_PRESENT_MODE_FIFO_RELAXED_KHR";
 #if VK_HEADER_VERSION >= 51
-      case VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR:
-        return "VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR";
+    case VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR:
+      return "VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR";
 #endif
 #if VK_HEADER_VERSION >= 51
-      case VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR:
-        return "VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR";
+    case VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR:
+      return "VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR";
 #endif
 #if VK_HEADER_VERSION >= 321
-      case VK_PRESENT_MODE_FIFO_LATEST_READY_KHR:
-        return "VK_PRESENT_MODE_FIFO_LATEST_READY_KHR";
+    case VK_PRESENT_MODE_FIFO_LATEST_READY_KHR:
+      return "VK_PRESENT_MODE_FIFO_LATEST_READY_KHR";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkPresentModeKHR& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkPresentModeKHR value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

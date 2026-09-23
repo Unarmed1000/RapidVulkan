@@ -25,60 +25,57 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkValidationFeatureDisableEXT value) noexcept
   {
-    inline const char* TryToString(const VkValidationFeatureDisableEXT& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 97
-      case VK_VALIDATION_FEATURE_DISABLE_ALL_EXT:
-        return "VK_VALIDATION_FEATURE_DISABLE_ALL_EXT";
+    case VK_VALIDATION_FEATURE_DISABLE_ALL_EXT:
+      return "VK_VALIDATION_FEATURE_DISABLE_ALL_EXT";
 #endif
 #if VK_HEADER_VERSION >= 97
-      case VK_VALIDATION_FEATURE_DISABLE_SHADERS_EXT:
-        return "VK_VALIDATION_FEATURE_DISABLE_SHADERS_EXT";
+    case VK_VALIDATION_FEATURE_DISABLE_SHADERS_EXT:
+      return "VK_VALIDATION_FEATURE_DISABLE_SHADERS_EXT";
 #endif
 #if VK_HEADER_VERSION >= 97
-      case VK_VALIDATION_FEATURE_DISABLE_THREAD_SAFETY_EXT:
-        return "VK_VALIDATION_FEATURE_DISABLE_THREAD_SAFETY_EXT";
+    case VK_VALIDATION_FEATURE_DISABLE_THREAD_SAFETY_EXT:
+      return "VK_VALIDATION_FEATURE_DISABLE_THREAD_SAFETY_EXT";
 #endif
 #if VK_HEADER_VERSION >= 97
-      case VK_VALIDATION_FEATURE_DISABLE_API_PARAMETERS_EXT:
-        return "VK_VALIDATION_FEATURE_DISABLE_API_PARAMETERS_EXT";
+    case VK_VALIDATION_FEATURE_DISABLE_API_PARAMETERS_EXT:
+      return "VK_VALIDATION_FEATURE_DISABLE_API_PARAMETERS_EXT";
 #endif
 #if VK_HEADER_VERSION >= 97
-      case VK_VALIDATION_FEATURE_DISABLE_OBJECT_LIFETIMES_EXT:
-        return "VK_VALIDATION_FEATURE_DISABLE_OBJECT_LIFETIMES_EXT";
+    case VK_VALIDATION_FEATURE_DISABLE_OBJECT_LIFETIMES_EXT:
+      return "VK_VALIDATION_FEATURE_DISABLE_OBJECT_LIFETIMES_EXT";
 #endif
 #if VK_HEADER_VERSION >= 97
-      case VK_VALIDATION_FEATURE_DISABLE_CORE_CHECKS_EXT:
-        return "VK_VALIDATION_FEATURE_DISABLE_CORE_CHECKS_EXT";
+    case VK_VALIDATION_FEATURE_DISABLE_CORE_CHECKS_EXT:
+      return "VK_VALIDATION_FEATURE_DISABLE_CORE_CHECKS_EXT";
 #endif
 #if VK_HEADER_VERSION >= 97
-      case VK_VALIDATION_FEATURE_DISABLE_UNIQUE_HANDLES_EXT:
-        return "VK_VALIDATION_FEATURE_DISABLE_UNIQUE_HANDLES_EXT";
+    case VK_VALIDATION_FEATURE_DISABLE_UNIQUE_HANDLES_EXT:
+      return "VK_VALIDATION_FEATURE_DISABLE_UNIQUE_HANDLES_EXT";
 #endif
 #if VK_HEADER_VERSION >= 189
-      case VK_VALIDATION_FEATURE_DISABLE_SHADER_VALIDATION_CACHE_EXT:
-        return "VK_VALIDATION_FEATURE_DISABLE_SHADER_VALIDATION_CACHE_EXT";
+    case VK_VALIDATION_FEATURE_DISABLE_SHADER_VALIDATION_CACHE_EXT:
+      return "VK_VALIDATION_FEATURE_DISABLE_SHADER_VALIDATION_CACHE_EXT";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkValidationFeatureDisableEXT& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkValidationFeatureDisableEXT value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

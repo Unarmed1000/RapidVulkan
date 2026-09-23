@@ -22,13 +22,14 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <RapidVulkan/ClaimMode.hpp>
 #include <RapidVulkan/CheckError.hpp>
 #include <RapidVulkan/System/Macro.hpp>
 #include <vulkan/vulkan.h>
 #include <cassert>
+#include <utility>
 
 namespace RapidVulkan
 {
@@ -54,36 +55,25 @@ namespace RapidVulkan
           Reset();
         }
 
-        // Claim ownership here
-        m_device = other.m_device;
-        m_commandPool = other.m_commandPool;
-        m_commandBuffers = other.m_commandBuffers;
-
-        // Remove the data from other
-        other.m_device = VK_NULL_HANDLE;
-        other.m_commandPool = VK_NULL_HANDLE;
-        other.m_commandBuffers = VK_NULL_HANDLE;
+        // Claim ownership here and leave other in its default state
+        m_device = std::exchange(other.m_device, VK_NULL_HANDLE);
+        m_commandPool = std::exchange(other.m_commandPool, VK_NULL_HANDLE);
+        m_commandBuffers = std::exchange(other.m_commandBuffers, VK_NULL_HANDLE);
       }
       return *this;
     }
 
     //! @brief Move constructor
-    //! Transfer ownership from other to this
+    //! Transfer ownership from other to this and leave other in its default state
     CommandBuffer(CommandBuffer&& other) noexcept
-      : m_device(other.m_device)
-      , m_commandPool(other.m_commandPool)
-      , m_commandBuffers(other.m_commandBuffers)
+      : m_device(std::exchange(other.m_device, VK_NULL_HANDLE))
+      , m_commandPool(std::exchange(other.m_commandPool, VK_NULL_HANDLE))
+      , m_commandBuffers(std::exchange(other.m_commandBuffers, VK_NULL_HANDLE))
     {
-      // Remove the data from other
-      other.m_device = VK_NULL_HANDLE;
-      other.m_commandPool = VK_NULL_HANDLE;
-      other.m_commandBuffers = VK_NULL_HANDLE;
     }
 
     //! @brief Create a 'invalid' instance (use Reset to populate it)
-    CommandBuffer()
-
-        = default;
+    CommandBuffer() = default;
 
     //! @brief Assume control of the CommandBuffer (this object becomes responsible for releasing it)
     explicit CommandBuffer(const ClaimMode claimMode, const VkDevice device, const VkCommandPool commandPool, const VkCommandBuffer commandBuffers)
@@ -116,7 +106,7 @@ namespace RapidVulkan
     }
 
     //! @brief returns the managed handle and releases the ownership.
-    RAPIDVULKAN_FUNC_WARN_UNUSED_RESULT VkCommandBuffer Release()
+    [[nodiscard]] VkCommandBuffer Release() noexcept
     {
       const auto resource = m_commandBuffers;
       m_device = VK_NULL_HANDLE;
@@ -146,6 +136,8 @@ namespace RapidVulkan
     //! @brief Destroys any owned resources and assume control of the CommandBuffer (this object becomes responsible for releasing it)
     void Reset(const ClaimMode claimMode, const VkDevice device, const VkCommandPool commandPool, const VkCommandBuffer commandBuffers)
     {
+      // The claim mode only exists to select this overload
+      RAPIDVULKAN_PARAM_NOT_USED(claimMode);
       if (IsValid())
       {
         Reset();
@@ -209,31 +201,31 @@ namespace RapidVulkan
 #endif
 
     //! @brief Get the associated 'Device'
-    VkDevice GetDevice() const
+    [[nodiscard]] VkDevice GetDevice() const noexcept
     {
       return m_device;
     }
 
     //! @brief Get the associated 'CommandPool'
-    VkCommandPool GetCommandPool() const
+    [[nodiscard]] VkCommandPool GetCommandPool() const noexcept
     {
       return m_commandPool;
     }
 
     //! @brief Get the associated resource handle
-    VkCommandBuffer Get() const
+    [[nodiscard]] VkCommandBuffer Get() const noexcept
     {
       return m_commandBuffers;
     }
 
     //! @brief Get a pointer to the associated resource handle
-    const VkCommandBuffer* GetPointer() const
+    [[nodiscard]] const VkCommandBuffer* GetPointer() const noexcept
     {
       return &m_commandBuffers;
     }
 
     //! @brief Check if this object contains a valid resource
-    inline bool IsValid() const
+    [[nodiscard]] bool IsValid() const noexcept
     {
       return m_commandBuffers != VK_NULL_HANDLE;
     }

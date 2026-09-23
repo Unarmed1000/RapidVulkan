@@ -24,46 +24,43 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkSurfaceTransformFlagBitsKHR value) noexcept
   {
-    inline const char* TryToString(const VkSurfaceTransformFlagBitsKHR& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR:
-        return "VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR";
-      case VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR:
-        return "VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR";
-      case VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR:
-        return "VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR";
-      case VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR:
-        return "VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR";
-      case VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR:
-        return "VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR";
-      case VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR:
-        return "VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR";
-      case VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR:
-        return "VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR";
-      case VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR:
-        return "VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR";
-      case VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR:
-        return "VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR";
-      default:
-        return nullptr;
-      }
-    };
+    case VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR:
+      return "VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR";
+    case VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR:
+      return "VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR";
+    case VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR:
+      return "VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR";
+    case VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR:
+      return "VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR";
+    case VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR:
+      return "VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR";
+    case VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR:
+      return "VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR";
+    case VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR:
+      return "VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR";
+    case VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR:
+      return "VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR";
+    case VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR:
+      return "VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR";
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkSurfaceTransformFlagBitsKHR& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkSurfaceTransformFlagBitsKHR value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

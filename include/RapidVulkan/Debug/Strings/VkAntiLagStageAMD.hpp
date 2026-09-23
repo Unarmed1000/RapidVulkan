@@ -25,36 +25,33 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkAntiLagStageAMD value) noexcept
   {
-    inline const char* TryToString(const VkAntiLagStageAMD& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 296
-      case VK_ANTI_LAG_STAGE_INPUT_AMD:
-        return "VK_ANTI_LAG_STAGE_INPUT_AMD";
+    case VK_ANTI_LAG_STAGE_INPUT_AMD:
+      return "VK_ANTI_LAG_STAGE_INPUT_AMD";
 #endif
 #if VK_HEADER_VERSION >= 296
-      case VK_ANTI_LAG_STAGE_PRESENT_AMD:
-        return "VK_ANTI_LAG_STAGE_PRESENT_AMD";
+    case VK_ANTI_LAG_STAGE_PRESENT_AMD:
+      return "VK_ANTI_LAG_STAGE_PRESENT_AMD";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkAntiLagStageAMD& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkAntiLagStageAMD value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

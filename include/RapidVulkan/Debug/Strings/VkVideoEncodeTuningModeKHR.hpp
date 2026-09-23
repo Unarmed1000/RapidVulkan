@@ -25,48 +25,45 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkVideoEncodeTuningModeKHR value) noexcept
   {
-    inline const char* TryToString(const VkVideoEncodeTuningModeKHR& value)
+    switch (value)
     {
-      switch(value)
-      {
 #if VK_HEADER_VERSION >= 275
-      case VK_VIDEO_ENCODE_TUNING_MODE_DEFAULT_KHR:
-        return "VK_VIDEO_ENCODE_TUNING_MODE_DEFAULT_KHR";
+    case VK_VIDEO_ENCODE_TUNING_MODE_DEFAULT_KHR:
+      return "VK_VIDEO_ENCODE_TUNING_MODE_DEFAULT_KHR";
 #endif
 #if VK_HEADER_VERSION >= 275
-      case VK_VIDEO_ENCODE_TUNING_MODE_HIGH_QUALITY_KHR:
-        return "VK_VIDEO_ENCODE_TUNING_MODE_HIGH_QUALITY_KHR";
+    case VK_VIDEO_ENCODE_TUNING_MODE_HIGH_QUALITY_KHR:
+      return "VK_VIDEO_ENCODE_TUNING_MODE_HIGH_QUALITY_KHR";
 #endif
 #if VK_HEADER_VERSION >= 275
-      case VK_VIDEO_ENCODE_TUNING_MODE_LOW_LATENCY_KHR:
-        return "VK_VIDEO_ENCODE_TUNING_MODE_LOW_LATENCY_KHR";
+    case VK_VIDEO_ENCODE_TUNING_MODE_LOW_LATENCY_KHR:
+      return "VK_VIDEO_ENCODE_TUNING_MODE_LOW_LATENCY_KHR";
 #endif
 #if VK_HEADER_VERSION >= 275
-      case VK_VIDEO_ENCODE_TUNING_MODE_ULTRA_LOW_LATENCY_KHR:
-        return "VK_VIDEO_ENCODE_TUNING_MODE_ULTRA_LOW_LATENCY_KHR";
+    case VK_VIDEO_ENCODE_TUNING_MODE_ULTRA_LOW_LATENCY_KHR:
+      return "VK_VIDEO_ENCODE_TUNING_MODE_ULTRA_LOW_LATENCY_KHR";
 #endif
 #if VK_HEADER_VERSION >= 275
-      case VK_VIDEO_ENCODE_TUNING_MODE_LOSSLESS_KHR:
-        return "VK_VIDEO_ENCODE_TUNING_MODE_LOSSLESS_KHR";
+    case VK_VIDEO_ENCODE_TUNING_MODE_LOSSLESS_KHR:
+      return "VK_VIDEO_ENCODE_TUNING_MODE_LOSSLESS_KHR";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkVideoEncodeTuningModeKHR& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkVideoEncodeTuningModeKHR value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

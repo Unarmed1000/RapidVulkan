@@ -24,36 +24,33 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkCompositeAlphaFlagBitsKHR value) noexcept
   {
-    inline const char* TryToString(const VkCompositeAlphaFlagBitsKHR& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR:
-        return "VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR";
-      case VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR:
-        return "VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR";
-      case VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR:
-        return "VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR";
-      case VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR:
-        return "VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR";
-      default:
-        return nullptr;
-      }
-    };
+    case VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR:
+      return "VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR";
+    case VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR:
+      return "VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR";
+    case VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR:
+      return "VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR";
+    case VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR:
+      return "VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR";
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkCompositeAlphaFlagBitsKHR& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkCompositeAlphaFlagBitsKHR value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 

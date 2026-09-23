@@ -24,70 +24,67 @@
 
 // If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Auto-generated Vulkan 1.0 C++11 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
 #include <vulkan/vulkan.h>
 
-namespace RapidVulkan
+namespace RapidVulkan::Debug
 {
-  namespace Debug
+  constexpr const char* TryToString(const VkDescriptorType value) noexcept
   {
-    inline const char* TryToString(const VkDescriptorType& value)
+    switch (value)
     {
-      switch(value)
-      {
-      case VK_DESCRIPTOR_TYPE_SAMPLER:
-        return "VK_DESCRIPTOR_TYPE_SAMPLER";
-      case VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER:
-        return "VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER";
-      case VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE:
-        return "VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE";
-      case VK_DESCRIPTOR_TYPE_STORAGE_IMAGE:
-        return "VK_DESCRIPTOR_TYPE_STORAGE_IMAGE";
-      case VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER:
-        return "VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER";
-      case VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER:
-        return "VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER";
-      case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER:
-        return "VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER";
-      case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER:
-        return "VK_DESCRIPTOR_TYPE_STORAGE_BUFFER";
-      case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC:
-        return "VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC";
-      case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC:
-        return "VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC";
-      case VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT:
-        return "VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT";
+    case VK_DESCRIPTOR_TYPE_SAMPLER:
+      return "VK_DESCRIPTOR_TYPE_SAMPLER";
+    case VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER:
+      return "VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER";
+    case VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE:
+      return "VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE";
+    case VK_DESCRIPTOR_TYPE_STORAGE_IMAGE:
+      return "VK_DESCRIPTOR_TYPE_STORAGE_IMAGE";
+    case VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER:
+      return "VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER";
+    case VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER:
+      return "VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER";
+    case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER:
+      return "VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER";
+    case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER:
+      return "VK_DESCRIPTOR_TYPE_STORAGE_BUFFER";
+    case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC:
+      return "VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC";
+    case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC:
+      return "VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC";
+    case VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT:
+      return "VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT";
 #if VK_HEADER_VERSION >= 204
-      case VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK:
-        return "VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK";
+    case VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK:
+      return "VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK";
 #endif
 #if VK_HEADER_VERSION >= 224
-      case VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM:
-        return "VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM";
+    case VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM:
+      return "VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM";
 #endif
 #if VK_HEADER_VERSION >= 224
-      case VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM:
-        return "VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM";
+    case VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM:
+      return "VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM";
 #endif
 #if VK_HEADER_VERSION >= 321
-      case VK_DESCRIPTOR_TYPE_TENSOR_ARM:
-        return "VK_DESCRIPTOR_TYPE_TENSOR_ARM";
+    case VK_DESCRIPTOR_TYPE_TENSOR_ARM:
+      return "VK_DESCRIPTOR_TYPE_TENSOR_ARM";
 #endif
 #if VK_HEADER_VERSION >= 231
-      case VK_DESCRIPTOR_TYPE_MUTABLE_EXT:
-        return "VK_DESCRIPTOR_TYPE_MUTABLE_EXT";
+    case VK_DESCRIPTOR_TYPE_MUTABLE_EXT:
+      return "VK_DESCRIPTOR_TYPE_MUTABLE_EXT";
 #endif
-      default:
-        return nullptr;
-      }
-    };
+    default:
+      return nullptr;
+    }
+  }
 
-    inline const char* ToString(const VkDescriptorType& value)
-    {
-      auto result = TryToString(value);
-      return (result != nullptr ? result : "*Unknown*");
-    };
+  constexpr const char* ToString(const VkDescriptorType value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
   }
 }
 
