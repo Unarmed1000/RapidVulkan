@@ -155,6 +155,10 @@ namespace RapidVulkan::Debug
     case VK_DRIVER_ID_APE_SOFT:
       return "VK_DRIVER_ID_APE_SOFT";
 #endif
+#if VK_HEADER_VERSION >= 363
+    case VK_DRIVER_ID_RESERVED_31:
+      return "VK_DRIVER_ID_RESERVED_31";
+#endif
     default:
       return nullptr;
     }

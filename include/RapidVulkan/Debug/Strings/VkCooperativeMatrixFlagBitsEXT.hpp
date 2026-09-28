@@ -1,9 +1,10 @@
-#ifndef RAPIDVULKAN_CHECK_HPP
-#define RAPIDVULKAN_CHECK_HPP
+#ifndef RAPIDVULKAN_DEBUG_STRINGS_VKCOOPERATIVEMATRIXFLAGBITSEXT_HPP
+#define RAPIDVULKAN_DEBUG_STRINGS_VKCOOPERATIVEMATRIXFLAGBITSEXT_HPP
+#if VK_HEADER_VERSION >= 363
 //***************************************************************************************************************************************************
 //* BSD 3-Clause License
 //*
-//* Copyright (c) 2016-2025, Rene Thrane
+//* Copyright (c) 2017-2025, Rene Thrane
 //* All rights reserved.
 //*
 //* Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -22,25 +23,33 @@
 //* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //***************************************************************************************************************************************************
 
-#include <RapidVulkan/CheckError.hpp>
+// If you use the functionality in this file its recommended to 'WRAP' it in a hpp/cpp file combo so its only included in one file!
 
-// Define some ease of use macros for logging.
-// Please beware that these are not pulled in by any of the RAII classes, so its 100% up to the user of the library to include it
-// if the functionality is desired.
+// Auto-generated Vulkan 1.0 C++17 RAII classes by RAIIGen (https://github.com/Unarmed1000/RAIIGen)
 
-// NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-#define RAPIDVULKAN_CHECK(X)                  RapidVulkan::CheckError((X), #X, __FILE__, __LINE__)
-// NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-#define RAPIDVULKAN_CHECK2(X, mESSAGE)        RapidVulkan::CheckError((X), (mESSAGE), __FILE__, __LINE__)
+#include <vulkan/vulkan.h>
 
-// The Vulkan version this was based on
-// NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-#define RAPIDVULKAN_VULKAN_VERSION_MAJOR   1
-// NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-#define RAPIDVULKAN_VULKAN_VERSION_MINOR   4
-// NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-#define RAPIDVULKAN_VULKAN_VERSION_BUILD   363
-// NOLINTNEXTLINE(cppcoreguidelines-macro-usage)
-#define RAPIDVULKAN_VULKAN_VERSION_HOTFIX  0
+namespace RapidVulkan::Debug
+{
+  constexpr const char* TryToString(const VkCooperativeMatrixFlagBitsEXT value) noexcept
+  {
+    switch (value)
+    {
+#if VK_HEADER_VERSION >= 363
+    case VK_COOPERATIVE_MATRIX_SATURATING_ACCUMULATION_BIT_EXT:
+      return "VK_COOPERATIVE_MATRIX_SATURATING_ACCUMULATION_BIT_EXT";
+#endif
+    default:
+      return nullptr;
+    }
+  }
 
+  constexpr const char* ToString(const VkCooperativeMatrixFlagBitsEXT value) noexcept
+  {
+    const char* const result = TryToString(value);
+    return (result != nullptr ? result : "*Unknown*");
+  }
+}
+
+#endif
 #endif
