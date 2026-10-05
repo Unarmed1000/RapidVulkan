@@ -56,8 +56,8 @@ namespace RapidVulkan
         }
 
         // Claim ownership here and leave other in its default state
-        m_instance = std::exchange(other.m_instance, VK_NULL_HANDLE);
-        m_messenger = std::exchange(other.m_messenger, VK_NULL_HANDLE);
+        m_instance = std::exchange(other.m_instance, VkInstance{VK_NULL_HANDLE});
+        m_messenger = std::exchange(other.m_messenger, VkDebugUtilsMessengerEXT{VK_NULL_HANDLE});
       }
       return *this;
     }
@@ -65,8 +65,8 @@ namespace RapidVulkan
     //! @brief Move constructor
     //! Transfer ownership from other to this and leave other in its default state
     DebugUtilsMessengerEXT(DebugUtilsMessengerEXT&& other) noexcept
-      : m_instance(std::exchange(other.m_instance, VK_NULL_HANDLE))
-      , m_messenger(std::exchange(other.m_messenger, VK_NULL_HANDLE))
+      : m_instance(std::exchange(other.m_instance, VkInstance{VK_NULL_HANDLE}))
+      , m_messenger(std::exchange(other.m_messenger, VkDebugUtilsMessengerEXT{VK_NULL_HANDLE}))
     {
     }
 

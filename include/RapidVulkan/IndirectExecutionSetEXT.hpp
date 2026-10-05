@@ -56,8 +56,8 @@ namespace RapidVulkan
         }
 
         // Claim ownership here and leave other in its default state
-        m_device = std::exchange(other.m_device, VK_NULL_HANDLE);
-        m_indirectExecutionSet = std::exchange(other.m_indirectExecutionSet, VK_NULL_HANDLE);
+        m_device = std::exchange(other.m_device, VkDevice{VK_NULL_HANDLE});
+        m_indirectExecutionSet = std::exchange(other.m_indirectExecutionSet, VkIndirectExecutionSetEXT{VK_NULL_HANDLE});
       }
       return *this;
     }
@@ -65,8 +65,8 @@ namespace RapidVulkan
     //! @brief Move constructor
     //! Transfer ownership from other to this and leave other in its default state
     IndirectExecutionSetEXT(IndirectExecutionSetEXT&& other) noexcept
-      : m_device(std::exchange(other.m_device, VK_NULL_HANDLE))
-      , m_indirectExecutionSet(std::exchange(other.m_indirectExecutionSet, VK_NULL_HANDLE))
+      : m_device(std::exchange(other.m_device, VkDevice{VK_NULL_HANDLE}))
+      , m_indirectExecutionSet(std::exchange(other.m_indirectExecutionSet, VkIndirectExecutionSetEXT{VK_NULL_HANDLE}))
     {
     }
 

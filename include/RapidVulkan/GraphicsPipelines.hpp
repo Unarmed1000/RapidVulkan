@@ -56,7 +56,7 @@ namespace RapidVulkan
         }
 
         // Claim ownership here and leave other in its default state
-        m_device = std::exchange(other.m_device, VK_NULL_HANDLE);
+        m_device = std::exchange(other.m_device, VkDevice{VK_NULL_HANDLE});
         m_pipelines = std::move(other.m_pipelines);
       }
       return *this;
@@ -65,7 +65,7 @@ namespace RapidVulkan
     //! @brief Move constructor
     //! Transfer ownership from other to this and leave other in its default state
     GraphicsPipelines(GraphicsPipelines&& other) noexcept
-      : m_device(std::exchange(other.m_device, VK_NULL_HANDLE))
+      : m_device(std::exchange(other.m_device, VkDevice{VK_NULL_HANDLE}))
       , m_pipelines(std::move(other.m_pipelines))
     {
     }

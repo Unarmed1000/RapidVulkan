@@ -57,8 +57,8 @@ namespace RapidVulkan
         }
 
         // Claim ownership here and leave other in its default state
-        m_device = std::exchange(other.m_device, VK_NULL_HANDLE);
-        m_descriptorPool = std::exchange(other.m_descriptorPool, VK_NULL_HANDLE);
+        m_device = std::exchange(other.m_device, VkDevice{VK_NULL_HANDLE});
+        m_descriptorPool = std::exchange(other.m_descriptorPool, VkDescriptorPool{VK_NULL_HANDLE});
         m_descriptorSets = std::move(other.m_descriptorSets);
       }
       return *this;
@@ -67,8 +67,8 @@ namespace RapidVulkan
     //! @brief Move constructor
     //! Transfer ownership from other to this and leave other in its default state
     DescriptorSets(DescriptorSets&& other) noexcept
-      : m_device(std::exchange(other.m_device, VK_NULL_HANDLE))
-      , m_descriptorPool(std::exchange(other.m_descriptorPool, VK_NULL_HANDLE))
+      : m_device(std::exchange(other.m_device, VkDevice{VK_NULL_HANDLE}))
+      , m_descriptorPool(std::exchange(other.m_descriptorPool, VkDescriptorPool{VK_NULL_HANDLE}))
       , m_descriptorSets(std::move(other.m_descriptorSets))
     {
     }

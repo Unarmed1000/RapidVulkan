@@ -57,8 +57,8 @@ namespace RapidVulkan
         }
 
         // Claim ownership here and leave other in its default state
-        m_device = std::exchange(other.m_device, VK_NULL_HANDLE);
-        m_commandPool = std::exchange(other.m_commandPool, VK_NULL_HANDLE);
+        m_device = std::exchange(other.m_device, VkDevice{VK_NULL_HANDLE});
+        m_commandPool = std::exchange(other.m_commandPool, VkCommandPool{VK_NULL_HANDLE});
         m_commandBuffers = std::move(other.m_commandBuffers);
       }
       return *this;
@@ -67,8 +67,8 @@ namespace RapidVulkan
     //! @brief Move constructor
     //! Transfer ownership from other to this and leave other in its default state
     CommandBuffers(CommandBuffers&& other) noexcept
-      : m_device(std::exchange(other.m_device, VK_NULL_HANDLE))
-      , m_commandPool(std::exchange(other.m_commandPool, VK_NULL_HANDLE))
+      : m_device(std::exchange(other.m_device, VkDevice{VK_NULL_HANDLE}))
+      , m_commandPool(std::exchange(other.m_commandPool, VkCommandPool{VK_NULL_HANDLE}))
       , m_commandBuffers(std::move(other.m_commandBuffers))
     {
     }

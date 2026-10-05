@@ -25,7 +25,7 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 project(
   RapidVulkan
-  VERSION 1.4.363.0
+  VERSION 1.4.363.1
   LANGUAGES CXX
 )
 # Disable project in-source buils
